@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>التأمينات الاجتماعية في مصر</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --clr-primary: #b378a6;
+        --clr-secondary: #7796bf;
+        --clr-light: #ffffff;
+        --clr-light-2: #f0f0f0;
+        --clr-border: #dedede;
+        --clr-dark: #1b1b1b;
+        --clr-dark-2: #444444;
+        --clr-text: #333333;
+        --clr-text-soft: #555555;
+        --font-body: 'Baloo Bhaijaan 2', sans-serif;
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 18px;
+        --shadow-soft: 0 4px 20px rgba(27, 27, 27, 0.07);
+        --shadow-hover: 0 12px 28px rgba(179, 120, 166, 0.16);
+        --section-pad: 4.5rem;
+        --content-width: 900px;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: var(--font-body);
+        background: var(--clr-light);
+        color: var(--clr-dark);
+        line-height: 1.9;
+        overflow-x: hidden;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      a {
+        color: var(--clr-secondary);
+        text-decoration: none;
+        transition: 0.2s;
+      }
+      a:hover {
+        color: var(--clr-primary);
+      }
+      h1, h2, h3, h4, h5 {
+        font-family: var(--font-body);
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+        color: var(--clr-dark);
+      }
+      h1, h2 { font-weight: 800; }
+      h3, h4, h5 { font-weight: 700; }
+      p {
+        color: var(--clr-text);
+        margin-bottom: 1rem;
+      }
+      ul { margin: 0; padding: 0; }
+      section { scroll-margin-top: 90px; }
+      ::selection {
+        background: var(--clr-primary);
+        color: #fff;
+      }
+      :focus-visible {
+        outline: 3px solid var(--clr-secondary);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+      .editor-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--clr-primary);
+        padding: 0.7rem 0;
+        box-shadow: var(--shadow-soft);
+      }
+      .editor-toolbar__tab-title {
+        color: #fff;
+        font-size: 1.1rem;
+        direction: ltr;
+        font-weight: 700;
+      }
+      .hero {
+        background: var(--clr-secondary);
+        color: #fff;
+        padding: 4.5rem 0 3.5rem;
+      }
+      .hero__title {
+        color: #fff;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+      .hero__lead {
+        color: #fff;
+        opacity: 0.95;
+        max-width: 760px;
+        font-size: 1.15rem;
+        margin-bottom: 0;
+      }
+      .content-section { padding: var(--section-pad) 0; }
+      .content-section--alt { background: #fcfcfc; }
+      .content-section--tint { background: var(--clr-light-2); }
+      .content-section__eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+        font-size: 0.86rem;
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+      }
+      .content-section__eyebrow::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        background: var(--clr-primary);
+      }
+      .content-section__title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+      .content-section__description {
+        max-width: 760px;
+        color: var(--clr-text-soft);
+        margin-bottom: 2.5rem;
+      }
+      .summary-card {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+        padding: 2rem;
+      }
+      .summary-card__list {
+        display: grid;
+        gap: 1rem;
+        list-style: none;
+      }
+      .summary-card__list li {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+      }
+      .callout {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        border-radius: var(--radius-md);
+        border-inline-start: 4px solid;
+      }
+      .callout__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 700;
+      }
+      .callout--note {
+        background: rgba(119, 150, 191, 0.08);
+        border-color: var(--clr-secondary);
+      }
+      .callout--warning {
+        background: rgba(179, 120, 166, 0.08);
+        border-color: var(--clr-primary);
+      }
+      .flow-diagram {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin: 2rem 0;
+      }
+      .flow-step {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        padding: 1rem 1.25rem;
+        box-shadow: var(--shadow-soft);
+      }
+      .flow-step__title {
+        color: var(--clr-primary);
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+      }
+      .flow-step__description { color: var(--clr-text-soft); margin: 0; }
+      .flow-arrow {
+        text-align: center;
+        color: var(--clr-secondary);
+        font-size: 28px;
+        line-height: 1;
+      }
+      .topic-block { margin-bottom: 3rem; }
+      .topic-block:last-child { margin-bottom: 0; }
+      .topic-block__title {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+      }
+      .topic-divider {
+        border: none;
+        border-top: 1px dashed var(--clr-border);
+        margin: 2.5rem 0;
+      }
+      .num {
+        direction: ltr;
+        unicode-bidi: isolate;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+      .formula-box {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        text-align: center;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-soft);
+      }
+      .formula-box__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--clr-primary);
+        font-weight: 700;
+      }
+      .formula-box__body {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--clr-dark);
+      }
+      .example-block {
+        overflow: hidden;
+        margin: 2rem 0;
+        background: var(--clr-light);
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+      }
+      .example-block__header {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.7rem 1.2rem;
+        background: var(--clr-dark);
+      }
+      .example-block__tag {
+        padding: 0 0.7rem;
+        background: var(--clr-primary);
+        color: #fff;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+      .example-block__title { color: #fff; font-weight: 600; }
+      .example-block__body { padding: 1.5rem; }
+      .example-block__label {
+        display: block;
+        margin: 1.6rem 0 0.6rem;
+        color: var(--clr-secondary);
+        font-weight: 700;
+      }
+      .example-block__label:first-child { margin-top: 0; }
+      .example-block__data {
+        margin: 0;
+        padding-inline-start: 1.2rem;
+        color: var(--clr-text);
+      }
+      .acc-table-wrap { overflow-x: auto; }
+      .acc-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+      .acc-table th,
+      .acc-table td {
+        padding: 0.5rem 0.8rem;
+        border: 1px solid var(--clr-border);
+      }
+      .acc-table thead th {
+        background: var(--clr-light-2);
+        text-align: center;
+        font-weight: 700;
+      }
+      .acc-table td.num { text-align: end; }
+      .acc-table__total td {
+        background: #fcfcfc;
+        font-weight: 700;
+        border-top: 2px solid var(--clr-dark-2);
+        border-bottom: 4px double var(--clr-dark-2);
+      }
+      .journal__entry { border-bottom: 2px solid var(--clr-dark-2); }
+      .acc-table td.journal__credit { padding-inline-start: 2.5rem; }
+      .journal__note td { color: var(--clr-text-soft); font-size: 0.88rem; }
+      .t-accounts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+      .t-account {
+        overflow: hidden;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+      }
+      .t-account__title {
+        padding: 0.5rem;
+        text-align: center;
+        color: var(--clr-primary);
+        font-weight: 700;
+        border-bottom: 2px solid var(--clr-dark-2);
+      }
+      .t-account__sides { display: grid; grid-template-columns: 1fr 1fr; }
+      .t-account__side + .t-account__side {
+        border-inline-start: 2px solid var(--clr-dark-2);
+      }
+      .t-account__side-label {
+        padding: 0.3rem;
+        text-align: center;
+        color: var(--clr-text-soft);
+        font-size: 0.85rem;
+        font-weight: 700;
+        border-bottom: 1px solid var(--clr-border);
+      }
+      .t-account__lines {
+        min-height: 3rem;
+        margin: 0;
+        padding: 0.4rem 0.7rem;
+        list-style: none;
+      }
+      .t-account__lines li {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+      }
+      .t-account__balance {
+        padding: 0.45rem 0.7rem;
+        text-align: center;
+        font-weight: 700;
+        background: rgba(119, 150, 191, 0.08);
+        border-top: 1px solid var(--clr-border);
+      }
+      .site-footer {
+        background: var(--clr-light-2);
+        color: var(--clr-light);
+        padding: 1rem 0 0.5rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+      @media (max-width: 768px) {
+        :root { --section-pad: 3rem; }
+        .hero { padding: 3.5rem 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; }
+      }
+    </style>
+  </head>
+  <body>
+<div class="editor-toolbar"><div class="container d-flex align-items-center gap-3"><span class="editor-toolbar__tab-title" data-sync-title></span></div></div>
+<header class="hero"><div class="container"><h1 class="hero__title">التأمينات الاجتماعية في مصر</h1>
+<p class="hero__lead">يشرح هذا الفصل كيف تُحتسب اشتراكات التأمينات الاجتماعية وفق القانون رقم {148} لسنة {2019}، وما النماذج التي يقدمها صاحب العمل للهيئة، وما التزاماته القانونية، مع إثبات ذلك كله في دفاتر المنشأة.</p></div></header>
+<section class="content-section" id="explanation"><div class="container">
+<div class="content-section__eyebrow">شرح وتطبيق</div><h2 class="content-section__title">شرح وتطبيق كل مرحلة</h2>
+<div class="article-content" style="max-width: 900px">
+<div class="topic-block" id="contribution-rates">
+<h3 class="topic-block__title">نسب الاشتراك</h3>
+<p>تُموَّل التأمينات الاجتماعية (Social Insurance) في مصر باشتراكات شهرية إلزامية، يتقاسمها العامل وصاحب العمل، وتُحتسب بنسبة مئوية من أجر الاشتراك (Contribution Wage)، وهو كامل المقابل النقدي الذي يتقاضاه المؤمن عليه من جهة عمله الأصلية لقاء عمله الأصلي. ويصدر بها قانون التأمينات الاجتماعية والمعاشات رقم {148} لسنة {2019}، وتتولى تحصيلها الهيئة القومية للتأمين الاجتماعي (National Organization for Social Insurance).</p>
+<p>ويقع أجر الاشتراك بين حدٍّ أدنى وحدٍّ أقصى يُعلَنان سنويًا، وقد بلغا اعتبارًا من {1/1/2026} نحو {2,700} ج.م و{16,700} ج.م شهريًا. وما زاد على الحد الأقصى لا يُحتسب عليه اشتراك. وفيما يلي نسب الاشتراك للعاملين لحساب الغير في القطاع الخاص، وهي النسب المعتمدة في أمثلة هذا الفصل:</p>
+<div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>نوع التأمين</th><th>صاحب العمل</th><th>العامل</th><th>الإجمالي</th></tr></thead><tbody><tr><td>شيخوخة وعجز ووفاة</td><td class="num"><span class="num">12%</span></td><td class="num"><span class="num">9%</span></td><td class="num"><span class="num">21%</span></td></tr><tr><td>المكافأة</td><td class="num"><span class="num">1%</span></td><td class="num"><span class="num">1%</span></td><td class="num"><span class="num">2%</span></td></tr><tr><td>إصابات العمل</td><td class="num"><span class="num">1.5%</span></td><td class="num">—</td><td class="num"><span class="num">1.5%</span></td></tr><tr><td>المرض</td><td class="num"><span class="num">3.25%</span></td><td class="num"><span class="num">1%</span></td><td class="num"><span class="num">4.25%</span></td></tr><tr><td>البطالة</td><td class="num"><span class="num">1%</span></td><td class="num">—</td><td class="num"><span class="num">1%</span></td></tr><tr class="acc-table__total"><td>الإجمالي</td><td class="num"><span class="num">18.75%</span></td><td class="num"><span class="num">11%</span></td><td class="num"><span class="num">29.75%</span></td></tr></tbody></table></div>
+<p>ويُقصد بـ«المكافأة» ميزة تأمينية تُصرف دفعة واحدة عند انتهاء الخدمة.</p>
+<div class="callout callout--note"><span class="callout__label">ملاحظة</span><p>يتحمل العامل <span class="num">11%</span> في جميع القطاعات، أما حصة المنشأة فتبلغ <span class="num">17.25%</span> في الحكومة و<span class="num">18.25%</span> في القطاع العام. وينص القانون على زيادة نسبة اشتراك الشيخوخة والعجز والوفاة بمقدار <span class="num">1%</span> كل سبع سنوات من بدء العمل به عام <span class="num">2020</span>، تُقسَّم مناصفة بين الطرفين.</p></div>
+<div class="formula-box"><span class="formula-box__label">قاعدة الاحتساب</span><p class="formula-box__body">حصة العامل = أجر الاشتراك × {11%}<br />حصة صاحب العمل = أجر الاشتراك × {18.75%}</p></div>
+<div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">اشتراكات التأمينات الاجتماعية عن شهر سبتمبر 2026</span></div><div class="example-block__body"><span class="example-block__label">المعطيات</span><ul class="example-block__data"><li>شركة النيل للتجارة (قطاع خاص) لديها ثلاثة عاملين: محمود براتب فعلي <span class="num">6,000</span> ج.م، وهالة <span class="num">10,000</span> ج.م، وطارق <span class="num">20,000</span> ج.م شهريًا.</li><li>الحد الأقصى لأجر الاشتراك <span class="num">16,700</span> ج.م، والرواتب المذكورة هي إجمالي الراتب قبل أي خصم.</li><li>تُثبت الشركة الاشتراكات في آخر يوم من الشهر <span class="num">30/9/2026</span>، وتُستخدم النسب الواردة في الجدول أعلاه.</li></ul><span class="example-block__label">احتساب الاشتراك لكل عامل (ج.م)</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>العامل</th><th>الراتب الفعلي</th><th>أجر الاشتراك</th><th>حصة العامل <span class="num">11%</span></th><th>حصة صاحب العمل <span class="num">18.75%</span></th><th>الإجمالي</th></tr></thead><tbody><tr><td>محمود</td><td class="num">6,000</td><td class="num">6,000</td><td class="num">660</td><td class="num">1,125</td><td class="num">1,785</td></tr><tr><td>هالة</td><td class="num">10,000</td><td class="num">10,000</td><td class="num">1,100</td><td class="num">1,875</td><td class="num">2,975</td></tr><tr><td>طارق</td><td class="num">20,000</td><td class="num">16,700</td><td class="num">1,837</td><td class="num">3,131.25</td><td class="num">4,968.25</td></tr><tr class="acc-table__total"><td>الإجمالي</td><td class="num">36,000</td><td class="num">32,700</td><td class="num">3,597</td><td class="num">6,131.25</td><td class="num">9,728.25</td></tr></tbody></table></div><span class="example-block__label">توزيع الاشتراك حسب نوع التأمين على أجر اشتراك إجمالي <span class="num">32,700</span> ج.م (ج.م)</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>نوع التأمين</th><th>حصة صاحب العمل</th><th>حصة العامل</th><th>الإجمالي</th></tr></thead><tbody><tr><td>شيخوخة وعجز ووفاة</td><td class="num">3,924</td><td class="num">2,943</td><td class="num">6,867</td></tr><tr><td>المكافأة</td><td class="num">327</td><td class="num">327</td><td class="num">654</td></tr><tr><td>إصابات العمل</td><td class="num">490.50</td><td class="num">—</td><td class="num">490.50</td></tr><tr><td>المرض</td><td class="num">1,062.75</td><td class="num">327</td><td class="num">1,389.75</td></tr><tr><td>البطالة</td><td class="num">327</td><td class="num">—</td><td class="num">327</td></tr><tr class="acc-table__total"><td>الإجمالي</td><td class="num">6,131.25</td><td class="num">3,597</td><td class="num">9,728.25</td></tr></tbody></table></div><span class="example-block__label">قيود اليومية</span><div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين</th><th>دائن</th></tr></thead><tbody class="journal__entry"><tr><td rowspan="4">30/9/2026</td><td>من ح/ مصروف الرواتب</td><td class="num">36,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ التأمينات الاجتماعية المستحقة</td><td></td><td class="num">3,597</td></tr><tr><td class="journal__credit">إلى ح/ الرواتب المستحقة</td><td></td><td class="num">32,403</td></tr><tr class="journal__note"><td>إثبات رواتب سبتمبر 2026 وحصة العاملين المخصومة منها (دون ضرائب لتركيز الفصل)</td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="3">30/9/2026</td><td>من ح/ مصروف التأمينات الاجتماعية</td><td class="num">6,131.25</td><td></td></tr><tr><td class="journal__credit">إلى ح/ التأمينات الاجتماعية المستحقة</td><td></td><td class="num">6,131.25</td></tr><tr class="journal__note"><td>إثبات حصة صاحب العمل عن سبتمبر 2026</td><td></td><td></td></tr></tbody></table></div></div></div>
+<p>احتُسب اشتراك طارق على الحد الأقصى {16,700} ج.م لا على راتبه {20,000} ج.م، فبلغت حصته {1,837} ج.م. وأُثبت مصروف الرواتب بإجمالي الراتب {36,000} ج.م، وخُصمت منه حصة العاملين {3,597} ج.م فبقي صافي مستحق للعاملين {32,403} ج.م. أما حصة العاملين فليست إيرادًا للشركة، بل التزام (Liability) تؤديه للهيئة. وحصة صاحب العمل {6,131.25} ج.م مصروف يُحمَّل على فترة خدمة العاملين، وفق معيار المحاسبة الدولي {19} «منافع الموظفين» (IAS 19 Employee Benefits)، إذ يقتصر التزام الشركة على سداد الاشتراكات القانونية، وهو ما يُعرف بخطة الاشتراك المحدد (Defined Contribution Plan). ويتطابق مجموع التوزيع حسب نوع التأمين {9,728.25} ج.م مع مجموع الجدول الأول.</p>
+<div class="callout callout--warning"><span class="callout__label">انتبه</span><p>لا تُحتسب حصة العامل على راتبه الإجمالي بل على أجر الاشتراك. فلو احتُسبت على راتب طارق كاملًا لخُصم منه <span class="num">2,200</span> ج.م بدل <span class="num">1,837</span> ج.م، ولتحمّل زيادة غير مستحقة. كذلك لا تُخصم حصة صاحب العمل من راتب العامل، فهي مصروف على المنشأة وحدها.</p></div>
+</div>
+<hr class="topic-divider" />
+<div class="topic-block" id="insurance-forms">
+<h3 class="topic-block__title">نماذج التأمينات</h3>
+<p>يتعامل صاحب العمل مع الهيئة القومية للتأمين الاجتماعي عبر نماذج (استمارات) تُثبت دورة حياة المؤمن عليه لديها منذ التحاقه حتى انتهاء خدمته، وتُبنى عليها مدد الاشتراك والأجور التي تحدد حقوقه لاحقًا. وتحتفظ الهيئة بأصول المستندات والنماذج في أرشيف إلكتروني وفق المادة {12} من القانون، وقد يتم التقديم نفسه عبر القنوات الإلكترونية للهيئة. وأهم النماذج:</p>
+<div class="flow-diagram"><div class="flow-step"><div class="flow-step__title">التحاق العامل: نموذج <span class="num">1</span> ونموذج <span class="num">3</span></div><div class="flow-step__description">نموذج <span class="num">1</span> هو طلب اشتراك مؤمن عليه، ونموذج <span class="num">3</span> هو صحيفة البيانات الأساسية للمؤمن عليه. وبهما يُفتح الاشتراك ويُسجَّل العامل على قاعدة بيانات الهيئة.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">أثناء الخدمة: نموذج <span class="num">2</span></div><div class="flow-step__description">إخطار بتعديل بيانات المؤمن عليه وأجره، كزيادة الأجر أو تغيير بيان وظيفي، ويُقدَّم عند حدوث التعديل حتى تُحتسب الاشتراكات على الأجر الصحيح.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">انتهاء الخدمة: نموذج <span class="num">6</span></div><div class="flow-step__description">إخطار بانتهاء اشتراك المؤمن عليه، وبه يتوقف احتساب الاشتراكات عنه من تاريخ انتهاء الخدمة.</div></div></div>
+<div class="callout callout--warning"><span class="callout__label">انتبه</span><p>الخطأ الشائع هو تأخير نموذج <span class="num">2</span> عند زيادة الراتب، فتستمر الاشتراكات على أجر أقل من الفعلي. ويتحمل صاحب العمل المسؤولية القانونية والمالية عن هذا النقص، بينما لا تضيع حقوق العامل التأمينية بسبب تقصير صاحب العمل بحسب المادة <span class="num">141</span>.</p></div>
+</div>
+<hr class="topic-divider" />
+<div class="topic-block" id="legal-obligations">
+<h3 class="topic-block__title">الالتزامات القانونية</h3>
+<p>يلتزم صاحب العمل قانونًا بما يأتي:</p>
+<ul style="padding-inline-start:1.2rem;margin-bottom:1rem">
+<li>التأمين على العامل لدى الهيئة منذ التحاقه، وعلى أجره الفعلي لا على أقل منه.</li>
+<li>استقطاع حصة العامل من أجره وأداؤها مع حصة المنشأة إلى الهيئة، فالمنشأة هي المسؤولة عن الأداء ما دام العامل في الخدمة والأجر مستحقًا له.</li>
+<li>إخطار الهيئة بكل تعديل في بيانات العامل أو أجره وبانتهاء خدمته عبر النماذج المناسبة.</li>
+<li>أداء الاشتراكات في الميعاد القانوني، وتحمل المبلغ الإضافي إن تأخرت.</li>
+</ul>
+<p>ويستحق الاشتراك في أول الشهر التالي للشهر الذي يخصه، فاشتراك سبتمبر يستحق في {1/10}. ومنح القانون صاحب العمل مهلة {15} يومًا، فإن أدّى حتى اليوم {15} من الشهر التالي عُدّ كأنه أدّى في تاريخ الاستحقاق دون أي مبالغ إضافية.</p>
+<div class="flow-diagram"><div class="flow-step"><div class="flow-step__title">تاريخ الاستحقاق: أول الشهر التالي</div><div class="flow-step__description">يبدأ منه احتساب المبلغ الإضافي إن لم يُؤدَّ الاشتراك في المهلة.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">المهلة: حتى اليوم <span class="num">15</span> من الشهر</div><div class="flow-step__description">الأداء خلالها يُعدّ كأنه تم في تاريخ الاستحقاق.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">بعد المهلة: مبلغ إضافي شهري</div><div class="flow-step__description">يُحسب عن كل شهر تأخير من تاريخ الاستحقاق حتى نهاية شهر السداد، بنسبة تربطها اللائحة بمتوسط عائد أذون وسندات الخزانة مضافًا إليه <span class="num">2%</span>.</div></div></div>
+<div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">سداد الاشتراكات في المهلة وبعدها</span></div><div class="example-block__body"><span class="example-block__label">المعطيات</span><ul class="example-block__data"><li>التزام سبتمبر 2026 الناتج من المثال السابق: <span class="num">9,728.25</span> ج.م، سُدد بالبنك في <span class="num">10/10/2026</span>.</li><li>حالة افتراضية: التزام أكتوبر 2026 مماثل ومقداره <span class="num">9,728.25</span> ج.م استحق في <span class="num">1/11/2026</span>، وسُدد في <span class="num">20/11/2026</span> أي بعد انتهاء المهلة.</li><li>قدّرت الهيئة المبلغ الإضافي عن التأخير بمبلغ افتراضي لأغراض المثال هو <span class="num">195</span> ج.م.</li></ul><span class="example-block__label">قيود اليومية</span><div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين</th><th>دائن</th></tr></thead><tbody class="journal__entry"><tr><td rowspan="3">10/10/2026</td><td>من ح/ التأمينات الاجتماعية المستحقة</td><td class="num">9,728.25</td><td></td></tr><tr><td class="journal__credit">إلى ح/ البنك</td><td></td><td class="num">9,728.25</td></tr><tr class="journal__note"><td>سداد اشتراكات سبتمبر 2026 (حصة العاملين وحصة الشركة) خلال المهلة</td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="4">20/11/2026</td><td>من ح/ التأمينات الاجتماعية المستحقة</td><td class="num">9,728.25</td><td></td></tr><tr><td>من ح/ مصروف المبالغ الإضافية عن التأخير</td><td class="num">195</td><td></td></tr><tr><td class="journal__credit">إلى ح/ البنك</td><td></td><td class="num">9,923.25</td></tr><tr class="journal__note"><td>سداد اشتراكات أكتوبر 2026 بعد انتهاء المهلة مع المبلغ الإضافي</td><td></td><td></td></tr></tbody></table></div><span class="example-block__label">الترحيل إلى حساب الأستاذ</span><div class="t-accounts"><div class="t-account"><div class="t-account__title">ح/ التأمينات الاجتماعية المستحقة (سبتمبر 2026)</div><div class="t-account__sides">
+<div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>سداد <span class="num">10/10/2026</span></span><span class="num">9,728.25</span></li></ul></div>
+<div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"><li><span>حصة العاملين</span><span class="num">3,597</span></li><li><span>حصة صاحب العمل</span><span class="num">6,131.25</span></li></ul></div>
+</div><div class="t-account__balance">الرصيد: <span class="num">0</span> (مسدَّد بالكامل)</div></div></div></div></div>
+<p>سُدد التزام سبتمبر في المهلة فأُقفل الحساب بالكامل دون أي تكلفة إضافية. أما في الحالة الثانية فيُسدَّد الالتزام الأصلي {9,728.25} ج.م، ويُثبت المبلغ الإضافي {195} ج.م مصروفًا مستقلًا لأنه عقوبة مالية على التأخير وليس جزءًا من اشتراك العاملين، فيكون المدفوع {9,923.25} ج.م. وأي التزام غير مسدد في نهاية الفترة يظهر ضمن الالتزامات المتداولة.</p>
+<div class="callout callout--warning"><span class="callout__label">انتبه</span><p>المهلة تنتهي عند اليوم <span class="num">15</span> تحديدًا؛ فالسداد في اليوم <span class="num">16</span> من الشهر يُحمّل المنشأة المبلغ الإضافي المحسوب من تاريخ الاستحقاق، ولو تأخر يومًا واحدًا فقط.</p></div>
+</div>
+</div></div></section>
+<section class="content-section content-section--tint" id="comparison"><div class="container">
+<div class="content-section__eyebrow">مقارنة</div><h2 class="content-section__title">حصة العامل مقابل حصة صاحب العمل محاسبيًا</h2>
+<div class="table-responsive"><table class="table table-bordered align-middle"><thead><tr><th>وجه المقارنة</th><th>حصة العامل</th><th>حصة صاحب العمل</th></tr></thead><tbody>
+<tr><td>النسبة (قطاع خاص)</td><td><span class="num">11%</span> من أجر الاشتراك</td><td><span class="num">18.75%</span> من أجر الاشتراك</td></tr>
+<tr><td>من يتحمل عبئها</td><td>العامل، وتُخصم من راتبه</td><td>المنشأة وحدها</td></tr>
+<tr><td>المعالجة المحاسبية</td><td>التزام للهيئة يُقابل جزءًا من مصروف الرواتب</td><td>مصروف التأمينات الاجتماعية</td></tr>
+<tr><td>الأثر في قائمة الدخل</td><td>لا أثر مستقل لها، فهي داخل مصروف الرواتب</td><td>تزيد المصروفات</td></tr>
+<tr><td>أداؤها للهيئة</td><td>تؤديها المنشأة نيابة عن العامل</td><td>تؤديها المنشأة عن نفسها في الميعاد ذاته</td></tr>
+</tbody></table></div></div></section>
+<section class="content-section" id="summary"><div class="container">
+<div class="content-section__eyebrow">الخلاصة</div><h2 class="content-section__title">أهم ما يجب تذكّره</h2>
+<div class="summary-card" style="max-width: 900px"><ul class="summary-card__list">
+<li>✔ يتحمل العامل <span class="num">11%</span> ويتحمل صاحب العمل <span class="num">18.75%</span> من أجر الاشتراك في القطاع الخاص، بإجمالي <span class="num">29.75%</span>.</li>
+<li>✔ يُحتسب الاشتراك على أجر الاشتراك بين الحدين الأدنى والأقصى، ولا يُحتسب على ما زاد على <span class="num">16,700</span> ج.م شهريًا في <span class="num">2026</span>.</li>
+<li>✔ حصة العامل التزام للهيئة يُخصم من راتبه، وحصة صاحب العمل مصروف يُثبت في فترة الخدمة.</li>
+<li>✔ نموذج <span class="num">1</span> و<span class="num">3</span> للالتحاق، ونموذج <span class="num">2</span> للتعديل، ونموذج <span class="num">6</span> لانتهاء الخدمة.</li>
+<li>✔ يستحق الاشتراك أول الشهر التالي ويُسدَّد حتى اليوم <span class="num">15</span>، وبعده يُحمَّل صاحب العمل مبلغًا إضافيًا يُثبت مصروفًا مستقلًا.</li>
+</ul></div></div></section>
+<footer class="site-footer"><div class="container"><p>التأمينات الاجتماعية في مصر</p></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      /* Sync Toolbar Title */
+      const heroTitle = document.querySelector('.hero__title')
+      const toolbarTitle = document.querySelector('[data-sync-title]')
+      if (heroTitle && toolbarTitle) {
+        const text = heroTitle.textContent.trim()
+        if (text) {
+          toolbarTitle.textContent = text
+          document.title = text
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>المستندات المحاسبية</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        
+        --clr-primary: #b378a6;
+        --clr-secondary: #7796bf;
+        --clr-light: #ffffff;
+        --clr-light-2: #f0f0f0;
+        --clr-border: #dedede;
+        --clr-dark: #1b1b1b;
+        --clr-dark-2: #444444;
+        --clr-text: #333333;
+        --clr-text-soft: #555555;
+
+        --font-body: 'Baloo Bhaijaan 2', sans-serif;
+
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 18px;
+
+        --shadow-soft: 0 4px 20px rgba(27, 27, 27, 0.07);
+        --shadow-hover: 0 12px 28px rgba(179, 120, 166, 0.16);
+
+        --section-pad: 4.5rem;
+        --content-width: 900px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--clr-light);
+        color: var(--clr-dark);
+        line-height: 1.9;
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: var(--clr-secondary);
+        text-decoration: none;
+        transition: 0.2s;
+      }
+
+      a:hover {
+        color: var(--clr-primary);
+      }
+
+      h1, h2, h3, h4, h5 {
+        font-family: var(--font-body);
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+        color: var(--clr-dark);
+      }
+
+      h1, h2 { font-weight: 800; }
+      h3, h4, h5 { font-weight: 700; }
+
+      p {
+        color: var(--clr-text);
+        margin-bottom: 1rem;
+      }
+
+      ul { margin: 0; padding: 0; }
+
+      section { scroll-margin-top: 90px; }
+
+      ::selection {
+        background: var(--clr-primary);
+        color: #fff;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--clr-secondary);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      .editor-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--clr-primary);
+        padding: 0.7rem 0;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .editor-toolbar__tab-title {
+        color: #fff;
+        font-size: 1.1rem;
+        direction: ltr;
+        font-weight: 700;
+      }
+
+      .hero {
+        background: var(--clr-secondary);
+        color: #fff;
+        padding: 4.5rem 0 3.5rem;
+      }
+
+      .hero__title {
+        color: #fff;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      .hero__lead {
+        color: #fff;
+        opacity: 0.95;
+        max-width: 760px;
+        font-size: 1.15rem;
+        margin-bottom: 0;
+      }
+
+      .content-section { padding: var(--section-pad) 0; }
+      .content-section--alt { background: #fcfcfc; }
+      .content-section--tint { background: var(--clr-light-2); }
+
+      .content-section__eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+        font-size: 0.86rem;
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+      }
+
+      .content-section__eyebrow::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        background: var(--clr-primary);
+      }
+
+      .content-section__title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+
+      .content-section__description {
+        max-width: 760px;
+        color: var(--clr-text-soft);
+        margin-bottom: 2.5rem;
+      }
+
+      .summary-card {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+        padding: 2rem;
+      }
+
+      .summary-card__list {
+        display: grid;
+        gap: 1rem;
+        list-style: none;
+      }
+
+      .summary-card__list li {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+      }
+
+      .callout {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        border-radius: var(--radius-md);
+        border-inline-start: 4px solid;
+      }
+
+      .callout__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 700;
+      }
+
+      .callout--note {
+        background: rgba(119, 150, 191, 0.08);
+        border-color: var(--clr-secondary);
+      }
+
+      .callout--warning {
+        background: rgba(179, 120, 166, 0.08);
+        border-color: var(--clr-primary);
+      }
+
+      .flow-diagram {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin: 2rem 0;
+      }
+
+      .flow-step {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        padding: 1rem 1.25rem;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .flow-step__title {
+        color: var(--clr-primary);
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+      }
+
+      .flow-step__description { color: var(--clr-text-soft); margin: 0; }
+
+      .flow-arrow {
+        text-align: center;
+        color: var(--clr-secondary);
+        font-size: 28px;
+        line-height: 1;
+      }
+
+      .topic-block { margin-bottom: 3rem; }
+      .topic-block:last-child { margin-bottom: 0; }
+
+      .topic-block__title {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+      }
+
+      .topic-divider {
+        border: none;
+        border-top: 1px dashed var(--clr-border);
+        margin: 2.5rem 0;
+      }
+
+      .num {
+        direction: ltr;
+        unicode-bidi: isolate;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .formula-box {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        text-align: center;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .formula-box__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--clr-primary);
+        font-weight: 700;
+      }
+
+      .formula-box__body {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--clr-dark);
+      }
+
+      .example-block {
+        overflow: hidden;
+        margin: 2rem 0;
+        background: var(--clr-light);
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .example-block__header {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.7rem 1.2rem;
+        background: var(--clr-dark);
+      }
+
+      .example-block__tag {
+        padding: 0 0.7rem;
+        background: var(--clr-primary);
+        color: #fff;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .example-block__title { color: #fff; font-weight: 600; }
+
+      .example-block__body { padding: 1.5rem; }
+
+      .example-block__label {
+        display: block;
+        margin: 1.6rem 0 0.6rem;
+        color: var(--clr-secondary);
+        font-weight: 700;
+      }
+
+      .example-block__label:first-child { margin-top: 0; }
+
+      .example-block__data {
+        margin: 0;
+        padding-inline-start: 1.2rem;
+        color: var(--clr-text);
+      }
+
+      .acc-table-wrap { overflow-x: auto; }
+
+      .acc-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+
+      .acc-table th,
+      .acc-table td {
+        padding: 0.5rem 0.8rem;
+        border: 1px solid var(--clr-border);
+      }
+
+      .acc-table thead th {
+        background: var(--clr-light-2);
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .acc-table td.num { text-align: end; }
+
+      .acc-table__total td {
+        background: #fcfcfc;
+        font-weight: 700;
+        border-top: 2px solid var(--clr-dark-2);
+        border-bottom: 4px double var(--clr-dark-2);
+      }
+
+      .journal__entry { border-bottom: 2px solid var(--clr-dark-2); }
+      .acc-table td.journal__credit { padding-inline-start: 2.5rem; }
+      .journal__note td { color: var(--clr-text-soft); font-size: 0.88rem; }
+
+      .t-accounts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+
+      .t-account {
+        overflow: hidden;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+      }
+
+      .t-account__title {
+        padding: 0.5rem;
+        text-align: center;
+        color: var(--clr-primary);
+        font-weight: 700;
+        border-bottom: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__sides { display: grid; grid-template-columns: 1fr 1fr; }
+
+      .t-account__side + .t-account__side {
+        border-inline-start: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__side-label {
+        padding: 0.3rem;
+        text-align: center;
+        color: var(--clr-text-soft);
+        font-size: 0.85rem;
+        font-weight: 700;
+        border-bottom: 1px solid var(--clr-border);
+      }
+
+      .t-account__lines {
+        min-height: 3rem;
+        margin: 0;
+        padding: 0.4rem 0.7rem;
+        list-style: none;
+      }
+
+      .t-account__lines li {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .t-account__balance {
+        padding: 0.45rem 0.7rem;
+        text-align: center;
+        font-weight: 700;
+        background: rgba(119, 150, 191, 0.08);
+        border-top: 1px solid var(--clr-border);
+      }
+
+      .site-footer {
+        background: var(--clr-light-2);
+        color: var(--clr-light);
+        padding: 1rem 0 0.5rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        :root { --section-pad: 3rem; }
+        .hero { padding: 3.5rem 0; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; }
+      }
+    
+</style>
+  </head>
+
+  <body>
+    <div class="editor-toolbar">
+      <div class="container d-flex align-items-center gap-3">
+        <span class="editor-toolbar__tab-title" data-sync-title></span>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="container">
+        <h1 class="hero__title">المستندات المحاسبية</h1>
+        <p class="hero__lead">تبدأ كل عملية محاسبية بمستند يثبتها ويُستند إليه عند تسجيلها في الدفاتر. يعرّفك هذا الفصل بأربعة مستندات تدور حولها العمليات اليومية للمنشأة: الفواتير، وسندات القبض والصرف، والإشعارات، وأمر التوريد، ويبيّن متى يصدر كل منها وما أثره في القيود والحسابات.</p>
+      </div>
+    </header>
+
+    <section class="content-section" id="explanation">
+      <div class="container">
+        <div class="content-section__eyebrow">شرح وتطبيق</div>
+        <h2 class="content-section__title">شرح وتطبيق كل مرحلة</h2>
+        <div class="article-content" style="max-width: 900px">
+
+<div class="topic-block" id="invoices">
+  <h3 class="topic-block__title">الفواتير</h3>
+  <p>الفاتورة (Invoice) مستند يصدره البائع عن كل عملية بيع، ويبيّن فيه الأصناف المباعة وكمياتها وأسعارها وقيمتها وشروط السداد. وهي مستند واحد يراه الطرفان من زاويتين مختلفتين: فهي فاتورة بيع (Sales Invoice) في دفاتر البائع، وفاتورة شراء (Purchase Invoice) في دفاتر المشتري. وتُعدّ الفاتورة المستند المؤيِّد الأساسي لقيد البيع أو الشراء، سواء كانت العملية نقدية أو بالأجل (Credit Sale)، أي بيعًا يُؤجَّل سداد ثمنه إلى موعد لاحق.</p>
+  <p>وتشتمل الفاتورة عادةً على رقم متسلسل وتاريخ، واسمي البائع والمشتري، وبيان الأصناف بكمياتها وأسعار وحداتها، والخصم التجاري (Trade Discount) إن وُجد، وصافي المبلغ المستحق، وشروط السداد. والخصم التجاري تخفيض من سعر القائمة يُمنح وقت البيع، ولذلك يُثبَّت البيع في الدفاتر بقيمته الصافية بعد الخصم ولا يُفرد له حساب مستقل. ويقضي المعيار الدولي للتقارير المالية رقم 15 (IFRS 15) بإثبات الإيراد عند انتقال السيطرة على البضاعة إلى العميل، وتكون الفاتورة عادةً الدليل المؤيِّد لذلك.</p>
+  <div class="callout callout--note"><span class="callout__label">ملاحظة</span><p>جميع أمثلة هذا الفصل تخص «شركة الأمل للتجارة»، وتُعرض بالجنيه المصري (ج.م) خلال عام <span class="num">2026</span>. ولتبسيط الأرقام أُهملت ضريبة القيمة المضافة (VAT)، وهي ضريبة غير مباشرة تُضاف إلى سعر البيع. وتُسجَّل البضاعة المشتراة في حساب المشتريات (Purchases) وفق نظام الجرد الدوري (Periodic Inventory)، وهو نظام يُحدَّد فيه مخزون آخر المدة بالجرد الفعلي لا بقيود مستمرة.</p></div>
+  <div class="formula-box"><span class="formula-box__label">صافي الفاتورة</span><p class="formula-box__body">صافي الفاتورة = إجمالي الأصناف بسعر القائمة − الخصم التجاري</p></div>
+  <div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">فاتورة بيع بالأجل مع خصم تجاري</span></div><div class="example-block__body"><span class="example-block__label">المعطيات</span><ul class="example-block__data"><li>في <span class="num">5/10/2026</span> باعت «شركة الأمل للتجارة» إلى «مؤسسة الفجر» بالأجل بموجب الفاتورة رقم <span class="num">1045</span>.</li><li>الأصناف: <span class="num">4</span> مكاتب مديرين بسعر <span class="num">6,000</span> ج.م للمكتب، و<span class="num">10</span> كراسي دوّارة بسعر <span class="num">1,500</span> ج.م للكرسي.</li><li>منحت الشركة العميل خصمًا تجاريًا قدره <span class="num">10%</span> من إجمالي الفاتورة.</li><li>المطلوب: إعداد الفاتورة، وإثبات القيد في دفاتر البائع وما يقابله في دفاتر المشتري، وترحيل قيد البائع.</li></ul><span class="example-block__label">الفاتورة رقم <span class="num">1045</span> (المبالغ بالجنيه المصري)</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البيان</th><th>الكمية</th><th>سعر الوحدة</th><th>القيمة</th></tr></thead><tbody><tr><td>مكتب مدير</td><td class="num">4</td><td class="num">6,000</td><td class="num">24,000</td></tr><tr><td>كرسي دوّار</td><td class="num">10</td><td class="num">1,500</td><td class="num">15,000</td></tr><tr><td colspan="3">إجمالي الأصناف بسعر القائمة</td><td class="num">39,000</td></tr><tr><td colspan="3">يُخصم: خصم تجاري 10%</td><td class="num">(3,900)</td></tr><tr class="acc-table__total"><td colspan="3">صافي الفاتورة المستحق على العميل</td><td class="num">35,100</td></tr></tbody></table></div><span class="example-block__label">قيود اليومية</span><div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين</th><th>دائن</th></tr></thead><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">5/10/2026</span></td><td>من ح/ العملاء (مؤسسة الفجر)</td><td class="num">35,100</td><td></td></tr><tr><td class="journal__credit">إلى ح/ المبيعات</td><td></td><td class="num">35,100</td></tr><tr class="journal__note"><td>إثبات بيع بالأجل بموجب الفاتورة رقم <span class="num">1045</span> (في دفاتر شركة الأمل)</td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">5/10/2026</span></td><td>من ح/ المشتريات</td><td class="num">35,100</td><td></td></tr><tr><td class="journal__credit">إلى ح/ الموردين (شركة الأمل للتجارة)</td><td></td><td class="num">35,100</td></tr><tr class="journal__note"><td>إثبات شراء بالأجل بموجب الفاتورة رقم <span class="num">1045</span> (في دفاتر مؤسسة الفجر)</td><td></td><td></td></tr></tbody></table></div><span class="example-block__label">الترحيل إلى حسابات الأستاذ</span><div class="t-accounts"><div class="t-account"><div class="t-account__title">ح/ العملاء (مؤسسة الفجر)</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>فاتورة 1045</span><span class="num">35,100</span></li></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">35,100</span> مدين</div></div><div class="t-account"><div class="t-account__title">ح/ المبيعات</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"><li><span>فاتورة 1045</span><span class="num">35,100</span></li></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">35,100</span> دائن</div></div></div></div></div>
+  <p>قُيِّد البيع بمبلغ <span class="num">35,100</span> ج.م لا بمبلغ <span class="num">39,000</span> ج.م؛ لأن الخصم التجاري يُطرح من إجمالي الفاتورة قبل القيد، فلا تستحق الشركة على العميل إلا الصافي. وكان الطرف المدين ح/ العملاء (Accounts Receivable) لأن البيع بالأجل ينشئ حقًا للشركة على العميل، والطرف الدائن ح/ المبيعات (Sales) لأنه إيراد. أما في دفاتر المشتري فالقيد مرآة له: يزيد ح/ المشتريات مدينًا، ويزيد ح/ الموردين (Accounts Payable) دائنًا، أي التزامه تجاه البائع.</p>
+  <div class="callout callout--warning"><span class="callout__label">انتبه</span><p>يخلط كثيرون بين الخصم التجاري والخصم النقدي (Cash Discount)، وهو تخفيض يُمنح مقابل التعجيل بالسداد. فالأول لا يظهر في الدفاتر لأنه يُطرح من الفاتورة، أما الثاني فيُسجَّل في حساب مستقل عند السداد.</p></div>
+</div>
+
+<hr class="topic-divider" />
+
+<div class="topic-block" id="vouchers">
+  <h3 class="topic-block__title">سندات القبض والصرف</h3>
+  <p>سند القبض (Receipt Voucher) مستند تُثبت به المنشأة استلامها مبلغًا من الغير، كتحصيل دين من عميل. وسند الصرف (Payment Voucher) مستند تُثبت به دفعها مبلغًا إلى الغير، كسداد مستحقات مورد أو دفع مصروف. وكلاهما دليل على حركة النقدية الفعلية، بخلاف الفاتورة التي تُثبت نشوء حق أو التزام دون أن تتحرك بها نقدية في البيع بالأجل.</p>
+  <p>ويتضمن السند عادةً رقمه المتسلسل وتاريخه، واسم الدافع والمستلم، والمبلغ رقمًا وكتابةً، وسبب القبض أو الصرف، وطريقة التسوية. ويوقِّع المستلم على سند الصرف، ويعتمده مسؤول مختص قبل خروج النقدية، وتُحفظ صورة من كل سند مرفقةً بالقيد. ولأن السند يمس النقدية دائمًا، فإن أحد طرفي قيده ح/ الصندوق (Cash): يكون مدينًا في سند القبض ودائنًا في سند الصرف، أما الطرف الآخر فيحدده سبب القبض أو الصرف.</p>
+  <div class="formula-box"><span class="formula-box__label">قاعدة سندات النقدية</span><p class="formula-box__body">سند القبض: من ح/ الصندوق — سند الصرف: إلى ح/ الصندوق</p></div>
+  <div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">تحصيل من عميل وسداد لمورد ودفع مصروف</span></div><div class="example-block__body"><span class="example-block__label">المعطيات</span><ul class="example-block__data"><li>الأرصدة في <span class="num">1/10/2026</span> وبعد الفاتورة رقم <span class="num">1045</span>: ح/ الصندوق <span class="num">50,000</span> ج.م مدين، ح/ الموردين (شركة النور للأثاث) <span class="num">30,000</span> ج.م دائن، ح/ العملاء (مؤسسة الفجر) <span class="num">35,100</span> ج.م مدين.</li><li><span class="num">20/10/2026</span>: حصّلت الشركة نقدًا <span class="num">20,000</span> ج.م من مؤسسة الفجر سدادًا جزئيًا للفاتورة رقم <span class="num">1045</span>، بسند قبض رقم <span class="num">301</span>.</li><li><span class="num">25/10/2026</span>: سدّدت الشركة نقدًا <span class="num">12,000</span> ج.م لشركة النور للأثاث من رصيدها، بسند صرف رقم <span class="num">118</span>.</li><li><span class="num">30/10/2026</span>: دفعت الشركة نقدًا <span class="num">1,800</span> ج.م قيمة فاتورة الكهرباء، بسند صرف رقم <span class="num">119</span>.</li></ul><span class="example-block__label">نموذج سند القبض رقم <span class="num">301</span></span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البند</th><th>البيان</th></tr></thead><tbody><tr><td>رقم السند</td><td><span class="num">301</span></td></tr><tr><td>التاريخ</td><td><span class="num">20/10/2026</span></td></tr><tr><td>استلمنا من</td><td>مؤسسة الفجر</td></tr><tr><td>مبلغ وقدره</td><td><span class="num">20,000</span> ج.م (فقط عشرون ألف جنيه مصري لا غير)</td></tr><tr><td>وذلك عن</td><td>سداد جزئي من الفاتورة رقم <span class="num">1045</span></td></tr><tr><td>طريقة القبض</td><td>نقدًا</td></tr></tbody></table></div><span class="example-block__label">قيود اليومية</span><div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين</th><th>دائن</th></tr></thead><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">20/10/2026</span></td><td>من ح/ الصندوق</td><td class="num">20,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ العملاء (مؤسسة الفجر)</td><td></td><td class="num">20,000</td></tr><tr class="journal__note"><td>إثبات تحصيل نقدي من العميل بسند قبض رقم <span class="num">301</span></td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">25/10/2026</span></td><td>من ح/ الموردين (شركة النور للأثاث)</td><td class="num">12,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ الصندوق</td><td></td><td class="num">12,000</td></tr><tr class="journal__note"><td>إثبات سداد نقدي للمورد بسند صرف رقم <span class="num">118</span></td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">30/10/2026</span></td><td>من ح/ مصروف الكهرباء</td><td class="num">1,800</td><td></td></tr><tr><td class="journal__credit">إلى ح/ الصندوق</td><td></td><td class="num">1,800</td></tr><tr class="journal__note"><td>إثبات دفع مصروف كهرباء نقدًا بسند صرف رقم <span class="num">119</span></td><td></td><td></td></tr></tbody></table></div><span class="example-block__label">الترحيل إلى حسابات الأستاذ</span><div class="t-accounts"><div class="t-account"><div class="t-account__title">ح/ الصندوق</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>رصيد أول الشهر</span><span class="num">50,000</span></li><li><span>سند قبض 301</span><span class="num">20,000</span></li></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"><li><span>سند صرف 118</span><span class="num">12,000</span></li><li><span>سند صرف 119</span><span class="num">1,800</span></li></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">56,200</span> مدين</div></div><div class="t-account"><div class="t-account__title">ح/ العملاء (مؤسسة الفجر)</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>فاتورة 1045</span><span class="num">35,100</span></li></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"><li><span>سند قبض 301</span><span class="num">20,000</span></li></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">15,100</span> مدين</div></div><div class="t-account"><div class="t-account__title">ح/ الموردين (شركة النور)</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>سند صرف 118</span><span class="num">12,000</span></li></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"><li><span>رصيد أول الشهر</span><span class="num">30,000</span></li></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">18,000</span> دائن</div></div><div class="t-account"><div class="t-account__title">ح/ مصروف الكهرباء</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>سند صرف 119</span><span class="num">1,800</span></li></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">1,800</span> مدين</div></div></div></div></div>
+  <p>زاد سند القبض ح/ الصندوق مدينًا لدخول النقدية، وخفّض ح/ العملاء بقيده دائنًا؛ إذ سقط جزء من حق الشركة على العميل وحلّ محله نقد. ورصيد العميل المتبقي <span class="num">15,100</span> ج.م هو الجزء غير المحصَّل من الفاتورة رقم <span class="num">1045</span>. أما سند الصرف رقم <span class="num">118</span> فخفّض ح/ الموردين بقيده مدينًا لأن التزام الشركة تجاه المورد نقص، وخفّض الصندوق بقيده دائنًا. وفي سند الصرف رقم <span class="num">119</span> أُثبت المصروف مباشرة لأن الخدمة استُهلكت وسُدّد ثمنها في الوقت نفسه. وعليه يكون رصيد الصندوق الختامي <span class="num">56,200</span> ج.م، وهو مجموع المدين <span class="num">70,000</span> ج.م مطروحًا منه مجموع الدائن <span class="num">13,800</span> ج.م.</p>
+  <div class="callout callout--warning"><span class="callout__label">انتبه</span><p>لا يُقابَل التحصيل من العميل بحساب المبيعات؛ فقد أُثبت الإيراد عند البيع بالفاتورة، وقيد التحصيل في ح/ المبيعات يُسجّل الإيراد نفسه مرتين. والصحيح أن يُقابَل ح/ العملاء، وكذلك يُقابَل سداد المورد بح/ الموردين لا بح/ المشتريات.</p></div>
+</div>
+
+<hr class="topic-divider" />
+
+<div class="topic-block" id="notes">
+  <h3 class="topic-block__title">الإشعارات</h3>
+  <p>الإشعار (Note) مستند يرسله أحد طرفي العملية إلى الآخر لإخطاره بتعديل أُجري على حسابه بعد صدور الفاتورة، دون إلغاء الفاتورة الأصلية. ويُسمّى الإشعار باسم الجانب الذي قُيِّد به حساب الطرف الآخر في دفاتر من أصدره.</p>
+  <p>فالإشعار الدائن (Credit Note) يخطر فيه المُصدِر الطرف الآخر بأن حسابه قُيِّد دائنًا في دفاتره، ويصدره البائع غالبًا لتخفيض ما على العميل، كأن يردّ العميل بضاعة (مردودات المبيعات – Sales Returns)، أو يُمنح تخفيضًا لعيب في البضاعة دون ردّها (مسموحات المبيعات – Sales Allowances). والإشعار المدين (Debit Note) يخطر فيه المُصدِر الطرف الآخر بأن حسابه قُيِّد مدينًا في دفاتره، ويصدره المشتري غالبًا عند ردّ بضاعة إلى المورد (مردودات المشتريات – Purchases Returns)، ويصدره البائع أحيانًا لتحميل العميل مبلغًا إضافيًا لم تتضمنه الفاتورة.</p>
+  <p>ويسجّل مستلم الإشعار أثره بقيد معاكس في دفاتره: فالمشتري الذي يتلقى إشعارًا دائنًا من البائع يقيّد حساب البائع عنده مدينًا، والبائع الذي يتلقى إشعارًا مدينًا من المشتري يقيّد حساب المشتري عنده دائنًا. فيظهر كل إشعار في دفاتر الطرفين بجانبين متقابلين.</p>
+  <div class="formula-box"><span class="formula-box__label">قاعدة التسمية</span><p class="formula-box__body">إشعار دائن: حساب الطرف الآخر دائن عند المُصدِر — إشعار مدين: حساب الطرف الآخر مدين عند المُصدِر</p></div>
+  <div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">إشعار دائن لمردودات مبيعات وإشعار مدين لمردودات مشتريات</span></div><div class="example-block__body"><span class="example-block__label">المعطيات</span><ul class="example-block__data"><li>رصيد ح/ العملاء (مؤسسة الفجر) بعد السند رقم <span class="num">301</span>: <span class="num">15,100</span> ج.م مدين. ورصيد ح/ الموردين (شركة النور للأثاث) بعد السند رقم <span class="num">118</span>: <span class="num">18,000</span> ج.م دائن.</li><li><span class="num">3/11/2026</span>: ردّت مؤسسة الفجر <span class="num">2</span> كرسي دوّار من الفاتورة رقم <span class="num">1045</span> لوجود عيب فيهما، فقبلت الشركة الرد وأصدرت الإشعار الدائن رقم <span class="num">12</span>.</li><li><span class="num">5/11/2026</span>: ردّت الشركة إلى شركة النور للأثاث بضاعة معيبة قيمتها <span class="num">4,000</span> ج.م وفق فاتورة الشراء، وأصدرت الإشعار المدين رقم <span class="num">7</span>.</li></ul><span class="example-block__label">حساب قيمة الإشعار الدائن رقم <span class="num">12</span> (المبالغ بالجنيه المصري)</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البيان</th><th>جزئي</th><th>كلي</th></tr></thead><tbody><tr><td>سعر الكرسي بسعر القائمة</td><td class="num">1,500</td><td class="num"></td></tr><tr><td>يُخصم: الخصم التجاري <span class="num">10%</span></td><td class="num">(150)</td><td class="num"></td></tr><tr><td>صافي سعر الكرسي</td><td class="num">1,350</td><td class="num"></td></tr><tr class="acc-table__total"><td>قيمة الإشعار الدائن (1,350 × 2 كرسي)</td><td></td><td class="num">2,700</td></tr></tbody></table></div><span class="example-block__label">قيود اليومية</span><div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين</th><th>دائن</th></tr></thead><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">3/11/2026</span></td><td>من ح/ مردودات المبيعات</td><td class="num">2,700</td><td></td></tr><tr><td class="journal__credit">إلى ح/ العملاء (مؤسسة الفجر)</td><td></td><td class="num">2,700</td></tr><tr class="journal__note"><td>إثبات مردودات مبيعات بموجب الإشعار الدائن رقم <span class="num">12</span></td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">5/11/2026</span></td><td>من ح/ الموردين (شركة النور للأثاث)</td><td class="num">4,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ مردودات المشتريات</td><td></td><td class="num">4,000</td></tr><tr class="journal__note"><td>إثبات مردودات مشتريات بموجب الإشعار المدين رقم <span class="num">7</span></td><td></td><td></td></tr></tbody></table></div><span class="example-block__label">الترحيل إلى حسابات الأستاذ</span><div class="t-accounts"><div class="t-account"><div class="t-account__title">ح/ العملاء (مؤسسة الفجر)</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>رصيد قبل الإشعار</span><span class="num">15,100</span></li></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"><li><span>إشعار دائن 12</span><span class="num">2,700</span></li></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">12,400</span> مدين</div></div><div class="t-account"><div class="t-account__title">ح/ الموردين (شركة النور)</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>إشعار مدين 7</span><span class="num">4,000</span></li></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"><li><span>رصيد قبل الإشعار</span><span class="num">18,000</span></li></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">14,000</span> دائن</div></div></div></div></div>
+  <p>بلغت قيمة الإشعار الدائن <span class="num">2,700</span> ج.م لأن الكرسي سُعِّر في الفاتورة بعد الخصم التجاري بمبلغ <span class="num">1,350</span> ج.م. وقُيِّد ح/ العملاء دائنًا لأن حق الشركة على العميل نقص بقيمة البضاعة المردودة. وقُيِّد ح/ مردودات المبيعات مدينًا بدل تخفيض ح/ المبيعات مباشرة، ليبقى إجمالي المبيعات ظاهرًا ويُطرح المردود منه عند إعداد قائمة الدخل. وفي الإشعار المدين رقم <span class="num">7</span> انعكس الاتجاه: نقص التزام الشركة تجاه المورد فقُيِّد ح/ الموردين مدينًا، وقُيِّد ح/ مردودات المشتريات دائنًا بوصفه تخفيضًا للمشتريات. أما مؤسسة الفجر فتسجّل الإشعار الدائن في دفاترها بقيد معاكس: من ح/ الموردين (شركة الأمل للتجارة) إلى ح/ مردودات المشتريات بمبلغ <span class="num">2,700</span> ج.م.</p>
+  <div class="callout callout--warning"><span class="callout__label">انتبه</span><p>تُقيَّم البضاعة المردودة بسعرها الصافي بعد الخصم التجاري (<span class="num">1,350</span> ج.م) لا بسعر القائمة (<span class="num">1,500</span> ج.م). فلو صدر الإشعار بسعر القائمة لبلغ <span class="num">3,000</span> ج.م بدل <span class="num">2,700</span> ج.م، ولخُفِّض حساب العميل بأكثر مما حُمِّل به فعلًا.</p></div>
+</div>
+
+<hr class="topic-divider" />
+
+<div class="topic-block" id="purchase-order">
+  <h3 class="topic-block__title">أمر التوريد</h3>
+  <p>أمر التوريد (Purchase Order) مستند يصدره المشتري إلى المورد يطلب فيه توريد أصناف محددة بمواصفاتها وكمياتها وأسعارها المتفق عليها، مع موعد التسليم وشروط السداد. وهو أول مستند في دورة الشراء، ويصبح التزامًا تعاقديًا بين الطرفين متى قبله المورد.</p>
+  <p>ولا يُثبَّت أمر التوريد بقيد يومية؛ لأنه عقد لم يُنفَّذ بعد من أي من الطرفين، فلم تنتقل السيطرة على البضاعة إلى المنشأة ولم ينشأ عليها التزام مالي واجب الإثبات. وإنما تظهر قيمته في الدفاتر عندما تُستلم البضاعة وترد فاتورة المورد. وقبل اعتماد الفاتورة للقيد تُطابَق على أمر التوريد وعلى إذن الاستلام، وهو مستند داخلي يحرّره المخزن عند استلام البضاعة ويثبت ما وصل منها فعلًا، فإن تطابقت الأصناف والكميات والأسعار أُثبتت المشتريات.</p>
+  <div class="flow-diagram">
+    <div class="flow-step"><div class="flow-step__title">1) إصدار أمر التوريد</div><p class="flow-step__description">يرسله المشتري إلى المورد ببيان الأصناف والكميات والأسعار وشروط التسليم والسداد. لا يُسجَّل به قيد.</p></div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-step"><div class="flow-step__title">2) توريد البضاعة واستلامها</div><p class="flow-step__description">يفحص المخزن البضاعة ويحرّر إذن الاستلام.</p></div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-step"><div class="flow-step__title">3) فاتورة المورد ومطابقتها</div><p class="flow-step__description">تُطابَق الفاتورة على أمر التوريد وإذن الاستلام قبل اعتمادها.</p></div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-step"><div class="flow-step__title">4) إثبات المشتريات</div><p class="flow-step__description">يُسجَّل قيد الشراء بالأجل: من ح/ المشتريات إلى ح/ الموردين.</p></div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-step"><div class="flow-step__title">5) السداد عند الاستحقاق</div><p class="flow-step__description">يُحرَّر سند صرف يُقيَّد به ح/ الموردين مدينًا وح/ الصندوق دائنًا.</p></div>
+  </div>
+  <div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">أمر توريد ثم استلام الفاتورة</span></div><div class="example-block__body"><span class="example-block__label">المعطيات</span><ul class="example-block__data"><li><span class="num">8/11/2026</span>: أصدرت الشركة إلى شركة النور للأثاث أمر التوريد رقم <span class="num">55</span>، والتسليم خلال <span class="num">10</span> أيام، والسداد بعد <span class="num">30</span> يومًا من الاستلام.</li><li>الأصناف: <span class="num">30</span> كرسي اجتماعات بسعر <span class="num">1,200</span> ج.م، و<span class="num">6</span> مكاتب موظفين بسعر <span class="num">2,500</span> ج.م.</li><li><span class="num">18/11/2026</span>: وردت البضاعة مطابقة للأمر، ووردت فاتورة المورد رقم <span class="num">8120</span> بمبلغ <span class="num">51,000</span> ج.م، ويستحق سدادها في <span class="num">18/12/2026</span>.</li></ul><span class="example-block__label">نموذج أمر التوريد رقم <span class="num">55</span> (المبالغ بالجنيه المصري)</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>الصنف</th><th>الكمية</th><th>سعر الوحدة</th><th>القيمة</th></tr></thead><tbody><tr><td>كرسي اجتماعات</td><td class="num">30</td><td class="num">1,200</td><td class="num">36,000</td></tr><tr><td>مكتب موظف</td><td class="num">6</td><td class="num">2,500</td><td class="num">15,000</td></tr><tr class="acc-table__total"><td colspan="3">إجمالي أمر التوريد</td><td class="num">51,000</td></tr></tbody></table></div><span class="example-block__label">قيود اليومية</span><div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين</th><th>دائن</th></tr></thead><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">18/11/2026</span></td><td>من ح/ المشتريات</td><td class="num">51,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ الموردين (شركة النور للأثاث)</td><td></td><td class="num">51,000</td></tr><tr class="journal__note"><td>إثبات مشتريات بالأجل بموجب فاتورة المورد رقم <span class="num">8120</span> المطابقة لأمر التوريد رقم <span class="num">55</span></td><td></td><td></td></tr></tbody></table></div></div></div>
+  <p>لم يُسجَّل أي قيد في <span class="num">8/11/2026</span> عند إصدار الأمر. وفي <span class="num">18/11/2026</span> طابقت الشركة الفاتورة على أمر التوريد وإذن الاستلام فوجدت الأصناف والكميات والأسعار متطابقة، فأثبتت المشتريات والتزامها تجاه المورد بمبلغ <span class="num">51,000</span> ج.م. وعند حلول موعد الاستحقاق في <span class="num">18/12/2026</span> يُحرَّر سند صرف يُقيَّد به ح/ الموردين مدينًا وح/ الصندوق دائنًا بالمبلغ نفسه.</p>
+  <div class="callout callout--warning"><span class="callout__label">انتبه</span><p>لا يُحمَّل ح/ المشتريات بقيمة أمر التوريد عند إصداره. فإثباته قبل الاستلام يُظهر التزامًا لم ينشأ بعد ويضخّم أرصدة المشتريات والموردين، ثم يتكرر القيد عند وصول الفاتورة.</p></div>
+</div>
+
+        </div>
+      </div>
+    </section>
+
+<section class="content-section content-section--tint" id="comparison">
+  <div class="container">
+    <div class="content-section__eyebrow">مقارنة</div>
+    <h2 class="content-section__title">المقارنة بين المستندات الأربعة</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered align-middle">
+        <thead><tr><th>وجه المقارنة</th><th>أمر التوريد</th><th>الفاتورة</th><th>سند القبض / الصرف</th><th>الإشعار</th></tr></thead>
+        <tbody>
+          <tr><td>من يصدره</td><td>المشتري</td><td>البائع</td><td>المنشأة القابضة أو الدافعة</td><td>أحد طرفي العملية: البائع غالبًا في الدائن، والمشتري غالبًا في المدين</td></tr>
+          <tr><td>الغرض</td><td>طلب توريد أصناف بشروط محددة</td><td>إثبات البيع أو الشراء وبيان المبلغ المستحق</td><td>إثبات تحصيل أو دفع نقدية فعلية</td><td>تعديل مبلغ مستحق بعد صدور الفاتورة</td></tr>
+          <tr><td>توقيته</td><td>قبل التوريد</td><td>عند البيع أو الشراء</td><td>عند القبض أو الدفع الفعلي</td><td>بعد صدور الفاتورة</td></tr>
+          <tr><td>هل يُثبَّت بقيد يومية؟</td><td>لا</td><td>نعم</td><td>نعم</td><td>نعم</td></tr>
+          <tr><td>أثره على الحسابات</td><td>لا أثر</td><td>العملاء أو الموردون مع المبيعات أو المشتريات</td><td>الصندوق مع العملاء أو الموردين أو أحد المصروفات</td><td>العملاء أو الموردون مع مردودات المبيعات أو المشتريات</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+    <section class="content-section" id="summary">
+      <div class="container">
+        <div class="content-section__eyebrow">الخلاصة</div>
+        <h2 class="content-section__title">أهم ما يجب تذكّره</h2>
+        <div class="summary-card" style="max-width: 900px">
+          <ul class="summary-card__list">
+            <li>✔ الفاتورة هي المستند المؤيِّد لقيد البيع أو الشراء، وتُقيَّد بصافي قيمتها بعد الخصم التجاري.</li><li>✔ سند القبض يجعل ح/ الصندوق مدينًا، وسند الصرف يجعله دائنًا، ويحدد سبب القبض أو الصرف الطرف الآخر من القيد.</li><li>✔ تحصيل دين العميل يُقابَل بح/ العملاء لا ح/ المبيعات، وسداد المورد يُقابَل بح/ الموردين لا ح/ المشتريات.</li><li>✔ الإشعار يعدّل الحساب بعد الفاتورة دون إلغائها، ويُسمّى باسم الجانب الذي قُيِّد به حساب الطرف الآخر عند مُصدِره.</li><li>✔ تُقيَّم المردودات بالسعر الصافي بعد الخصم التجاري لا بسعر القائمة.</li><li>✔ أمر التوريد لا يُثبَّت بقيد، وتُثبَّت المشتريات بعد استلام البضاعة وورود فاتورة مطابقة.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>المستندات المحاسبية</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      /* Sync Toolbar Title */
+      const heroTitle = document.querySelector('.hero__title')
+      const toolbarTitle = document.querySelector('[data-sync-title]')
+      if (heroTitle && toolbarTitle) {
+        const text = heroTitle.textContent.trim()
+        if (text) {
+          toolbarTitle.textContent = text
+          document.title = text
+        }
+      }
+    </script>
+  </body>
+</html>

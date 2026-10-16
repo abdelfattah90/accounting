@@ -1,0 +1,804 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>[عنوان الفصل]</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+
+
+    <style>
+      :root {
+        /* ========= Colors ========= */
+        --clr-primary: #b378a6;
+        --clr-secondary: #7796bf;
+        --clr-light: #ffffff;
+        --clr-light-2: #f0f0f0;
+        --clr-border: #dedede;
+        --clr-dark: #1b1b1b;
+        --clr-dark-2: #444444;
+        --clr-text: #333333;
+        --clr-text-soft: #555555;
+
+        /* ========= Font ========= */
+        --font-body: 'Baloo Bhaijaan 2', sans-serif;
+
+        /* ========= Radius ========= */
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 18px;
+
+        /* ========= Shadow ========= */
+        --shadow-soft: 0 4px 20px rgba(27, 27, 27, 0.07);
+        --shadow-hover: 0 12px 28px rgba(179, 120, 166, 0.16);
+
+        /* ========= Layout ========= */
+        --section-pad: 4.5rem;
+        --content-width: 900px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--clr-light);
+        color: var(--clr-dark);
+        line-height: 1.9;
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: var(--clr-secondary);
+        text-decoration: none;
+        transition: 0.2s;
+      }
+
+      a:hover {
+        color: var(--clr-primary);
+      }
+
+      h1, h2, h3, h4, h5 {
+        font-family: var(--font-body);
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+        color: var(--clr-dark);
+      }
+
+      h1, h2 { font-weight: 800; }
+      h3, h4, h5 { font-weight: 700; }
+
+      p {
+        color: var(--clr-text);
+        margin-bottom: 1rem;
+      }
+
+      ul { margin: 0; padding: 0; }
+
+      section { scroll-margin-top: 90px; }
+
+      ::selection {
+        background: var(--clr-primary);
+        color: #fff;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--clr-secondary);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      /* ==========================================================
+         Editor Toolbar
+      ========================================================== */
+      .editor-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--clr-primary);
+        padding: 0.7rem 0;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .editor-toolbar__tab-title {
+        color: #fff;
+        font-size: 1.1rem;
+        direction: ltr;
+        font-weight: 700;
+      }
+
+      /* ==========================================================
+         Hero
+         (مبسّط عمدًا: عنوان + سطر تعريف واحد فقط، بديل عن قسم "مقدمة"
+         منفصل. لا وسوم Language/Level/Category — لا تضيفها.)
+      ========================================================== */
+      .hero {
+        background: var(--clr-secondary);
+        color: #fff;
+        padding: 4.5rem 0 3.5rem;
+      }
+
+      .hero__title {
+        color: #fff;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      .hero__lead {
+        color: #fff;
+        opacity: 0.95;
+        max-width: 760px;
+        font-size: 1.15rem;
+        margin-bottom: 0;
+      }
+
+      /* ==========================================================
+         Sections
+      ========================================================== */
+      .content-section { padding: var(--section-pad) 0; }
+      .content-section--alt { background: #fcfcfc; }
+      .content-section--tint { background: var(--clr-light-2); }
+
+      .content-section__eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+        font-size: 0.86rem;
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+      }
+
+      .content-section__eyebrow::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        background: var(--clr-primary);
+      }
+
+      .content-section__title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+
+      .content-section__description {
+        max-width: 760px;
+        color: var(--clr-text-soft);
+        margin-bottom: 2.5rem;
+      }
+
+      /* ==========================================================
+         Summary Card (تُستخدم في: الخلاصة)
+      ========================================================== */
+      .summary-card {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+        padding: 2rem;
+      }
+
+      .summary-card__list {
+        display: grid;
+        gap: 1rem;
+        list-style: none;
+      }
+
+      .summary-card__list li {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+      }
+
+      /* ==========================================================
+         Callout
+         (المكان الوحيد للتنبيهات — بما فيها الأخطاء الشائعة الخاصة
+         بموضوع معيّن؛ تُستخدم callout--warning لهذا الغرض بدل قسم
+         "أخطاء شائعة" منفصل)
+      ========================================================== */
+      .callout {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        border-radius: var(--radius-md);
+        border-inline-start: 4px solid;
+      }
+
+      .callout__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 700;
+      }
+
+      .callout--note {
+        background: rgba(119, 150, 191, 0.08);
+        border-color: var(--clr-secondary);
+      }
+
+      .callout--warning {
+        background: rgba(179, 120, 166, 0.08);
+        border-color: var(--clr-primary);
+      }
+
+      /* ==========================================================
+         Flow Diagram
+      ========================================================== */
+      .flow-diagram {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin: 2rem 0;
+      }
+
+      .flow-step {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        padding: 1rem 1.25rem;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .flow-step__title {
+        color: var(--clr-primary);
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+      }
+
+      .flow-step__description { color: var(--clr-text-soft); margin: 0; }
+
+      .flow-arrow {
+        text-align: center;
+        color: var(--clr-secondary);
+        font-size: 28px;
+        line-height: 1;
+      }
+
+      /* ==========================================================
+         Topic Block
+         كل موضوع من موضوعات المرحلة = كتلة واحدة متكاملة (نظري + عملي
+         مدمجين معًا)، مش قسمين منفصلين.
+      ========================================================== */
+      .topic-block { margin-bottom: 3rem; }
+      .topic-block:last-child { margin-bottom: 0; }
+
+      .topic-block__title {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+      }
+
+      .topic-divider {
+        border: none;
+        border-top: 1px dashed var(--clr-border);
+        margin: 2.5rem 0;
+      }
+
+      /* ==========================================================
+         Numbers (كل مبلغ يُكتب داخل عنصر بهذا الصنف)
+      ========================================================== */
+      .num {
+        direction: ltr;
+        unicode-bidi: isolate;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* ==========================================================
+         Formula Box (اختياري: معادلة أو قاعدة محاسبية)
+      ========================================================== */
+      .formula-box {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        text-align: center;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .formula-box__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--clr-primary);
+        font-weight: 700;
+      }
+
+      .formula-box__body {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--clr-dark);
+      }
+
+      /* ==========================================================
+         Example Block (المثال التطبيقي: بديل الـ code-block)
+      ========================================================== */
+      .example-block {
+        overflow: hidden;
+        margin: 2rem 0;
+        background: var(--clr-light);
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .example-block__header {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.7rem 1.2rem;
+        background: var(--clr-dark);
+      }
+
+      .example-block__tag {
+        padding: 0 0.7rem;
+        background: var(--clr-primary);
+        color: #fff;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .example-block__title { color: #fff; font-weight: 600; }
+
+      .example-block__body { padding: 1.5rem; }
+
+      .example-block__label {
+        display: block;
+        margin: 1.6rem 0 0.6rem;
+        color: var(--clr-secondary);
+        font-weight: 700;
+      }
+
+      .example-block__label:first-child { margin-top: 0; }
+
+      .example-block__data {
+        margin: 0;
+        padding-inline-start: 1.2rem;
+        color: var(--clr-text);
+      }
+
+      /* ==========================================================
+         Accounting Tables (قيود اليومية، القوائم، المذكرات، الموازين)
+      ========================================================== */
+      .acc-table-wrap { overflow-x: auto; }
+
+      .acc-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+
+      .acc-table th,
+      .acc-table td {
+        padding: 0.5rem 0.8rem;
+        border: 1px solid var(--clr-border);
+      }
+
+      .acc-table thead th {
+        background: var(--clr-light-2);
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .acc-table td.num { text-align: end; }
+
+      .acc-table__total td {
+        background: #fcfcfc;
+        font-weight: 700;
+        border-top: 2px solid var(--clr-dark-2);
+        border-bottom: 4px double var(--clr-dark-2);
+      }
+
+      .journal__entry { border-bottom: 2px solid var(--clr-dark-2); }
+      .acc-table td.journal__credit { padding-inline-start: 2.5rem; }
+      .journal__note td { color: var(--clr-text-soft); font-size: 0.88rem; }
+
+      /* ==========================================================
+         T-Accounts (حسابات الأستاذ): المدين يمين والدائن يسار
+      ========================================================== */
+      .t-accounts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+
+      .t-account {
+        overflow: hidden;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+      }
+
+      .t-account__title {
+        padding: 0.5rem;
+        text-align: center;
+        color: var(--clr-primary);
+        font-weight: 700;
+        border-bottom: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__sides { display: grid; grid-template-columns: 1fr 1fr; }
+
+      .t-account__side + .t-account__side {
+        border-inline-start: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__side-label {
+        padding: 0.3rem;
+        text-align: center;
+        color: var(--clr-text-soft);
+        font-size: 0.85rem;
+        font-weight: 700;
+        border-bottom: 1px solid var(--clr-border);
+      }
+
+      .t-account__lines {
+        min-height: 3rem;
+        margin: 0;
+        padding: 0.4rem 0.7rem;
+        list-style: none;
+      }
+
+      .t-account__lines li {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .t-account__balance {
+        padding: 0.45rem 0.7rem;
+        text-align: center;
+        font-weight: 700;
+        background: rgba(119, 150, 191, 0.08);
+        border-top: 1px solid var(--clr-border);
+      }
+
+      /* ==========================================================
+         Footer
+      ========================================================== */
+      .site-footer {
+        background: var(--clr-light-2);
+        color: var(--clr-light);
+        padding: 1rem 0 0.5rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      /* ==========================================================
+         Responsive
+      ========================================================== */
+      @media (max-width: 768px) {
+        :root { --section-pad: 3rem; }
+        .hero { padding: 3.5rem 0; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ==========================================================
+       Editor Toolbar
+    =========================================================== -->
+    <div class="editor-toolbar">
+      <div class="container d-flex align-items-center gap-3">
+        <span class="editor-toolbar__tab-title" data-sync-title></span>
+      </div>
+    </div>
+
+    <!-- ==========================================================
+       Hero
+       سطر الـ lead هو مقدمة الفصل بالكامل: مقدمة موجزة تشرح بم يجيب
+       هذا الفصل ولماذا يهم الآن. لا يوجد قسم "مقدمة" منفصل بعده.
+    =========================================================== -->
+    <header class="hero">
+      <div class="container">
+        <h1 class="hero__title">[عنوان الفصل]</h1>
+        <p class="hero__lead">
+          [مقدمة موجزة: ما الذي يضيفه هذا الفصل تحديدًا ولماذا يهم الآن.]
+        </p>
+      </div>
+    </header>
+
+    <!-- ==========================================================
+       Explanation + Examples (مدمجين)
+       ====================================================================
+       هام جدًا:
+       1) كرر كتلة "topic-block" مرة واحدة لكل مرحلة من «المراحل» الواردة
+          في الـ Prompt، بنفس الترتيب، وافصل بينها بـ
+          <hr class="topic-divider" />
+       2) كل topic-block تحتوي الشرح النظري ثم مثالها التطبيقي مباشرة
+          داخل نفس الكتلة. يُمنع تجميع كل النظري في مكان وكل العملي في
+          مكان آخر بعده.
+       3) المرحلة المفاهيمية البحتة (تعريفات، مبادئ) التي لا مثال عدديًا
+          طبيعيًا لها تكتفي بالشرح النظري دون example-block (مثل المرحلة
+          الثانية أدناه). ولو ارتبطت مرحلتان بمثال طبيعي واحد فاجمعهما
+          في مثال واحد بدل تكراره.
+       4) اختر أدوات العرض داخل example-block حسب طبيعة المثال، واحذف
+          ما لا يلزم منها:
+          - قيود اليومية: جدول journal بصيغة "من ح/ ... إلى ح/ ..."
+          - حسابات الأستاذ: t-accounts و t-account (المدين يمين والدائن يسار)
+          - كشوف، قوائم، مذكرات تسوية، موازين مراجعة: جدول acc-table
+            وصف acc-table__total للإجمالي النهائي
+          - معادلة أو قاعدة محاسبية: formula-box
+       5) قواعد الأرقام (إلزامية):
+          - كل مبلغ داخل عنصر class="num"، بأرقام 0-9 وفاصل آلاف.
+          - كل قيد متوازن: مجموع المدين = مجموع الدائن.
+          - كل مجموع ورصيد وإجمالي يُحسب ويُراجع قبل التسليم.
+          - العملة وسنة/تاريخ الأمثلة موحّدة داخل الفصل كله.
+       6) الـ Note / Flow Diagram / formula-box اختيارية: ضفها فقط لو
+          أضافت قيمة حقيقية للمرحلة الحالية.
+       7) أي خطأ شائع أو التباس مرتبط بمرحلة معيّنة يُذكر داخل الـ Warning
+          callout الخاص بنفس المرحلة، وضفه فقط لو فيه خطأ شائع حقيقي.
+       8) امسح كل الـ placeholders والتعليقات دي من الملف النهائي.
+       ====================================================================
+    -->
+    <section class="content-section" id="explanation">
+      <div class="container">
+        <div class="content-section__eyebrow">شرح وتطبيق</div>
+        <h2 class="content-section__title">شرح وتطبيق كل مرحلة</h2>
+
+        <div class="article-content" style="max-width: 900px">
+          <!-- ============ Topic Block: [اسم المرحلة 1] ============ -->
+          <div class="topic-block" id="[stage-1-slug]">
+            <h3 class="topic-block__title">[اسم المرحلة 1]</h3>
+
+            <p>
+              [شرح نظري معمّق: ما المفهوم، وكيف يعمل محاسبيًا، وكيف يؤثر
+              في الحسابات والقوائم المالية، ومتى يُطبَّق. يُذكر المصطلح
+              بالعربية ومقابله الإنجليزي بين قوسين عند أول ذكر.]
+            </p>
+
+            <!-- ================= Note (اختياري) ================= -->
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>[معلومة مهمة يجب أن يعرفها القارئ.]</p>
+            </div>
+
+            <!-- ========= Formula Box (اختياري) ========= -->
+            <div class="formula-box">
+              <span class="formula-box__label">[اسم المعادلة أو القاعدة]</span>
+              <p class="formula-box__body">[المعادلة أو القاعدة]</p>
+            </div>
+
+            <!-- ========= Flow Diagram (اختياري) ========= -->
+            <div class="flow-diagram">
+              <div class="flow-step">
+                <div class="flow-step__title">[خطوة 1]</div>
+                <div class="flow-step__description">[وصف]</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">[خطوة 2]</div>
+                <div class="flow-step__description">[وصف]</div>
+              </div>
+            </div>
+
+            <!-- المثال التطبيقي لنفس المرحلة، مباشرة بعد شرحها -->
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">[عنوان المثال]</span>
+              </div>
+              <div class="example-block__body">
+                <!-- المعطيات: دائمًا موجودة -->
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>[معطى 1: مبلغ أو تاريخ أو عملية]</li>
+                  <li>[معطى 2]</li>
+                </ul>
+
+                <!-- قيود اليومية (اختياري) -->
+                <span class="example-block__label">قيود اليومية</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين</th>
+                        <th>دائن</th>
+                      </tr>
+                    </thead>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3">[التاريخ]</td>
+                        <td>من ح/ [الحساب المدين]</td>
+                        <td class="num">[0,000]</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ [الحساب الدائن]</td>
+                        <td></td>
+                        <td class="num">[0,000]</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>[بيان القيد: سبب إثباته]</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- حسابات الأستاذ (اختياري) -->
+                <span class="example-block__label">الترحيل إلى حسابات الأستاذ</span>
+                <div class="t-accounts">
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ [اسم الحساب]</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li><span>[البيان]</span><span class="num">[0,000]</span></li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines">
+                          <li><span>[البيان]</span><span class="num">[0,000]</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">[0,000]</span> [مدين / دائن]
+                    </div>
+                  </div>
+                </div>
+
+                <!-- قائمة / مذكرة / ميزان (اختياري) -->
+                <span class="example-block__label">[اسم القائمة أو المذكرة]</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البيان</th>
+                        <th>جزئي</th>
+                        <th>كلي</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>[البند]</td>
+                        <td class="num">[0,000]</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>[الإجمالي أو الرصيد المعدّل]</td>
+                        <td></td>
+                        <td class="num">[0,000]</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              [شرح خطوات الحل: لماذا طُرح كل مبلغ أو أُضيف، ولماذا كان
+              القيد بهذا الطرفين تحديدًا، وأي تفصيلة محاسبية مهمة.]
+            </p>
+
+            <!-- ===== Warning / الخطأ الشائع الخاص بهذه المرحلة (اختياري) ===== -->
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>[الخطأ الشائع أو سوء الفهم المرتبط تحديدًا بهذه المرحلة.]</p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+
+          <!-- ============ Topic Block: [اسم المرحلة 2] (مثال لمرحلة مفاهيمية بدون مثال عددي) ============ -->
+          <div class="topic-block" id="[stage-2-slug]">
+            <h3 class="topic-block__title">[اسم المرحلة 2]</h3>
+            <p>[شرح نظري بدون مثال عددي، لو المرحلة لا تحتاج مثالًا تطبيقيًا مستقلًا.]</p>
+          </div>
+
+          <!-- كرر: <hr class="topic-divider" /> + topic-block جديدة لكل مرحلة باقية -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+       Comparison (اختياري)
+       يُضاف فقط لو فيه مقارنة منطقية حقيقية بين مرحلتين أو أكثر من
+       مراحل الفصل الحالي (مثال: كشف الحساب البنكي مقابل حساب البنك
+       في دفاتر المنشأة). لو مفيش مقارنة منطقية، احذف القسم بالكامل.
+    =========================================================== -->
+    <section class="content-section content-section--tint" id="comparison">
+      <div class="container">
+        <div class="content-section__eyebrow">مقارنة</div>
+        <h2 class="content-section__title">[عنوان المقارنة]</h2>
+
+        <div class="table-responsive">
+          <table class="table table-bordered align-middle">
+            <thead>
+              <tr>
+                <th>وجه المقارنة</th>
+                <th>[الخيار أ]</th>
+                <th>[الخيار ب]</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>[نقطة المقارنة]</td>
+                <td>[وصف]</td>
+                <td>[وصف]</td>
+              </tr>
+              <tr>
+                <td>[نقطة المقارنة]</td>
+                <td>[وصف]</td>
+                <td>[وصف]</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+       Summary
+    =========================================================== -->
+    <section class="content-section" id="summary">
+      <div class="container">
+        <div class="content-section__eyebrow">الخلاصة</div>
+        <h2 class="content-section__title">أهم ما يجب تذكّره</h2>
+
+        <div class="summary-card" style="max-width: 900px">
+          <ul class="summary-card__list">
+            <li>✔ [نقطة أساسية 1]</li>
+            <li>✔ [نقطة أساسية 2]</li>
+            <li>✔ [نقطة أساسية 3]</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+       Footer
+    =========================================================== -->
+    <footer class="site-footer">
+      <div class="container">
+        <p>[اسم الفصل]</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      /* Sync Toolbar Title */
+      const heroTitle = document.querySelector('.hero__title')
+      const toolbarTitle = document.querySelector('[data-sync-title]')
+      if (heroTitle && toolbarTitle) {
+        const text = heroTitle.textContent.trim()
+        if (text) {
+          toolbarTitle.textContent = text
+          document.title = text
+        }
+      }
+    </script>
+  </body>
+</html>

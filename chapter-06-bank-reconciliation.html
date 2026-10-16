@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>البنوك والتسوية البنكية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --clr-primary: #b378a6;
+        --clr-secondary: #7796bf;
+        --clr-light: #ffffff;
+        --clr-light-2: #f0f0f0;
+        --clr-border: #dedede;
+        --clr-dark: #1b1b1b;
+        --clr-dark-2: #444444;
+        --clr-text: #333333;
+        --clr-text-soft: #555555;
+        --font-body: 'Baloo Bhaijaan 2', sans-serif;
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 18px;
+        --shadow-soft: 0 4px 20px rgba(27, 27, 27, 0.07);
+        --shadow-hover: 0 12px 28px rgba(179, 120, 166, 0.16);
+        --section-pad: 4.5rem;
+        --content-width: 900px;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: var(--font-body);
+        background: var(--clr-light);
+        color: var(--clr-dark);
+        line-height: 1.9;
+        overflow-x: hidden;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      a {
+        color: var(--clr-secondary);
+        text-decoration: none;
+        transition: 0.2s;
+      }
+      a:hover {
+        color: var(--clr-primary);
+      }
+      h1, h2, h3, h4, h5 {
+        font-family: var(--font-body);
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+        color: var(--clr-dark);
+      }
+      h1, h2 { font-weight: 800; }
+      h3, h4, h5 { font-weight: 700; }
+      p {
+        color: var(--clr-text);
+        margin-bottom: 1rem;
+      }
+      ul { margin: 0; padding: 0; }
+      section { scroll-margin-top: 90px; }
+      ::selection {
+        background: var(--clr-primary);
+        color: #fff;
+      }
+      :focus-visible {
+        outline: 3px solid var(--clr-secondary);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+      .editor-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--clr-primary);
+        padding: 0.7rem 0;
+        box-shadow: var(--shadow-soft);
+      }
+      .editor-toolbar__tab-title {
+        color: #fff;
+        font-size: 1.1rem;
+        direction: ltr;
+        font-weight: 700;
+      }
+      .hero {
+        background: var(--clr-secondary);
+        color: #fff;
+        padding: 4.5rem 0 3.5rem;
+      }
+      .hero__title {
+        color: #fff;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+      .hero__lead {
+        color: #fff;
+        opacity: 0.95;
+        max-width: 760px;
+        font-size: 1.15rem;
+        margin-bottom: 0;
+      }
+      .content-section { padding: var(--section-pad) 0; }
+      .content-section--alt { background: #fcfcfc; }
+      .content-section--tint { background: var(--clr-light-2); }
+      .content-section__eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+        font-size: 0.86rem;
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+      }
+      .content-section__eyebrow::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        background: var(--clr-primary);
+      }
+      .content-section__title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+      .content-section__description {
+        max-width: 760px;
+        color: var(--clr-text-soft);
+        margin-bottom: 2.5rem;
+      }
+      .summary-card {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+        padding: 2rem;
+      }
+      .summary-card__list {
+        display: grid;
+        gap: 1rem;
+        list-style: none;
+      }
+      .summary-card__list li {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+      }
+      .callout {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        border-radius: var(--radius-md);
+        border-inline-start: 4px solid;
+      }
+      .callout__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 700;
+      }
+      .callout--note {
+        background: rgba(119, 150, 191, 0.08);
+        border-color: var(--clr-secondary);
+      }
+      .callout--warning {
+        background: rgba(179, 120, 166, 0.08);
+        border-color: var(--clr-primary);
+      }
+      .flow-diagram {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin: 2rem 0;
+      }
+      .flow-step {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        padding: 1rem 1.25rem;
+        box-shadow: var(--shadow-soft);
+      }
+      .flow-step__title {
+        color: var(--clr-primary);
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+      }
+      .flow-step__description { color: var(--clr-text-soft); margin: 0; }
+      .flow-arrow {
+        text-align: center;
+        color: var(--clr-secondary);
+        font-size: 28px;
+        line-height: 1;
+      }
+      .topic-block { margin-bottom: 3rem; }
+      .topic-block:last-child { margin-bottom: 0; }
+      .topic-block__title {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+      }
+      .topic-divider {
+        border: none;
+        border-top: 1px dashed var(--clr-border);
+        margin: 2.5rem 0;
+      }
+      .num {
+        direction: ltr;
+        unicode-bidi: isolate;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+      .formula-box {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        text-align: center;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-soft);
+      }
+      .formula-box__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--clr-primary);
+        font-weight: 700;
+      }
+      .formula-box__body {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--clr-dark);
+      }
+      .example-block {
+        overflow: hidden;
+        margin: 2rem 0;
+        background: var(--clr-light);
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+      }
+      .example-block__header {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.7rem 1.2rem;
+        background: var(--clr-dark);
+      }
+      .example-block__tag {
+        padding: 0 0.7rem;
+        background: var(--clr-primary);
+        color: #fff;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+      .example-block__title { color: #fff; font-weight: 600; }
+      .example-block__body { padding: 1.5rem; }
+      .example-block__label {
+        display: block;
+        margin: 1.6rem 0 0.6rem;
+        color: var(--clr-secondary);
+        font-weight: 700;
+      }
+      .example-block__label:first-child { margin-top: 0; }
+      .example-block__data {
+        margin: 0;
+        padding-inline-start: 1.2rem;
+        color: var(--clr-text);
+      }
+      .acc-table-wrap { overflow-x: auto; }
+      .acc-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+      .acc-table th,
+      .acc-table td {
+        padding: 0.5rem 0.8rem;
+        border: 1px solid var(--clr-border);
+      }
+      .acc-table thead th {
+        background: var(--clr-light-2);
+        text-align: center;
+        font-weight: 700;
+      }
+      .acc-table td.num { text-align: end; }
+      .acc-table__total td {
+        background: #fcfcfc;
+        font-weight: 700;
+        border-top: 2px solid var(--clr-dark-2);
+        border-bottom: 4px double var(--clr-dark-2);
+      }
+      .journal__entry { border-bottom: 2px solid var(--clr-dark-2); }
+      .acc-table td.journal__credit { padding-inline-start: 2.5rem; }
+      .journal__note td { color: var(--clr-text-soft); font-size: 0.88rem; }
+      .t-accounts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+      .t-account {
+        overflow: hidden;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+      }
+      .t-account__title {
+        padding: 0.5rem;
+        text-align: center;
+        color: var(--clr-primary);
+        font-weight: 700;
+        border-bottom: 2px solid var(--clr-dark-2);
+      }
+      .t-account__sides { display: grid; grid-template-columns: 1fr 1fr; }
+      .t-account__side + .t-account__side {
+        border-inline-start: 2px solid var(--clr-dark-2);
+      }
+      .t-account__side-label {
+        padding: 0.3rem;
+        text-align: center;
+        color: var(--clr-text-soft);
+        font-size: 0.85rem;
+        font-weight: 700;
+        border-bottom: 1px solid var(--clr-border);
+      }
+      .t-account__lines {
+        min-height: 3rem;
+        margin: 0;
+        padding: 0.4rem 0.7rem;
+        list-style: none;
+      }
+      .t-account__lines li {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+      }
+      .t-account__balance {
+        padding: 0.45rem 0.7rem;
+        text-align: center;
+        font-weight: 700;
+        background: rgba(119, 150, 191, 0.08);
+        border-top: 1px solid var(--clr-border);
+      }
+      .site-footer {
+        background: var(--clr-light-2);
+        color: var(--clr-light);
+        padding: 1rem 0 0.5rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+      @media (max-width: 768px) {
+        :root { --section-pad: 3rem; }
+        .hero { padding: 3.5rem 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; }
+      }
+    </style>
+  </head>
+<body>
+<div class="editor-toolbar"><div class="container d-flex align-items-center gap-3"><span class="editor-toolbar__tab-title" data-sync-title></span></div></div>
+<header class="hero"><div class="container"><h1 class="hero__title">البنوك والتسوية البنكية</h1>
+<p class="hero__lead">يوضح هذا الفصل كيف تتحقق المنشأة من أن رصيد حسابها لدى البنك كما تسجله في دفاترها يطابق ما يسجله البنك نفسه، ولماذا يختلف الرصيدان غالبًا رغم سلامة العمل في الطرفين، وكيف تتحول هذه الفروق إلى قيود وقوائم معتمدة.</p></div></header>
+<section class="content-section" id="explanation"><div class="container"><div class="content-section__eyebrow">شرح وتطبيق</div>
+<h2 class="content-section__title">شرح وتطبيق كل مرحلة</h2>
+<div class="article-content" style="max-width: 900px">
+<div class="topic-block" id="bank-statement"><h3 class="topic-block__title">كشف الحساب البنكي</h3>
+<p>كشف الحساب البنكي (Bank Statement) مستند يصدره البنك دوريًا، غالبًا كل شهر، يعرض حركة حساب العميل خلال الفترة: الرصيد في أولها، ثم كل إيداع وسحب وعمولة وفائدة مرتبة بتاريخها، ثم الرصيد في آخرها. وهو مستند خارجي صادر عن طرف مستقل عن المنشأة، ولذلك يُعد دليلًا موثوقًا للتحقق من صحة رصيد البنك في دفاترها.</p>
+<p>تنقسم بنود الكشف إلى نوعين. الأول بنود تعرفها المنشأة مسبقًا لأنها صاحبة العملية، مثل إيداعاتها وشيكاتها. والثاني بنود ينفرد بها البنك ولا تعلمها المنشأة إلا عند وصول الكشف، وهي: المصاريف والعمولات البنكية (Bank Charges)، والفوائد الدائنة (Interest Income) وهي ما يضيفه البنك إلى الحساب مقابل الرصيد المودع، وتحصيل أوراق القبض (Notes Receivable) نيابة عن المنشأة، وارتداد الشيكات (Dishonoured Cheques) التي أودعتها المنشأة ولم يُصرف مبلغها.</p>
+<div class="callout callout--note"><span class="callout__label">ملاحظة</span><p>يسجّل البنك حساب العميل من وجهة نظره هو؛ فما تودعه المنشأة التزام على البنك تجاهها، ولذلك يظهر في الكشف <strong>دائنًا</strong>، وما تسحبه يظهر <strong>مدينًا</strong>. وهذا عكس ما يظهر في حساب البنك بدفاتر المنشأة، حيث الإيداع مدين والسحب دائن.</p></div>
+<div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">قراءة مقتطف من كشف حساب شركة النيل للتجارة</span></div><div class="example-block__body"><span class="example-block__label">المعطيات</span><ul class="example-block__data"><li>المبالغ كلها بالجنيه المصري (ج.م)، والفترة من 25/10/2026 إلى 31/10/2026.</li><li>الرصيد المرحّل في 25/10/2026: <span class="num">107,630</span> دائن.</li><li>الحركات المسجلة في الكشف موضحة في الجدول أدناه.</li></ul><span class="example-block__label">كشف حساب البنك (مقتطف)</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين: سحوبات (ج.م)</th><th>دائن: إيداعات (ج.م)</th><th>الرصيد الدائن (ج.م)</th></tr></thead><tbody><tr><td><span class="num">25/10/2026</span></td><td>رصيد مرحّل</td><td></td><td></td><td class="num">107,630</td></tr><tr><td><span class="num">26/10/2026</span></td><td>شيك عميل مرتد (لعدم كفاية الرصيد)</td><td class="num">4,000</td><td></td><td class="num">103,630</td></tr><tr><td><span class="num">28/10/2026</span></td><td>صرف الشيك رقم 1040</td><td class="num">5,400</td><td></td><td class="num">98,230</td></tr><tr><td><span class="num">29/10/2026</span></td><td>إيداع نقدي</td><td></td><td class="num">5,000</td><td class="num">103,230</td></tr><tr><td><span class="num">30/10/2026</span></td><td>تحصيل كمبيالة نيابة عن العميل</td><td></td><td class="num">15,000</td><td class="num">118,230</td></tr><tr><td><span class="num">31/10/2026</span></td><td>فوائد دائنة</td><td></td><td class="num">320</td><td class="num">118,550</td></tr><tr><td><span class="num">31/10/2026</span></td><td>مصاريف وعمولات بنكية</td><td class="num">150</td><td></td><td class="num">118,400</td></tr><tr class="acc-table__total"><td colspan="2">إجمالي الحركة والرصيد الختامي</td><td class="num">9,550</td><td class="num">20,320</td><td class="num">118,400</td></tr></tbody></table></div></div></div>
+<p>للتحقق من سلامة الكشف نعيد حساب الرصيد الختامي: <span class="num">107,630</span> − إجمالي المدين <span class="num">9,550</span> + إجمالي الدائن <span class="num">20,320</span> = <span class="num">118,400</span> ج.م، وهو الرصيد الظاهر في آخر سطر. ويتضح من الجدول أن البنود الأربعة: الشيك المرتد، وتحصيل الكمبيالة، والفوائد، والمصاريف، لم تكن المنشأة تعلم بها قبل وصول الكشف، وسيُعالج أثرها في مرحلة المطابقة.</p>
+<div class="callout callout--warning"><span class="callout__label">انتبه</span><p>خطأ شائع أن يُعامل رصيد الكشف على أنه الرصيد الصحيح الذي يجب أن تأخذ به الدفاتر مباشرة. الكشف قد لا يتضمن عمليات سجلتها المنشأة ولم يصل أثرها إلى البنك بعد، ولذلك لا يُعدَّل أي من الرصيدين قبل المطابقة بينهما.</p></div>
+</div><hr class="topic-divider" /><div class="topic-block" id="cheques"><h3 class="topic-block__title">الشيكات</h3>
+<p>الشيك (Cheque) أمر مكتوب من الساحب (Drawer) إلى البنك الذي يحتفظ بحسابه بأن يدفع مبلغًا محددًا للمستفيد (Payee) أو لأمره بمجرد الاطلاع. وهو أداة وفاء وليس نقدًا في ذاته؛ إذ لا يظهر أثره في رصيد البنك إلا بعد تقديمه وصرفه، وقد يستغرق ذلك أيامًا.</p>
+<p>ولهذا يختلف توقيت التسجيل بين الدفاتر والبنك. فالساحب يثبت الشيك الصادر فور تحريره وتسليمه، فيخفض حساب البنك في دفاتره حتى لو لم يقدمه المستفيد للصرف. وما صدر وسُجل ولم يُصرف بعد في نهاية الفترة يُسمى شيكًا معلقًا (Outstanding Cheque). وبالمقابل تثبت المنشأة الشيك المودع فور إيداعه، فإن لم يظهر في الكشف حتى نهاية الفترة سُمّي إيداعًا في الطريق (Deposit in Transit).</p>
+<div class="flow-diagram"><div class="flow-step"><div class="flow-step__title">تحرير الشيك وتسليمه</div><div class="flow-step__description">يسجله الساحب فور التسليم بتخفيض حساب البنك.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">تقديمه للصرف أو إيداعه</div><div class="flow-step__description">يقدمه المستفيد إلى بنكه، ويسجله في دفاتره فور الإيداع.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">التحصيل من بنك الساحب</div><div class="flow-step__description">يخصم بنك الساحب المبلغ من الحساب ويحوّله إلى بنك المستفيد.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">ظهوره في الكشف</div><div class="flow-step__description">يظهر أثر الشيك في كشف الحساب لدى الطرفين.</div></div></div>
+<div class="callout callout--note"><span class="callout__label">ملاحظة</span><p>الشيك المسطّر (Crossed Cheque) يُرسم على وجهه خطان متوازيان، ولا يُصرف نقدًا وإنما يُودع في حساب مصرفي، مما يحمي المستفيد من الصرف لغيره. وإذا رفض بنك الساحب صرف الشيك لعدم كفاية الرصيد أو لسبب آخر عاد إلى المودع، وخصم البنك مبلغه من حسابه، فتُلغي المنشأة أثر الإيداع بقيد عكسي وتعيد المبلغ إلى حساب العميل.</p></div>
+<div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">دورة شيك صادر وشيك مستلم مرتد</span></div><div class="example-block__body"><span class="example-block__label">المعطيات</span><ul class="example-block__data"><li>المبالغ كلها بالجنيه المصري (ج.م).</li><li>12/10/2026: حررت المنشأة الشيك رقم 1040 بمبلغ <span class="num">5,400</span> لسداد إيجار شهر أكتوبر.</li><li>20/10/2026: تسلمت المنشأة شيكًا من أحد العملاء بمبلغ <span class="num">4,000</span> وأودعته في البنك.</li><li>26/10/2026: رفض البنك صرف شيك العميل لعدم كفاية الرصيد وخصم مبلغه من الحساب، وعلمت المنشأة بذلك من الكشف الواصل في 31/10/2026.</li></ul><span class="example-block__label">قيود اليومية</span><div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين (ج.م)</th><th>دائن (ج.م)</th></tr></thead><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">12/10/2026</span></td><td>من ح/ مصروف الإيجار</td><td class="num">5,400</td><td></td></tr><tr><td class="journal__credit">إلى ح/ البنك</td><td></td><td class="num">5,400</td></tr><tr class="journal__note"><td>تحرير الشيك رقم 1040 لسداد إيجار شهر أكتوبر</td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">20/10/2026</span></td><td>من ح/ البنك</td><td class="num">4,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ العملاء</td><td></td><td class="num">4,000</td></tr><tr class="journal__note"><td>إيداع شيك مستلم من عميل في حساب المنشأة بالبنك</td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">31/10/2026</span></td><td>من ح/ العملاء</td><td class="num">4,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ البنك</td><td></td><td class="num">4,000</td></tr><tr class="journal__note"><td>إلغاء أثر الإيداع بعد العلم من الكشف بارتداد شيك العميل</td><td></td><td></td></tr></tbody></table></div></div></div>
+<p>في القيد الأول يُخفَّض حساب البنك فور تحرير الشيك، فلا ننتظر ظهوره في الكشف. وفي القيد الثاني يزيد حساب البنك بمجرد الإيداع ويقل رصيد العميل بالمبلغ نفسه. وفي القيد الثالث يعود العميل مدينًا بالمبلغ لأن دينه لم يُسدَّد فعليًا، ويُخفَّض حساب البنك بما خصمه البنك.</p>
+<div class="callout callout--warning"><span class="callout__label">انتبه</span><p>لا يجوز تأجيل تسجيل الشيك الصادر إلى أن يُصرف ويظهر في الكشف؛ فهذا يجعل رصيد الدفاتر أكبر من الحقيقة ويخفي التزامًا نشأ بالفعل.</p></div>
+</div><hr class="topic-divider" /><div class="topic-block" id="notes"><h3 class="topic-block__title">أوراق القبض والدفع</h3>
+<p>الورقة التجارية تعهد مكتوب بدفع مبلغ محدد في تاريخ استحقاق (Maturity Date) معلوم. وتأتي في صورتين: الكمبيالة (Bill of Exchange) وهي أمر من الدائن إلى مدينه بالدفع للمستفيد، والسند الإذني (Promissory Note) وهو تعهد من المدين نفسه بالدفع. وتُسمى الورقة أوراق قبض حين تكون حقًا للمنشأة على غيرها، فتُعد أصلًا متداولًا، وأوراق دفع (Notes Payable) حين تكون التزامًا عليها، فتُعد التزامًا متداولًا.</p>
+<p>تختلف الورقة التجارية عن الشيك بأنها تتضمن أجلًا، فلا تُحصَّل إلا في تاريخ استحقاقها. وتُودَع عادةً لدى البنك للتحصيل، فيحصّل قيمتها من المدين عند الاستحقاق ويضيفها إلى حساب المنشأة، ثم يُخطرها بذلك في الكشف. ولتبسيط الأمثلة نفترض أن الأوراق بلا فوائد، وأنها تُقاس بقيمتها الاسمية (Face Value) لقصر أجلها.</p>
+<div class="formula-box"><span class="formula-box__label">قاعدة القيد</span><p class="formula-box__body">استلام ورقة قبض: من ح/ أوراق القبض إلى ح/ العملاء  |  تحرير ورقة دفع: من ح/ الموردين إلى ح/ أوراق الدفع</p></div>
+<div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">دورة ورقة قبض وورقة دفع</span></div><div class="example-block__body"><span class="example-block__label">المعطيات</span><ul class="example-block__data"><li>المبالغ كلها بالجنيه المصري (ج.م)، والأوراق بلا فوائد.</li><li>01/10/2026: تسلمت المنشأة من أحد العملاء كمبيالة بمبلغ <span class="num">15,000</span> تستحق في 30/10/2026، وأودعتها البنك للتحصيل.</li><li>05/10/2026: حررت المنشأة سندًا إذنيًا لأحد الموردين بمبلغ <span class="num">20,000</span> يستحق في 04/11/2026.</li><li>30/10/2026: حصّل البنك الكمبيالة، وعلمت المنشأة بذلك من الكشف الواصل في 31/10/2026.</li><li>04/11/2026: سُدد السند الإذني من حساب البنك عند الاستحقاق.</li></ul><span class="example-block__label">قيود اليومية</span><div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين (ج.م)</th><th>دائن (ج.م)</th></tr></thead><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">01/10/2026</span></td><td>من ح/ أوراق القبض</td><td class="num">15,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ العملاء</td><td></td><td class="num">15,000</td></tr><tr class="journal__note"><td>استلام كمبيالة من عميل تستحق في 30/10/2026</td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">05/10/2026</span></td><td>من ح/ الموردين</td><td class="num">20,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ أوراق الدفع</td><td></td><td class="num">20,000</td></tr><tr class="journal__note"><td>تحرير سند إذني لمورد يستحق في 04/11/2026</td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">31/10/2026</span></td><td>من ح/ البنك</td><td class="num">15,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ أوراق القبض</td><td></td><td class="num">15,000</td></tr><tr class="journal__note"><td>إخطار البنك بتحصيل الكمبيالة عند استحقاقها</td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">04/11/2026</span></td><td>من ح/ أوراق الدفع</td><td class="num">20,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ البنك</td><td></td><td class="num">20,000</td></tr><tr class="journal__note"><td>سداد السند الإذني من حساب البنك عند الاستحقاق</td><td></td><td></td></tr></tbody></table></div></div></div>
+<p>عند استلام الورقة تنتقل المنشأة من حق على العميل إلى حق موثق بورقة، فيزيد حساب أوراق القبض ويقل حساب العميل. ولا يتأثر حساب البنك إلا عند التحصيل الفعلي، فلا يُدَّان حساب أوراق القبض إلا عند إخطار البنك بنجاح التحصيل. وعلى الجانب الآخر تُحوَّل مديونية المورد إلى ورقة دفع عند تحرير السند، ولا ينخفض حساب البنك إلا يوم السداد.</p>
+<div class="callout callout--warning"><span class="callout__label">انتبه</span><p>من الأخطاء الشائعة ترك الورقة المحصَّلة في حساب أوراق القبض بعد وصول إخطار البنك، فيظهر أصل لم يعد موجودًا بينما رصيد البنك أقل من الحقيقة. كذلك لا تُسجَّل الورقة عند استلامها في حساب البنك، لأن المبلغ لم يُحصَّل بعد.</p></div>
+</div><hr class="topic-divider" /><div class="topic-block" id="reconciliation"><h3 class="topic-block__title">المطابقة</h3>
+<p>المطابقة، أو التسوية البنكية (Bank Reconciliation)، إجراء دوري يقارن رصيد حساب البنك في دفاتر المنشأة برصيد كشف الحساب في التاريخ نفسه، ثم يفسّر الفرق بينهما بندًا بندًا حتى يصل الطرفان إلى رقم واحد صحيح هو الرصيد المعدّل (Adjusted Balance). وهي في الوقت نفسه أداة رقابية تكشف الأخطاء ومحاولات التلاعب في النقدية.</p>
+<p>تنقسم أسباب الفرق إلى نوعين. الأول فروق توقيت: عمليات سجلتها المنشأة ولم يسجلها البنك بعد، وهي الإيداعات في الطريق والشيكات المعلقة، فتُعدَّل بها جهة الكشف ولا تحتاج قيودًا. والثاني بنود تستوجب قيود تسوية (Adjusting Entries): عمليات سجلها البنك ولم تسجلها المنشأة، أو أخطاء وقعت في دفاترها، فتُعدَّل بها جهة الدفاتر ثم تُثبت بقيود.</p>
+<div class="formula-box"><span class="formula-box__label">الرصيد المعدّل من جهة الكشف</span><p class="formula-box__body">رصيد الكشف + الإيداعات في الطريق − الشيكات المعلقة</p></div>
+<div class="formula-box"><span class="formula-box__label">الرصيد المعدّل من جهة الدفاتر</span><p class="formula-box__body">رصيد الدفاتر + ما أضافه البنك − ما خصمه البنك ± تصحيح الأخطاء</p></div>
+<div class="flow-diagram"><div class="flow-step"><div class="flow-step__title">المقارنة</div><div class="flow-step__description">قابل حركات الكشف بحركات حساب البنك في الدفاتر بندًا بندًا.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">التصنيف</div><div class="flow-step__description">حدد البنود التي هي فروق توقيت، والبنود التي تحتاج قيود تسوية.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">إعداد القائمة</div><div class="flow-step__description">عدّل جهة الكشف وجهة الدفاتر بما يخص كلًا منهما، وتأكد من تساوي الرصيدين المعدّلين.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">إثبات القيود</div><div class="flow-step__description">سجل قيود التسوية لبنود جهة الدفاتر فقط ورحّلها إلى الأستاذ.</div></div></div>
+<div class="callout callout--note"><span class="callout__label">ملاحظة</span><p>قائمة التسوية البنكية مذكرة تفسيرية وليست قيدًا يوميًا؛ ولا يُرحَّل إلى الأستاذ منها إلا قيود جهة الدفاتر.</p></div>
+<div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">إعداد قائمة التسوية البنكية لشركة النيل للتجارة في 31/10/2026</span></div><div class="example-block__body"><span class="example-block__label">المعطيات</span><ul class="example-block__data"><li>المبالغ كلها بالجنيه المصري (ج.م).</li><li>رصيد كشف الحساب البنكي في 31/10/2026: <span class="num">118,400</span> دائن، ورصيد ح/ البنك بالدفاتر قبل التسوية: <span class="num">110,630</span> مدين.</li><li>إيداع بتاريخ 31/10/2026 بمبلغ <span class="num">12,500</span> لم يظهر في الكشف.</li><li>شيكان صادران لم يُصرفا: رقم 1042 بمبلغ <span class="num">6,200</span>، ورقم 1045 بمبلغ <span class="num">3,800</span>.</li><li>بنود وردت في الكشف ولم تسجلها المنشأة: فوائد دائنة <span class="num">320</span>، وتحصيل كمبيالة <span class="num">15,000</span>، ومصاريف وعمولات <span class="num">150</span>، وشيك عميل مرتد <span class="num">4,000</span>.</li><li>اكتُشف أن الشيك رقم 1040 مبلغه الصحيح <span class="num">5,400</span> وقد سُجل بالدفاتر <span class="num">4,500</span>.</li></ul><span class="example-block__label">قائمة التسوية البنكية في 31/10/2026</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البيان</th><th>جزئي (ج.م)</th><th>كلي (ج.م)</th></tr></thead><tbody><tr><td colspan="3" class="fw-bold bg-light">أولًا: من جهة كشف الحساب البنكي</td></tr><tr><td>رصيد كشف الحساب في 31/10/2026</td><td></td><td class="num">118,400</td></tr><tr><td>يضاف: إيداع في الطريق (31/10/2026)</td><td class="num">12,500</td><td class="num">12,500</td></tr><tr><td>يُطرح: شيك معلق رقم 1042</td><td class="num">6,200</td><td></td></tr><tr><td>يُطرح: شيك معلق رقم 1045</td><td class="num">3,800</td><td></td></tr><tr><td>إجمالي الشيكات المعلقة</td><td></td><td class="num">10,000</td></tr><tr class="acc-table__total"><td>الرصيد المعدّل من جهة الكشف</td><td></td><td class="num">120,900</td></tr><tr><td colspan="3" class="fw-bold bg-light">ثانيًا: من جهة دفاتر المنشأة (ح/ البنك)</td></tr><tr><td>رصيد ح/ البنك بالدفاتر قبل التسوية</td><td></td><td class="num">110,630</td></tr><tr><td>يضاف: فوائد دائنة أضافها البنك</td><td class="num">320</td><td></td></tr><tr><td>يضاف: كمبيالة حصّلها البنك</td><td class="num">15,000</td><td></td></tr><tr><td>إجمالي الإضافات</td><td></td><td class="num">15,320</td></tr><tr><td>يُطرح: مصاريف وعمولات بنكية</td><td class="num">150</td><td></td></tr><tr><td>يُطرح: شيك عميل مرتد</td><td class="num">4,000</td><td></td></tr><tr><td>يُطرح: خطأ تسجيل الشيك رقم 1040 (<span class="num">5,400</span> بدلًا من <span class="num">4,500</span>)</td><td class="num">900</td><td></td></tr><tr><td>إجمالي المطروحات</td><td></td><td class="num">5,050</td></tr><tr class="acc-table__total"><td>الرصيد المعدّل من جهة الدفاتر</td><td></td><td class="num">120,900</td></tr></tbody></table></div><span class="example-block__label">قيود اليومية</span><div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين (ج.م)</th><th>دائن (ج.م)</th></tr></thead><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">31/10/2026</span></td><td>من ح/ البنك</td><td class="num">320</td><td></td></tr><tr><td class="journal__credit">إلى ح/ إيرادات فوائد</td><td></td><td class="num">320</td></tr><tr class="journal__note"><td>إثبات الفوائد الدائنة التي أضافها البنك</td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">31/10/2026</span></td><td>من ح/ البنك</td><td class="num">15,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ أوراق القبض</td><td></td><td class="num">15,000</td></tr><tr class="journal__note"><td>إثبات تحصيل الكمبيالة بمعرفة البنك</td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">31/10/2026</span></td><td>من ح/ مصروفات بنكية</td><td class="num">150</td><td></td></tr><tr><td class="journal__credit">إلى ح/ البنك</td><td></td><td class="num">150</td></tr><tr class="journal__note"><td>إثبات المصاريف والعمولات التي خصمها البنك</td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">31/10/2026</span></td><td>من ح/ العملاء</td><td class="num">4,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ البنك</td><td></td><td class="num">4,000</td></tr><tr class="journal__note"><td>إثبات ارتداد شيك العميل وإعادة المديونية عليه</td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">31/10/2026</span></td><td>من ح/ مصروف الإيجار</td><td class="num">900</td><td></td></tr><tr><td class="journal__credit">إلى ح/ البنك</td><td></td><td class="num">900</td></tr><tr class="journal__note"><td>تصحيح خطأ تسجيل الشيك رقم 1040 بأقل من قيمته</td><td></td><td></td></tr></tbody></table></div><span class="example-block__label">الترحيل إلى حسابات الأستاذ</span><div class="t-accounts"><div class="t-account"><div class="t-account__title">ح/ البنك</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>رصيد قبل التسوية</span><span class="num">110,630</span></li><li><span>فوائد دائنة</span><span class="num">320</span></li><li><span>تحصيل كمبيالة</span><span class="num">15,000</span></li></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"><li><span>مصاريف وعمولات</span><span class="num">150</span></li><li><span>شيك مرتد</span><span class="num">4,000</span></li><li><span>تصحيح خطأ</span><span class="num">900</span></li></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">120,900</span> مدين</div></div></div></div></div>
+<p>بدأنا بجهة الكشف: أضفنا الإيداع في الطريق لأن المنشأة سجلته والبنك لم يسجله بعد، وطرحنا الشيكين المعلقين لأن المنشأة خصمتهما ولم يخصمهما البنك، فكان الرصيد المعدّل <span class="num">120,900</span> ج.م. ثم جهة الدفاتر: أضفنا الفوائد والكمبيالة المحصلة لأن البنك أضافهما وغابا عن الدفاتر، وطرحنا المصاريف والشيك المرتد لأن البنك خصمهما. أما الخطأ فسُجل الشيك بأقل من قيمته بمقدار <span class="num">900</span>، فكان رصيد الدفاتر أكبر من الصحيح بهذا القدر، فطُرح، وأُثبت قيده بإضافة المصروف وتخفيض البنك. وبذلك تساوى الرصيدان المعدّلان عند <span class="num">120,900</span> ج.م، وهو رصيد ح/ البنك في الأستاذ بعد ترحيل القيود. أما الإيداع في الطريق والشيكان المعلقان فلا قيد لهما، لأن المنشأة سجلتها بالفعل.</p>
+<div class="callout callout--warning"><span class="callout__label">انتبه</span><p>من الأخطاء الشائعة تعديل جهة الدفاتر بالإيداعات في الطريق والشيكات المعلقة؛ فهذه فروق توقيت تخص الكشف فقط. وكذلك الشيك المرتد يُطرح من جهة الدفاتر لا من جهة الكشف، لأن البنك سجله بالفعل ولم تسجله المنشأة.</p></div>
+</div>
+</div></div></section>
+<section class="content-section content-section--tint" id="comparison"><div class="container"><div class="content-section__eyebrow">مقارنة</div>
+<h2 class="content-section__title">كشف الحساب البنكي في مقابل حساب البنك في دفاتر المنشأة</h2>
+<div class="table-responsive"><table class="table table-bordered align-middle"><thead><tr><th>وجه المقارنة</th><th>كشف الحساب البنكي</th><th>حساب البنك في دفاتر المنشأة</th></tr></thead><tbody><tr><td>من يعدّه</td><td>البنك</td><td>المنشأة</td></tr><tr><td>وجهة النظر</td><td>حساب العميل التزام على البنك</td><td>حساب البنك أصل للمنشأة</td></tr><tr><td>الإيداع</td><td>يظهر دائنًا ويزيد الرصيد</td><td>يُسجَّل مدينًا ويزيد الرصيد</td></tr><tr><td>السحب والخصم</td><td>يظهر مدينًا ويقلل الرصيد</td><td>يُسجَّل دائنًا ويقلل الرصيد</td></tr><tr><td>الشيك الصادر</td><td>لا يظهر حتى يُقدَّم للصرف</td><td>يُسجَّل فور تحريره وتسليمه</td></tr><tr><td>الشيك المودع</td><td>يظهر بعد تحصيله</td><td>يُسجَّل فور إيداعه</td></tr><tr><td>العمولات والفوائد وتحصيل الأوراق</td><td>يسجلها فور حدوثها</td><td>لا تعلمها المنشأة إلا بعد وصول الكشف</td></tr></tbody></table></div></div></section>
+<section class="content-section" id="summary"><div class="container"><div class="content-section__eyebrow">الخلاصة</div>
+<h2 class="content-section__title">أهم ما يجب تذكّره</h2>
+<div class="summary-card" style="max-width: 900px"><ul class="summary-card__list"><li>✔ الكشف مستند خارجي صادر عن البنك، ويظهر فيه الإيداع دائنًا والسحب مدينًا، عكس حساب البنك في الدفاتر.</li><li>✔ الشيك الصادر يُسجَّل فور تحريره وتسليمه، والشيك المودع يُسجَّل فور إيداعه، ولا يُنتظر ظهورهما في الكشف.</li><li>✔ الشيك المرتد يستلزم قيدًا عكسيًا يعيد المديونية على العميل ويخفض حساب البنك.</li><li>✔ ورقة القبض لا تُحصَّل إلا في تاريخ استحقاقها، ولا يتأثر حساب البنك إلا عند إخطار البنك بالتحصيل.</li><li>✔ الإيداعات في الطريق والشيكات المعلقة فروق توقيت تُعدّل بها جهة الكشف دون قيود.</li><li>✔ الفوائد والمصاريف والتحصيل والشيكات المرتدة وأخطاء الدفاتر تُعدّل بها جهة الدفاتر وتُثبت بقيود تسوية.</li><li>✔ تُعد المطابقة سليمة حين يتساوى الرصيدان المعدّلان من الجهتين.</li></ul></div></div></section>
+<footer class="site-footer"><div class="container"><p>الفصل السادس: البنوك والتسوية البنكية</p></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const heroTitle = document.querySelector('.hero__title')
+      const toolbarTitle = document.querySelector('[data-sync-title]')
+      if (heroTitle && toolbarTitle) {
+        const text = heroTitle.textContent.trim()
+        if (text) {
+          toolbarTitle.textContent = text
+          document.title = text
+        }
+      }
+    </script>
+  </body>
+</html>

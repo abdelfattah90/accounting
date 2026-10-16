@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الفصل السابع: دورة المبيعات</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+
+
+    <style>
+      :root {
+        /* ========= Colors ========= */
+        --clr-primary: #b378a6;
+        --clr-secondary: #7796bf;
+        --clr-light: #ffffff;
+        --clr-light-2: #f0f0f0;
+        --clr-border: #dedede;
+        --clr-dark: #1b1b1b;
+        --clr-dark-2: #444444;
+        --clr-text: #333333;
+        --clr-text-soft: #555555;
+
+        /* ========= Font ========= */
+        --font-body: 'Baloo Bhaijaan 2', sans-serif;
+
+        /* ========= Radius ========= */
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 18px;
+
+        /* ========= Shadow ========= */
+        --shadow-soft: 0 4px 20px rgba(27, 27, 27, 0.07);
+        --shadow-hover: 0 12px 28px rgba(179, 120, 166, 0.16);
+
+        /* ========= Layout ========= */
+        --section-pad: 4.5rem;
+        --content-width: 900px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--clr-light);
+        color: var(--clr-dark);
+        line-height: 1.9;
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: var(--clr-secondary);
+        text-decoration: none;
+        transition: 0.2s;
+      }
+
+      a:hover {
+        color: var(--clr-primary);
+      }
+
+      h1, h2, h3, h4, h5 {
+        font-family: var(--font-body);
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+        color: var(--clr-dark);
+      }
+
+      h1, h2 { font-weight: 800; }
+      h3, h4, h5 { font-weight: 700; }
+
+      p {
+        color: var(--clr-text);
+        margin-bottom: 1rem;
+      }
+
+      ul { margin: 0; padding: 0; }
+
+      section { scroll-margin-top: 90px; }
+
+      ::selection {
+        background: var(--clr-primary);
+        color: #fff;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--clr-secondary);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      /* ==========================================================
+         Editor Toolbar
+      ========================================================== */
+      .editor-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--clr-primary);
+        padding: 0.7rem 0;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .editor-toolbar__tab-title {
+        color: #fff;
+        font-size: 1.1rem;
+        direction: ltr;
+        font-weight: 700;
+      }
+
+      /* ==========================================================
+         Hero
+         (مبسّط عمدًا: عنوان + سطر تعريف واحد فقط، بديل عن قسم "مقدمة"
+         منفصل. لا وسوم Language/Level/Category — لا تضيفها.)
+      ========================================================== */
+      .hero {
+        background: var(--clr-secondary);
+        color: #fff;
+        padding: 4.5rem 0 3.5rem;
+      }
+
+      .hero__title {
+        color: #fff;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      .hero__lead {
+        color: #fff;
+        opacity: 0.95;
+        max-width: 760px;
+        font-size: 1.15rem;
+        margin-bottom: 0;
+      }
+
+      /* ==========================================================
+         Sections
+      ========================================================== */
+      .content-section { padding: var(--section-pad) 0; }
+      .content-section--alt { background: #fcfcfc; }
+      .content-section--tint { background: var(--clr-light-2); }
+
+      .content-section__eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+        font-size: 0.86rem;
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+      }
+
+      .content-section__eyebrow::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        background: var(--clr-primary);
+      }
+
+      .content-section__title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+
+      .content-section__description {
+        max-width: 760px;
+        color: var(--clr-text-soft);
+        margin-bottom: 2.5rem;
+      }
+
+      /* ==========================================================
+         Summary Card (تُستخدم في: الخلاصة)
+      ========================================================== */
+      .summary-card {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+        padding: 2rem;
+      }
+
+      .summary-card__list {
+        display: grid;
+        gap: 1rem;
+        list-style: none;
+      }
+
+      .summary-card__list li {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+      }
+
+      /* ==========================================================
+         Callout
+         (المكان الوحيد للتنبيهات — بما فيها الأخطاء الشائعة الخاصة
+         بموضوع معيّن؛ تُستخدم callout--warning لهذا الغرض بدل قسم
+         "أخطاء شائعة" منفصل)
+      ========================================================== */
+      .callout {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        border-radius: var(--radius-md);
+        border-inline-start: 4px solid;
+      }
+
+      .callout__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 700;
+      }
+
+      .callout--note {
+        background: rgba(119, 150, 191, 0.08);
+        border-color: var(--clr-secondary);
+      }
+
+      .callout--warning {
+        background: rgba(179, 120, 166, 0.08);
+        border-color: var(--clr-primary);
+      }
+
+      /* ==========================================================
+         Flow Diagram
+      ========================================================== */
+      .flow-diagram {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin: 2rem 0;
+      }
+
+      .flow-step {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        padding: 1rem 1.25rem;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .flow-step__title {
+        color: var(--clr-primary);
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+      }
+
+      .flow-step__description { color: var(--clr-text-soft); margin: 0; }
+
+      .flow-arrow {
+        text-align: center;
+        color: var(--clr-secondary);
+        font-size: 28px;
+        line-height: 1;
+      }
+
+      /* ==========================================================
+         Topic Block
+         كل موضوع من موضوعات المرحلة = كتلة واحدة متكاملة (نظري + عملي
+         مدمجين معًا)، مش قسمين منفصلين.
+      ========================================================== */
+      .topic-block { margin-bottom: 3rem; }
+      .topic-block:last-child { margin-bottom: 0; }
+
+      .topic-block__title {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+      }
+
+      .topic-divider {
+        border: none;
+        border-top: 1px dashed var(--clr-border);
+        margin: 2.5rem 0;
+      }
+
+      /* ==========================================================
+         Numbers (كل مبلغ يُكتب داخل عنصر بهذا الصنف)
+      ========================================================== */
+      .num {
+        direction: ltr;
+        unicode-bidi: isolate;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* ==========================================================
+         Formula Box (اختياري: معادلة أو قاعدة محاسبية)
+      ========================================================== */
+      .formula-box {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        text-align: center;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .formula-box__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--clr-primary);
+        font-weight: 700;
+      }
+
+      .formula-box__body {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--clr-dark);
+      }
+
+      /* ==========================================================
+         Example Block (المثال التطبيقي: بديل الـ code-block)
+      ========================================================== */
+      .example-block {
+        overflow: hidden;
+        margin: 2rem 0;
+        background: var(--clr-light);
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .example-block__header {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.7rem 1.2rem;
+        background: var(--clr-dark);
+      }
+
+      .example-block__tag {
+        padding: 0 0.7rem;
+        background: var(--clr-primary);
+        color: #fff;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .example-block__title { color: #fff; font-weight: 600; }
+
+      .example-block__body { padding: 1.5rem; }
+
+      .example-block__label {
+        display: block;
+        margin: 1.6rem 0 0.6rem;
+        color: var(--clr-secondary);
+        font-weight: 700;
+      }
+
+      .example-block__label:first-child { margin-top: 0; }
+
+      .example-block__data {
+        margin: 0;
+        padding-inline-start: 1.2rem;
+        color: var(--clr-text);
+      }
+
+      /* ==========================================================
+         Accounting Tables (قيود اليومية، القوائم، المذكرات، الموازين)
+      ========================================================== */
+      .acc-table-wrap { overflow-x: auto; }
+
+      .acc-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+
+      .acc-table th,
+      .acc-table td {
+        padding: 0.5rem 0.8rem;
+        border: 1px solid var(--clr-border);
+      }
+
+      .acc-table thead th {
+        background: var(--clr-light-2);
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .acc-table td.num { text-align: end; }
+
+      .acc-table__total td {
+        background: #fcfcfc;
+        font-weight: 700;
+        border-top: 2px solid var(--clr-dark-2);
+        border-bottom: 4px double var(--clr-dark-2);
+      }
+
+      .journal__entry { border-bottom: 2px solid var(--clr-dark-2); }
+      .acc-table td.journal__credit { padding-inline-start: 2.5rem; }
+      .journal__note td { color: var(--clr-text-soft); font-size: 0.88rem; }
+
+      /* ==========================================================
+         T-Accounts (حسابات الأستاذ): المدين يمين والدائن يسار
+      ========================================================== */
+      .t-accounts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+
+      .t-account {
+        overflow: hidden;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+      }
+
+      .t-account__title {
+        padding: 0.5rem;
+        text-align: center;
+        color: var(--clr-primary);
+        font-weight: 700;
+        border-bottom: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__sides { display: grid; grid-template-columns: 1fr 1fr; }
+
+      .t-account__side + .t-account__side {
+        border-inline-start: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__side-label {
+        padding: 0.3rem;
+        text-align: center;
+        color: var(--clr-text-soft);
+        font-size: 0.85rem;
+        font-weight: 700;
+        border-bottom: 1px solid var(--clr-border);
+      }
+
+      .t-account__lines {
+        min-height: 3rem;
+        margin: 0;
+        padding: 0.4rem 0.7rem;
+        list-style: none;
+      }
+
+      .t-account__lines li {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .t-account__balance {
+        padding: 0.45rem 0.7rem;
+        text-align: center;
+        font-weight: 700;
+        background: rgba(119, 150, 191, 0.08);
+        border-top: 1px solid var(--clr-border);
+      }
+
+      /* ==========================================================
+         Footer
+      ========================================================== */
+      .site-footer {
+        background: var(--clr-light-2);
+        color: var(--clr-light);
+        padding: 1rem 0 0.5rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      /* ==========================================================
+         Responsive
+      ========================================================== */
+      @media (max-width: 768px) {
+        :root { --section-pad: 3rem; }
+        .hero { padding: 3.5rem 0; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="editor-toolbar">
+      <div class="container d-flex align-items-center gap-3">
+        <span class="editor-toolbar__tab-title" data-sync-title></span>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="container">
+        <h1 class="hero__title">الفصل السابع: دورة المبيعات</h1>
+        <p class="hero__lead">
+          تبدأ دورة المبيعات (Sales Cycle) بفاتورة البيع (Sales Invoice) وتنتهي بتحصيل ثمن البضاعة من العميل، وتمرّ في طريقها بحسابات العملاء (Customer Accounts) والخصومات (Discounts) والمرتجعات (Returns). يعرض هذا الفصل كيف تُثبَت كل مرحلة منها في الدفاتر، وكيف يتأثر بها الإيراد (Revenue) ورصيد العميل وصافي المبيعات (Net Sales) الظاهر في القوائم المالية.
+        </p>
+      </div>
+    </header>
+
+    <section class="content-section" id="explanation">
+      <div class="container">
+        <div class="content-section__eyebrow">شرح وتطبيق</div>
+        <h2 class="content-section__title">شرح وتطبيق كل مرحلة</h2>
+
+        <div class="article-content" style="max-width: 900px">
+          <div class="topic-block" id="sales-invoice"><h3 class="topic-block__title">فاتورة البيع</h3><p>فاتورة البيع هي المستند الذي يصدره البائع عند تسليم البضاعة للعميل، وتُثبِت ما نُقل إليه وما يستحقه البائع في مقابله. وتتضمن عادةً رقم الفاتورة وتاريخها وبيانات العميل، وأصناف البضاعة وكمياتها وأسعار وحداتها، وأي خصم تجاري، وإجمالي المبلغ المستحق وشروط السداد. ومن الفاتورة يُستخرج قيد اليومية الذي يُثبِت الإيراد في حساب المبيعات.</p><p>ويتوقف الطرف المدين في القيد على طريقة السداد. ففي البيع النقدي (Cash Sale) يُحمَّل حساب الصندوق أو البنك بالمبلغ المحصَّل فورًا، أما في البيع الآجل (Credit Sale) فيُحمَّل حساب العملاء بالمبلغ الذي سيُحصَّل لاحقًا. وفي الحالتين يُقيَّد حساب المبيعات في الجانب الدائن.</p><div class="callout callout--note"><span class="callout__label">ملاحظة</span><p>وفق المعيار الدولي للتقرير المالي 15 (IFRS 15) يُعترف بالإيراد عند انتقال السيطرة على البضاعة إلى العميل، أي حين يصبح قادرًا على التصرف فيها والحصول على منافعها، وهذا يتحقق في الغالب بالتسليم. وعليه فموعد الاعتراف بالإيراد هو موعد انتقال السيطرة، لا موعد التحصيل.</p></div><div class="callout callout--note"><span class="callout__label">نطاق الأمثلة</span><p>تقتصر قيود هذا الفصل على الإيراد وحقوق التحصيل؛ أما تكلفة البضاعة المباعة وأثر البيع في المخزون فتُعالَجان ضمن موضوع المخزون. وتفترض الأمثلة أن الأسعار لا تتضمن أي ضرائب مبيعات.</p></div><div class="flow-diagram"><div class="flow-step"><div class="flow-step__title">طلب العميل</div><div class="flow-step__description">يستلم البائع طلب الشراء أو يُصدر عرض السعر، ولا يُسجَّل شيء في الدفاتر بعد.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">تسليم البضاعة</div><div class="flow-step__description">تنتقل السيطرة على البضاعة إلى العميل.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">إصدار فاتورة البيع</div><div class="flow-step__description">تُحرَّر الفاتورة بالكميات والأسعار وشروط السداد.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">إثبات القيد</div><div class="flow-step__description">يُقيَّد البيع نقدًا أو آجلًا ثم يُرحَّل إلى حسابات الأستاذ.</div></div></div><div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">بيع آجل وبيع نقدي</span></div><div class="example-block__body"><span class="example-block__label">المعطيات</span><ul class="example-block__data"><li>3 أكتوبر 2026: بيع آجل لشركة الأمل بالفاتورة رقم <span class="num">101</span>: <span class="num">40</span> وحدة من الصنف (أ) بسعر <span class="num">250</span> ج.م للوحدة، و<span class="num">15</span> وحدة من الصنف (ب) بسعر <span class="num">800</span> ج.م للوحدة.</li><li>5 أكتوبر 2026: بيع نقدي لعميل عابر بمبلغ <span class="num">7,500</span> ج.م، حُصِّل في الصندوق.</li></ul><span class="example-block__label">فاتورة البيع رقم 101</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>الصنف</th><th>الكمية (وحدة)</th><th>سعر الوحدة (ج.م)</th><th>المبلغ (ج.م)</th></tr></thead><tbody><tr><td>الصنف (أ)</td><td class="num">40</td><td class="num">250</td><td class="num">10,000</td></tr><tr><td>الصنف (ب)</td><td class="num">15</td><td class="num">800</td><td class="num">12,000</td></tr><tr class="acc-table__total"><td colspan="3">إجمالي الفاتورة</td><td class="num">22,000</td></tr></tbody></table></div><span class="example-block__label">قيود اليومية</span><div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين</th><th>دائن</th></tr></thead><tbody class="journal__entry"><tr><td rowspan="3">3 أكتوبر 2026</td><td>من ح/ العملاء (شركة الأمل)</td><td class="num">22,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ المبيعات</td><td></td><td class="num">22,000</td></tr><tr class="journal__note"><td>إثبات بيع آجل لشركة الأمل بالفاتورة رقم <span class="num">101</span></td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="3">5 أكتوبر 2026</td><td>من ح/ الصندوق</td><td class="num">7,500</td><td></td></tr><tr><td class="journal__credit">إلى ح/ المبيعات</td><td></td><td class="num">7,500</td></tr><tr class="journal__note"><td>إثبات بيع نقدي لعميل عابر وتحصيل ثمنه في الصندوق</td><td></td><td></td></tr></tbody></table></div><span class="example-block__label">الترحيل إلى حسابات الأستاذ</span><div class="t-accounts"><div class="t-account"><div class="t-account__title">ح/ المبيعات</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"><li><span>فاتورة <span class="num">101</span> – 3/10</span><span class="num">22,000</span></li><li><span>بيع نقدي – 5/10</span><span class="num">7,500</span></li></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">29,500</span> دائن</div></div><div class="t-account"><div class="t-account__title">ح/ العملاء (شركة الأمل)</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>فاتورة <span class="num">101</span> – 3/10</span><span class="num">22,000</span></li></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">22,000</span> مدين</div></div><div class="t-account"><div class="t-account__title">ح/ الصندوق</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>بيع نقدي – 5/10</span><span class="num">7,500</span></li></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">7,500</span> مدين</div></div></div></div></div><p>يُحسب مبلغ كل صنف بضرب الكمية في سعر الوحدة؛ فالصنف (أ) = <span class="num">40 × 250 = 10,000</span> ج.م، والصنف (ب) = <span class="num">15 × 800 = 12,000</span> ج.م، فيبلغ إجمالي الفاتورة <span class="num">22,000</span> ج.م. قُيِّد البيع الآجل على حساب العملاء لأن النقد لم يُستلم بعد، أما البيع النقدي فحُمِّل به الصندوق لأن النقد دخل فعلًا. ويتجمع في الجانب الدائن لحساب المبيعات <span class="num">29,500</span> ج.م (<span class="num">22,000 + 7,500</span>)، وهو إجمالي إيراد الفترة قبل أي خصومات أو مرتجعات.</p><div class="callout callout--warning"><span class="callout__label">انتبه</span><p>لا يُقيَّد أمر الشراء ولا عرض السعر في الدفاتر؛ فكلاهما مجرد التزام محتمل لم تنتقل به السيطرة بعد. ولا يُثبَت الإيراد إلا عند التسليم وإصدار الفاتورة.</p></div></div>
+          <hr class="topic-divider" />
+          <div class="topic-block" id="customer-accounts"><h3 class="topic-block__title">حسابات العملاء</h3><p>حساب العملاء أصل متداول يمثّل ما للمنشأة لدى عملائها من مبالغ ناشئة عن مبيعات آجلة لم تُحصَّل بعد، وتسمّيه المعايير الدولية الذمم المدينة التجارية (Trade Receivables). يُحمَّل الحساب بقيمة الفواتير الآجلة، ويُقيَّد في جانبه الدائن كل ما يُنقص المستحق من تحصيلات ومرتجعات وخصومات، ولذلك يكون رصيده الطبيعي مدينًا.</p><p>ولأن المنشأة تتعامل مع عملاء كثيرين، لا يكفي رصيد إجمالي واحد؛ إذ يلزم معرفة ما على كل عميل. لذلك يُمسَك دفتر أستاذ مساعد (Subsidiary Ledger) يُخصَّص فيه حساب مستقل لكل عميل، ويُسمّى حساب العملاء في الأستاذ العام حساب المراقبة (Control Account) لأنه يراقب مجموع الحسابات الفرعية، ويجب أن يساوي رصيده مجموع أرصدة العملاء مجتمعين. ويُرسَل إلى العميل دوريًا كشف حساب (Statement of Account) يبيّن فواتيره وسداداته ورصيده.</p><div class="formula-box"><span class="formula-box__label">معادلة رصيد العميل</span><p class="formula-box__body">الرصيد = رصيد أول المدة + فواتير البيع الآجل − التحصيلات − (المرتجعات والخصومات)</p></div><div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">حركة العملاء خلال شهر أكتوبر 2026</span></div><div class="example-block__body"><span class="example-block__label">المعطيات</span><ul class="example-block__data"><li>الأرصدة المدينة في 1 أكتوبر 2026: مؤسسة الفجر <span class="num">8,000</span> ج.م، وشركة السلام <span class="num">5,000</span> ج.م، ولا رصيد على شركة الأمل؛ فمجموعها <span class="num">13,000</span> ج.م.</li><li>3 أكتوبر: بيع آجل لشركة الأمل بمبلغ <span class="num">22,000</span> ج.م (الفاتورة رقم <span class="num">101</span>).</li><li>8 أكتوبر: بيع آجل لمؤسسة الفجر بمبلغ <span class="num">9,000</span> ج.م (الفاتورة رقم <span class="num">102</span>).</li><li>12 أكتوبر: تحصيل <span class="num">8,000</span> ج.م نقدًا من مؤسسة الفجر.</li><li>15 أكتوبر: تحصيل <span class="num">5,000</span> ج.م بتحويل بنكي من شركة السلام.</li><li>20 أكتوبر: تحصيل <span class="num">12,000</span> ج.م بتحويل بنكي من شركة الأمل.</li></ul><span class="example-block__label">قيود اليومية</span><div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين</th><th>دائن</th></tr></thead><tbody class="journal__entry"><tr><td rowspan="3">3 أكتوبر 2026</td><td>من ح/ العملاء (شركة الأمل)</td><td class="num">22,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ المبيعات</td><td></td><td class="num">22,000</td></tr><tr class="journal__note"><td>إثبات بيع آجل بالفاتورة رقم <span class="num">101</span></td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="3">8 أكتوبر 2026</td><td>من ح/ العملاء (مؤسسة الفجر)</td><td class="num">9,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ المبيعات</td><td></td><td class="num">9,000</td></tr><tr class="journal__note"><td>إثبات بيع آجل بالفاتورة رقم <span class="num">102</span></td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="3">12 أكتوبر 2026</td><td>من ح/ الصندوق</td><td class="num">8,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ العملاء (مؤسسة الفجر)</td><td></td><td class="num">8,000</td></tr><tr class="journal__note"><td>تحصيل نقدي من مؤسسة الفجر</td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="3">15 أكتوبر 2026</td><td>من ح/ البنك</td><td class="num">5,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ العملاء (شركة السلام)</td><td></td><td class="num">5,000</td></tr><tr class="journal__note"><td>تحصيل بتحويل بنكي من شركة السلام (سداد كامل)</td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="3">20 أكتوبر 2026</td><td>من ح/ البنك</td><td class="num">12,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ العملاء (شركة الأمل)</td><td></td><td class="num">12,000</td></tr><tr class="journal__note"><td>تحصيل بتحويل بنكي من شركة الأمل (دفعة جزئية)</td><td></td><td></td></tr></tbody></table></div><span class="example-block__label">الترحيل إلى حساب المراقبة</span><div class="t-accounts"><div class="t-account"><div class="t-account__title">ح/ العملاء (حساب المراقبة)</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>رصيد 1/10</span><span class="num">13,000</span></li><li><span>فاتورة <span class="num">101</span> – 3/10</span><span class="num">22,000</span></li><li><span>فاتورة <span class="num">102</span> – 8/10</span><span class="num">9,000</span></li></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"><li><span>تحصيل الفجر – 12/10</span><span class="num">8,000</span></li><li><span>تحصيل السلام – 15/10</span><span class="num">5,000</span></li><li><span>تحصيل الأمل – 20/10</span><span class="num">12,000</span></li></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">19,000</span> مدين</div></div></div><span class="example-block__label">كشف حساب مؤسسة الفجر (من الدفتر المساعد)</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين</th><th>دائن</th><th>الرصيد (مدين)</th></tr></thead><tbody><tr><td>1 أكتوبر 2026</td><td>رصيد أول المدة</td><td class="num">8,000</td><td></td><td class="num">8,000</td></tr><tr><td>8 أكتوبر 2026</td><td>فاتورة بيع آجل رقم <span class="num">102</span></td><td class="num">9,000</td><td></td><td class="num">17,000</td></tr><tr><td>12 أكتوبر 2026</td><td>تحصيل نقدي</td><td></td><td class="num">8,000</td><td class="num">9,000</td></tr><tr class="acc-table__total"><td colspan="2">الإجمالي والرصيد في نهاية الفترة</td><td class="num">17,000</td><td class="num">8,000</td><td class="num">9,000</td></tr></tbody></table></div><span class="example-block__label">كشف أرصدة العملاء</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>العميل</th><th>الرصيد في 1/10</th><th>المبيعات الآجلة</th><th>التحصيلات</th><th>الرصيد في نهاية أكتوبر</th></tr></thead><tbody><tr><td>شركة الأمل</td><td class="num">0</td><td class="num">22,000</td><td class="num">12,000</td><td class="num">10,000</td></tr><tr><td>مؤسسة الفجر</td><td class="num">8,000</td><td class="num">9,000</td><td class="num">8,000</td><td class="num">9,000</td></tr><tr><td>شركة السلام</td><td class="num">5,000</td><td class="num">0</td><td class="num">5,000</td><td class="num">0</td></tr><tr class="acc-table__total"><td>الإجمالي (يطابق حساب المراقبة)</td><td class="num">13,000</td><td class="num">31,000</td><td class="num">25,000</td><td class="num">19,000</td></tr></tbody></table></div></div></div><p>يتضح من الكشف أن رصيد حساب المراقبة (<span class="num">19,000</span> ج.م) يساوي مجموع أرصدة العملاء الثلاثة (<span class="num">10,000 + 9,000 + 0</span>)، وهذه المطابقة هي الأداة الأساسية لاكتشاف أي خطأ في الترحيل. ولاحظ أن تحصيل شركة الأمل البالغ <span class="num">12,000</span> ج.م كان جزئيًا، فبقي عليها <span class="num">10,000</span> ج.م، أما شركة السلام فأُقفل حسابها بالسداد الكامل.</p><div class="callout callout--warning"><span class="callout__label">انتبه</span><p>تحصيل الدين من العميل لا يُقيَّد دائنًا في حساب المبيعات. فالمبيعات أُثبتت عند البيع، والتحصيل مجرد تحويل لحق المنشأة من عميل إلى نقدية؛ لذلك يكون الطرف الدائن هو حساب العملاء، وإلا حُسب الإيراد مرتين.</p></div></div>
+          <hr class="topic-divider" />
+          <div class="topic-block" id="discounts"><h3 class="topic-block__title">الخصومات</h3><p>الخصم تخفيض في المبلغ المستحق على العميل، وهو نوعان مختلفان في طبيعتهما ومعالجتهما المحاسبية. الخصم التجاري (Trade Discount) تخفيض من سعر القائمة يُمنح لاعتبارات تجارية كشراء كمية كبيرة أو التعامل مع عميل متميّز، ويُحدَّد قبل إصدار الفاتورة؛ لذلك تُثبَّت المبيعات بالصافي بعد الخصم، ولا يُفتح له حساب ولا يظهر له قيد مستقل.</p><p>أما الخصم النقدي (Cash Discount) فيُمنح للعميل لقاء السداد المبكر خلال مدة محددة من تاريخ الفاتورة تُنصّ عليها شروط السداد (Credit Terms). وتُطبَّق هنا طريقة الإجمالي (Gross Method)، أي تُقيَّد المبيعات بصافي الفاتورة بعد الخصم التجاري، وعند استفادة العميل من الخصم يُثبَت المبلغ المخصوم في حساب الخصم المسموح به (Sales Discounts). ويُعرض هذا الحساب خصمًا من المبيعات، وهو ما يُسمّى حسابًا مقابلًا للإيراد (Contra-Revenue Account)، لأن المنشأة تتنازل بالخصم عن جزء من الثمن الذي أثبتته إيرادًا.</p><div class="callout callout--note"><span class="callout__label">قراءة شروط السداد</span><p>تعني العبارة <span class="num">2/10, n/30</span>: يحق للعميل خصم <span class="num">2%</span> إذا سدّد خلال <span class="num">10</span> أيام من تاريخ الفاتورة، وإلا استُحق صافي المبلغ كاملًا (الحرف n اختصار net) خلال <span class="num">30</span> يومًا.</p></div><div class="formula-box"><span class="formula-box__label">أساس احتساب الخصمين</span><p class="formula-box__body">الخصم التجاري = سعر القائمة × نسبته   |   الخصم النقدي = صافي الفاتورة × نسبته</p></div><div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">خصم تجاري عند البيع وخصم نقدي عند السداد</span></div><div class="example-block__body"><span class="example-block__label">المعطيات</span><ul class="example-block__data"><li>10 أكتوبر 2026: بيع آجل لشركة الواحة بالفاتورة رقم <span class="num">103</span> بضاعة بأسعار القائمة <span class="num">40,000</span> ج.م، مع خصم تجاري <span class="num">10%</span>، وشروط السداد <span class="num">2/10, n/30</span>.</li><li>18 أكتوبر 2026: سدّدت شركة الواحة المستحق كاملًا بتحويل بنكي، أي بعد <span class="num">8</span> أيام من تاريخ الفاتورة.</li></ul><span class="example-block__label">احتساب الخصمين</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البيان</th><th>جزئي</th><th>كلي</th></tr></thead><tbody><tr><td>إجمالي البضاعة بأسعار القائمة</td><td class="num">40,000</td><td></td></tr><tr><td>يُخصم: الخصم التجاري (<span class="num">10% × 40,000</span>)</td><td class="num">(4,000)</td><td></td></tr><tr><td>صافي الفاتورة (قيمة المبيعات المقيَّدة)</td><td></td><td class="num">36,000</td></tr><tr><td>يُخصم: الخصم النقدي (<span class="num">2% × 36,000</span>)</td><td class="num">(720)</td><td></td></tr><tr class="acc-table__total"><td>المبلغ المحصَّل فعليًا</td><td></td><td class="num">35,280</td></tr></tbody></table></div><span class="example-block__label">قيود اليومية</span><div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين</th><th>دائن</th></tr></thead><tbody class="journal__entry"><tr><td rowspan="3">10 أكتوبر 2026</td><td>من ح/ العملاء (شركة الواحة)</td><td class="num">36,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ المبيعات</td><td></td><td class="num">36,000</td></tr><tr class="journal__note"><td>إثبات بيع آجل بصافي الفاتورة رقم <span class="num">103</span> بعد الخصم التجاري</td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="4">18 أكتوبر 2026</td><td>من ح/ البنك</td><td class="num">35,280</td><td></td></tr><tr><td>من ح/ الخصم المسموح به</td><td class="num">720</td><td></td></tr><tr><td class="journal__credit">إلى ح/ العملاء (شركة الواحة)</td><td></td><td class="num">36,000</td></tr><tr class="journal__note"><td>سداد شركة الواحة خلال مدة الخصم النقدي</td><td></td><td></td></tr></tbody></table></div><span class="example-block__label">الترحيل إلى حسابات الأستاذ</span><div class="t-accounts"><div class="t-account"><div class="t-account__title">ح/ العملاء (شركة الواحة)</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>فاتورة <span class="num">103</span> – 10/10</span><span class="num">36,000</span></li></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"><li><span>سداد – 18/10</span><span class="num">36,000</span></li></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">0</span> (الحساب مقفل)</div></div><div class="t-account"><div class="t-account__title">ح/ الخصم المسموح به</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>خصم نقدي – 18/10</span><span class="num">720</span></li></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">720</span> مدين</div></div></div></div></div><p>بلغ الخصم التجاري <span class="num">4,000</span> ج.م (<span class="num">10% × 40,000</span>)، فقُيِّد البيع بصافي <span class="num">36,000</span> ج.م دون أي قيد للخصم نفسه. وبما أن السداد تم في اليوم الثامن، أي قبل آخر موعد للخصم وهو 20 أكتوبر 2026، استحقت الواحة خصمًا نقديًا قدره <span class="num">720</span> ج.م (<span class="num">2% × 36,000</span>)، فدفعت <span class="num">35,280</span> ج.م. وقيد السداد مركّب لأن طرفه المدين حسابان هما البنك بما قُبض والخصم المسموح به بما تنازلت عنه المنشأة، ومجموعهما <span class="num">36,000</span> ج.م يساوي الدائن المقيَّد في حساب العميل، فأُقفل حسابه.</p><div class="callout callout--warning"><span class="callout__label">انتبه</span><p>يُحسب الخصم النقدي على صافي الفاتورة بعد الخصم التجاري، لا على سعر القائمة؛ ففي المثال تكون قاعدته <span class="num">36,000</span> لا <span class="num">40,000</span>. كما يسقط الحق في الخصم النقدي بانقضاء مدته، فيُسدَّد المبلغ بالكامل دون قيد خصم.</p></div></div>
+          <hr class="topic-divider" />
+          <div class="topic-block" id="returns"><h3 class="topic-block__title">المرتجعات</h3><p>مردودات المبيعات (Sales Returns) هي بضاعة يردّها العميل بعد البيع لعيب فيها أو لمخالفتها المواصفات المتفق عليها أو لسبب آخر يقبله البائع، فيُلغى بذلك جزء من البيع. وعند قبول الرد يُصدر البائع إشعار دائن (Credit Note) للعميل، وهو مستند يخفّض المستحق عليه ويكون أساس القيد.</p><p>وتُقيَّد المرتجعات في حساب مستقل هو مردودات المبيعات، وهو أيضًا حساب مقابل للإيراد، بدلًا من تخفيض حساب المبيعات مباشرة؛ ليبقى إجمالي المبيعات ومقدار المرتجعات ظاهرين للإدارة تمهيدًا لتحليل أسباب الرد. وتُقيَّم المرتجعات بالسعر الذي بيعت به البضاعة فعلًا، أي بعد الخصم التجاري. فإن كان العميل قد سدّد ثمن البضاعة المرتجعة، رُدّ إليه الثمن نقدًا أو بقي رصيدًا دائنًا لصالحه يُخصم من فواتير لاحقة.</p><div class="flow-diagram"><div class="flow-step"><div class="flow-step__title">رد البضاعة</div><div class="flow-step__description">يعيد العميل البضاعة مع بيان سبب الرد، ويفحصها البائع.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">إصدار إشعار دائن</div><div class="flow-step__description">يوثّق الإشعار قيمة المرتجع بسعر البيع الفعلي.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">إثبات القيد</div><div class="flow-step__description">من ح/ مردودات المبيعات إلى ح/ العملاء، فينخفض رصيد العميل.</div></div></div><div class="formula-box"><span class="formula-box__label">صافي المبيعات</span><p class="formula-box__body">صافي المبيعات = إجمالي المبيعات − مردودات المبيعات − الخصم المسموح به</p></div><div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">مرتجعات يعقبها سداد بخصم نقدي</span></div><div class="example-block__body"><span class="example-block__label">المعطيات</span><ul class="example-block__data"><li>14 أكتوبر 2026: بيع آجل لشركة النور بالفاتورة رقم <span class="num">104</span>: <span class="num">50</span> وحدة بسعر <span class="num">600</span> ج.م للوحدة، أي <span class="num">30,000</span> ج.م، وشروط السداد <span class="num">2/10, n/30</span>.</li><li>17 أكتوبر 2026: ردّت شركة النور <span class="num">10</span> وحدات معيبة بسعر <span class="num">600</span> ج.م للوحدة، فصدر إشعار دائن بمبلغ <span class="num">6,000</span> ج.م.</li><li>22 أكتوبر 2026: سدّدت شركة النور المستحق عليها بعد المرتجعات بتحويل بنكي مستفيدةً من الخصم النقدي، أي بعد <span class="num">8</span> أيام من تاريخ الفاتورة.</li></ul><span class="example-block__label">قيود اليومية</span><div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين</th><th>دائن</th></tr></thead><tbody class="journal__entry"><tr><td rowspan="3">14 أكتوبر 2026</td><td>من ح/ العملاء (شركة النور)</td><td class="num">30,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ المبيعات</td><td></td><td class="num">30,000</td></tr><tr class="journal__note"><td>إثبات بيع آجل بالفاتورة رقم <span class="num">104</span>: <span class="num">50</span> وحدة بسعر <span class="num">600</span> ج.م</td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="3">17 أكتوبر 2026</td><td>من ح/ مردودات المبيعات</td><td class="num">6,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ العملاء (شركة النور)</td><td></td><td class="num">6,000</td></tr><tr class="journal__note"><td>إثبات رد <span class="num">10</span> وحدات معيبة بموجب إشعار دائن</td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="4">22 أكتوبر 2026</td><td>من ح/ البنك</td><td class="num">23,520</td><td></td></tr><tr><td>من ح/ الخصم المسموح به</td><td class="num">480</td><td></td></tr><tr><td class="journal__credit">إلى ح/ العملاء (شركة النور)</td><td></td><td class="num">24,000</td></tr><tr class="journal__note"><td>سداد شركة النور المستحق بعد المرتجعات خلال مدة الخصم النقدي</td><td></td><td></td></tr></tbody></table></div><span class="example-block__label">الترحيل إلى حسابات الأستاذ</span><div class="t-accounts"><div class="t-account"><div class="t-account__title">ح/ العملاء (شركة النور)</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>فاتورة <span class="num">104</span> – 14/10</span><span class="num">30,000</span></li></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"><li><span>مردودات – 17/10</span><span class="num">6,000</span></li><li><span>سداد – 22/10</span><span class="num">24,000</span></li></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">0</span> (الحساب مقفل)</div></div><div class="t-account"><div class="t-account__title">ح/ مردودات المبيعات</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>رد <span class="num">10</span> وحدات – 17/10</span><span class="num">6,000</span></li></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">6,000</span> مدين</div></div></div><span class="example-block__label">بيان صافي المبيعات</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البيان</th><th>جزئي</th><th>كلي</th></tr></thead><tbody><tr><td>إجمالي المبيعات (الفاتورة رقم <span class="num">104</span>)</td><td class="num">30,000</td><td></td></tr><tr><td>يُخصم: مردودات المبيعات</td><td class="num">(6,000)</td><td></td></tr><tr><td>المبيعات بعد المردودات</td><td></td><td class="num">24,000</td></tr><tr><td>يُخصم: الخصم المسموح به (<span class="num">2% × 24,000</span>)</td><td class="num">(480)</td><td></td></tr><tr class="acc-table__total"><td>صافي المبيعات</td><td></td><td class="num">23,520</td></tr></tbody></table></div></div></div><p>بلغت قيمة المرتجع <span class="num">6,000</span> ج.م (<span class="num">10 × 600</span>)، فانخفض المستحق على العميل إلى <span class="num">24,000</span> ج.م (<span class="num">30,000 − 6,000</span>). ولأن الخصم النقدي يُحسب على ما تبقّى بعد الرد، كان <span class="num">480</span> ج.م (<span class="num">2% × 24,000</span>)، فسدّدت الشركة <span class="num">23,520</span> ج.م. وبذلك أُقفل حساب العميل (<span class="num">30,000 − 6,000 − 24,000 = 0</span>)، وبلغ صافي المبيعات <span class="num">23,520</span> ج.م.</p><div class="callout callout--warning"><span class="callout__label">انتبه</span><p>لا يُحسب الخصم النقدي على قيمة الفاتورة الأصلية (<span class="num">30,000</span> ج.م) إذا رُدّ جزء من البضاعة، بل على الباقي بعد المرتجعات. ولا يُقيَّم المرتجع بسعر القائمة إن كان البيع قد تم بخصم تجاري، وإنما بالسعر الصافي الذي قُيِّد به البيع.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section content-section--tint" id="comparison">
+      <div class="container">
+        <div class="content-section__eyebrow">مقارنة</div>
+        <h2 class="content-section__title">مقارنة بين الخصم التجاري والخصم النقدي ومردودات المبيعات</h2>
+
+        <div class="table-responsive">
+          <table class="table table-bordered align-middle">
+            <thead>
+              <tr>
+                <th>وجه المقارنة</th>
+                <th>الخصم التجاري</th>
+                <th>الخصم النقدي</th>
+                <th>مردودات المبيعات</th>
+              </tr>
+            </thead>
+            <tbody><tr><td>طبيعته</td><td>تخفيض من سعر القائمة لاعتبارات تجارية</td><td>تخفيض لقاء السداد المبكر</td><td>بضاعة يردّها العميل بعد البيع</td></tr><tr><td>وقت تحققه</td><td>قبل إصدار الفاتورة</td><td>عند السداد خلال مدة الخصم</td><td>بعد التسليم، حتى بعد إصدار الفاتورة</td></tr><tr><td>المستند المرتبط</td><td>فاتورة البيع نفسها</td><td>شروط السداد المذكورة في الفاتورة</td><td>إشعار دائن</td></tr><tr><td>القيد في الدفاتر</td><td>لا يُقيَّد؛ تُثبَّت المبيعات بالصافي</td><td>يُقيَّد في ح/ الخصم المسموح به</td><td>يُقيَّد في ح/ مردودات المبيعات</td></tr><tr><td>أثره في رصيد العميل</td><td>يُخفِّض قيمة الفاتورة عند إنشائها</td><td>يُنقص المبلغ المطلوب سداده</td><td>يُخفِّض رصيد العميل بقيمة المرتجع</td></tr><tr><td>قيمته في أمثلة الفصل</td><td><span class="num">4,000</span> ج.م من <span class="num">40,000</span> ج.م</td><td><span class="num">720</span> ج.م من <span class="num">36,000</span> ج.م</td><td><span class="num">6,000</span> ج.م من <span class="num">30,000</span> ج.م</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="summary">
+      <div class="container">
+        <div class="content-section__eyebrow">الخلاصة</div>
+        <h2 class="content-section__title">أهم ما يجب تذكّره</h2>
+
+        <div class="summary-card" style="max-width: 900px">
+          <ul class="summary-card__list">
+            <li>✔ تُثبَت المبيعات عند انتقال السيطرة على البضاعة إلى العميل وإصدار الفاتورة، ويُقيَّد حساب المبيعات دائنًا، أما الطرف المدين فهو الصندوق أو البنك في البيع النقدي، وحساب العملاء في البيع الآجل.</li><li>✔ لا يُقيَّد أمر الشراء ولا عرض السعر في الدفاتر.</li><li>✔ حساب العملاء (حساب المراقبة) رصيده الطبيعي مدين، ويجب أن يساوي مجموع أرصدة العملاء في الدفتر المساعد.</li><li>✔ تحصيل الدين يُدائن حساب العملاء لا حساب المبيعات، فلا يُعدّ إيرادًا جديدًا.</li><li>✔ الخصم التجاري لا يُقيَّد في الدفاتر، والخصم النقدي يُحسب على صافي الفاتورة بعد الخصم التجاري ويُقيَّد في حساب الخصم المسموح به.</li><li>✔ تُقيَّد المرتجعات في حساب مردودات المبيعات بالسعر الصافي الذي بيعت به البضاعة، ويُحسب الخصم النقدي على الباقي بعد المرتجعات.</li><li>✔ صافي المبيعات = إجمالي المبيعات − مردودات المبيعات − الخصم المسموح به.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>الفصل السابع: دورة المبيعات</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      /* Sync Toolbar Title */
+      const heroTitle = document.querySelector('.hero__title')
+      const toolbarTitle = document.querySelector('[data-sync-title]')
+      if (heroTitle && toolbarTitle) {
+        const text = heroTitle.textContent.trim()
+        if (text) {
+          toolbarTitle.textContent = text
+          document.title = text
+        }
+      }
+    </script>
+  </body>
+</html>

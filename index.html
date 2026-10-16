@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#7796bf" />
+    <meta name="description" content="الفهرس العام لكتاب المحاسب العملي — دليلك الشامل للمحاسبة في السوق المصري." />
+    <title>المحاسب العملي | الفهرس العام</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+
+    <style>
+      :root {
+        --clr-primary: #b378a6;
+        --clr-secondary: #7796bf;
+        --clr-light: #ffffff;
+        --clr-light-2: #f0f0f0;
+        --clr-border: #dedede;
+        --clr-dark: #1b1b1b;
+        --clr-dark-2: #444444;
+        --clr-text: #333333;
+        --clr-text-soft: #626873;
+        --font-body: 'Estedad', sans-serif;
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 18px;
+        --shadow-soft: 0 4px 20px rgba(27, 27, 27, 0.07);
+        --shadow-hover: 0 12px 28px rgba(179, 120, 166, 0.16);
+        --section-pad: 3.5rem;
+        --content-width: 1120px;
+      }
+
+      *, *::before, *::after { box-sizing: border-box; font-family: var(--font-body) !important; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: var(--font-body);
+        background: var(--clr-light);
+        color: var(--clr-dark);
+        line-height: 1.85;
+        overflow-x: hidden;
+      }
+      a { color: var(--clr-secondary); text-decoration: none; transition: color .2s ease; }
+      a:hover { color: var(--clr-primary); }
+      a:focus-visible { outline: 3px solid var(--clr-secondary); outline-offset: 4px; border-radius: 5px; }
+      h1, h2, h3, p { margin-top: 0; }
+      h1, h2, h3 { line-height: 1.4; }
+      p { color: var(--clr-text); }
+      ::selection { background: var(--clr-primary); color: #fff; }
+
+      .editor-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        padding: .7rem 0;
+        background: rgba(179, 120, 166, .97);
+        box-shadow: var(--shadow-soft);
+        backdrop-filter: blur(12px);
+      }
+      .toolbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+      .brand-mark { display: inline-flex; align-items: center; gap: .65rem; color: #fff; font-size: 1.1rem; font-weight: 800; }
+      .brand-icon {
+        display: grid; place-items: center; width: 2.25rem; height: 2.25rem;
+        border: 1px solid rgba(255,255,255,.35); border-radius: 10px;
+        background: rgba(255,255,255,.14); font-size: 1.15rem;
+      }
+      .toolbar-label { color: rgba(255,255,255,.9); font-size: .92rem; font-weight: 600; }
+
+      .hero {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        padding: clamp(3.5rem, 8vw, 6.5rem) 0 clamp(3rem, 6vw, 4.5rem);
+        color: #fff;
+        background: linear-gradient(125deg, #6e8eb9 0%, #7796bf 52%, #829fc5 100%);
+      }
+      .hero::before, .hero::after {
+        content: ''; position: absolute; z-index: -1; border-radius: 50%; pointer-events: none;
+      }
+      .hero::before { width: 25rem; height: 25rem; top: -13rem; left: -4rem; border: 1px solid rgba(255,255,255,.22); box-shadow: 0 0 0 34px rgba(255,255,255,.035), 0 0 0 70px rgba(255,255,255,.025); }
+      .hero::after { width: 17rem; height: 17rem; bottom: -12rem; right: 8%; background: rgba(255,255,255,.07); }
+      .hero__content { max-width: 850px; }
+      .hero__eyebrow {
+        display: inline-flex; align-items: center; gap: .55rem; margin-bottom: 1rem;
+        padding: .35rem .85rem; border: 1px solid rgba(255,255,255,.3); border-radius: 999px;
+        color: #fff; background: rgba(255,255,255,.12); font-size: .9rem; font-weight: 700;
+      }
+      .hero__eyebrow::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #fff; }
+      .hero__title { margin-bottom: .65rem; color: #fff; font-size: clamp(2.5rem, 6vw, 4.2rem); font-weight: 800; letter-spacing: -.04em; }
+      .hero__lead { max-width: 740px; margin-bottom: 0; color: rgba(255,255,255,.94); font-size: clamp(1.05rem, 2.2vw, 1.3rem); }
+      .hero__stats { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+      .hero-stat { display: flex; align-items: center; gap: .65rem; padding: .65rem 1rem; border: 1px solid rgba(255,255,255,.25); border-radius: 13px; background: rgba(255,255,255,.11); }
+      .hero-stat__number { color: #fff; font-size: 1.3rem; font-weight: 800; line-height: 1; }
+      .hero-stat__label { color: rgba(255,255,255,.92); font-size: .92rem; }
+
+      .index-intro { padding: 2.6rem 0 1rem; }
+      .intro-panel { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 1.35rem 1.5rem; border: 1px solid var(--clr-border); border-radius: var(--radius-lg); background: #fcfcfc; box-shadow: var(--shadow-soft); }
+      .intro-panel__copy { margin: 0; color: var(--clr-text-soft); }
+      .intro-panel__mark { flex: 0 0 auto; display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 14px; background: rgba(179,120,166,.12); color: var(--clr-primary); font-size: 1.35rem; }
+
+      .content-section { padding: var(--section-pad) 0; }
+      .content-section--alt { background: #fcfcfc; }
+      .content-section--tint { background: var(--clr-light-2); }
+      .section-heading { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.6rem; }
+      .part-number { flex: 0 0 auto; display: grid; place-items: center; width: 3.2rem; height: 3.2rem; border-radius: 14px; background: rgba(179,120,166,.12); color: var(--clr-primary); font-size: 1.05rem; font-weight: 800; }
+      .section-heading__eyebrow { margin-bottom: .2rem; color: var(--clr-primary); font-size: .88rem; font-weight: 800; }
+      .section-heading__title { margin: 0; color: var(--clr-dark); font-size: clamp(1.45rem, 2.8vw, 2rem); font-weight: 800; }
+      .chapter-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+      .chapter-card {
+        display: block; position: relative; min-width: 0; padding: 1.2rem 1.2rem 1.1rem; color: inherit;
+        border: 1px solid var(--clr-border); border-radius: var(--radius-md);
+        background: #fff; box-shadow: 0 3px 14px rgba(27,27,27,.035);
+        transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+      }
+      .chapter-card:hover { color: inherit; transform: translateY(-3px); border-color: rgba(179,120,166,.55); box-shadow: var(--shadow-hover); }
+      .chapter-card__top { display: flex; align-items: center; justify-content: space-between; gap: .7rem; margin-bottom: .45rem; }
+      .chapter-card__number { color: #8a8f98; font-size: .82rem; font-weight: 700; }
+      .chapter-card__symbol { display: grid; place-items: center; width: 2rem; height: 2rem; flex: 0 0 auto; border-radius: 9px; background: rgba(119,150,191,.12); color: var(--clr-secondary); font-size: .95rem; }
+      .chapter-card__title { margin: 0; color: var(--clr-dark); font-size: 1.12rem; line-height: 1.65; font-weight: 800; overflow-wrap: anywhere; transition: color .2s ease; }
+      .chapter-card:hover .chapter-card__title { color: var(--clr-primary); }
+      .chapter-card__description { margin: .45rem 0 0; color: var(--clr-text-soft); font-size: .94rem; line-height: 1.8; }
+      .part-divider { height: 1px; margin: 0; border: 0; background: linear-gradient(to left, transparent, var(--clr-border), transparent); }
+
+      .closing-note { padding: 0 0 3.5rem; }
+      .closing-note__inner { padding: 1.45rem 1.5rem; border-inline-start: 4px solid var(--clr-secondary); border-radius: var(--radius-md); background: rgba(119,150,191,.08); }
+      .closing-note__title { margin-bottom: .25rem; color: var(--clr-dark); font-size: 1.08rem; font-weight: 800; }
+      .closing-note__text { margin: 0; color: var(--clr-text-soft); }
+      .site-footer { padding: 1.3rem 0; background: #20242b; text-align: center; }
+      .site-footer p { margin: 0; color: rgba(255,255,255,.8); font-size: .92rem; }
+      .site-footer strong { color: #fff; font-weight: 800; }
+
+      @media (max-width: 991.98px) { .chapter-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+      @media (max-width: 575.98px) {
+        :root { --section-pad: 2.6rem; }
+        .toolbar-label { font-size: .82rem; }
+        .brand-mark { font-size: 1rem; }
+        .hero { padding: 3.5rem 0 3rem; }
+        .hero__stats { gap: .55rem; }
+        .hero-stat { flex: 1 1 auto; padding: .6rem .7rem; }
+        .intro-panel { align-items: flex-start; padding: 1.1rem; }
+        .chapter-grid { grid-template-columns: 1fr; gap: .75rem; }
+        .chapter-card { padding: 1rem; }
+        .section-heading { gap: .75rem; }
+        .part-number { width: 2.7rem; height: 2.7rem; border-radius: 11px; }
+      }
+      @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
+    </style>
+  </head>
+
+  <body>
+    <div class="editor-toolbar">
+      <div class="container toolbar-inner">
+        <div class="brand-mark"><span class="brand-icon" aria-hidden="true">▤</span><span>المحاسب العملي</span></div>
+        <span class="toolbar-label">الفهرس العام للكتاب</span>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="container">
+        <div class="hero__content">
+          <div class="hero__eyebrow">دليل عملي للمحاسبة</div>
+          <h1 class="hero__title">المحاسب العملي</h1>
+          <p class="hero__lead">دليلك الشامل للمحاسبة في السوق المصري، من المبادئ الأساسية والعمليات اليومية إلى الضرائب والقوائم المالية والمهارات المهنية.</p>
+          <div class="hero__stats" aria-label="محتويات الكتاب">
+            <div class="hero-stat"><span class="hero-stat__number">10</span><span class="hero-stat__label">أجزاء رئيسية</span></div>
+            <div class="hero-stat"><span class="hero-stat__number">29</span><span class="hero-stat__label">فصلًا عمليًا</span></div>
+            <div class="hero-stat"><span class="hero-stat__number">∞</span><span class="hero-stat__label">فرص للتعلّم والتطبيق</span></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="index-intro">
+        <div class="container">
+          <div class="intro-panel">
+            <div>
+              <p class="intro-panel__copy">استكشف موضوعات الكتاب بالترتيب؛ كل جزء يبني على ما قبله ليأخذك خطوةً بخطوة نحو فهم المحاسبة وتطبيقها في بيئة العمل المصرية.</p>
+            </div>
+            <div class="intro-panel__mark" aria-hidden="true">✦</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" aria-labelledby="part-1-title">
+        <div class="container">
+          <div class="section-heading">
+            <div class="part-number">01</div>
+            <div><p class="section-heading__eyebrow">الجزء الأول</p><h2 class="section-heading__title" id="part-1-title">الأساس الفكري والمفاهيمي</h2></div>
+          </div>
+          <div class="chapter-grid">
+            <a class="chapter-card" href="chapter-01-what-is-accounting.html" aria-label="الفصل الأول: ما هي المحاسبة؟"><div class="chapter-card__top"><span class="chapter-card__number">الفصل الأول</span><span class="chapter-card__symbol" aria-hidden="true">◈</span></div><h3 class="chapter-card__title">ما هي المحاسبة؟</h3><p class="chapter-card__description">مفهومها، أهميتها، أنواعها، علاقتها بالأعمال</p></a>
+            <a class="chapter-card" href="chapter-02-accounting-equation.html" aria-label="الفصل الثاني: المعادلة المحاسبية وقاعدة القيد المزدوج"><div class="chapter-card__top"><span class="chapter-card__number">الفصل الثاني</span><span class="chapter-card__symbol" aria-hidden="true">＝</span></div><h3 class="chapter-card__title">المعادلة المحاسبية وقاعدة القيد المزدوج</h3><p class="chapter-card__description">الأصول والخصوم وحقوق الملكية — المدين والدائن — منطق التسجيل</p></a>
+            <a class="chapter-card" href="chapter-03-accounting-cycle.html" aria-label="الفصل الثالث: دورة المحاسبة الكاملة"><div class="chapter-card__top"><span class="chapter-card__number">الفصل الثالث</span><span class="chapter-card__symbol" aria-hidden="true">↻</span></div><h3 class="chapter-card__title">دورة المحاسبة الكاملة</h3><p class="chapter-card__description">من الحدث المالي حتى القوائم المالية — خطوة بخطوة</p></a>
+          </div>
+        </div>
+      </section>
+      <hr class="part-divider" />
+
+      <section class="content-section content-section--alt" aria-labelledby="part-2-title">
+        <div class="container">
+          <div class="section-heading"><div class="part-number">02</div><div><p class="section-heading__eyebrow">الجزء الثاني</p><h2 class="section-heading__title" id="part-2-title">المستندات والعمليات اليومية</h2></div></div>
+          <div class="chapter-grid">
+            <a class="chapter-card" href="chapter-04-accounting-documents.html" aria-label="الفصل الرابع: المستندات المحاسبية"><div class="chapter-card__top"><span class="chapter-card__number">الفصل الرابع</span><span class="chapter-card__symbol" aria-hidden="true">▤</span></div><h3 class="chapter-card__title">المستندات المحاسبية</h3><p class="chapter-card__description">الفواتير، سندات القبض والصرف، الإشعارات، أمر التوريد</p></a>
+            <a class="chapter-card" href="chapter-05-cash-treasury.html" aria-label="الفصل الخامس: الخزينة والنقدية"><div class="chapter-card__top"><span class="chapter-card__number">الفصل الخامس</span><span class="chapter-card__symbol" aria-hidden="true">▣</span></div><h3 class="chapter-card__title">الخزينة والنقدية</h3><p class="chapter-card__description">ضبط الصندوق، يومية الصندوق، العهدة، تسوية الخزينة</p></a>
+            <a class="chapter-card" href="chapter-06-bank-reconciliation.html" aria-label="الفصل السادس: البنوك والتسوية البنكية"><div class="chapter-card__top"><span class="chapter-card__number">الفصل السادس</span><span class="chapter-card__symbol" aria-hidden="true">⌁</span></div><h3 class="chapter-card__title">البنوك والتسوية البنكية</h3><p class="chapter-card__description">كشف الحساب البنكي، الشيكات، أوراق القبض والدفع، المطابقة</p></a>
+          </div>
+        </div>
+      </section>
+      <hr class="part-divider" />
+
+      <section class="content-section" aria-labelledby="part-3-title">
+        <div class="container">
+          <div class="section-heading"><div class="part-number">03</div><div><p class="section-heading__eyebrow">الجزء الثالث</p><h2 class="section-heading__title" id="part-3-title">المبيعات والمشتريات والمخزون</h2></div></div>
+          <div class="chapter-grid">
+            <a class="chapter-card" href="chapter-07-sales-cycle.html" aria-label="الفصل السابع: دورة المبيعات"><div class="chapter-card__top"><span class="chapter-card__number">الفصل السابع</span><span class="chapter-card__symbol" aria-hidden="true">↗</span></div><h3 class="chapter-card__title">دورة المبيعات</h3><p class="chapter-card__description">فاتورة البيع، حسابات العملاء، الخصومات، المرتجعات</p></a>
+            <a class="chapter-card" href="chapter-08-purchasing-cycle.html" aria-label="الفصل الثامن: دورة المشتريات"><div class="chapter-card__top"><span class="chapter-card__number">الفصل الثامن</span><span class="chapter-card__symbol" aria-hidden="true">↙</span></div><h3 class="chapter-card__title">دورة المشتريات</h3><p class="chapter-card__description">فاتورة الشراء، حسابات الموردين، الشروط التجارية</p></a>
+            <a class="chapter-card" href="chapter-09-inventory.html" aria-label="الفصل التاسع: المخزون وإدارته"><div class="chapter-card__top"><span class="chapter-card__number">الفصل التاسع</span><span class="chapter-card__symbol" aria-hidden="true">▦</span></div><h3 class="chapter-card__title">المخزون وإدارته</h3><p class="chapter-card__description">طرق التقييم، بطاقة الصنف، الجرد، فروق المخزون</p></a>
+          </div>
+        </div>
+      </section>
+      <hr class="part-divider" />
+
+      <section class="content-section content-section--alt" aria-labelledby="part-4-title">
+        <div class="container">
+          <div class="section-heading"><div class="part-number">04</div><div><p class="section-heading__eyebrow">الجزء الرابع</p><h2 class="section-heading__title" id="part-4-title">الذمم والديون — قلب تجار الجملة</h2></div></div>
+          <div class="chapter-grid">
+            <a class="chapter-card" href="chapter-10-accounts-receivable.html" aria-label="الفصل العاشر: الذمم المدينة وإدارة العملاء"><div class="chapter-card__top"><span class="chapter-card__number">الفصل العاشر</span><span class="chapter-card__symbol" aria-hidden="true">◎</span></div><h3 class="chapter-card__title">الذمم المدينة وإدارة العملاء</h3><p class="chapter-card__description">كشوف الحساب، تقرير عمر الديون، حد الائتمان</p></a>
+            <a class="chapter-card" href="chapter-11-accounts-payable.html" aria-label="الفصل الحادي عشر: الذمم الدائنة وإدارة الموردين"><div class="chapter-card__top"><span class="chapter-card__number">الفصل الحادي عشر</span><span class="chapter-card__symbol" aria-hidden="true">◉</span></div><h3 class="chapter-card__title">الذمم الدائنة وإدارة الموردين</h3><p class="chapter-card__description">جدول المدفوعات، أوراق الدفع، الكمبيالات</p></a>
+            <a class="chapter-card" href="chapter-12-bad-debts.html" aria-label="الفصل الثاني عشر: الديون المعدومة والمشكوك فيها"><div class="chapter-card__top"><span class="chapter-card__number">الفصل الثاني عشر</span><span class="chapter-card__symbol" aria-hidden="true">!</span></div><h3 class="chapter-card__title">الديون المعدومة والمشكوك فيها</h3><p class="chapter-card__description">المخصصات، الشطب، الاسترداد</p></a>
+          </div>
+        </div>
+      </section>
+      <hr class="part-divider" />
+
+      <section class="content-section" aria-labelledby="part-5-title">
+        <div class="container">
+          <div class="section-heading"><div class="part-number">05</div><div><p class="section-heading__eyebrow">الجزء الخامس</p><h2 class="section-heading__title" id="part-5-title">الرواتب والتأمينات</h2></div></div>
+          <div class="chapter-grid">
+            <a class="chapter-card" href="chapter-13-payroll-sheet.html" aria-label="الفصل الثالث عشر: كشف الرواتب والأجور"><div class="chapter-card__top"><span class="chapter-card__number">الفصل الثالث عشر</span><span class="chapter-card__symbol" aria-hidden="true">♙</span></div><h3 class="chapter-card__title">كشف الرواتب والأجور</h3><p class="chapter-card__description">مكونات الراتب، الخصومات، صافي الراتب</p></a>
+            <a class="chapter-card" href="chapter-14-social-insurance-egypt.html" aria-label="الفصل الرابع عشر: التأمينات الاجتماعية في مصر"><div class="chapter-card__top"><span class="chapter-card__number">الفصل الرابع عشر</span><span class="chapter-card__symbol" aria-hidden="true">＋</span></div><h3 class="chapter-card__title">التأمينات الاجتماعية في مصر</h3><p class="chapter-card__description">نسب الاشتراك، نماذج التأمينات، الالتزامات القانونية</p></a>
+          </div>
+        </div>
+      </section>
+      <hr class="part-divider" />
+
+      <section class="content-section content-section--alt" aria-labelledby="part-6-title">
+        <div class="container">
+          <div class="section-heading"><div class="part-number">06</div><div><p class="section-heading__eyebrow">الجزء السادس</p><h2 class="section-heading__title" id="part-6-title">الأصول الثابتة والاستهلاك</h2></div></div>
+          <div class="chapter-grid">
+            <a class="chapter-card" href="#" aria-label="الفصل الخامس عشر: الأصول الثابتة"><div class="chapter-card__top"><span class="chapter-card__number">الفصل الخامس عشر</span><span class="chapter-card__symbol" aria-hidden="true">▱</span></div><h3 class="chapter-card__title">الأصول الثابتة</h3><p class="chapter-card__description">التصنيف، التسجيل، الإضافات والتصرفات</p></a>
+            <a class="chapter-card" href="#" aria-label="الفصل السادس عشر: الاستهلاك"><div class="chapter-card__top"><span class="chapter-card__number">الفصل السادس عشر</span><span class="chapter-card__symbol" aria-hidden="true">◷</span></div><h3 class="chapter-card__title">الاستهلاك</h3><p class="chapter-card__description">طرق الاستهلاك، القسط الثابت، المتناقص، الجداول</p></a>
+          </div>
+        </div>
+      </section>
+      <hr class="part-divider" />
+
+      <section class="content-section" aria-labelledby="part-7-title">
+        <div class="container">
+          <div class="section-heading"><div class="part-number">07</div><div><p class="section-heading__eyebrow">الجزء السابع</p><h2 class="section-heading__title" id="part-7-title">الضرائب المصرية</h2></div></div>
+          <div class="chapter-grid">
+            <a class="chapter-card" href="#" aria-label="الفصل السابع عشر: ضريبة القيمة المضافة (VAT)"><div class="chapter-card__top"><span class="chapter-card__number">الفصل السابع عشر</span><span class="chapter-card__symbol" aria-hidden="true">٪</span></div><h3 class="chapter-card__title">ضريبة القيمة المضافة (VAT)</h3><p class="chapter-card__description">آلية الحساب، الإقرار الشهري، الفاتورة الإلكترونية</p></a>
+            <a class="chapter-card" href="#" aria-label="الفصل الثامن عشر: ضريبة الدخل على الشركات والمنشآت"><div class="chapter-card__top"><span class="chapter-card__number">الفصل الثامن عشر</span><span class="chapter-card__symbol" aria-hidden="true">▥</span></div><h3 class="chapter-card__title">ضريبة الدخل على الشركات والمنشآت</h3><p class="chapter-card__description">الربح المحاسبي مقابل الضريبي، الإقرار السنوي، المصروفات غير المقبولة</p></a>
+            <a class="chapter-card" href="#" aria-label="الفصل التاسع عشر: الخصم والإضافة (Withholding Tax)"><div class="chapter-card__top"><span class="chapter-card__number">الفصل التاسع عشر</span><span class="chapter-card__symbol" aria-hidden="true">٪</span></div><h3 class="chapter-card__title">الخصم والإضافة (Withholding Tax)</h3><p class="chapter-card__description">من يخضع لها، النسب، التوريد للمصلحة</p></a>
+            <a class="chapter-card" href="#" aria-label="الفصل العشرون: التعامل مع مصلحة الضرائب"><div class="chapter-card__top"><span class="chapter-card__number">الفصل العشرون</span><span class="chapter-card__symbol" aria-hidden="true">▣</span></div><h3 class="chapter-card__title">التعامل مع مصلحة الضرائب</h3><p class="chapter-card__description">الفحص الضريبي، المناقشة، الاعتراض، الحماية بالمستندات</p></a>
+          </div>
+        </div>
+      </section>
+      <hr class="part-divider" />
+
+      <section class="content-section content-section--alt" aria-labelledby="part-8-title">
+        <div class="container">
+          <div class="section-heading"><div class="part-number">08</div><div><p class="section-heading__eyebrow">الجزء الثامن</p><h2 class="section-heading__title" id="part-8-title">القوائم المالية</h2></div></div>
+          <div class="chapter-grid">
+            <a class="chapter-card" href="#" aria-label="الفصل الحادي والعشرون: قائمة الدخل"><div class="chapter-card__top"><span class="chapter-card__number">الفصل الحادي والعشرون</span><span class="chapter-card__symbol" aria-hidden="true">▤</span></div><h3 class="chapter-card__title">قائمة الدخل</h3><p class="chapter-card__description">البنود، الترتيب، القراءة والتحليل</p></a>
+            <a class="chapter-card" href="#" aria-label="الفصل الثاني والعشرون: الميزانية العمومية"><div class="chapter-card__top"><span class="chapter-card__number">الفصل الثاني والعشرون</span><span class="chapter-card__symbol" aria-hidden="true">▧</span></div><h3 class="chapter-card__title">الميزانية العمومية</h3><p class="chapter-card__description">الأصول، الخصوم، حقوق الملكية — كيف تقرأها</p></a>
+            <a class="chapter-card" href="#" aria-label="الفصل الثالث والعشرون: قائمة التدفقات النقدية"><div class="chapter-card__top"><span class="chapter-card__number">الفصل الثالث والعشرون</span><span class="chapter-card__symbol" aria-hidden="true">⇄</span></div><h3 class="chapter-card__title">قائمة التدفقات النقدية</h3><p class="chapter-card__description">التدفقات التشغيلية والاستثمارية والتمويلية</p></a>
+            <a class="chapter-card" href="#" aria-label="الفصل الرابع والعشرون: تحليل القوائم المالية"><div class="chapter-card__top"><span class="chapter-card__number">الفصل الرابع والعشرون</span><span class="chapter-card__symbol" aria-hidden="true">⌁</span></div><h3 class="chapter-card__title">تحليل القوائم المالية</h3><p class="chapter-card__description">النسب المالية الأهم — السيولة، الربحية، النشاط</p></a>
+          </div>
+        </div>
+      </section>
+      <hr class="part-divider" />
+
+      <section class="content-section" aria-labelledby="part-9-title">
+        <div class="container">
+          <div class="section-heading"><div class="part-number">09</div><div><p class="section-heading__eyebrow">الجزء التاسع</p><h2 class="section-heading__title" id="part-9-title">الأدوات والتطبيق العملي</h2></div></div>
+          <div class="chapter-grid">
+            <a class="chapter-card" href="#" aria-label="الفصل الخامس والعشرون: برامج المحاسبة في السوق المصري"><div class="chapter-card__top"><span class="chapter-card__number">الفصل الخامس والعشرون</span><span class="chapter-card__symbol" aria-hidden="true">⌘</span></div><h3 class="chapter-card__title">برامج المحاسبة في السوق المصري</h3><p class="chapter-card__description">Excel، QuickBooks، الميزان، Odoo — متى تستخدم كل منها</p></a>
+            <a class="chapter-card" href="#" aria-label="الفصل السادس والعشرون: المحاسب في بيئة تجار الجملة"><div class="chapter-card__top"><span class="chapter-card__number">الفصل السادس والعشرون</span><span class="chapter-card__symbol" aria-hidden="true">▦</span></div><h3 class="chapter-card__title">المحاسب في بيئة تجار الجملة</h3><p class="chapter-card__description">الطبيعة الخاصة لهذه البيئة، الكمبيالات، إدارة الأجل، الضغوط الميدانية</p></a>
+            <a class="chapter-card" href="#" aria-label="الفصل السابع والعشرون: أخطاء المحاسبين الشائعة وكيف تتجنبها"><div class="chapter-card__top"><span class="chapter-card__number">الفصل السابع والعشرون</span><span class="chapter-card__symbol" aria-hidden="true">⚠</span></div><h3 class="chapter-card__title">أخطاء المحاسبين الشائعة وكيف تتجنبها</h3><p class="chapter-card__description">أخطاء القيود، أخطاء الضرائب، الثغرات الأمنية في الحسابات</p></a>
+          </div>
+        </div>
+      </section>
+      <hr class="part-divider" />
+
+      <section class="content-section content-section--alt" aria-labelledby="part-10-title">
+        <div class="container">
+          <div class="section-heading"><div class="part-number">10</div><div><p class="section-heading__eyebrow">الجزء العاشر</p><h2 class="section-heading__title" id="part-10-title">المهارات والاحتراف</h2></div></div>
+          <div class="chapter-grid">
+            <a class="chapter-card" href="#" aria-label="الفصل الثامن والعشرون: المهارات الشخصية والعقلية للمحاسب المحترف"><div class="chapter-card__top"><span class="chapter-card__number">الفصل الثامن والعشرون</span><span class="chapter-card__symbol" aria-hidden="true">✦</span></div><h3 class="chapter-card__title">المهارات الشخصية والعقلية للمحاسب المحترف</h3><p class="chapter-card__description">الأمانة، الدقة، ضبط الضغط، القراءة المالية، الحس التجاري</p></a>
+            <a class="chapter-card" href="#" aria-label="الفصل التاسع والعشرون: كيف تبني سمعتك وتجد عملك في السوق المصري"><div class="chapter-card__top"><span class="chapter-card__number">الفصل التاسع والعشرون</span><span class="chapter-card__symbol" aria-hidden="true">↗</span></div><h3 class="chapter-card__title">كيف تبني سمعتك وتجد عملك في السوق المصري</h3><p class="chapter-card__description">التعامل مع أصحاب العمل، بناء الثقة، تسعير خدماتك</p></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing-note">
+        <div class="container">
+          <div class="closing-note__inner">
+            <h2 class="closing-note__title">رحلة تعلّم متدرجة</h2>
+            <p class="closing-note__text">الكتاب مُصمَّم للقراءة التدريجية؛ كل فصل يبني على ما قبله، لتنتقل من فهم الأساسيات إلى التطبيق العملي والاحتراف.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="container"><p><strong>المحاسب العملي</strong> · دليلك الشامل للمحاسبة في السوق المصري</p></div></footer>
+  </body>
+</html>

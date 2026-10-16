@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الديون المعدومة والمشكوك فيها</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        
+        --clr-primary: #b378a6;
+        --clr-secondary: #7796bf;
+        --clr-light: #ffffff;
+        --clr-light-2: #f0f0f0;
+        --clr-border: #dedede;
+        --clr-dark: #1b1b1b;
+        --clr-dark-2: #444444;
+        --clr-text: #333333;
+        --clr-text-soft: #555555;
+
+        --font-body: 'Baloo Bhaijaan 2', sans-serif;
+
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 18px;
+
+        --shadow-soft: 0 4px 20px rgba(27, 27, 27, 0.07);
+        --shadow-hover: 0 12px 28px rgba(179, 120, 166, 0.16);
+
+        --section-pad: 4.5rem;
+        --content-width: 900px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--clr-light);
+        color: var(--clr-dark);
+        line-height: 1.9;
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: var(--clr-secondary);
+        text-decoration: none;
+        transition: 0.2s;
+      }
+
+      a:hover {
+        color: var(--clr-primary);
+      }
+
+      h1, h2, h3, h4, h5 {
+        font-family: var(--font-body);
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+        color: var(--clr-dark);
+      }
+
+      h1, h2 { font-weight: 800; }
+      h3, h4, h5 { font-weight: 700; }
+
+      p {
+        color: var(--clr-text);
+        margin-bottom: 1rem;
+      }
+
+      ul { margin: 0; padding: 0; }
+
+      section { scroll-margin-top: 90px; }
+
+      ::selection {
+        background: var(--clr-primary);
+        color: #fff;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--clr-secondary);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      .editor-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--clr-primary);
+        padding: 0.7rem 0;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .editor-toolbar__tab-title {
+        color: #fff;
+        font-size: 1.1rem;
+        direction: ltr;
+        font-weight: 700;
+      }
+
+      .hero {
+        background: var(--clr-secondary);
+        color: #fff;
+        padding: 4.5rem 0 3.5rem;
+      }
+
+      .hero__title {
+        color: #fff;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      .hero__lead {
+        color: #fff;
+        opacity: 0.95;
+        max-width: 760px;
+        font-size: 1.15rem;
+        margin-bottom: 0;
+      }
+
+      .content-section { padding: var(--section-pad) 0; }
+      .content-section--alt { background: #fcfcfc; }
+      .content-section--tint { background: var(--clr-light-2); }
+
+      .content-section__eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+        font-size: 0.86rem;
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+      }
+
+      .content-section__eyebrow::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        background: var(--clr-primary);
+      }
+
+      .content-section__title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+
+      .content-section__description {
+        max-width: 760px;
+        color: var(--clr-text-soft);
+        margin-bottom: 2.5rem;
+      }
+
+      .summary-card {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+        padding: 2rem;
+      }
+
+      .summary-card__list {
+        display: grid;
+        gap: 1rem;
+        list-style: none;
+      }
+
+      .summary-card__list li {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+      }
+
+      .callout {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        border-radius: var(--radius-md);
+        border-inline-start: 4px solid;
+      }
+
+      .callout__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 700;
+      }
+
+      .callout--note {
+        background: rgba(119, 150, 191, 0.08);
+        border-color: var(--clr-secondary);
+      }
+
+      .callout--warning {
+        background: rgba(179, 120, 166, 0.08);
+        border-color: var(--clr-primary);
+      }
+
+      .flow-diagram {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin: 2rem 0;
+      }
+
+      .flow-step {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        padding: 1rem 1.25rem;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .flow-step__title {
+        color: var(--clr-primary);
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+      }
+
+      .flow-step__description { color: var(--clr-text-soft); margin: 0; }
+
+      .flow-arrow {
+        text-align: center;
+        color: var(--clr-secondary);
+        font-size: 28px;
+        line-height: 1;
+      }
+
+      .topic-block { margin-bottom: 3rem; }
+      .topic-block:last-child { margin-bottom: 0; }
+
+      .topic-block__title {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+      }
+
+      .topic-divider {
+        border: none;
+        border-top: 1px dashed var(--clr-border);
+        margin: 2.5rem 0;
+      }
+
+      .num {
+        direction: ltr;
+        unicode-bidi: isolate;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .formula-box {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        text-align: center;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .formula-box__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--clr-primary);
+        font-weight: 700;
+      }
+
+      .formula-box__body {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--clr-dark);
+      }
+
+      .example-block {
+        overflow: hidden;
+        margin: 2rem 0;
+        background: var(--clr-light);
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .example-block__header {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.7rem 1.2rem;
+        background: var(--clr-dark);
+      }
+
+      .example-block__tag {
+        padding: 0 0.7rem;
+        background: var(--clr-primary);
+        color: #fff;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .example-block__title { color: #fff; font-weight: 600; }
+
+      .example-block__body { padding: 1.5rem; }
+
+      .example-block__label {
+        display: block;
+        margin: 1.6rem 0 0.6rem;
+        color: var(--clr-secondary);
+        font-weight: 700;
+      }
+
+      .example-block__label:first-child { margin-top: 0; }
+
+      .example-block__data {
+        margin: 0;
+        padding-inline-start: 1.2rem;
+        color: var(--clr-text);
+      }
+
+      .acc-table-wrap { overflow-x: auto; }
+
+      .acc-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+
+      .acc-table th,
+      .acc-table td {
+        padding: 0.5rem 0.8rem;
+        border: 1px solid var(--clr-border);
+      }
+
+      .acc-table thead th {
+        background: var(--clr-light-2);
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .acc-table td.num { text-align: end; }
+
+      .acc-table__total td {
+        background: #fcfcfc;
+        font-weight: 700;
+        border-top: 2px solid var(--clr-dark-2);
+        border-bottom: 4px double var(--clr-dark-2);
+      }
+
+      .journal__entry { border-bottom: 2px solid var(--clr-dark-2); }
+      .acc-table td.journal__credit { padding-inline-start: 2.5rem; }
+      .journal__note td { color: var(--clr-text-soft); font-size: 0.88rem; }
+
+      .t-accounts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+
+      .t-account {
+        overflow: hidden;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+      }
+
+      .t-account__title {
+        padding: 0.5rem;
+        text-align: center;
+        color: var(--clr-primary);
+        font-weight: 700;
+        border-bottom: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__sides { display: grid; grid-template-columns: 1fr 1fr; }
+
+      .t-account__side + .t-account__side {
+        border-inline-start: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__side-label {
+        padding: 0.3rem;
+        text-align: center;
+        color: var(--clr-text-soft);
+        font-size: 0.85rem;
+        font-weight: 700;
+        border-bottom: 1px solid var(--clr-border);
+      }
+
+      .t-account__lines {
+        min-height: 3rem;
+        margin: 0;
+        padding: 0.4rem 0.7rem;
+        list-style: none;
+      }
+
+      .t-account__lines li {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .t-account__balance {
+        padding: 0.45rem 0.7rem;
+        text-align: center;
+        font-weight: 700;
+        background: rgba(119, 150, 191, 0.08);
+        border-top: 1px solid var(--clr-border);
+      }
+
+      .site-footer {
+        background: var(--clr-light-2);
+        color: var(--clr-light);
+        padding: 1rem 0 0.5rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        :root { --section-pad: 3rem; }
+        .hero { padding: 3.5rem 0; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; }
+      }
+    </style>
+  </head>
+
+  <body>
+<div class="editor-toolbar"><div class="container d-flex align-items-center gap-3"><span class="editor-toolbar__tab-title" data-sync-title></span></div></div>
+
+<header class="hero"><div class="container">
+<h1 class="hero__title">الديون المعدومة والمشكوك فيها</h1>
+<p class="hero__lead">يبيّن هذا الفصل كيف تُثبت المنشأة خسائر الذمم المدينة دون أن تنتظر وقوعها: تقدّر المخصص في نهاية الفترة، ثم تشطب الدين حين يثبت عدم تحصيله، ثم تعالج ما يُسترد منه لاحقًا. وتبرز أهميته الآن لأن رصيد العملاء في قائمة المركز المالي يجب أن يعكس ما يُتوقع تحصيله فعلًا لا ما سُجِّل بيعًا فقط.</p>
+</div></header>
+
+<section class="content-section" id="explanation"><div class="container">
+<div class="content-section__eyebrow">شرح وتطبيق</div>
+<h2 class="content-section__title">شرح وتطبيق كل مرحلة</h2>
+<div class="article-content" style="max-width: 900px">
+<div class="topic-block" id="allowance">
+<h3 class="topic-block__title">المخصصات</h3>
+<p>تُثبت المنشأة المبيعات الآجلة إيرادًا في الفترة التي تمّت فيها، غير أن بعض العملاء (Accounts Receivable) لن يسدّدوا ما عليهم. فالدين الذي يُشَكّ في تحصيله يُسمّى دينًا مشكوكًا فيه (Doubtful Debt)، والدين الذي ثبت نهائيًا عدم تحصيله يُسمّى دينًا معدومًا (Bad Debt). ولو انتظرت المنشأة حتى يصبح الدين معدومًا لتحمّلت فترة لاحقة خسارة بيعٍ تمّ في فترة سابقة، فيزيد ربح الفترة الأولى وأصولها عن حقيقتهما. ولذلك يقضي مبدأ المقابلة (Matching Principle)، أي مقابلة المصروف بإيراد الفترة ذاتها، بتقدير الخسارة المتوقعة في نهاية كل فترة.</p>
+<p>يتم التقدير بقيد تسوية يُثبت مصروف الديون المشكوك فيها (Bad Debt Expense) الذي يظهر في قائمة الدخل، ويقابله دائنًا مخصص الديون المشكوك فيها (Allowance for Doubtful Accounts). والمخصص حساب مقابل (Contra Account)، أي حساب رصيده عكس طبيعة الحساب الذي يُخصم منه: فهو دائن، ويُطرح من رصيد العملاء ليظهر صافي العملاء (Net Receivables)، وهو ما يُتوقع تحصيله فعلًا. ولا يُخفَّض حساب العملاء نفسه، لأن الدين ما زال قائمًا على العميل ولم يتحدد بعدُ من سيعجز عن السداد.</p>
+<div class="callout callout--note"><span class="callout__label">ملاحظة</span><p>يتطلب المعيار الدولي IFRS 9 قياس مخصص الخسائر الائتمانية المتوقعة (Expected Credit Loss)، أي الخسارة المتوقعة من عجز العملاء عن السداد، مقدَّرةً بالخبرة السابقة بعد تعديلها بالظروف الحالية والمتوقعة. وتُستعمل عمليًا نسبة من رصيد العملاء، وقد تتفاوت النسبة بحسب عمر الدين، أي المدة المنقضية على استحقاقه.</p></div>
+<div class="formula-box"><span class="formula-box__label">الرصيد المطلوب للمخصص</span><p class="formula-box__body">رصيد العملاء × نسبة الخسارة المتوقعة</p></div>
+<div class="formula-box"><span class="formula-box__label">مصروف الفترة</span><p class="formula-box__body">الرصيد المطلوب − رصيد المخصص القائم قبل التسوية (دائنًا)</p></div>
+<div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">تكوين المخصص في 31/12/2026</span></div>
+<div class="example-block__body"><span class="example-block__label">المعطيات</span><ul class="example-block__data"><li>شركة تجارية تنتهي سنتها المالية في <span class="num">31/12/2026</span>.</li><li>رصيد العملاء في <span class="num">31/12/2026</span> بعد شطب الديون التي ثبت عدم تحصيلها: <span class="num">400,000</span> ج.م.</li><li>رصيد مخصص الديون المشكوك فيها قبل التسوية: <span class="num">12,000</span> ج.م دائن (مرحّل من سنوات سابقة).</li><li>تقدّر الإدارة الخسائر المتوقعة بنسبة <span class="num">5%</span> من رصيد العملاء.</li></ul><span class="example-block__label">قيود اليومية</span><div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين</th><th>دائن</th></tr></thead>
+<tbody class="journal__entry">
+<tr><td rowspan="3"><span class="num">31/12/2026</span></td><td>من ح/ مصروف الديون المشكوك فيها</td><td class="num">8,000</td><td></td></tr>
+<tr><td class="journal__credit">إلى ح/ مخصص الديون المشكوك فيها</td><td></td><td class="num">8,000</td></tr>
+<tr class="journal__note"><td>إثبات مصروف الفترة: الرصيد المطلوب 20,000 − الرصيد القائم 12,000</td><td></td><td></td></tr>
+</tbody>
+</table></div><span class="example-block__label">الترحيل إلى حسابات الأستاذ</span><div class="t-accounts"><div class="t-account"><div class="t-account__title">ح/ مصروف الديون المشكوك فيها</div>
+<div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>تسوية 31/12/2026</span><span class="num">8,000</span></li></ul></div>
+<div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"></ul></div></div>
+<div class="t-account__balance">الرصيد: <span class="num">8,000</span> مدين</div></div><div class="t-account"><div class="t-account__title">ح/ مخصص الديون المشكوك فيها</div>
+<div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"></ul></div>
+<div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"><li><span>رصيد أول المدة</span><span class="num">12,000</span></li><li><span>قيد التسوية</span><span class="num">8,000</span></li></ul></div></div>
+<div class="t-account__balance">الرصيد: <span class="num">20,000</span> دائن</div></div></div><span class="example-block__label">عرض العملاء في قائمة المركز المالي في 31/12/2026</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البيان</th><th>جزئي</th><th>كلي</th></tr></thead><tbody><tr><td>العملاء</td><td class="num">400,000</td><td class="num"></td></tr><tr><td>يخصم: مخصص الديون المشكوك فيها</td><td class="num">(20,000)</td><td class="num"></td></tr><tr class="acc-table__total"><td>صافي العملاء</td><td class="num"></td><td class="num">380,000</td></tr></tbody></table></div></div></div>
+<p>الرصيد المطلوب = <span class="num">400,000</span> ج.م × <span class="num">5%</span> = <span class="num">20,000</span> ج.م. وفي المخصص فعلًا <span class="num">12,000</span> ج.م، فلا يُحمَّل على الفترة إلا الفرق <span class="num">8,000</span> ج.م. ويصبح رصيد المخصص بعد القيد <span class="num">20,000</span> ج.م دائنًا، فيُخصم من العملاء ليظهر صافيهم <span class="num">380,000</span> ج.م.</p>
+<div class="callout callout--warning"><span class="callout__label">انتبه</span><p>من الأخطاء الشائعة تحميل قائمة الدخل بكامل الرصيد المطلوب (<span class="num">20,000</span> ج.م) مع إغفال المخصص القائم، فيتضخم المصروف. وإذا كان الرصيد المطلوب أقل من رصيد المخصص القائم فيُعكس الفرق بقيد من ح/ مخصص الديون المشكوك فيها إلى ح/ مصروف الديون المشكوك فيها، فينخفض مصروف الفترة.</p></div>
+</div>
+<hr class="topic-divider" />
+<div class="topic-block" id="write-off">
+<h3 class="topic-block__title">الشطب</h3>
+<p>الشطب (Write-off) هو إخراج الدين من حساب العملاء حين يثبت عدم إمكان تحصيله، كإفلاس العميل أو وفاته دون تركة، أو فشل إجراءات التحصيل القضائية. وهو قرار يُبنى على دليل لا على مجرد الشك، وهذا ما يميّزه من تكوين المخصص الذي هو تقدير لخسارة لم تتحدد بعدُ.</p>
+<p>وفي طريقة المخصص يُحمَّل الشطب على المخصص لا على المصروف، لأن الخسارة سبق الاعتراف بها عند تقديرها. ومن ثَمّ لا يتغير الربح عند الشطب، ولا يتغير صافي العملاء، فينقص العملاء والمخصص بالمبلغ نفسه. ويُجرى الشطب في حساب العميل المعني حتى تبقى بقية الأرصدة سليمة.</p>
+<div class="callout callout--note"><span class="callout__label">ملاحظة</span><p>الطريقة المباشرة للشطب (Direct Write-off Method) تُحمّل الدين مصروفًا عند الشطب فقط، بقيد من ح/ مصروف الديون المعدومة إلى ح/ العملاء. وهي لا تنسجم مع مبدأ المقابلة لأن الخسارة تتأخر عن الفترة التي نشأ فيها البيع، ولذلك لا يُعتمد عليها عادة إلا حين تكون المبالغ غير جوهرية.</p></div>
+<div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">شطب دين عميل مفلس في 15/03/2027</span></div>
+<div class="example-block__body"><span class="example-block__label">المعطيات</span><ul class="example-block__data"><li>رصيد العملاء في <span class="num">01/01/2027</span>: <span class="num">400,000</span> ج.م، منها <span class="num">7,000</span> ج.م على العميل محمد السيد.</li><li>رصيد مخصص الديون المشكوك فيها: <span class="num">20,000</span> ج.م دائن (من المثال السابق).</li><li>في <span class="num">15/03/2027</span> صدر حكم بإفلاس محمد السيد وثبت عدم إمكان تحصيل دينه كاملًا.</li></ul><span class="example-block__label">قيود اليومية</span><div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين</th><th>دائن</th></tr></thead>
+<tbody class="journal__entry">
+<tr><td rowspan="3"><span class="num">15/03/2027</span></td><td>من ح/ مخصص الديون المشكوك فيها</td><td class="num">7,000</td><td></td></tr>
+<tr><td class="journal__credit">إلى ح/ العملاء (محمد السيد)</td><td></td><td class="num">7,000</td></tr>
+<tr class="journal__note"><td>شطب دين العميل المفلس من الدفاتر وتحميله على المخصص</td><td></td><td></td></tr>
+</tbody>
+</table></div><span class="example-block__label">الترحيل إلى حسابات الأستاذ</span><div class="t-accounts"><div class="t-account"><div class="t-account__title">ح/ مخصص الديون المشكوك فيها</div>
+<div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>شطب محمد السيد</span><span class="num">7,000</span></li></ul></div>
+<div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"><li><span>رصيد 01/01/2027</span><span class="num">20,000</span></li></ul></div></div>
+<div class="t-account__balance">الرصيد: <span class="num">13,000</span> دائن</div></div><div class="t-account"><div class="t-account__title">ح/ العملاء</div>
+<div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>رصيد 01/01/2027</span><span class="num">400,000</span></li></ul></div>
+<div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"><li><span>شطب محمد السيد</span><span class="num">7,000</span></li></ul></div></div>
+<div class="t-account__balance">الرصيد: <span class="num">393,000</span> مدين</div></div></div><span class="example-block__label">أثر الشطب على صافي العملاء</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البيان</th><th>قبل الشطب</th><th>بعد الشطب</th></tr></thead><tbody><tr><td>العملاء</td><td class="num">400,000</td><td class="num">393,000</td></tr><tr><td>يخصم: مخصص الديون المشكوك فيها</td><td class="num">(20,000)</td><td class="num">(13,000)</td></tr><tr class="acc-table__total"><td>صافي العملاء</td><td class="num">380,000</td><td class="num">380,000</td></tr></tbody></table></div></div></div>
+<p>خرج الدين من حساب العملاء فصار الرصيد <span class="num">393,000</span> ج.م، وانخفض المخصص إلى <span class="num">13,000</span> ج.م. وبقي صافي العملاء <span class="num">380,000</span> ج.م كما كان، لأن الخسارة كانت محسوبة ضمن المخصص منذ تكوينه. ولو قُيّد الشطب على المصروف لحُسبت الخسارة مرتين.</p>
+<div class="callout callout--warning"><span class="callout__label">انتبه</span><p>قد يتجاوز مجموع الديون المشطوبة رصيد المخصص، فيصبح رصيده مدينًا مؤقتًا حتى قيد تسوية نهاية الفترة، الذي يغطي هذا العجز ويكوّن الرصيد المطلوب. والخطأ الشائع هو معالجة هذا الرصيد المدين على أنه خطأ، أو تحميل الشطب على المصروف بدل المخصص.</p></div>
+</div>
+<hr class="topic-divider" />
+<div class="topic-block" id="recovery">
+<h3 class="topic-block__title">الاسترداد</h3>
+<p>قد يسدّد العميل بعد الشطب كل دينه أو بعضه، وهو ما يُسمّى الاسترداد (Recovery). ولا يُقيَّد المبلغ مباشرة إلى النقدية، بل يمرّ بخطوتين تُبقيان حساب العميل صحيحًا؛ إذ يبيّن سجله أنه سدّد بعد الشطب، وهو أثر يهم الإدارة عند منحه ائتمانًا جديدًا.</p>
+<div class="flow-diagram">
+<div class="flow-step"><div class="flow-step__title">إعادة إثبات الدين</div><div class="flow-step__description">قيد عكسي للشطب بقدر المبلغ المسترد فقط: من ح/ العميل إلى ح/ المخصص. ولا يُعاد إثبات ما لم يُسدَّد.</div></div>
+<div class="flow-arrow">↓</div>
+<div class="flow-step"><div class="flow-step__title">إثبات التحصيل</div><div class="flow-step__description">يُسجَّل السداد كأي تحصيل من عميل: من ح/ النقدية أو البنك إلى ح/ العميل.</div></div>
+</div>
+<div class="callout callout--note"><span class="callout__label">ملاحظة</span><p>في الطريقة المباشرة للشطب يُقيَّد المبلغ المسترد دائنًا في ح/ إيراد ديون معدومة مستردة (Bad Debts Recovered) بدل المخصص، لأن الدين لم يمرّ بالمخصص أصلًا.</p></div>
+<div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">استرداد جزء من الدين المشطوب في 10/06/2027</span></div>
+<div class="example-block__body"><span class="example-block__label">المعطيات</span><ul class="example-block__data"><li>في <span class="num">15/03/2027</span> شُطب دين العميل محمد السيد <span class="num">7,000</span> ج.م على المخصص.</li><li>في <span class="num">10/06/2027</span> سدّد العميل <span class="num">4,000</span> ج.م عن طريق البنك، ولم يسدّد الباقي.</li></ul><span class="example-block__label">قيود اليومية</span><div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين</th><th>دائن</th></tr></thead>
+<tbody class="journal__entry">
+<tr><td rowspan="3"><span class="num">10/06/2027</span></td><td>من ح/ العملاء (محمد السيد)</td><td class="num">4,000</td><td></td></tr>
+<tr><td class="journal__credit">إلى ح/ مخصص الديون المشكوك فيها</td><td></td><td class="num">4,000</td></tr>
+<tr class="journal__note"><td>إعادة إثبات الجزء المسترد من الدين المشطوب</td><td></td><td></td></tr>
+</tbody>
+<tbody class="journal__entry">
+<tr><td rowspan="3"><span class="num">10/06/2027</span></td><td>من ح/ البنك</td><td class="num">4,000</td><td></td></tr>
+<tr><td class="journal__credit">إلى ح/ العملاء (محمد السيد)</td><td></td><td class="num">4,000</td></tr>
+<tr class="journal__note"><td>تحصيل المبلغ من العميل</td><td></td><td></td></tr>
+</tbody>
+</table></div><span class="example-block__label">الترحيل إلى حسابات الأستاذ</span><div class="t-accounts"><div class="t-account"><div class="t-account__title">ح/ العملاء (محمد السيد)</div>
+<div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>رصيد قبل الشطب</span><span class="num">7,000</span></li><li><span>إعادة إثبات</span><span class="num">4,000</span></li></ul></div>
+<div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"><li><span>شطب 15/03/2027</span><span class="num">7,000</span></li><li><span>تحصيل 10/06/2027</span><span class="num">4,000</span></li></ul></div></div>
+<div class="t-account__balance">الرصيد: <span class="num">0</span> (الحساب مقفل)</div></div><div class="t-account"><div class="t-account__title">ح/ مخصص الديون المشكوك فيها</div>
+<div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>شطب محمد السيد</span><span class="num">7,000</span></li></ul></div>
+<div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"><li><span>رصيد 01/01/2027</span><span class="num">20,000</span></li><li><span>استرداد 10/06/2027</span><span class="num">4,000</span></li></ul></div></div>
+<div class="t-account__balance">الرصيد: <span class="num">17,000</span> دائن</div></div></div></div></div>
+<p>أُعيد إثبات <span class="num">4,000</span> ج.م فقط في حساب العميل، ثم قُيّد تحصيلها من البنك فأُقفل الحساب. أما <span class="num">3,000</span> ج.م الباقية فتظل مشطوبة. وزاد المخصص بمبلغ الاسترداد فصار <span class="num">17,000</span> ج.م، ومعنى ذلك أن الاسترداد لا يظهر إيرادًا مستقلًا، وإنما يخفّض الحاجة إلى مصروف جديد في التسوية اللاحقة.</p>
+<div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">تسوية 31/12/2027 بعد الشطب والاسترداد</span></div>
+<div class="example-block__body"><span class="example-block__label">المعطيات</span><ul class="example-block__data"><li>رصيد العملاء في <span class="num">31/12/2027</span> بعد جميع عمليات السنة: <span class="num">450,000</span> ج.م، ونسبة التقدير ثابتة <span class="num">5%</span>.</li><li>حركة المخصص خلال السنة: رصيد أول المدة <span class="num">20,000</span> ج.م، ديون مشطوبة <span class="num">7,000</span> ج.م، ديون مستردة <span class="num">4,000</span> ج.م.</li></ul><span class="example-block__label">قيود اليومية</span><div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين</th><th>دائن</th></tr></thead>
+<tbody class="journal__entry">
+<tr><td rowspan="3"><span class="num">31/12/2027</span></td><td>من ح/ مصروف الديون المشكوك فيها</td><td class="num">5,500</td><td></td></tr>
+<tr><td class="journal__credit">إلى ح/ مخصص الديون المشكوك فيها</td><td></td><td class="num">5,500</td></tr>
+<tr class="journal__note"><td>استكمال المخصص إلى الرصيد المطلوب: 22,500 − 17,000</td><td></td><td></td></tr>
+</tbody>
+</table></div><span class="example-block__label">حركة مخصص الديون المشكوك فيها لسنة 2027</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البيان</th><th>المبلغ</th></tr></thead><tbody><tr><td>رصيد المخصص في 01/01/2027</td><td class="num">20,000</td></tr><tr><td>يخصم: ديون مشطوبة خلال السنة</td><td class="num">(7,000)</td></tr><tr><td>يضاف: ديون مستردة خلال السنة</td><td class="num">4,000</td></tr><tr><td>رصيد المخصص قبل التسوية</td><td class="num">17,000</td></tr><tr><td>يضاف: مصروف الديون المشكوك فيها لسنة 2027</td><td class="num">5,500</td></tr><tr class="acc-table__total"><td>رصيد المخصص في 31/12/2027</td><td class="num">22,500</td></tr></tbody></table></div></div></div>
+<p>الرصيد المطلوب = <span class="num">450,000</span> ج.م × <span class="num">5%</span> = <span class="num">22,500</span> ج.م، والرصيد القائم قبل التسوية <span class="num">17,000</span> ج.م (20,000 − 7,000 + 4,000)، فيكون مصروف السنة <span class="num">5,500</span> ج.م. ولولا الاسترداد لكان الرصيد القائم <span class="num">13,000</span> ج.م ولبلغ المصروف <span class="num">9,500</span> ج.م، فيظهر أثر الاسترداد في خفض مصروف الفترة.</p>
+<div class="callout callout--warning"><span class="callout__label">انتبه</span><p>من الأخطاء الشائعة قيد المبلغ المسترد مباشرة من ح/ البنك إلى ح/ المخصص دون إعادة إثباته في حساب العميل، فيضيع من سجله ما يدل على سداده. ومن الأخطاء كذلك إعادة إثبات كامل الدين المشطوب وإن لم يسدَّد منه إلا جزء.</p></div>
+</div>
+</div></div></section>
+
+<section class="content-section content-section--tint" id="comparison">
+<div class="container">
+<div class="content-section__eyebrow">مقارنة</div>
+<h2 class="content-section__title">المخصص والشطب والاسترداد: متى وكيف يتأثر كل حساب؟</h2>
+<div class="table-responsive"><table class="table table-bordered align-middle">
+<thead><tr><th>وجه المقارنة</th><th>تكوين المخصص</th><th>الشطب</th><th>الاسترداد</th></tr></thead>
+<tbody>
+<tr><td>التوقيت</td><td>نهاية الفترة (قيد تسوية)</td><td>عند ثبوت عدم إمكان التحصيل</td><td>عند سداد العميل بعد الشطب</td></tr>
+<tr><td>القيد</td><td>من ح/ المصروف إلى ح/ المخصص</td><td>من ح/ المخصص إلى ح/ العملاء</td><td>من ح/ العملاء إلى ح/ المخصص، ثم من ح/ البنك إلى ح/ العملاء</td></tr>
+<tr><td>الأثر على قائمة الدخل</td><td>يظهر مصروف الفترة</td><td>لا أثر</td><td>لا أثر مباشر، ويخفض مصروف التسوية اللاحقة</td></tr>
+<tr><td>الأثر على رصيد العملاء</td><td>لا يتغير</td><td>ينخفض بالمبلغ المشطوب</td><td>لا أثر صافيًا: يرتفع عند الإعادة ثم ينخفض عند التحصيل</td></tr>
+<tr><td>الأثر على المخصص</td><td>يزداد</td><td>ينقص</td><td>يزداد</td></tr>
+<tr><td>الأثر على صافي العملاء</td><td>ينخفض بمبلغ المصروف</td><td>لا يتغير</td><td>ينخفض بالمبلغ المسترد مقابل ارتفاع البنك بالمبلغ نفسه</td></tr>
+</tbody></table></div>
+</div>
+</section>
+
+<section class="content-section" id="summary"><div class="container">
+<div class="content-section__eyebrow">الخلاصة</div>
+<h2 class="content-section__title">أهم ما يجب تذكّره</h2>
+<div class="summary-card" style="max-width: 900px"><ul class="summary-card__list">
+<li>✔ تُقدَّر الخسارة المتوقعة في نهاية الفترة بقيد من ح/ مصروف الديون المشكوك فيها إلى ح/ المخصص، تطبيقًا لمبدأ المقابلة ومتطلبات IFRS 9.</li>
+<li>✔ مصروف الفترة = الرصيد المطلوب للمخصص − رصيد المخصص القائم قبل التسوية، ولا يُحمَّل الرصيد المطلوب كاملًا.</li>
+<li>✔ المخصص حساب مقابل دائن يُطرح من العملاء ليظهر صافي العملاء.</li>
+<li>✔ الشطب يُحمَّل على المخصص لا على المصروف، فلا يتغير الربح ولا صافي العملاء.</li>
+<li>✔ الاسترداد خطوتان: إعادة إثبات المبلغ المسترد فقط في حساب العميل، ثم إثبات تحصيله.</li>
+<li>✔ يزيد الاسترداد رصيد المخصص، فينخفض مصروف التسوية اللاحقة.</li>
+</ul></div></div></section>
+
+<footer class="site-footer"><div class="container"><p>الجزء الرابع: الذمم والديون | الفصل الثاني عشر: الديون المعدومة والمشكوك فيها</p></div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      /* Sync Toolbar Title */
+      const heroTitle = document.querySelector('.hero__title')
+      const toolbarTitle = document.querySelector('[data-sync-title]')
+      if (heroTitle && toolbarTitle) {
+        const text = heroTitle.textContent.trim()
+        if (text) {
+          toolbarTitle.textContent = text
+          document.title = text
+        }
+      }
+    </script>
+  </body>
+</html>

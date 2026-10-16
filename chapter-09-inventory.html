@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الفصل التاسع: المخزون وإدارته</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        
+        --clr-primary: #b378a6;
+        --clr-secondary: #7796bf;
+        --clr-light: #ffffff;
+        --clr-light-2: #f0f0f0;
+        --clr-border: #dedede;
+        --clr-dark: #1b1b1b;
+        --clr-dark-2: #444444;
+        --clr-text: #333333;
+        --clr-text-soft: #555555;
+
+        --font-body: 'Baloo Bhaijaan 2', sans-serif;
+
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 18px;
+
+        --shadow-soft: 0 4px 20px rgba(27, 27, 27, 0.07);
+        --shadow-hover: 0 12px 28px rgba(179, 120, 166, 0.16);
+
+        --section-pad: 4.5rem;
+        --content-width: 900px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--clr-light);
+        color: var(--clr-dark);
+        line-height: 1.9;
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: var(--clr-secondary);
+        text-decoration: none;
+        transition: 0.2s;
+      }
+
+      a:hover {
+        color: var(--clr-primary);
+      }
+
+      h1, h2, h3, h4, h5 {
+        font-family: var(--font-body);
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+        color: var(--clr-dark);
+      }
+
+      h1, h2 { font-weight: 800; }
+      h3, h4, h5 { font-weight: 700; }
+
+      p {
+        color: var(--clr-text);
+        margin-bottom: 1rem;
+      }
+
+      ul { margin: 0; padding: 0; }
+
+      section { scroll-margin-top: 90px; }
+
+      ::selection {
+        background: var(--clr-primary);
+        color: #fff;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--clr-secondary);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      .editor-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--clr-primary);
+        padding: 0.7rem 0;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .editor-toolbar__tab-title {
+        color: #fff;
+        font-size: 1.1rem;
+        direction: ltr;
+        font-weight: 700;
+      }
+
+      .hero {
+        background: var(--clr-secondary);
+        color: #fff;
+        padding: 4.5rem 0 3.5rem;
+      }
+
+      .hero__title {
+        color: #fff;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      .hero__lead {
+        color: #fff;
+        opacity: 0.95;
+        max-width: 760px;
+        font-size: 1.15rem;
+        margin-bottom: 0;
+      }
+
+      .content-section { padding: var(--section-pad) 0; }
+      .content-section--alt { background: #fcfcfc; }
+      .content-section--tint { background: var(--clr-light-2); }
+
+      .content-section__eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+        font-size: 0.86rem;
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+      }
+
+      .content-section__eyebrow::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        background: var(--clr-primary);
+      }
+
+      .content-section__title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+
+      .content-section__description {
+        max-width: 760px;
+        color: var(--clr-text-soft);
+        margin-bottom: 2.5rem;
+      }
+
+      .summary-card {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+        padding: 2rem;
+      }
+
+      .summary-card__list {
+        display: grid;
+        gap: 1rem;
+        list-style: none;
+      }
+
+      .summary-card__list li {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+      }
+
+      .callout {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        border-radius: var(--radius-md);
+        border-inline-start: 4px solid;
+      }
+
+      .callout__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 700;
+      }
+
+      .callout--note {
+        background: rgba(119, 150, 191, 0.08);
+        border-color: var(--clr-secondary);
+      }
+
+      .callout--warning {
+        background: rgba(179, 120, 166, 0.08);
+        border-color: var(--clr-primary);
+      }
+
+      .flow-diagram {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin: 2rem 0;
+      }
+
+      .flow-step {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        padding: 1rem 1.25rem;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .flow-step__title {
+        color: var(--clr-primary);
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+      }
+
+      .flow-step__description { color: var(--clr-text-soft); margin: 0; }
+
+      .flow-arrow {
+        text-align: center;
+        color: var(--clr-secondary);
+        font-size: 28px;
+        line-height: 1;
+      }
+
+      .topic-block { margin-bottom: 3rem; }
+      .topic-block:last-child { margin-bottom: 0; }
+
+      .topic-block__title {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+      }
+
+      .topic-divider {
+        border: none;
+        border-top: 1px dashed var(--clr-border);
+        margin: 2.5rem 0;
+      }
+
+      .num {
+        direction: ltr;
+        unicode-bidi: isolate;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .formula-box {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        text-align: center;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .formula-box__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--clr-primary);
+        font-weight: 700;
+      }
+
+      .formula-box__body {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--clr-dark);
+      }
+
+      .example-block {
+        overflow: hidden;
+        margin: 2rem 0;
+        background: var(--clr-light);
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .example-block__header {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.7rem 1.2rem;
+        background: var(--clr-dark);
+      }
+
+      .example-block__tag {
+        padding: 0 0.7rem;
+        background: var(--clr-primary);
+        color: #fff;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .example-block__title { color: #fff; font-weight: 600; }
+
+      .example-block__body { padding: 1.5rem; }
+
+      .example-block__label {
+        display: block;
+        margin: 1.6rem 0 0.6rem;
+        color: var(--clr-secondary);
+        font-weight: 700;
+      }
+
+      .example-block__label:first-child { margin-top: 0; }
+
+      .example-block__data {
+        margin: 0;
+        padding-inline-start: 1.2rem;
+        color: var(--clr-text);
+      }
+
+      .acc-table-wrap { overflow-x: auto; }
+
+      .acc-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+
+      .acc-table th,
+      .acc-table td {
+        padding: 0.5rem 0.8rem;
+        border: 1px solid var(--clr-border);
+      }
+
+      .acc-table thead th {
+        background: var(--clr-light-2);
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .acc-table td.num { text-align: end; }
+
+      .acc-table__total td {
+        background: #fcfcfc;
+        font-weight: 700;
+        border-top: 2px solid var(--clr-dark-2);
+        border-bottom: 4px double var(--clr-dark-2);
+      }
+
+      .journal__entry { border-bottom: 2px solid var(--clr-dark-2); }
+      .acc-table td.journal__credit { padding-inline-start: 2.5rem; }
+      .journal__note td { color: var(--clr-text-soft); font-size: 0.88rem; }
+
+      .t-accounts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+
+      .t-account {
+        overflow: hidden;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+      }
+
+      .t-account__title {
+        padding: 0.5rem;
+        text-align: center;
+        color: var(--clr-primary);
+        font-weight: 700;
+        border-bottom: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__sides { display: grid; grid-template-columns: 1fr 1fr; }
+
+      .t-account__side + .t-account__side {
+        border-inline-start: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__side-label {
+        padding: 0.3rem;
+        text-align: center;
+        color: var(--clr-text-soft);
+        font-size: 0.85rem;
+        font-weight: 700;
+        border-bottom: 1px solid var(--clr-border);
+      }
+
+      .t-account__lines {
+        min-height: 3rem;
+        margin: 0;
+        padding: 0.4rem 0.7rem;
+        list-style: none;
+      }
+
+      .t-account__lines li {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .t-account__balance {
+        padding: 0.45rem 0.7rem;
+        text-align: center;
+        font-weight: 700;
+        background: rgba(119, 150, 191, 0.08);
+        border-top: 1px solid var(--clr-border);
+      }
+
+      .site-footer {
+        background: var(--clr-light-2);
+        color: var(--clr-light);
+        padding: 1rem 0 0.5rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        :root { --section-pad: 3rem; }
+        .hero { padding: 3.5rem 0; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; }
+      }
+    </style>
+  </head>
+
+  <body>
+    
+    <div class="editor-toolbar">
+      <div class="container d-flex align-items-center gap-3">
+        <span class="editor-toolbar__tab-title" data-sync-title></span>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="container">
+        <h1 class="hero__title">الفصل التاسع: المخزون وإدارته</h1>
+        <p class="hero__lead">يتناول هذا الفصل المخزون (Inventory) بوصفه من أكبر بنود الأصول المتداولة وأكثرها أثرًا في قياس الربح. ويجيب عن أربعة أسئلة: بأي تكلفة نُقيِّم البضاعة؟ وكيف نتابع حركتها صنفًا صنفًا؟ وكيف نتحقق من وجودها فعلًا؟ وكيف نتعامل مع ما يظهر من اختلاف بين الدفاتر والواقع؟</p>
+      </div>
+    </header>
+
+    <section class="content-section" id="explanation"><div class="container"><div class="content-section__eyebrow">شرح وتطبيق</div><h2 class="content-section__title">شرح وتطبيق كل مرحلة</h2><div class="article-content" style="max-width: 900px"><div class="topic-block" id="valuation-methods"><h3 class="topic-block__title">طرق التقييم</h3><p>يُقصد بتقييم المخزون (Inventory Valuation) تحديد المبلغ الذي يظهر به المخزون في الدفاتر وفي قائمة المركز المالي، وتحديد تكلفة البضاعة المباعة (Cost of Goods Sold) التي تُحمَّل على قائمة الدخل. وتبرز الحاجة إلى طرق التقييم لأن المنشأة تشتري الصنف الواحد على دفعات بأسعار مختلفة، فإذا بيعت بعض الوحدات لم يكن واضحًا أيّ الأسعار يُحمَّل عليها. وما يُحمَّل على المبيعات مضافًا إلى ما يبقى في المخزن يساوي دائمًا تكلفة البضاعة المتاحة للبيع (Goods Available for Sale)، وهي تكلفة مخزون أول المدة مضافًا إليها تكلفة المشتريات.</p><div class="formula-box"><span class="formula-box__label">تكلفة البضاعة المباعة</span><p class="formula-box__body">تكلفة البضاعة المباعة = تكلفة البضاعة المتاحة للبيع − تكلفة مخزون آخر المدة</p></div><p>يجيز المعيار الدولي للمحاسبة رقم 2 (IAS 2) طريقتين لتحديد تكلفة المنصرف عند تعذّر تمييز الوحدات بعضها من بعض. الأولى طريقة الوارد أولًا يصرف أولًا (First-In, First-Out – FIFO)، وتفترض أن الوحدات الأقدم تُباع أولًا، فيبقى في المخزون أحدث الأسعار. والثانية طريقة المتوسط المرجح (Weighted Average Cost)، وتُحمِّل كل وحدة بمتوسط تكلفة الوحدات المتاحة. أما طريقة الوارد أخيرًا يصرف أولًا (Last-In, First-Out – LIFO) فلا يسمح بها المعيار.</p><div class="formula-box"><span class="formula-box__label">متوسط التكلفة المرجح</span><p class="formula-box__body">(تكلفة أول المدة + تكلفة المشتريات) ÷ (كمية أول المدة + كمية المشتريات)</p></div><div class="callout callout--note"><span class="callout__label">ملاحظة</span><p>يُقاس المخزون وفق IAS 2 بالأقل من التكلفة وصافي القيمة القابلة للتحقق (Net Realizable Value)، وهي سعر البيع المقدَّر ناقصًا تكاليف الإتمام والبيع. فإذا نزلت هذه القيمة دون التكلفة خُفِّض المخزون إليها.</p></div><div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">تقييم صنف واحد بطريقتين</span></div><div class="example-block__body"><span class="example-block__label">المعطيات</span><ul class="example-block__data"><li>مخزون أول المدة في <span class="num">1/3/2026</span>: <span class="num">100</span> وحدة بتكلفة <span class="num">50</span> ج.م للوحدة.</li><li><span class="num">5/3/2026</span>: شراء <span class="num">200</span> وحدة بسعر <span class="num">55</span> ج.م للوحدة نقدًا.</li><li><span class="num">12/3/2026</span>: بيع <span class="num">150</span> وحدة بسعر <span class="num">80</span> ج.م للوحدة.</li><li><span class="num">20/3/2026</span>: شراء <span class="num">100</span> وحدة بسعر <span class="num">60</span> ج.م للوحدة نقدًا.</li><li><span class="num">28/3/2026</span>: بيع <span class="num">180</span> وحدة بسعر <span class="num">80</span> ج.م للوحدة.</li><li>المطلوب: تحديد تكلفة البضاعة المباعة ومخزون آخر المدة بالطريقتين.</li></ul><span class="example-block__label">تحديد البضاعة المتاحة للبيع</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البيان</th><th>الكمية</th><th>سعر الوحدة</th><th>القيمة</th></tr></thead><tbody><tr><td>مخزون أول المدة (1/3/2026)</td><td class="num">100</td><td class="num">50</td><td class="num">5,000</td></tr><tr><td>مشتريات 5/3/2026</td><td class="num">200</td><td class="num">55</td><td class="num">11,000</td></tr><tr><td>مشتريات 20/3/2026</td><td class="num">100</td><td class="num">60</td><td class="num">6,000</td></tr><tr class="acc-table__total"><td>البضاعة المتاحة للبيع</td><td class="num">400</td><td></td><td class="num">22,000</td></tr></tbody></table></div><span class="example-block__label">تسعير المنصرف بطريقة الوارد أولًا يصرف أولًا</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>العملية</th><th>مصدر الوحدات</th><th>الكمية</th><th>سعر الوحدة</th><th>القيمة</th></tr></thead><tbody><tr><td>بيع 12/3</td><td>أول المدة</td><td class="num">100</td><td class="num">50</td><td class="num">5,000</td></tr><tr><td>بيع 12/3</td><td>مشتريات 5/3</td><td class="num">50</td><td class="num">55</td><td class="num">2,750</td></tr><tr><td>بيع 28/3</td><td>مشتريات 5/3</td><td class="num">150</td><td class="num">55</td><td class="num">8,250</td></tr><tr><td>بيع 28/3</td><td>مشتريات 20/3</td><td class="num">30</td><td class="num">60</td><td class="num">1,800</td></tr><tr class="acc-table__total"><td>تكلفة البضاعة المباعة</td><td></td><td class="num">330</td><td></td><td class="num">17,800</td></tr></tbody></table></div><span class="example-block__label">قيود اليومية (بطريقة الوارد أولًا يصرف أولًا)</span><div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين</th><th>دائن</th></tr></thead><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">12/3/2026</span></td><td>من ح/ تكلفة البضاعة المباعة</td><td class="num">7,750</td><td></td></tr><tr><td class="journal__credit">إلى ح/ المخزون</td><td></td><td class="num">7,750</td></tr><tr class="journal__note"><td>إثبات تكلفة 150 وحدة مباعة بطريقة الوارد أولًا يصرف أولًا</td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">28/3/2026</span></td><td>من ح/ تكلفة البضاعة المباعة</td><td class="num">10,050</td><td></td></tr><tr><td class="journal__credit">إلى ح/ المخزون</td><td></td><td class="num">10,050</td></tr><tr class="journal__note"><td>إثبات تكلفة 180 وحدة مباعة بطريقة الوارد أولًا يصرف أولًا</td><td></td><td></td></tr></tbody></table></div><span class="example-block__label">مقارنة نتائج الطريقتين (ج.م)</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البند</th><th>الوارد أولًا يصرف أولًا</th><th>المتوسط المرجح</th></tr></thead><tbody><tr><td>المبيعات (330 وحدة × 80)</td><td class="num">26,400</td><td class="num">26,400</td></tr><tr><td>تكلفة البضاعة المتاحة للبيع</td><td class="num">22,000</td><td class="num">22,000</td></tr><tr><td>مخزون آخر المدة (70 وحدة)</td><td class="num">4,200</td><td class="num">3,850</td></tr><tr><td>تكلفة البضاعة المباعة</td><td class="num">17,800</td><td class="num">18,150</td></tr><tr class="acc-table__total"><td>مجمل الربح (Gross Profit)</td><td class="num">8,600</td><td class="num">8,250</td></tr></tbody></table></div></div></div><p>في الطريقة الأولى سُحبت وحدات الصنف من أقدم الدفعات: ففي البيع الأول خرجت <span class="num">100</span> وحدة من أول المدة و<span class="num">50</span> وحدة من دفعة 5/3، وفي البيع الثاني خرجت <span class="num">150</span> وحدة متبقية من دفعة 5/3 و<span class="num">30</span> وحدة من دفعة 20/3، فبقيت <span class="num">70</span> وحدة بسعر <span class="num">60</span> ج.م قيمتها <span class="num">4,200</span> ج.م. وفي الطريقة الثانية حُسب متوسط التكلفة مرة واحدة: <span class="num">22,000 ÷ 400 = 55</span> ج.م للوحدة، فكانت تكلفة المباع <span class="num">330 × 55 = 18,150</span> ج.م، وقيمة المتبقي <span class="num">70 × 55 = 3,850</span> ج.م. ويتحقق التوازن في الطريقتين: <span class="num">17,800 + 4,200 = 22,000</span> و<span class="num">18,150 + 3,850 = 22,000</span>. أما فرق مجمل الربح البالغ <span class="num">350</span> ج.م فمصدره اختلاف التوزيع بين المباع والمتبقي لا اختلاف المجموع، وهو يميل إلى صالح الوارد أولًا يصرف أولًا عندما ترتفع الأسعار. ويُثبَّت قيد تكلفة المباع بالصيغة نفسها مع المتوسط المرجح، ويتغير المبلغ وحده.</p><div class="callout callout--warning"><span class="callout__label">انتبه</span><p>طريقة الوارد أولًا يصرف أولًا افتراض محاسبي لتحديد التكلفة، وليست وصفًا لترتيب الصرف الفعلي في المخزن. ويجب تطبيق الطريقة نفسها على الأصناف المتشابهة في طبيعتها واستخدامها باتساق من فترة إلى أخرى.</p></div></div><hr class="topic-divider" /><div class="topic-block" id="stock-card"><h3 class="topic-block__title">بطاقة الصنف</h3><p>بطاقة الصنف (Stock Card) سجل مساعد يُخصَّص لكل صنف في المخزن، تُثبَت فيه حركة الصنف بالكمية والقيمة: الوارد والمنصرف والرصيد بعد كل حركة. وتُسجَّل الحركة استنادًا إلى مستند يثبتها، هو إذن الإضافة (Goods Received Note) عند الدخول وإذن الصرف (Goods Issue Note) عند الخروج. وتتيح البطاقة معرفة رصيد الصنف في أي لحظة دون انتظار الجرد، وتُحدِّد تكلفة كل عملية صرف وفق الطريقة المعتمدة.</p><p>وحين تُمسك البطاقة بطريقة المتوسط المرجح يُعاد حساب متوسط التكلفة بعد كل عملية شراء، ويسمى عندئذ المتوسط المتحرك (Moving Average)، ويُحسب بقسمة قيمة الرصيد على كمية الرصيد. ولا يتغير هذا المتوسط عند الصرف، لأن الصرف يُخرج الوحدات بالمتوسط نفسه.</p><div class="flow-diagram"><div class="flow-step"><div class="flow-step__title">مستند الحركة</div><div class="flow-step__description">إذن إضافة أو إذن صرف يثبت دخول الصنف أو خروجه.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">التسجيل في البطاقة</div><div class="flow-step__description">تُثبَت الكمية والقيمة في خانة الوارد أو المنصرف، ثم يُحتسب الرصيد الجديد.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">المطابقة مع الأستاذ</div><div class="flow-step__description">يجب أن يساوي مجموع أرصدة بطاقات الأصناف رصيد ح/ المخزون في الأستاذ، وهو حساب الرقابة (Control Account) الذي تُفصَّل تفاصيله في السجلات المساعدة.</div></div></div><div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">بطاقة الصنف (ب) عن شهر أبريل 2026</span></div><div class="example-block__body"><span class="example-block__label">المعطيات</span><ul class="example-block__data"><li>رصيد أول المدة في <span class="num">1/4/2026</span>: <span class="num">100</span> وحدة بتكلفة <span class="num">40</span> ج.م للوحدة.</li><li><span class="num">8/4/2026</span>: شراء <span class="num">100</span> وحدة بسعر <span class="num">60</span> ج.م للوحدة.</li><li><span class="num">15/4/2026</span>: صرف <span class="num">120</span> وحدة.</li><li><span class="num">22/4/2026</span>: شراء <span class="num">120</span> وحدة بسعر <span class="num">65</span> ج.م للوحدة.</li><li><span class="num">28/4/2026</span>: صرف <span class="num">150</span> وحدة.</li><li>الطريقة المعتمدة: المتوسط المتحرك. المطلوب: إعداد بطاقة الصنف وتحديد الرصيد الختامي.</li></ul><span class="example-block__label">بطاقة الصنف (ج.م)</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th rowspan="2">التاريخ</th><th rowspan="2">البيان</th><th colspan="2">وارد</th><th colspan="2">منصرف</th><th colspan="2">الرصيد</th></tr><tr><th>الكمية</th><th>القيمة</th><th>الكمية</th><th>القيمة</th><th>الكمية</th><th>القيمة</th></tr></thead><tbody><tr><td class="num">1/4/2026</td><td>رصيد أول المدة (تكلفة الوحدة 40)</td><td></td><td></td><td></td><td></td><td class="num">100</td><td class="num">4,000</td></tr><tr><td class="num">8/4/2026</td><td>شراء بسعر 60 (المتوسط الجديد 50)</td><td class="num">100</td><td class="num">6,000</td><td></td><td></td><td class="num">200</td><td class="num">10,000</td></tr><tr><td class="num">15/4/2026</td><td>صرف بتكلفة 50</td><td></td><td></td><td class="num">120</td><td class="num">6,000</td><td class="num">80</td><td class="num">4,000</td></tr><tr><td class="num">22/4/2026</td><td>شراء بسعر 65 (المتوسط الجديد 59)</td><td class="num">120</td><td class="num">7,800</td><td></td><td></td><td class="num">200</td><td class="num">11,800</td></tr><tr><td class="num">28/4/2026</td><td>صرف بتكلفة 59</td><td></td><td></td><td class="num">150</td><td class="num">8,850</td><td class="num">50</td><td class="num">2,950</td></tr><tr class="acc-table__total"><td></td><td>المجموع والرصيد الختامي</td><td class="num">220</td><td class="num">13,800</td><td class="num">270</td><td class="num">14,850</td><td class="num">50</td><td class="num">2,950</td></tr></tbody></table></div></div></div><p>بعد شراء 8/4 صار الرصيد <span class="num">4,000 + 6,000 = 10,000</span> ج.م لـ <span class="num">200</span> وحدة، فالمتوسط <span class="num">10,000 ÷ 200 = 50</span> ج.م، وبه صُرفت <span class="num">120</span> وحدة بقيمة <span class="num">6,000</span> ج.م فبقي <span class="num">80</span> وحدة بقيمة <span class="num">4,000</span> ج.م. وبعد شراء 22/4 صار الرصيد <span class="num">4,000 + 7,800 = 11,800</span> ج.م لـ <span class="num">200</span> وحدة، فالمتوسط <span class="num">11,800 ÷ 200 = 59</span> ج.م، وبه صُرفت <span class="num">150</span> وحدة بقيمة <span class="num">8,850</span> ج.م فبقي <span class="num">50</span> وحدة بقيمة <span class="num">2,950</span> ج.م. والتحقق من الرصيد الختامي: <span class="num">4,000 + 13,800 − 14,850 = 2,950</span> ج.م، ومن الكميات: <span class="num">100 + 220 − 270 = 50</span> وحدة.</p><div class="callout callout--warning"><span class="callout__label">انتبه</span><p>من الأخطاء الشائعة تسعير الصرف بسعر آخر عملية شراء، أو إعادة حساب المتوسط عند الصرف. والصحيح أن يُعاد حساب المتوسط عند كل شراء فقط، وأن يُصرف بما يسبق من متوسط.</p></div></div><hr class="topic-divider" /><div class="topic-block" id="physical-count"><h3 class="topic-block__title">الجرد</h3><p>الجرد (Physical Count) هو العدّ أو الوزن أو القياس الفعلي لما في المخزن من أصناف في تاريخ محدد، ثم مقارنة النتيجة بأرصدة البطاقات والدفاتر. ولا تكفي الأرصدة الدفترية وحدها، إذ قد تقع أخطاء في التسجيل أو تتلف بضاعة أو تُفقد دون أن يظهر ذلك في السجلات. فالجرد هو الدليل المادي على وجود المخزون الذي يظهر في قائمة المركز المالي، وعليه يقوم تقييم آخر المدة وحساب تكلفة المباع.</p><p>ويكون الجرد شاملًا في نهاية الفترة المالية لجميع الأصناف، أو دوريًا متناوبًا (Cycle Counting)، أي يُجرد جزء من الأصناف في كل مرة بحيث تُغطى جميعها خلال السنة، مع إعطاء أصناف القيمة المرتفعة تكرارًا أكبر. ويُطبَّق الجرد عدديًا في المرحلة التالية لارتباطه بمثال واحد مع فروق المخزون.</p><div class="flow-diagram"><div class="flow-step"><div class="flow-step__title">التحضير</div><div class="flow-step__description">تشكيل لجنة الجرد وتحديد التاريخ، وتثبيت الفصل الزمني (Cut-off)، أي آخر مستند دخول أو خروج يدخل في الفترة.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">العدّ الفعلي</div><div class="flow-step__description">تعدّ اللجنة الأصناف وتثبت الكميات في كشوف الجرد (Count Sheets) المرقمة مسبقًا.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">المراجعة</div><div class="flow-step__description">يعيد عضو آخر عدّ عينة من الأصناف، خاصة مرتفعة القيمة، للتأكد من سلامة الكميات.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">المطابقة</div><div class="flow-step__description">تُقارَن الكميات الفعلية بالرصيد الدفتري في بطاقة كل صنف.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">التسعير والاعتماد</div><div class="flow-step__description">تُقوَّم الكميات الفعلية بتكلفة الصنف وفق الطريقة المعتمدة، وتعتمد الإدارة النتيجة.</div></div></div><div class="callout callout--note"><span class="callout__label">ملاحظة</span><p>يُستحسن ألا يتولى العدّ أمينُ المخزن وحده؛ فتوزيع مهام الحفظ والعدّ ومسك السجلات على أشخاص مختلفين يقلل فرص الخطأ والاختلاس.</p></div><div class="callout callout--warning"><span class="callout__label">انتبه</span><p>الفصل الزمني من أخطر أخطاء الجرد الشائعة. فإذا وصلت بضاعة قبل تاريخ الجرد ولم يُسجَّل إذن إضافتها، أو سُجّل صرف لم تخرج بضاعته بعد، ظهر فرق وهمي بين الفعلي والدفتري لا يمثل عجزًا أو زيادة حقيقيين.</p></div></div><hr class="topic-divider" /><div class="topic-block" id="inventory-differences"><h3 class="topic-block__title">فروق المخزون</h3><p>فروق المخزون (Inventory Differences) هي الاختلاف بين الرصيد الدفتري (Book Balance) المسجَّل في البطاقات والرصيد الفعلي الناتج عن الجرد. فإذا قلّ الفعلي عن الدفتري فالفرق عجز (Shortage)، وإذا زاد عليه فهو زيادة (Overage). ثم يُقوَّم الفرق بتكلفة الوحدة لمعرفة أثره المالي.</p><div class="formula-box"><span class="formula-box__label">فرق الكمية</span><p class="formula-box__body">الفرق = الكمية الفعلية − الكمية الدفترية (سالب = عجز، موجب = زيادة)</p></div><p>تتعدد أسباب الفروق: أخطاء في التسجيل أو التسعير، وتلف أو فاقد طبيعي كالتبخر، وسرقة، وأخطاء في الفصل الزمني أو في العدّ. ولذلك تكون الخطوة الأولى مراجعة مستندات الحركة وإعادة عدّ الأصناف ذات الفروق للتأكد من أن الفرق حقيقي. فإذا ثبت، طابقت المنشأة الدفاتر مع الواقع بقيود تمر على حساب وسيط (Clearing Account) هو فروق الجرد، تُجمَّع فيه الفروق مؤقتًا ثم يُقفل بترحيل صافيه إلى مصروف أو إلى ذمة مسؤول عنه. ويُعترف بخسائر المخزون مصروفًا في الفترة التي حدثت فيها وفق IAS 2.</p><div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">جرد مخزن في 31 ديسمبر 2026</span></div><div class="example-block__body"><span class="example-block__label">المعطيات</span><ul class="example-block__data"><li>أجرت لجنة الجرد في <span class="num">31/12/2026</span> جرد أربعة أصناف تُقوَّم بتكلفة الوحدة وفق المتوسط المرجح، وأعدّت المقارنة الظاهرة أدناه.</li><li>رصيد ح/ المخزون للأصناف الأربعة قبل التسوية: <span class="num">27,200</span> ج.م، وهو يطابق مجموع بطاقاتها.</li><li>ثبت بعد المراجعة أن الفروق حقيقية وليست ناتجة عن خطأ في الفصل الزمني أو التسجيل.</li><li>قررت الإدارة تحميل صافي العجز على تكلفة البضاعة المباعة لعدم ثبوت مسؤولية أحد.</li></ul><span class="example-block__label">مقارنة الجرد بالدفاتر (ج.م)</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>الصنف</th><th>الكمية الدفترية</th><th>الكمية الفعلية</th><th>الفرق (كمية)</th><th>تكلفة الوحدة</th><th>قيمة العجز</th><th>قيمة الزيادة</th></tr></thead><tbody><tr><td>أ</td><td class="num">200</td><td class="num">195</td><td class="num">−5</td><td class="num">40</td><td class="num">200</td><td></td></tr><tr><td>ب</td><td class="num">120</td><td class="num">124</td><td class="num">+4</td><td class="num">25</td><td></td><td class="num">100</td></tr><tr><td>ج</td><td class="num">80</td><td class="num">78</td><td class="num">−2</td><td class="num">90</td><td class="num">180</td><td></td></tr><tr><td>د</td><td class="num">60</td><td class="num">60</td><td class="num">0</td><td class="num">150</td><td></td><td></td></tr><tr class="acc-table__total"><td>الإجمالي</td><td></td><td></td><td></td><td></td><td class="num">380</td><td class="num">100</td></tr></tbody></table></div><span class="example-block__label">قيود اليومية</span><div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين</th><th>دائن</th></tr></thead><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">31/12/2026</span></td><td>من ح/ فروق الجرد</td><td class="num">380</td><td></td></tr><tr><td class="journal__credit">إلى ح/ المخزون</td><td></td><td class="num">380</td></tr><tr class="journal__note"><td>إثبات عجز الجرد في الصنفين (أ) و(ج): 200 + 180</td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">31/12/2026</span></td><td>من ح/ المخزون</td><td class="num">100</td><td></td></tr><tr><td class="journal__credit">إلى ح/ فروق الجرد</td><td></td><td class="num">100</td></tr><tr class="journal__note"><td>إثبات زيادة الجرد في الصنف (ب)</td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">31/12/2026</span></td><td>من ح/ تكلفة البضاعة المباعة</td><td class="num">280</td><td></td></tr><tr><td class="journal__credit">إلى ح/ فروق الجرد</td><td></td><td class="num">280</td></tr><tr class="journal__note"><td>ترحيل صافي العجز (380 − 100) وإقفال حساب فروق الجرد</td><td></td><td></td></tr></tbody></table></div><span class="example-block__label">الترحيل إلى حسابات الأستاذ</span><div class="t-accounts"><div class="t-account"><div class="t-account__title">ح/ المخزون</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>رصيد قبل الجرد</span><span class="num">27,200</span></li><li><span>زيادة الجرد</span><span class="num">100</span></li></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"><li><span>عجز الجرد</span><span class="num">380</span></li></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">26,920</span> مدين</div></div><div class="t-account"><div class="t-account__title">ح/ فروق الجرد</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>عجز الجرد</span><span class="num">380</span></li></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"><li><span>زيادة الجرد</span><span class="num">100</span></li><li><span>ترحيل صافي العجز</span><span class="num">280</span></li></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">0</span> (مقفل)</div></div></div><span class="example-block__label">تسوية رصيد المخزون (ج.م)</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البيان</th><th>المبلغ</th></tr></thead><tbody><tr><td>رصيد ح/ المخزون قبل التسوية</td><td class="num">27,200</td></tr><tr><td>يضاف: زيادة الجرد (ب)</td><td class="num">100</td></tr><tr><td>يُطرح: عجز الجرد (أ + ج)</td><td class="num">(380)</td></tr><tr class="acc-table__total"><td>الرصيد الفعلي بعد التسوية</td><td class="num">26,920</td></tr></tbody></table></div></div></div><p>تظهر القيمة الدفترية للأصناف الأربعة <span class="num">27,200</span> ج.م (<span class="num">200 × 40 + 120 × 25 + 80 × 90 + 60 × 150</span>)، وقيمتها الفعلية <span class="num">26,920</span> ج.م، والفرق <span class="num">280</span> ج.م. وقد ثُبِّت كل فرق على حدة: عجز الصنفين (أ) و(ج) بمبلغ <span class="num">200 + 180 = 380</span> ج.م، وزيادة الصنف (ب) بمبلغ <span class="num">100</span> ج.م، ثم رُحِّل الصافي <span class="num">380 − 100 = 280</span> ج.م إلى تكلفة البضاعة المباعة فأُقفل حساب فروق الجرد. ويصبح رصيد المخزون مساويًا للجرد الفعلي <span class="num">26,920</span> ج.م.</p><div class="callout callout--warning"><span class="callout__label">انتبه</span><p>لا تُقاصَّ زيادة صنف بعجز صنف آخر قبل فحص السبب؛ فإثبات كل فرق على حدة يُبقي أثر كل صنف ظاهرًا للرقابة. وعند ثبوت مسؤولية شخص عن العجز يُحمَّل عليه بدل تحميله على تكلفة المباع.</p></div></div></div></div></section><section class="content-section content-section--tint" id="comparison"><div class="container"><div class="content-section__eyebrow">مقارنة</div><h2 class="content-section__title">الرصيد الدفتري مقابل الرصيد الفعلي</h2><div class="table-responsive"><table class="table table-bordered align-middle"><thead><tr><th>وجه المقارنة</th><th>الرصيد الدفتري (بطاقة الصنف)</th><th>الرصيد الفعلي (الجرد)</th></tr></thead><tbody><tr><td>المصدر</td><td>بطاقة الصنف والدفاتر</td><td>الجرد الفعلي في المخزن</td></tr><tr><td>ما يعبّر عنه</td><td>ما يُفترض أن يكون موجودًا</td><td>ما هو موجود فعلًا</td></tr><tr><td>توقيت التحديث</td><td>بعد كل حركة دخول أو خروج</td><td>في تاريخ الجرد فقط</td></tr><tr><td>أبرز مصادر الخطأ</td><td>خطأ في التسجيل أو التسعير أو الفصل الزمني</td><td>خطأ في العدّ أو تداخل أصناف متشابهة</td></tr><tr><td>القائم عليه</td><td>أمين المخزن والمحاسب</td><td>لجنة الجرد</td></tr><tr><td>الاستخدام</td><td>معرفة الرصيد بصورة مستمرة</td><td>إثبات وجود المخزون وكشف الفروق</td></tr></tbody></table></div></div></section><section class="content-section" id="summary"><div class="container"><div class="content-section__eyebrow">الخلاصة</div><h2 class="content-section__title">أهم ما يجب تذكّره</h2><div class="summary-card" style="max-width: 900px"><ul class="summary-card__list"><li>✔ يؤثر تقييم المخزون مباشرة في تكلفة البضاعة المباعة وفي مجمل الربح، ويجيز IAS 2 الوارد أولًا يصرف أولًا والمتوسط المرجح ولا يجيز الوارد أخيرًا يصرف أولًا.</li><li>✔ تكلفة البضاعة المباعة = البضاعة المتاحة للبيع − مخزون آخر المدة، ومجموع المباع والمتبقي يساوي المتاحة للبيع في كل الطرق.</li><li>✔ بطاقة الصنف تتابع الكمية والقيمة بعد كل حركة، ويجب أن يطابق مجموع أرصدتها رصيد ح/ المخزون في الأستاذ.</li><li>✔ الجرد هو الدليل الفعلي على وجود المخزون، ويتطلب لجنة وكشوفًا مرقمة وفصلًا زمنيًا سليمًا ومراجعة مستقلة.</li><li>✔ فرق المخزون = الكمية الفعلية − الدفترية؛ يُثبَّت كل فرق على حدة عبر حساب فروق الجرد، ثم يُرحَّل صافيه إلى مصروف أو إلى ذمة المسؤول.</li></ul></div></div></section><footer class="site-footer">
+      <div class="container">
+        <p>الجزء الثالث: المبيعات والمشتريات والمخزون | الفصل التاسع: المخزون وإدارته</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      
+      const heroTitle = document.querySelector('.hero__title')
+      const toolbarTitle = document.querySelector('[data-sync-title]')
+      if (heroTitle && toolbarTitle) {
+        const text = heroTitle.textContent.trim()
+        if (text) {
+          toolbarTitle.textContent = text
+          document.title = text
+        }
+      }
+    </script>
+  </body>
+</html>

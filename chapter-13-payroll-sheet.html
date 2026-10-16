@@ -1,0 +1,955 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>كشف الرواتب والأجور</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        
+        --clr-primary: #b378a6;
+        --clr-secondary: #7796bf;
+        --clr-light: #ffffff;
+        --clr-light-2: #f0f0f0;
+        --clr-border: #dedede;
+        --clr-dark: #1b1b1b;
+        --clr-dark-2: #444444;
+        --clr-text: #333333;
+        --clr-text-soft: #555555;
+
+        --font-body: 'Baloo Bhaijaan 2', sans-serif;
+
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 18px;
+
+        --shadow-soft: 0 4px 20px rgba(27, 27, 27, 0.07);
+        --shadow-hover: 0 12px 28px rgba(179, 120, 166, 0.16);
+
+        --section-pad: 4.5rem;
+        --content-width: 900px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--clr-light);
+        color: var(--clr-dark);
+        line-height: 1.9;
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: var(--clr-secondary);
+        text-decoration: none;
+        transition: 0.2s;
+      }
+
+      a:hover {
+        color: var(--clr-primary);
+      }
+
+      h1, h2, h3, h4, h5 {
+        font-family: var(--font-body);
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+        color: var(--clr-dark);
+      }
+
+      h1, h2 { font-weight: 800; }
+      h3, h4, h5 { font-weight: 700; }
+
+      p {
+        color: var(--clr-text);
+        margin-bottom: 1rem;
+      }
+
+      ul { margin: 0; padding: 0; }
+
+      section { scroll-margin-top: 90px; }
+
+      ::selection {
+        background: var(--clr-primary);
+        color: #fff;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--clr-secondary);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      .editor-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--clr-primary);
+        padding: 0.7rem 0;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .editor-toolbar__tab-title {
+        color: #fff;
+        font-size: 1.1rem;
+        direction: ltr;
+        font-weight: 700;
+      }
+
+      .hero {
+        background: var(--clr-secondary);
+        color: #fff;
+        padding: 4.5rem 0 3.5rem;
+      }
+
+      .hero__title {
+        color: #fff;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      .hero__lead {
+        color: #fff;
+        opacity: 0.95;
+        max-width: 760px;
+        font-size: 1.15rem;
+        margin-bottom: 0;
+      }
+
+      .content-section { padding: var(--section-pad) 0; }
+      .content-section--alt { background: #fcfcfc; }
+      .content-section--tint { background: var(--clr-light-2); }
+
+      .content-section__eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+        font-size: 0.86rem;
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+      }
+
+      .content-section__eyebrow::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        background: var(--clr-primary);
+      }
+
+      .content-section__title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+
+      .content-section__description {
+        max-width: 760px;
+        color: var(--clr-text-soft);
+        margin-bottom: 2.5rem;
+      }
+
+      .summary-card {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+        padding: 2rem;
+      }
+
+      .summary-card__list {
+        display: grid;
+        gap: 1rem;
+        list-style: none;
+      }
+
+      .summary-card__list li {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+      }
+
+      .callout {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        border-radius: var(--radius-md);
+        border-inline-start: 4px solid;
+      }
+
+      .callout__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 700;
+      }
+
+      .callout--note {
+        background: rgba(119, 150, 191, 0.08);
+        border-color: var(--clr-secondary);
+      }
+
+      .callout--warning {
+        background: rgba(179, 120, 166, 0.08);
+        border-color: var(--clr-primary);
+      }
+
+      .flow-diagram {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin: 2rem 0;
+      }
+
+      .flow-step {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        padding: 1rem 1.25rem;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .flow-step__title {
+        color: var(--clr-primary);
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+      }
+
+      .flow-step__description { color: var(--clr-text-soft); margin: 0; }
+
+      .flow-arrow {
+        text-align: center;
+        color: var(--clr-secondary);
+        font-size: 28px;
+        line-height: 1;
+      }
+
+      .topic-block { margin-bottom: 3rem; }
+      .topic-block:last-child { margin-bottom: 0; }
+
+      .topic-block__title {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+      }
+
+      .topic-divider {
+        border: none;
+        border-top: 1px dashed var(--clr-border);
+        margin: 2.5rem 0;
+      }
+
+      .num {
+        direction: ltr;
+        unicode-bidi: isolate;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .formula-box {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        text-align: center;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .formula-box__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--clr-primary);
+        font-weight: 700;
+      }
+
+      .formula-box__body {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--clr-dark);
+      }
+
+      .example-block {
+        overflow: hidden;
+        margin: 2rem 0;
+        background: var(--clr-light);
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .example-block__header {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.7rem 1.2rem;
+        background: var(--clr-dark);
+      }
+
+      .example-block__tag {
+        padding: 0 0.7rem;
+        background: var(--clr-primary);
+        color: #fff;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .example-block__title { color: #fff; font-weight: 600; }
+
+      .example-block__body { padding: 1.5rem; }
+
+      .example-block__label {
+        display: block;
+        margin: 1.6rem 0 0.6rem;
+        color: var(--clr-secondary);
+        font-weight: 700;
+      }
+
+      .example-block__label:first-child { margin-top: 0; }
+
+      .example-block__data {
+        margin: 0;
+        padding-inline-start: 1.2rem;
+        color: var(--clr-text);
+      }
+
+      .acc-table-wrap { overflow-x: auto; }
+
+      .acc-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+
+      .acc-table th,
+      .acc-table td {
+        padding: 0.5rem 0.8rem;
+        border: 1px solid var(--clr-border);
+      }
+
+      .acc-table thead th {
+        background: var(--clr-light-2);
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .acc-table td.num { text-align: end; }
+
+      .acc-table__total td {
+        background: #fcfcfc;
+        font-weight: 700;
+        border-top: 2px solid var(--clr-dark-2);
+        border-bottom: 4px double var(--clr-dark-2);
+      }
+
+      .journal__entry { border-bottom: 2px solid var(--clr-dark-2); }
+      .acc-table td.journal__credit { padding-inline-start: 2.5rem; }
+      .journal__note td { color: var(--clr-text-soft); font-size: 0.88rem; }
+
+      .t-accounts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+
+      .t-account {
+        overflow: hidden;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+      }
+
+      .t-account__title {
+        padding: 0.5rem;
+        text-align: center;
+        color: var(--clr-primary);
+        font-weight: 700;
+        border-bottom: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__sides { display: grid; grid-template-columns: 1fr 1fr; }
+
+      .t-account__side + .t-account__side {
+        border-inline-start: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__side-label {
+        padding: 0.3rem;
+        text-align: center;
+        color: var(--clr-text-soft);
+        font-size: 0.85rem;
+        font-weight: 700;
+        border-bottom: 1px solid var(--clr-border);
+      }
+
+      .t-account__lines {
+        min-height: 3rem;
+        margin: 0;
+        padding: 0.4rem 0.7rem;
+        list-style: none;
+      }
+
+      .t-account__lines li {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .t-account__balance {
+        padding: 0.45rem 0.7rem;
+        text-align: center;
+        font-weight: 700;
+        background: rgba(119, 150, 191, 0.08);
+        border-top: 1px solid var(--clr-border);
+      }
+
+      .site-footer {
+        background: var(--clr-light-2);
+        color: var(--clr-light);
+        padding: 1rem 0 0.5rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        :root { --section-pad: 3rem; }
+        .hero { padding: 3.5rem 0; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="editor-toolbar">
+      <div class="container d-flex align-items-center gap-3">
+        <span class="editor-toolbar__tab-title" data-sync-title></span>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="container">
+        <h1 class="hero__title">كشف الرواتب والأجور</h1>
+        <p class="hero__lead">
+          يبيّن هذا الفصل كيف يُعدّ كشف الرواتب والأجور (Payroll Sheet) خطوة بخطوة: نبدأ بمكونات الراتب التي يستحقها الموظف، ثم الخصومات التي تُقتطع منها، وننتهي بصافي الراتب الذي يُصرف فعلًا، مع القيود المحاسبية التي تُثبت ذلك في الدفاتر.
+        </p>
+      </div>
+    </header>
+
+    <section class="content-section" id="explanation">
+      <div class="container">
+        <div class="content-section__eyebrow">شرح وتطبيق</div>
+        <h2 class="content-section__title">شرح وتطبيق كل مرحلة</h2>
+
+        <div class="article-content" style="max-width: 900px">
+
+          <div class="topic-block" id="salary-components">
+            <h3 class="topic-block__title">مكونات الراتب</h3>
+
+            <p>
+              يتكوّن راتب الموظف من عدة عناصر تُسمّى الاستحقاقات. أولها الراتب الأساسي (Basic Salary) وهو الأجر المتفق عليه في عقد العمل ويثبت من شهر لآخر. ثم البدلات (Allowances) وهي مبالغ ثابتة تُمنح لظروف معينة كبدل الانتقال. ثم عناصر متغيرة تتغير كل شهر، وهي الأجر الإضافي (Overtime Pay) مقابل ساعات العمل الزائدة، والحوافز (Incentives) التي تُمنح مكافأة على الأداء. ومجموع هذه العناصر هو إجمالي الراتب (Gross Salary)، أي الراتب قبل أي خصم.
+            </p>
+
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>إجمالي الراتب هو المبلغ الذي تتحمله المنشأة مصروفًا، وليس بالضرورة المبلغ الذي يتسلمه الموظف.</p>
+            </div>
+
+            <div class="formula-box">
+              <span class="formula-box__label">إجمالي الراتب</span>
+              <p class="formula-box__body">إجمالي الراتب = الراتب الأساسي + البدلات + الأجر الإضافي + الحوافز</p>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">إعداد استحقاقات شهر سبتمبر 2026</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>شركة تضم ثلاثة موظفين، والعملة الجنيه المصري (ج.م).</li>
+                  <li>الراتب الأساسي: أحمد سعيد <span class="num">8,000</span> ج.م، ومنى علي <span class="num">6,000</span> ج.م، ويوسف حسن <span class="num">4,800</span> ج.م.</li>
+                  <li>بدل انتقال ثابت لكل موظف: <span class="num">700</span> ج.م.</li>
+                  <li>حوافز الشهر: أحمد <span class="num">500</span> ج.م، ومنى <span class="num">300</span> ج.م.</li>
+                  <li>يوسف عمل <span class="num">10</span> ساعات إضافية. وتفترض سياسة المنشأة أن أجر الساعة = الأساسي ÷ <span class="num">30</span> ÷ <span class="num">8</span>، وأن الساعة الإضافية تُحتسب بمثل ساعة ونصف.</li>
+                </ul>
+
+                <span class="example-block__label">احتساب الأجر الإضافي ليوسف</span>
+                <div class="formula-box">
+                  <p class="formula-box__body">
+                    <span class="num">4,800 ÷ 30 ÷ 8 = 20</span> ج.م للساعة، ثم
+                    <span class="num">10 × 20 × 1.5 = 300</span> ج.م
+                  </p>
+                </div>
+
+                <span class="example-block__label">كشف الاستحقاقات (ج.م)</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>الموظف</th>
+                        <th>الراتب الأساسي</th>
+                        <th>بدل الانتقال</th>
+                        <th>الأجر الإضافي</th>
+                        <th>الحوافز</th>
+                        <th>إجمالي الراتب</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>أحمد سعيد</td>
+                        <td class="num">8,000</td>
+                        <td class="num">700</td>
+                        <td class="num">0</td>
+                        <td class="num">500</td>
+                        <td class="num">9,200</td>
+                      </tr>
+                      <tr>
+                        <td>منى علي</td>
+                        <td class="num">6,000</td>
+                        <td class="num">700</td>
+                        <td class="num">0</td>
+                        <td class="num">300</td>
+                        <td class="num">7,000</td>
+                      </tr>
+                      <tr>
+                        <td>يوسف حسن</td>
+                        <td class="num">4,800</td>
+                        <td class="num">700</td>
+                        <td class="num">300</td>
+                        <td class="num">0</td>
+                        <td class="num">5,800</td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>الإجمالي</td>
+                        <td class="num">18,800</td>
+                        <td class="num">2,100</td>
+                        <td class="num">300</td>
+                        <td class="num">800</td>
+                        <td class="num">22,000</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              جمعنا لكل موظف عناصره الأربعة أفقيًا، فكان إجمالي أحمد <span class="num">9,200</span> ج.م، ومنى <span class="num">7,000</span> ج.م، ويوسف <span class="num">5,800</span> ج.م. وللمراجعة نجمع كل عمود رأسيًا ثم نتحقق أن مجموع الأعمدة الأربعة (<span class="num">18,800 + 2,100 + 300 + 800</span>) يساوي مجموع إجمالي الرواتب <span class="num">22,000</span> ج.م.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>لا تخلط بين البدل الثابت والعناصر المتغيرة. بدل الانتقال يتكرر كل شهر، أما الأجر الإضافي والحوافز فيجب مراجعتهما من مستنداتهما (سجل الساعات وقرار المنح) قبل إدراجهما في كشف كل شهر.</p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+
+          <div class="topic-block" id="deductions">
+            <h3 class="topic-block__title">الخصومات</h3>
+
+            <p>
+              الخصومات (Deductions) مبالغ تقتطعها المنشأة من إجمالي راتب الموظف لحساب جهات أخرى، فهي لا تُعد مصروفًا عليها وإنما التزامات تؤديها نيابة عن الموظف. وأهم أنواعها: حصة العامل في التأمينات الاجتماعية (Social Insurance)، وتُحسب بنسبة من الأجر التأميني (Insurable Wage)، وهو الأجر الذي تُحسب عليه الاشتراكات. ثم ضريبة كسب العمل (Payroll Income Tax) المحتسبة على دخل الموظف وفق الشرائح السارية. ثم قسط السلفة (Employee Advance)، والسلفة مبلغ دفعته المنشأة للموظف مقدمًا فيُسترد بأقساط من راتبه.
+            </p>
+
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>الخصومات هنا هي ما يُقتطع من الموظف فقط. أما ما تتحمله المنشأة نفسها من اشتراكات فهو مصروف مستقل عليها، ولا يدخل في احتساب صافي راتب الموظف.</p>
+            </div>
+
+            <div class="formula-box">
+              <span class="formula-box__label">حصة العامل في التأمينات</span>
+              <p class="formula-box__body">حصة العامل = الأجر التأميني × نسبة الاشتراك</p>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">احتساب خصومات شهر سبتمبر 2026</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>بيانات الموظفين وإجمالي رواتبهم من المثال السابق.</li>
+                  <li>الأجر التأميني يساوي الراتب الأساسي تبسيطًا، ونسبة حصة العامل <span class="num">11%</span>.</li>
+                  <li>ضريبة كسب العمل المحتسبة مسبقًا: أحمد <span class="num">650</span> ج.م، ومنى <span class="num">380</span> ج.م، ويوسف <span class="num">190</span> ج.م.</li>
+                  <li>قسط السلفة المستحق على يوسف هذا الشهر: <span class="num">250</span> ج.م.</li>
+                </ul>
+
+                <span class="example-block__label">كشف الخصومات (ج.م)</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>الموظف</th>
+                        <th>الأجر التأميني</th>
+                        <th>حصة العامل (11%)</th>
+                        <th>ضريبة كسب العمل</th>
+                        <th>قسط السلفة</th>
+                        <th>إجمالي الخصومات</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>أحمد سعيد</td>
+                        <td class="num">8,000</td>
+                        <td class="num">880</td>
+                        <td class="num">650</td>
+                        <td class="num">0</td>
+                        <td class="num">1,530</td>
+                      </tr>
+                      <tr>
+                        <td>منى علي</td>
+                        <td class="num">6,000</td>
+                        <td class="num">660</td>
+                        <td class="num">380</td>
+                        <td class="num">0</td>
+                        <td class="num">1,040</td>
+                      </tr>
+                      <tr>
+                        <td>يوسف حسن</td>
+                        <td class="num">4,800</td>
+                        <td class="num">528</td>
+                        <td class="num">190</td>
+                        <td class="num">250</td>
+                        <td class="num">968</td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>الإجمالي</td>
+                        <td class="num">18,800</td>
+                        <td class="num">2,068</td>
+                        <td class="num">1,220</td>
+                        <td class="num">250</td>
+                        <td class="num">3,538</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              حُسبت حصة كل موظف بضرب أجره التأميني في <span class="num">11%</span>، فكانت <span class="num">880</span> و<span class="num">660</span> و<span class="num">528</span> ج.م. ثم أُضيفت الضريبة وقسط السلفة لنحصل على إجمالي خصومات كل موظف. وللتحقق: مجموع الأعمدة الثلاثة (<span class="num">2,068 + 1,220 + 250</span>) يساوي <span class="num">3,538</span> ج.م، وهو نفسه مجموع إجمالي خصومات الموظفين (<span class="num">1,530 + 1,040 + 968</span>).
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>خطأ شائع: حساب نسبة التأمينات على إجمالي الراتب بدل الأجر التأميني. فلو حُسبت على إجمالي أحمد <span class="num">9,200</span> ج.م لخرجت <span class="num">1,012</span> ج.م، والصحيح <span class="num">880</span> ج.م محسوبة على <span class="num">8,000</span> ج.م.</p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+
+          <div class="topic-block" id="net-salary">
+            <h3 class="topic-block__title">صافي الراتب</h3>
+
+            <p>
+              صافي الراتب (Net Salary) هو ما يتسلمه الموظف فعلًا بعد طرح إجمالي الخصومات من إجمالي الراتب. وتثبت المنشأة الكشف في دفاترها وفق مبدأ الاستحقاق (Accrual Basis)، أي تسجل المصروف في الشهر الذي يخصه ولو تأخر الدفع. فيُثبت إجمالي الراتب مصروفًا في حساب الأجور والمرتبات (Salaries and Wages Expense)، وتُثبت الخصومات التزامات لدى الجهات المعنية، ويُثبت الصافي التزامًا للموظفين في حساب رواتب مستحقة الدفع (Salaries Payable) إلى حين صرفه.
+            </p>
+
+            <div class="formula-box">
+              <span class="formula-box__label">صافي الراتب</span>
+              <p class="formula-box__body">صافي الراتب = إجمالي الراتب − إجمالي الخصومات</p>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">صافي رواتب سبتمبر 2026 وقيود إثباتها وصرفها</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>إجمالي الرواتب والخصومات من المثالين السابقين.</li>
+                  <li>تُثبت الرواتب بتاريخ <span class="num">30/9/2026</span>، وتُصرف عبر البنك بتاريخ <span class="num">1/10/2026</span>.</li>
+                </ul>
+
+                <span class="example-block__label">ملخص كشف الرواتب (ج.م)</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>الموظف</th>
+                        <th>إجمالي الراتب</th>
+                        <th>إجمالي الخصومات</th>
+                        <th>صافي الراتب</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>أحمد سعيد</td>
+                        <td class="num">9,200</td>
+                        <td class="num">1,530</td>
+                        <td class="num">7,670</td>
+                      </tr>
+                      <tr>
+                        <td>منى علي</td>
+                        <td class="num">7,000</td>
+                        <td class="num">1,040</td>
+                        <td class="num">5,960</td>
+                      </tr>
+                      <tr>
+                        <td>يوسف حسن</td>
+                        <td class="num">5,800</td>
+                        <td class="num">968</td>
+                        <td class="num">4,832</td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>الإجمالي</td>
+                        <td class="num">22,000</td>
+                        <td class="num">3,538</td>
+                        <td class="num">18,462</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">قيود اليومية</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين</th>
+                        <th>دائن</th>
+                      </tr>
+                    </thead>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="6"><span class="num">30/9/2026</span></td>
+                        <td>من ح/ الأجور والمرتبات</td>
+                        <td class="num">22,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ التأمينات الاجتماعية المستحقة (حصة العاملين)</td>
+                        <td></td>
+                        <td class="num">2,068</td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ ضريبة كسب العمل المستحقة</td>
+                        <td></td>
+                        <td class="num">1,220</td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ سلف العاملين</td>
+                        <td></td>
+                        <td class="num">250</td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ رواتب مستحقة الدفع</td>
+                        <td></td>
+                        <td class="num">18,462</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>إثبات رواتب شهر سبتمبر 2026 وخصوماتها وصافيها المستحق</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">1/10/2026</span></td>
+                        <td>من ح/ رواتب مستحقة الدفع</td>
+                        <td class="num">18,462</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ البنك</td>
+                        <td></td>
+                        <td class="num">18,462</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>صرف صافي رواتب سبتمبر 2026 عن طريق البنك</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">الترحيل إلى حسابات الأستاذ</span>
+                <div class="t-accounts">
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ الأجور والمرتبات</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li><span>رواتب سبتمبر</span><span class="num">22,000</span></li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines"></ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">22,000</span> مدين
+                    </div>
+                  </div>
+
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ رواتب مستحقة الدفع</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li><span>صرف عبر البنك</span><span class="num">18,462</span></li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines">
+                          <li><span>صافي سبتمبر</span><span class="num">18,462</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">0</span> (مُسدَّد)
+                    </div>
+                  </div>
+
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ التأمينات الاجتماعية المستحقة</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines"></ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines">
+                          <li><span>حصة العاملين</span><span class="num">2,068</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">2,068</span> دائن
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              طُرح إجمالي خصومات كل موظف من إجمالي راتبه، فكان صافي أحمد <span class="num">7,670</span> ج.م، ومنى <span class="num">5,960</span> ج.م، ويوسف <span class="num">4,832</span> ج.م، ومجموعها <span class="num">18,462</span> ج.م، وهو يساوي <span class="num">22,000 − 3,538</span>. وقيد الإثبات مدين بإجمالي الرواتب <span class="num">22,000</span> ج.م لأنها مصروف الشهر، ودائن بأربعة حسابات مجموعها <span class="num">2,068 + 1,220 + 250 + 18,462 = 22,000</span> ج.م، فالقيد متوازن. أما قيد الصرف فيُسقط الالتزام تجاه الموظفين دون أن يمس المصروف، ولذلك أصبح رصيد حساب رواتب مستحقة الدفع صفرًا.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>الخصومات لا تُخفض مصروف الأجور. المصروف يُثبت بالإجمالي <span class="num">22,000</span> ج.م، وليس بالصافي <span class="num">18,462</span> ج.م، لأن الفرق التزام تؤديه المنشأة للجهات المعنية.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section content-section--tint" id="comparison">
+      <div class="container">
+        <div class="content-section__eyebrow">مقارنة</div>
+        <h2 class="content-section__title">إجمالي الراتب مقابل صافي الراتب</h2>
+
+        <div class="table-responsive">
+          <table class="table table-bordered align-middle">
+            <thead>
+              <tr>
+                <th>وجه المقارنة</th>
+                <th>إجمالي الراتب</th>
+                <th>صافي الراتب</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>التعريف</td>
+                <td>مجموع الاستحقاقات قبل أي خصم</td>
+                <td>ما يبقى للموظف بعد طرح الخصومات</td>
+              </tr>
+              <tr>
+                <td>طريقة الاحتساب</td>
+                <td>الأساسي + البدلات + الأجر الإضافي + الحوافز</td>
+                <td>إجمالي الراتب − إجمالي الخصومات</td>
+              </tr>
+              <tr>
+                <td>أثره المحاسبي</td>
+                <td>يُثبت مصروفًا في حساب الأجور والمرتبات</td>
+                <td>يُثبت التزامًا في حساب رواتب مستحقة الدفع</td>
+              </tr>
+              <tr>
+                <td>مثال: أحمد سعيد (ج.م)</td>
+                <td><span class="num">9,200</span></td>
+                <td><span class="num">7,670</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="summary">
+      <div class="container">
+        <div class="content-section__eyebrow">الخلاصة</div>
+        <h2 class="content-section__title">أهم ما يجب تذكّره</h2>
+
+        <div class="summary-card" style="max-width: 900px">
+          <ul class="summary-card__list">
+            <li>✔ إجمالي الراتب = الراتب الأساسي + البدلات + الأجر الإضافي + الحوافز.</li>
+            <li>✔ الخصومات التزامات تؤديها المنشأة نيابة عن الموظف، وتُحسب التأمينات على الأجر التأميني لا على الإجمالي.</li>
+            <li>✔ صافي الراتب = إجمالي الراتب − إجمالي الخصومات.</li>
+            <li>✔ يُثبت مصروف الأجور بإجمالي الراتب، وتُثبت الخصومات والصافي التزامات في الجانب الدائن.</li>
+            <li>✔ يتحقق القيد بتساوي المدين <span class="num">22,000</span> مع مجموع الدائن في مثالنا.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>كشف الرواتب والأجور</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      /* Sync Toolbar Title */
+      const heroTitle = document.querySelector('.hero__title')
+      const toolbarTitle = document.querySelector('[data-sync-title]')
+      if (heroTitle && toolbarTitle) {
+        const text = heroTitle.textContent.trim()
+        if (text) {
+          toolbarTitle.textContent = text
+          document.title = text
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1302 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الفصل الثامن: دورة المشتريات</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        
+        --clr-primary: #b378a6;
+        --clr-secondary: #7796bf;
+        --clr-light: #ffffff;
+        --clr-light-2: #f0f0f0;
+        --clr-border: #dedede;
+        --clr-dark: #1b1b1b;
+        --clr-dark-2: #444444;
+        --clr-text: #333333;
+        --clr-text-soft: #555555;
+
+        --font-body: 'Baloo Bhaijaan 2', sans-serif;
+
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 18px;
+
+        --shadow-soft: 0 4px 20px rgba(27, 27, 27, 0.07);
+        --shadow-hover: 0 12px 28px rgba(179, 120, 166, 0.16);
+
+        --section-pad: 4.5rem;
+        --content-width: 900px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--clr-light);
+        color: var(--clr-dark);
+        line-height: 1.9;
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: var(--clr-secondary);
+        text-decoration: none;
+        transition: 0.2s;
+      }
+
+      a:hover {
+        color: var(--clr-primary);
+      }
+
+      h1, h2, h3, h4, h5 {
+        font-family: var(--font-body);
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+        color: var(--clr-dark);
+      }
+
+      h1, h2 { font-weight: 800; }
+      h3, h4, h5 { font-weight: 700; }
+
+      p {
+        color: var(--clr-text);
+        margin-bottom: 1rem;
+      }
+
+      ul { margin: 0; padding: 0; }
+
+      section { scroll-margin-top: 90px; }
+
+      ::selection {
+        background: var(--clr-primary);
+        color: #fff;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--clr-secondary);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      .editor-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--clr-primary);
+        padding: 0.7rem 0;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .editor-toolbar__tab-title {
+        color: #fff;
+        font-size: 1.1rem;
+        direction: ltr;
+        font-weight: 700;
+      }
+
+      .hero {
+        background: var(--clr-secondary);
+        color: #fff;
+        padding: 4.5rem 0 3.5rem;
+      }
+
+      .hero__title {
+        color: #fff;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      .hero__lead {
+        color: #fff;
+        opacity: 0.95;
+        max-width: 760px;
+        font-size: 1.15rem;
+        margin-bottom: 0;
+      }
+
+      .content-section { padding: var(--section-pad) 0; }
+      .content-section--alt { background: #fcfcfc; }
+      .content-section--tint { background: var(--clr-light-2); }
+
+      .content-section__eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+        font-size: 0.86rem;
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+      }
+
+      .content-section__eyebrow::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        background: var(--clr-primary);
+      }
+
+      .content-section__title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+
+      .content-section__description {
+        max-width: 760px;
+        color: var(--clr-text-soft);
+        margin-bottom: 2.5rem;
+      }
+
+      .summary-card {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+        padding: 2rem;
+      }
+
+      .summary-card__list {
+        display: grid;
+        gap: 1rem;
+        list-style: none;
+      }
+
+      .summary-card__list li {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+      }
+
+      .callout {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        border-radius: var(--radius-md);
+        border-inline-start: 4px solid;
+      }
+
+      .callout__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 700;
+      }
+
+      .callout--note {
+        background: rgba(119, 150, 191, 0.08);
+        border-color: var(--clr-secondary);
+      }
+
+      .callout--warning {
+        background: rgba(179, 120, 166, 0.08);
+        border-color: var(--clr-primary);
+      }
+
+      .flow-diagram {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin: 2rem 0;
+      }
+
+      .flow-step {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        padding: 1rem 1.25rem;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .flow-step__title {
+        color: var(--clr-primary);
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+      }
+
+      .flow-step__description { color: var(--clr-text-soft); margin: 0; }
+
+      .flow-arrow {
+        text-align: center;
+        color: var(--clr-secondary);
+        font-size: 28px;
+        line-height: 1;
+      }
+
+      .topic-block { margin-bottom: 3rem; }
+      .topic-block:last-child { margin-bottom: 0; }
+
+      .topic-block__title {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+      }
+
+      .topic-divider {
+        border: none;
+        border-top: 1px dashed var(--clr-border);
+        margin: 2.5rem 0;
+      }
+
+      .num {
+        direction: ltr;
+        unicode-bidi: isolate;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .formula-box {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        text-align: center;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .formula-box__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--clr-primary);
+        font-weight: 700;
+      }
+
+      .formula-box__body {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--clr-dark);
+      }
+
+      .example-block {
+        overflow: hidden;
+        margin: 2rem 0;
+        background: var(--clr-light);
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .example-block__header {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.7rem 1.2rem;
+        background: var(--clr-dark);
+      }
+
+      .example-block__tag {
+        padding: 0 0.7rem;
+        background: var(--clr-primary);
+        color: #fff;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .example-block__title { color: #fff; font-weight: 600; }
+
+      .example-block__body { padding: 1.5rem; }
+
+      .example-block__label {
+        display: block;
+        margin: 1.6rem 0 0.6rem;
+        color: var(--clr-secondary);
+        font-weight: 700;
+      }
+
+      .example-block__label:first-child { margin-top: 0; }
+
+      .example-block__data {
+        margin: 0;
+        padding-inline-start: 1.2rem;
+        color: var(--clr-text);
+      }
+
+      .acc-table-wrap { overflow-x: auto; }
+
+      .acc-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+
+      .acc-table th,
+      .acc-table td {
+        padding: 0.5rem 0.8rem;
+        border: 1px solid var(--clr-border);
+      }
+
+      .acc-table thead th {
+        background: var(--clr-light-2);
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .acc-table td.num { text-align: end; }
+
+      .acc-table__total td {
+        background: #fcfcfc;
+        font-weight: 700;
+        border-top: 2px solid var(--clr-dark-2);
+        border-bottom: 4px double var(--clr-dark-2);
+      }
+
+      .journal__entry { border-bottom: 2px solid var(--clr-dark-2); }
+      .acc-table td.journal__credit { padding-inline-start: 2.5rem; }
+      .journal__note td { color: var(--clr-text-soft); font-size: 0.88rem; }
+
+      .t-accounts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+
+      .t-account {
+        overflow: hidden;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+      }
+
+      .t-account__title {
+        padding: 0.5rem;
+        text-align: center;
+        color: var(--clr-primary);
+        font-weight: 700;
+        border-bottom: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__sides { display: grid; grid-template-columns: 1fr 1fr; }
+
+      .t-account__side + .t-account__side {
+        border-inline-start: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__side-label {
+        padding: 0.3rem;
+        text-align: center;
+        color: var(--clr-text-soft);
+        font-size: 0.85rem;
+        font-weight: 700;
+        border-bottom: 1px solid var(--clr-border);
+      }
+
+      .t-account__lines {
+        min-height: 3rem;
+        margin: 0;
+        padding: 0.4rem 0.7rem;
+        list-style: none;
+      }
+
+      .t-account__lines li {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .t-account__balance {
+        padding: 0.45rem 0.7rem;
+        text-align: center;
+        font-weight: 700;
+        background: rgba(119, 150, 191, 0.08);
+        border-top: 1px solid var(--clr-border);
+      }
+
+      .site-footer {
+        background: var(--clr-light-2);
+        color: var(--clr-light);
+        padding: 1rem 0 0.5rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        :root { --section-pad: 3rem; }
+        .hero { padding: 3.5rem 0; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; }
+      }
+    </style>
+  </head>
+
+    <body>
+    <div class="editor-toolbar">
+      <div class="container d-flex align-items-center gap-3">
+        <span class="editor-toolbar__tab-title" data-sync-title></span>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="container">
+        <h1 class="hero__title">الفصل الثامن: دورة المشتريات</h1>
+        <p class="hero__lead">
+          ضمن الجزء الثالث (المبيعات والمشتريات والمخزون)، يتتبّع هذا الفصل دورة
+          المشتريات (Purchasing Cycle) من لحظة وصول فاتورة الشراء (Purchase
+          Invoice) إلى المنشأة، مرورًا بقيد الالتزام في حسابات الموردين
+          (Accounts Payable)، وصولًا إلى أثر الشروط التجارية (Commercial Terms)
+          في قيمة ما تدفعه المنشأة ووقت دفعه.
+        </p>
+      </div>
+    </header>
+
+    <section class="content-section" id="explanation">
+      <div class="container">
+        <div class="content-section__eyebrow">شرح وتطبيق</div>
+        <h2 class="content-section__title">شرح وتطبيق كل مرحلة</h2>
+
+        <div class="article-content" style="max-width: 900px">
+          <div class="topic-block" id="purchase-invoice">
+            <h3 class="topic-block__title">فاتورة الشراء</h3>
+
+            <p>
+              فاتورة الشراء هي المستند الذي يصدره المورد (Supplier) إلى
+              المنشأة عند بيعه لها بضاعة، وتتضمن الأصناف والكميات وأسعار
+              الوحدات والخصومات ومصروفات الشحن (إن وُجدت) وصافي المبلغ
+              المستحق وشروط السداد. وتُعدّ الفاتورة المستند المؤيِّد الأول
+              للقيد المحاسبي، فلا تُثبَّت عملية الشراء في الدفاتر إلا بعد
+              مراجعتها ومطابقتها بما طُلب وما استُلم فعلًا.
+            </p>
+
+            <p>
+              محاسبيًا، تُثبَّت البضاعة المشتراة بتكلفتها في حساب المخزون
+              (Inventory) وفق نظام الجرد المستمر (Perpetual Inventory
+              System)، وهو النظام الذي يُحدَّث فيه رصيد المخزون عند كل عملية
+              شراء وبيع. وتشمل تكلفة الشراء، بحسب معيار المحاسبة الدولي رقم
+              2 (IAS 2)، سعر الشراء والرسوم الجمركية غير المستردة ومصروفات
+              النقل والتحميل المرتبطة بالحصول على البضاعة، مطروحًا منها الخصم
+              التجاري (Trade Discount)، وهو تخفيض من سعر القائمة يمنحه المورد
+              وقت البيع. ويترتب على الفاتورة أثران في قائمة المركز المالي:
+              زيادة المخزون ضمن الأصول المتداولة، وزيادة الالتزام تجاه
+              المورد ضمن الالتزامات المتداولة إذا كان الشراء بالأجل.
+            </p>
+
+            <div class="formula-box">
+              <span class="formula-box__label">تكلفة الشراء</span>
+              <p class="formula-box__body">
+                تكلفة الشراء = إجمالي الفاتورة − الخصم التجاري + مصروفات النقل
+                والتحميل المرتبطة بالشراء
+              </p>
+            </div>
+
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>
+                جميع الأمثلة في هذا الفصل بالجنيه المصري (ج.م) وعن عام
+                <span class="num">2026</span>، ولا تتناول ضريبة القيمة المضافة
+                (VAT)، وهي ضريبة غير مباشرة تظهر في الفاتورة ببند مستقل،
+                حتى يتركّز الشرح على موضوع الفصل.
+              </p>
+            </div>
+
+            <p>ويمرّ استلام الفاتورة بتسلسل رقابي يمكن تلخيصه فيما يلي:</p>
+
+            <div class="flow-diagram">
+              <div class="flow-step">
+                <div class="flow-step__title">أمر الشراء (Purchase Order)</div>
+                <div class="flow-step__description">
+                  مستند تطلب به المنشأة من المورد أصنافًا وكميات بأسعار متفق عليها.
+                </div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">إذن الاستلام (Goods Received Note)</div>
+                <div class="flow-step__description">
+                  يثبت ما وصل فعليًا إلى المخزن من أصناف وكميات.
+                </div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">فاتورة المورد</div>
+                <div class="flow-step__description">
+                  تصل بالأصناف والأسعار والخصومات وشروط السداد.
+                </div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">المطابقة</div>
+                <div class="flow-step__description">
+                  تُقارَن الفاتورة بأمر الشراء وإذن الاستلام؛ فإن تطابقت
+                  اعتُمدت للقيد.
+                </div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">القيد المحاسبي</div>
+                <div class="flow-step__description">
+                  إثبات المخزون بتكلفته والالتزام تجاه المورد.
+                </div>
+              </div>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">شراء بضاعة بالأجل مع خصم تجاري ومصروفات نقل</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>
+                    بتاريخ <span class="num">5/3/2026</span> اشترت المنشأة
+                    <span class="num">400</span> وحدة من شركة النيل للتجارة
+                    بسعر قائمة <span class="num">250</span> ج.م للوحدة، بالأجل.
+                  </li>
+                  <li>منحت الشركة خصمًا تجاريًا <span class="num">10%</span> من إجمالي الفاتورة.</li>
+                  <li>
+                    دفعت المنشأة <span class="num">1,500</span> ج.م من النقدية
+                    (Cash) إلى شركة نقل مقابل نقل البضاعة إلى مخازنها.
+                  </li>
+                </ul>
+
+                <span class="example-block__label">حساب تكلفة الشراء</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البيان</th>
+                        <th>المبلغ (ج.م)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>إجمالي الفاتورة (<span class="num">400</span> × <span class="num">250</span>)</td>
+                        <td class="num">100,000</td>
+                      </tr>
+                      <tr>
+                        <td>يُطرح: الخصم التجاري (<span class="num">10%</span>)</td>
+                        <td class="num">(10,000)</td>
+                      </tr>
+                      <tr>
+                        <td>صافي الفاتورة المستحق للمورد</td>
+                        <td class="num">90,000</td>
+                      </tr>
+                      <tr>
+                        <td>يُضاف: مصروفات النقل</td>
+                        <td class="num">1,500</td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>تكلفة الشراء المحمّلة على المخزون</td>
+                        <td class="num">91,500</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">قيود اليومية</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين</th>
+                        <th>دائن</th>
+                      </tr>
+                    </thead>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="4"><span class="num">5/3/2026</span></td>
+                        <td>من ح/ المخزون</td>
+                        <td class="num">91,500</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ الموردين – شركة النيل</td>
+                        <td></td>
+                        <td class="num">90,000</td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ النقدية</td>
+                        <td></td>
+                        <td class="num">1,500</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>إثبات شراء بضاعة بالأجل بصافي الفاتورة، مع نقلها إلى المخازن نقدًا</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              حُمِّل المخزون بتكلفة <span class="num">91,500</span> ج.م، وهي
+              صافي الفاتورة <span class="num">90,000</span> مضافًا إليه النقل
+              <span class="num">1,500</span>، فتبلغ تكلفة الوحدة
+              <span class="num">228.75</span> ج.م
+              (<span class="num">91,500</span> ÷ <span class="num">400</span>).
+              ولم يُسجَّل الخصم التجاري <span class="num">10,000</span> ج.م في
+              أي حساب، لأن الالتزام تجاه المورد هو صافي الفاتورة
+              <span class="num">90,000</span> لا إجماليها. أما النقل فطرفه
+              الدائن النقدية لا الموردين، لأنه مدفوع لجهة أخرى هي شركة
+              النقل. والقيد متوازن: المدين <span class="num">91,500</span> =
+              الدائن (<span class="num">90,000</span> + <span class="num">1,500</span>).
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                لا تُثبِّت الفاتورة بإجماليها <span class="num">100,000</span>
+                ثم تُسجِّل الخصم التجاري إيرادًا؛ فذلك يضخّم المخزون والالتزام
+                معًا ويحمّل قائمة الدخل إيرادًا لا وجود له. الخصم التجاري يُخفِّض
+                قيمة الفاتورة نفسها ولا يظهر في الدفاتر بقيد مستقل.
+              </p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+          <div class="topic-block" id="supplier-accounts">
+            <h3 class="topic-block__title">حسابات الموردين</h3>
+
+            <p>
+              تُسجَّل في حسابات الموردين التزامات المنشأة عن مشتريات بالأجل لم
+              تُسدَّد بعد. ويُمسَك الحساب على مستويين: حساب إجمالي (Control
+              Account) باسم «الموردون» يظهر في ميزان المراجعة والقوائم
+              المالية، وحسابات تفصيلية لكل مورد (Subsidiary Ledger) تُبيّن
+              ما يستحقه كل مورد على حدة.
+            </p>
+
+            <p>
+              يزداد رصيد المورد (دائن) عند كل شراء بالأجل، وينقص (مدين) في
+              حالتين: ردّ بضاعة إليه، وتُسمّى مردودات المشتريات (Purchase
+              Returns)، وسداد جزء من المستحق له. والرصيد الدائن الباقي هو
+              المبلغ الواجب سداده. ويجب أن يساوي مجموع الأرصدة التفصيلية رصيد
+              الحساب الإجمالي دائمًا، وأي اختلاف بينهما يدل على خطأ في
+              الترحيل.
+            </p>
+
+            <div class="formula-box">
+              <span class="formula-box__label">رصيد المورد</span>
+              <p class="formula-box__body">
+                رصيد المورد (دائن) = رصيد أول المدة + المشتريات بالأجل −
+                مردودات المشتريات − المدفوعات للمورد
+              </p>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">حركة حسابات الموردين خلال شهر مارس 2026</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>لا توجد أرصدة افتتاحية للموردين، والمنشأة هي نفسها منشأة المثال السابق.</li>
+                  <li>
+                    <span class="num">5/3/2026</span>: شراء بالأجل من شركة النيل
+                    بصافي فاتورة <span class="num">90,000</span> ج.م (سبق قيده).
+                  </li>
+                  <li>
+                    <span class="num">12/3/2026</span>: شراء بالأجل من شركة
+                    الدلتا بصافي فاتورة <span class="num">60,000</span> ج.م.
+                  </li>
+                  <li>
+                    <span class="num">15/3/2026</span>: ردّ <span class="num">20</span>
+                    وحدة معيبة إلى شركة النيل بسعر الوحدة الصافي
+                    <span class="num">225</span> ج.م (<span class="num">250</span>
+                    بعد الخصم التجاري <span class="num">10%</span>).
+                  </li>
+                  <li>
+                    <span class="num">20/3/2026</span>: سداد
+                    <span class="num">50,000</span> ج.م لشركة النيل بتحويل من
+                    البنك (Bank).
+                  </li>
+                  <li>
+                    <span class="num">25/3/2026</span>: سداد
+                    <span class="num">20,000</span> ج.م لشركة الدلتا بتحويل من البنك.
+                  </li>
+                </ul>
+
+                <span class="example-block__label">قيود اليومية</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين</th>
+                        <th>دائن</th>
+                      </tr>
+                    </thead>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">12/3/2026</span></td>
+                        <td>من ح/ المخزون</td>
+                        <td class="num">60,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ الموردين – شركة الدلتا</td>
+                        <td></td>
+                        <td class="num">60,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>إثبات شراء بضاعة بالأجل من شركة الدلتا</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">15/3/2026</span></td>
+                        <td>من ح/ الموردين – شركة النيل</td>
+                        <td class="num">4,500</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ المخزون</td>
+                        <td></td>
+                        <td class="num">4,500</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>ردّ <span class="num">20</span> وحدة معيبة × <span class="num">225</span> ج.م إلى المورد (مردودات مشتريات)</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">20/3/2026</span></td>
+                        <td>من ح/ الموردين – شركة النيل</td>
+                        <td class="num">50,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ البنك</td>
+                        <td></td>
+                        <td class="num">50,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>سداد جزء من مستحقات شركة النيل</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">25/3/2026</span></td>
+                        <td>من ح/ الموردين – شركة الدلتا</td>
+                        <td class="num">20,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ البنك</td>
+                        <td></td>
+                        <td class="num">20,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>سداد جزء من مستحقات شركة الدلتا</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">الترحيل إلى حسابات الأستاذ</span>
+                <div class="t-accounts">
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ الموردين (الحساب الإجمالي)</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li><span>15/3 مردودات</span><span class="num">4,500</span></li>
+                          <li><span>20/3 البنك</span><span class="num">50,000</span></li>
+                          <li><span>25/3 البنك</span><span class="num">20,000</span></li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines">
+                          <li><span>5/3 المخزون</span><span class="num">90,000</span></li>
+                          <li><span>12/3 المخزون</span><span class="num">60,000</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">75,500</span> دائن
+                    </div>
+                  </div>
+
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ الموردين – شركة النيل</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li><span>15/3 مردودات</span><span class="num">4,500</span></li>
+                          <li><span>20/3 البنك</span><span class="num">50,000</span></li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines">
+                          <li><span>5/3 المخزون</span><span class="num">90,000</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">35,500</span> دائن
+                    </div>
+                  </div>
+
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ الموردين – شركة الدلتا</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li><span>25/3 البنك</span><span class="num">20,000</span></li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines">
+                          <li><span>12/3 المخزون</span><span class="num">60,000</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">40,000</span> دائن
+                    </div>
+                  </div>
+                </div>
+
+                <span class="example-block__label">كشف أرصدة الموردين في 31/3/2026</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البيان</th>
+                        <th>جزئي</th>
+                        <th>كلي</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>شركة النيل للتجارة</td>
+                        <td class="num">35,500</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td>شركة الدلتا</td>
+                        <td class="num">40,000</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>مجموع الأرصدة التفصيلية = رصيد الحساب الإجمالي</td>
+                        <td></td>
+                        <td class="num">75,500</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              رصيد شركة النيل: <span class="num">90,000</span> − <span class="num">4,500</span>
+              − <span class="num">50,000</span> = <span class="num">35,500</span> دائن.
+              ورصيد شركة الدلتا: <span class="num">60,000</span> − <span class="num">20,000</span>
+              = <span class="num">40,000</span> دائن. وفي الحساب الإجمالي، مجموع الجانب
+              الدائن <span class="num">150,000</span> (<span class="num">90,000</span>
+              + <span class="num">60,000</span>) ومجموع الجانب المدين
+              <span class="num">74,500</span> (<span class="num">4,500</span> +
+              <span class="num">50,000</span> + <span class="num">20,000</span>)،
+              فيكون الرصيد <span class="num">75,500</span> دائن، وهو يساوي
+              مجموع الرصيدين التفصيليين (<span class="num">35,500</span> +
+              <span class="num">40,000</span>). وقد رُدّت الوحدات المعيبة بسعر
+              الفاتورة الصافي <span class="num">225</span> لا سعر القائمة
+              <span class="num">250</span>، لأن المنشأة لم تلتزم أصلًا بغير الصافي.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                الحسابات التفصيلية ليست حسابات إضافية تُجمع مع الحساب الإجمالي؛
+                فهي تفصيل له. لو أُدرج رصيد «الموردون» (<span class="num">75,500</span>)
+                وأرصدة الموردين الفرديين (<span class="num">75,500</span>) معًا في
+                ميزان المراجعة لتضاعف الالتزام وظهر بقيمة <span class="num">151,000</span>.
+              </p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+          <div class="topic-block" id="commercial-terms">
+            <h3 class="topic-block__title">الشروط التجارية</h3>
+
+            <p>
+              الشروط التجارية هي ما يتفق عليه المشتري والمورد بشأن السعر
+              والسداد والتسليم، وتؤثر مباشرة في قيمة الالتزام ووقت سداده
+              وتكلفة المخزون. وأبرزها: الخصم التجاري الذي سبق تناوله ويُخصم من
+              الفاتورة نفسها؛ والخصم النقدي (Cash Discount) الذي يمنحه المورد
+              مكافأةً على السداد المبكر؛ ومدة الائتمان (Credit Period) وهي
+              المهلة المتفق عليها للسداد؛ وشروط التسليم.
+            </p>
+
+            <p>
+              يُعبَّر عن شروط السداد بصيغة مختصرة؛ فالصيغة
+              <span class="num">2/10</span>، صافي <span class="num">30</span> تعني: خصم نقدي
+              <span class="num">2%</span> إذا سُدِّدت الفاتورة خلال <span class="num">10</span>
+              أيام من تاريخها، وإلا فصافي الفاتورة مستحق كاملًا خلال
+              <span class="num">30</span> يومًا.
+            </p>
+
+            <div class="flow-diagram">
+              <div class="flow-step">
+                <div class="flow-step__title">يوم الفاتورة (اليوم 0)</div>
+                <div class="flow-step__description">
+                  تبدأ مدة الائتمان ويُثبَّت الالتزام بصافي الفاتورة كاملًا.
+                </div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">من اليوم 1 إلى اليوم 10</div>
+                <div class="flow-step__description">
+                  السداد بصافي الفاتورة مطروحًا منه الخصم النقدي <span class="num">2%</span>.
+                </div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">من اليوم 11 إلى اليوم 30</div>
+                <div class="flow-step__description">
+                  السداد بصافي الفاتورة كاملًا دون خصم.
+                </div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">بعد اليوم 30</div>
+                <div class="flow-step__description">
+                  تأخّر عن المدة المتفق عليها، وقد تترتب عليه غرامات أو فوائد وفق العقد.
+                </div>
+              </div>
+            </div>
+
+            <p>
+              أما شروط التسليم فتحدد متى تنتقل ملكية البضاعة ومخاطرها إلى
+              المشتري، ومن يتحمل الشحن. ففي «التسليم في مقر البائع» (FOB
+              Shipping Point) تنتقل الملكية عند تحميل البضاعة ويتحمل المشتري
+              الشحن فيدخل في تكلفة المخزون، أما في «التسليم في مقر المشتري»
+              (FOB Destination) فتنتقل الملكية عند الوصول ويتحمل البائع الشحن.
+            </p>
+
+            <div class="formula-box">
+              <span class="formula-box__label">الخصم النقدي</span>
+              <p class="formula-box__body">
+                الخصم النقدي = صافي الفاتورة × نسبة الخصم النقدي
+              </p>
+            </div>
+
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>
+                يُثبَّت في هذا الفصل المخزون والالتزام بصافي الفاتورة كاملًا، ثم
+                يُسجَّل الخصم النقدي عند الاستفادة منه إيرادًا في ح/ خصم نقدي
+                مكتسب (Discounts Received) ضمن الإيرادات الأخرى، وهذه هي طريقة
+                الإجمالي (Gross Method). وتعالج بعض المنشآت الخصم بتخفيض تكلفة
+                المخزون بحسب سياستها المحاسبية.
+              </p>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">خصم نقدي بشروط 2/10، صافي 30</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>
+                    بتاريخ <span class="num">5/4/2026</span> اشترت المنشأة بضاعة
+                    من شركة الأمل بالأجل، وبلغ صافي الفاتورة (بعد الخصم التجاري)
+                    <span class="num">80,000</span> ج.م.
+                  </li>
+                  <li>شروط السداد: <span class="num">2/10</span>، صافي <span class="num">30</span>.</li>
+                  <li>
+                    الحالة (أ): سدّدت المنشأة بتحويل من البنك بتاريخ
+                    <span class="num">14/4/2026</span>، أي خلال فترة الخصم.
+                  </li>
+                  <li>
+                    الحالة (ب): سدّدت المنشأة بتحويل من البنك بتاريخ
+                    <span class="num">5/5/2026</span>، أي في نهاية مدة الائتمان.
+                  </li>
+                </ul>
+
+                <span class="example-block__label">قيود اليومية – الحالة (أ): السداد خلال فترة الخصم</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين</th>
+                        <th>دائن</th>
+                      </tr>
+                    </thead>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">5/4/2026</span></td>
+                        <td>من ح/ المخزون</td>
+                        <td class="num">80,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ الموردين – شركة الأمل</td>
+                        <td></td>
+                        <td class="num">80,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>إثبات شراء بضاعة بالأجل بصافي الفاتورة</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="4"><span class="num">14/4/2026</span></td>
+                        <td>من ح/ الموردين – شركة الأمل</td>
+                        <td class="num">80,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ البنك</td>
+                        <td></td>
+                        <td class="num">78,400</td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ خصم نقدي مكتسب</td>
+                        <td></td>
+                        <td class="num">1,600</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>سداد كامل المستحق خلال فترة الخصم والاستفادة من الخصم النقدي <span class="num">2%</span></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">قيد اليومية – الحالة (ب): السداد في نهاية مدة الائتمان</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين</th>
+                        <th>دائن</th>
+                      </tr>
+                    </thead>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">5/5/2026</span></td>
+                        <td>من ح/ الموردين – شركة الأمل</td>
+                        <td class="num">80,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ البنك</td>
+                        <td></td>
+                        <td class="num">80,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>سداد كامل المستحق بعد انتهاء فترة الخصم (قيد الشراء في <span class="num">5/4/2026</span> كما في الحالة أ)</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">مقارنة المبالغ المسدَّدة في الحالتين</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البيان</th>
+                        <th>الحالة (أ)</th>
+                        <th>الحالة (ب)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>صافي الفاتورة</td>
+                        <td class="num">80,000</td>
+                        <td class="num">80,000</td>
+                      </tr>
+                      <tr>
+                        <td>يُطرح: الخصم النقدي (<span class="num">2%</span>)</td>
+                        <td class="num">(1,600)</td>
+                        <td class="num">0</td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>المبلغ المدفوع من البنك</td>
+                        <td class="num">78,400</td>
+                        <td class="num">80,000</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              في الحالة (أ): الخصم النقدي = <span class="num">80,000</span> ×
+              <span class="num">2%</span> = <span class="num">1,600</span> ج.م،
+              فيكون المدفوع <span class="num">78,400</span>. وقد جاء الطرف
+              المدين <span class="num">80,000</span> لأن الالتزام المقيَّد
+              في دفاتر المنشأة هو الصافي كاملًا، فيُقفل الحساب بالكامل، ويتوزع
+              الطرف الدائن بين البنك <span class="num">78,400</span> والخصم
+              المكتسب <span class="num">1,600</span>، والمجموع
+              <span class="num">80,000</span> فالقيد متوازن. في الحالة (ب) لا
+              استحقاق للخصم فيُسدَّد <span class="num">80,000</span> دون إيراد
+              إضافي.
+            </p>
+
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>
+                التنازل عن الخصم في هذا المثال يعني دفع <span class="num">1,600</span>
+                ج.م إضافية مقابل تأجيل السداد <span class="num">20</span> يومًا فقط
+                (من اليوم <span class="num">10</span> إلى اليوم <span class="num">30</span>)،
+                أي ما يعادل نحو <span class="num">37%</span> سنويًا، وهي تكلفة تمويل
+                مرتفعة تجعل الاستفادة من الخصم النقدي قرارًا مجديًا غالبًا
+                متى توافرت السيولة.
+              </p>
+            </div>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                يُحسب الخصم النقدي على صافي الفاتورة بعد الخصم التجاري، لا على
+                سعر القائمة. والأصل ألا يشمل مصروفات النقل المدفوعة لجهة أخرى
+                ما لم ينص الاتفاق على غير ذلك. ويجب الرجوع إلى نص الاتفاق في
+                تحديد بداية احتساب المدة، هل هي من تاريخ الفاتورة أم من تاريخ
+                الاستلام.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section content-section--tint" id="comparison">
+      <div class="container">
+        <div class="content-section__eyebrow">مقارنة</div>
+        <h2 class="content-section__title">الخصم التجاري مقابل الخصم النقدي</h2>
+
+        <div class="table-responsive">
+          <table class="table table-bordered align-middle">
+            <thead>
+              <tr>
+                <th>وجه المقارنة</th>
+                <th>الخصم التجاري</th>
+                <th>الخصم النقدي</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>المفهوم</td>
+                <td>تخفيض من سعر القائمة يُمنح وقت البيع</td>
+                <td>تخفيض من صافي الفاتورة يُمنح مقابل السداد المبكر</td>
+              </tr>
+              <tr>
+                <td>شرط الاستحقاق</td>
+                <td>لا يتوقف على أي شرط لاحق</td>
+                <td>يتوقف على السداد خلال المدة المحددة (مثل <span class="num">10</span> أيام)</td>
+              </tr>
+              <tr>
+                <td>أساس الاحتساب</td>
+                <td>سعر القائمة (إجمالي الفاتورة)</td>
+                <td>صافي الفاتورة بعد الخصم التجاري</td>
+              </tr>
+              <tr>
+                <td>وقت الإثبات</td>
+                <td>وقت الشراء، إذ تصدر الفاتورة بالصافي</td>
+                <td>وقت السداد، إذا تحقق الشرط</td>
+              </tr>
+              <tr>
+                <td>المعالجة المحاسبية</td>
+                <td>لا يُسجَّل في حساب مستقل، ويُخفِّض تكلفة المخزون والالتزام</td>
+                <td>يُسجَّل إيرادًا في ح/ خصم نقدي مكتسب (طريقة الإجمالي)</td>
+              </tr>
+              <tr>
+                <td>مثال من الفصل</td>
+                <td><span class="num">10%</span> × <span class="num">100,000</span> = <span class="num">10,000</span> ج.م</td>
+                <td><span class="num">2%</span> × <span class="num">80,000</span> = <span class="num">1,600</span> ج.م</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="summary">
+      <div class="container">
+        <div class="content-section__eyebrow">الخلاصة</div>
+        <h2 class="content-section__title">أهم ما يجب تذكّره</h2>
+
+        <div class="summary-card" style="max-width: 900px">
+          <ul class="summary-card__list">
+            <li>✔ فاتورة الشراء هي المستند المؤيِّد للقيد، ولا تُثبَّت إلا بعد مطابقتها بأمر الشراء وإذن الاستلام.</li>
+            <li>✔ تكلفة الشراء = إجمالي الفاتورة − الخصم التجاري + مصروفات النقل والتحميل المرتبطة بالشراء، وتُحمَّل على المخزون.</li>
+            <li>✔ الخصم التجاري لا يُقيَّد بقيد مستقل، فالالتزام تجاه المورد هو صافي الفاتورة.</li>
+            <li>✔ حساب الموردين دائن بالمشتريات بالأجل، ومدين بالمردودات والمدفوعات، ومجموع الأرصدة التفصيلية يساوي رصيد الحساب الإجمالي.</li>
+            <li>✔ الصيغة <span class="num">2/10</span>، صافي <span class="num">30</span> تمنح خصمًا نقديًا <span class="num">2%</span> للسداد خلال <span class="num">10</span> أيام، ويُسجَّل الخصم إيرادًا عند الاستفادة منه (طريقة الإجمالي).</li>
+            <li>✔ يُحسب الخصم النقدي على صافي الفاتورة بعد الخصم التجاري، والتنازل عنه يعادل تكلفة تمويل سنوية مرتفعة.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>الفصل الثامن: دورة المشتريات</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const heroTitle = document.querySelector('.hero__title')
+      const toolbarTitle = document.querySelector('[data-sync-title]')
+      if (heroTitle && toolbarTitle) {
+        const text = heroTitle.textContent.trim()
+        if (text) {
+          toolbarTitle.textContent = text
+          document.title = text
+        }
+      }
+    </script>
+  </body>
+</html>

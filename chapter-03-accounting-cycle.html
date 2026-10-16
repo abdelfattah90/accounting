@@ -1,0 +1,1521 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الفصل الثالث: دورة المحاسبة الكاملة</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+
+
+    <style>
+      :root {
+        /* ========= Colors ========= */
+        --clr-primary: #b378a6;
+        --clr-secondary: #7796bf;
+        --clr-light: #ffffff;
+        --clr-light-2: #f0f0f0;
+        --clr-border: #dedede;
+        --clr-dark: #1b1b1b;
+        --clr-dark-2: #444444;
+        --clr-text: #333333;
+        --clr-text-soft: #555555;
+
+        /* ========= Font ========= */
+        --font-body: 'Baloo Bhaijaan 2', sans-serif;
+
+        /* ========= Radius ========= */
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 18px;
+
+        /* ========= Shadow ========= */
+        --shadow-soft: 0 4px 20px rgba(27, 27, 27, 0.07);
+        --shadow-hover: 0 12px 28px rgba(179, 120, 166, 0.16);
+
+        /* ========= Layout ========= */
+        --section-pad: 4.5rem;
+        --content-width: 900px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--clr-light);
+        color: var(--clr-dark);
+        line-height: 1.9;
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: var(--clr-secondary);
+        text-decoration: none;
+        transition: 0.2s;
+      }
+
+      a:hover {
+        color: var(--clr-primary);
+      }
+
+      h1, h2, h3, h4, h5 {
+        font-family: var(--font-body);
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+        color: var(--clr-dark);
+      }
+
+      h1, h2 { font-weight: 800; }
+      h3, h4, h5 { font-weight: 700; }
+
+      p {
+        color: var(--clr-text);
+        margin-bottom: 1rem;
+      }
+
+      ul { margin: 0; padding: 0; }
+
+      section { scroll-margin-top: 90px; }
+
+      ::selection {
+        background: var(--clr-primary);
+        color: #fff;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--clr-secondary);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      /* ==========================================================
+         Editor Toolbar
+      ========================================================== */
+      .editor-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--clr-primary);
+        padding: 0.7rem 0;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .editor-toolbar__tab-title {
+        color: #fff;
+        font-size: 1.1rem;
+        direction: ltr;
+        font-weight: 700;
+      }
+
+      /* ==========================================================
+         Hero
+      ========================================================== */
+      .hero {
+        background: var(--clr-secondary);
+        color: #fff;
+        padding: 4.5rem 0 3.5rem;
+      }
+
+      .hero__title {
+        color: #fff;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      .hero__lead {
+        color: #fff;
+        opacity: 0.95;
+        max-width: 760px;
+        font-size: 1.15rem;
+        margin-bottom: 0;
+      }
+
+      /* ==========================================================
+         Sections
+      ========================================================== */
+      .content-section { padding: var(--section-pad) 0; }
+      .content-section--alt { background: #fcfcfc; }
+      .content-section--tint { background: var(--clr-light-2); }
+
+      .content-section__eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+        font-size: 0.86rem;
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+      }
+
+      .content-section__eyebrow::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        background: var(--clr-primary);
+      }
+
+      .content-section__title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+
+      .content-section__description {
+        max-width: 760px;
+        color: var(--clr-text-soft);
+        margin-bottom: 2.5rem;
+      }
+
+      /* ==========================================================
+         Summary Card
+      ========================================================== */
+      .summary-card {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+        padding: 2rem;
+      }
+
+      .summary-card__list {
+        display: grid;
+        gap: 1rem;
+        list-style: none;
+      }
+
+      .summary-card__list li {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+      }
+
+      /* ==========================================================
+         Callout
+      ========================================================== */
+      .callout {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        border-radius: var(--radius-md);
+        border-inline-start: 4px solid;
+      }
+
+      .callout__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 700;
+      }
+
+      .callout--note {
+        background: rgba(119, 150, 191, 0.08);
+        border-color: var(--clr-secondary);
+      }
+
+      .callout--warning {
+        background: rgba(179, 120, 166, 0.08);
+        border-color: var(--clr-primary);
+      }
+
+      /* ==========================================================
+         Flow Diagram
+      ========================================================== */
+      .flow-diagram {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin: 2rem 0;
+      }
+
+      .flow-step {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        padding: 1rem 1.25rem;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .flow-step__title {
+        color: var(--clr-primary);
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+      }
+
+      .flow-step__description { color: var(--clr-text-soft); margin: 0; }
+
+      .flow-arrow {
+        text-align: center;
+        color: var(--clr-secondary);
+        font-size: 28px;
+        line-height: 1;
+      }
+
+      /* ==========================================================
+         Topic Block
+      ========================================================== */
+      .topic-block { margin-bottom: 3rem; }
+      .topic-block:last-child { margin-bottom: 0; }
+
+      .topic-block__title {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+      }
+
+      .topic-block h4 {
+        margin-top: 2rem;
+        color: var(--clr-secondary);
+      }
+
+      .topic-divider {
+        border: none;
+        border-top: 1px dashed var(--clr-border);
+        margin: 2.5rem 0;
+      }
+
+      /* ==========================================================
+         Numbers
+      ========================================================== */
+      .num {
+        direction: ltr;
+        unicode-bidi: isolate;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* ==========================================================
+         Formula Box
+      ========================================================== */
+      .formula-box {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        text-align: center;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .formula-box__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--clr-primary);
+        font-weight: 700;
+      }
+
+      .formula-box__body {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--clr-dark);
+      }
+
+      /* ==========================================================
+         Example Block
+      ========================================================== */
+      .example-block {
+        overflow: hidden;
+        margin: 2rem 0;
+        background: var(--clr-light);
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .example-block__header {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.7rem 1.2rem;
+        background: var(--clr-dark);
+      }
+
+      .example-block__tag {
+        padding: 0 0.7rem;
+        background: var(--clr-primary);
+        color: #fff;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .example-block__title { color: #fff; font-weight: 600; }
+
+      .example-block__body { padding: 1.5rem; }
+
+      .example-block__label {
+        display: block;
+        margin: 1.6rem 0 0.6rem;
+        color: var(--clr-secondary);
+        font-weight: 700;
+      }
+
+      .example-block__label:first-child { margin-top: 0; }
+
+      .example-block__data {
+        margin: 0;
+        padding-inline-start: 1.2rem;
+        color: var(--clr-text);
+      }
+
+      /* ==========================================================
+         Accounting Tables
+      ========================================================== */
+      .acc-table-wrap { overflow-x: auto; }
+
+      .acc-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+
+      .acc-table th,
+      .acc-table td {
+        padding: 0.5rem 0.8rem;
+        border: 1px solid var(--clr-border);
+      }
+
+      .acc-table thead th {
+        background: var(--clr-light-2);
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .acc-table td.num { text-align: end; }
+
+      .acc-table__total td {
+        background: #fcfcfc;
+        font-weight: 700;
+        border-top: 2px solid var(--clr-dark-2);
+        border-bottom: 4px double var(--clr-dark-2);
+      }
+
+      .journal__entry { border-bottom: 2px solid var(--clr-dark-2); }
+      .acc-table td.journal__credit { padding-inline-start: 2.5rem; }
+      .journal__note td { color: var(--clr-text-soft); font-size: 0.88rem; }
+
+      /* ==========================================================
+         T-Accounts
+      ========================================================== */
+      .t-accounts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+
+      .t-account {
+        overflow: hidden;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+      }
+
+      .t-account__title {
+        padding: 0.5rem;
+        text-align: center;
+        color: var(--clr-primary);
+        font-weight: 700;
+        border-bottom: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__sides { display: grid; grid-template-columns: 1fr 1fr; }
+
+      .t-account__side + .t-account__side {
+        border-inline-start: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__side-label {
+        padding: 0.3rem;
+        text-align: center;
+        color: var(--clr-text-soft);
+        font-size: 0.85rem;
+        font-weight: 700;
+        border-bottom: 1px solid var(--clr-border);
+      }
+
+      .t-account__lines {
+        min-height: 3rem;
+        margin: 0;
+        padding: 0.4rem 0.7rem;
+        list-style: none;
+      }
+
+      .t-account__lines li {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .t-account__balance {
+        padding: 0.45rem 0.7rem;
+        text-align: center;
+        font-weight: 700;
+        background: rgba(119, 150, 191, 0.08);
+        border-top: 1px solid var(--clr-border);
+      }
+
+      /* ==========================================================
+         Footer
+      ========================================================== */
+      .site-footer {
+        background: var(--clr-light-2);
+        color: var(--clr-light);
+        padding: 1rem 0 0.5rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      /* ==========================================================
+         Responsive
+      ========================================================== */
+      @media (max-width: 768px) {
+        :root { --section-pad: 3rem; }
+        .hero { padding: 3.5rem 0; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="editor-toolbar">
+      <div class="container d-flex align-items-center gap-3">
+        <span class="editor-toolbar__tab-title" data-sync-title></span>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="container">
+        <h1 class="hero__title">الفصل الثالث: دورة المحاسبة الكاملة</h1>
+        <p class="hero__lead">
+          يربط هذا الفصل خطوات العمل المحاسبي في سلسلة واحدة متصلة، تبدأ بحدث
+          مالي يقع في المنشأة وتنتهي بقوائم مالية تُقرأ وتُحلَّل. وفهم هذا
+          التسلسل يمنحك الصورة الكاملة التي تُبنى عليها بقية المسار.
+        </p>
+      </div>
+    </header>
+
+    <section class="content-section" id="explanation">
+      <div class="container">
+        <div class="content-section__eyebrow">شرح وتطبيق</div>
+        <h2 class="content-section__title">شرح وتطبيق كل مرحلة</h2>
+
+        <div class="article-content" style="max-width: 900px">
+          <!-- ============ Topic Block: من الحدث المالي حتى القوائم المالية ============ -->
+          <div class="topic-block" id="cycle-to-statements">
+            <h3 class="topic-block__title">من الحدث المالي حتى القوائم المالية</h3>
+
+            <p>
+              تُسمّى سلسلة الخطوات التي تتكرر في كل فترة مالية دورة المحاسبة
+              (Accounting Cycle). وتنطلق من الحدث المالي (Transaction)، وهو
+              واقعة تؤثر في المركز المالي للمنشأة ويمكن قياسها بالنقود، مثل
+              شراء أصل أو أداء خدمة أو سداد التزام. أما الوقائع التي لا تُقاس
+              نقدًا، كاستقالة موظف، فلا تدخل الدفاتر. ويستند تسجيل كل حدث إلى
+              مستند (Source Document) يثبت وقوعه ومبلغه، كالفاتورة أو الإيصال
+              أو الشيك أو العقد.
+            </p>
+
+            <p>
+              يقوم التسجيل على القيد المزدوج (Double-Entry): كل حدث يؤثر في
+              حسابين على الأقل بمبلغين متساويين، طرف مدين (Debit) وطرف دائن
+              (Credit). والحساب (Account) هو سجل مستقل لكل بند، كالنقدية أو
+              العملاء أو الإيرادات. وتحكم هذا كله المعادلة المحاسبية التي لا
+              تختل مهما تعددت الأحداث.
+            </p>
+
+            <div class="formula-box">
+              <span class="formula-box__label">المعادلة المحاسبية (Accounting Equation)</span>
+              <p class="formula-box__body">الأصول = الخصوم + حقوق الملكية</p>
+            </div>
+
+            <div class="formula-box">
+              <span class="formula-box__label">قاعدة المدين والدائن</span>
+              <p class="formula-box__body">
+                المدين: زيادة الأصول والمصروفات والمسحوبات، ونقص الخصوم وحقوق الملكية والإيرادات<br />
+                الدائن: عكس ذلك تمامًا
+              </p>
+            </div>
+
+            <p>
+              يُثبَّت الحدث أولًا في دفتر اليومية (Journal) بقيد يومية
+              (Journal Entry) يتضمن التاريخ والحسابين والمبلغ وبيانًا موجزًا
+              يشرح سببه. ثم يُرحَّل (Posting) كل طرف من القيد إلى حسابه في
+              دفتر الأستاذ (General Ledger)، وهو الدفتر الذي يجمع حركات كل
+              حساب في مكان واحد ويُستخرج منه رصيد الحساب (Balance). بعد ذلك
+              يُعدّ ميزان المراجعة (Trial Balance)، وهو قائمة بأرصدة جميع
+              الحسابات يُتحقق بها من تساوي مجموع الأرصدة المدينة مع مجموع
+              الأرصدة الدائنة.
+            </p>
+
+            <p>
+              غير أن الأرصدة قبل نهاية الفترة لا تعبّر دائمًا عن الواقع، لأن
+              بعض الأمور يتغير بمرور الزمن دون أن يقع حدث مستقل يسجلها. لذلك
+              تُجرى في نهاية الفترة قيود التسوية (Adjusting Entries) وفق مبدأ
+              الاستحقاق (Accrual Principle) الذي يقضي بإثبات الإيراد والمصروف
+              في الفترة التي يخصانها، لا في الفترة التي يُقبض فيها النقد أو
+              يُدفع. ومن صورها المتكررة: تحويل جزء من مصروف مدفوع مقدمًا إلى
+              مصروف الفترة، وتحويل جزء من إيراد مقبوض مقدمًا إلى إيراد الفترة،
+              وإثبات مصروف استُحق ولم يُدفع، وتوزيع تكلفة الأصل الثابت على
+              سنوات استخدامه عبر الإهلاك (Depreciation). وبعد التسوية يُعاد
+              إعداد ميزان المراجعة (Adjusted Trial Balance) لتكون أرصدته هي
+              مصدر القوائم المالية.
+            </p>
+
+            <p>
+              تُعدّ القوائم المالية (Financial Statements) بترتيب منطقي لأن كل
+              قائمة تغذّي التي بعدها: قائمة الدخل (Income Statement) تحسب
+              صافي الدخل، ثم قائمة حقوق الملكية (Statement of Owner's Equity)
+              تُدخل صافي الدخل في رصيد حقوق الملكية، ثم قائمة المركز المالي
+              (Statement of Financial Position) تعرض الأصول مقابل الخصوم وحقوق
+              الملكية في تاريخ محدد.
+            </p>
+
+            <div class="flow-diagram">
+              <div class="flow-step">
+                <div class="flow-step__title">1. الحدث المالي والمستند</div>
+                <div class="flow-step__description">تحديد ما وقع ومبلغه والتحقق من المستند المؤيد له.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">2. قيد اليومية</div>
+                <div class="flow-step__description">تحليل الحدث وتسجيله بطرفين متساويين: مدين ودائن.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">3. الترحيل إلى دفتر الأستاذ</div>
+                <div class="flow-step__description">نقل كل طرف إلى حسابه واستخراج رصيد كل حساب.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">4. ميزان المراجعة قبل التسوية</div>
+                <div class="flow-step__description">التحقق من تساوي مجموع الأرصدة المدينة والدائنة.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">5. قيود التسوية</div>
+                <div class="flow-step__description">إثبات ما يخص الفترة من إيرادات ومصروفات وفق مبدأ الاستحقاق.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">6. ميزان المراجعة بعد التسوية</div>
+                <div class="flow-step__description">الأرصدة النهائية التي تُعدّ منها القوائم المالية.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">7. القوائم المالية</div>
+                <div class="flow-step__description">قائمة الدخل، ثم قائمة حقوق الملكية، ثم قائمة المركز المالي.</div>
+              </div>
+            </div>
+
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>
+                تستخدم المعايير الدولية للتقرير المالي (IFRS) مسمى «قائمة
+                المركز المالي» (Statement of Financial Position) بدل مسمى
+                الميزانية العمومية الشائع. وجميع مبالغ المثال التالي بالجنيه
+                المصري (ج.م) عن شهر يناير 2026.
+              </p>
+            </div>
+
+            <!-- المثال التطبيقي -->
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">منشأة «النور للخدمات الإدارية»: دورة كاملة لشهر يناير 2026</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات: أحداث الشهر</span>
+                <ul class="example-block__data">
+                  <li><span class="num">(1)</span> <span class="num">01/01/2026</span>: بدأ المالك النشاط بإيداع <span class="num">200,000</span> ج.م نقدًا في حساب المنشأة.</li>
+                  <li><span class="num">(2)</span> <span class="num">02/01/2026</span>: شراء معدات مكتبية بمبلغ <span class="num">48,000</span> ج.م نقدًا، وعمرها الإنتاجي المقدّر خمس سنوات دون قيمة متبقية.</li>
+                  <li><span class="num">(3)</span> <span class="num">03/01/2026</span>: دفع إيجار المقر عن ثلاثة أشهر مقدمًا (يناير إلى مارس) بمبلغ <span class="num">9,000</span> ج.م نقدًا.</li>
+                  <li><span class="num">(4)</span> <span class="num">05/01/2026</span>: شراء مستلزمات مكتبية بمبلغ <span class="num">6,000</span> ج.م على الحساب من أحد الموردين.</li>
+                  <li><span class="num">(5)</span> <span class="num">10/01/2026</span>: أداء خدمات لعملاء وتحصيل <span class="num">30,000</span> ج.م نقدًا.</li>
+                  <li><span class="num">(6)</span> <span class="num">12/01/2026</span>: تحصيل <span class="num">8,000</span> ج.م مقدمًا من عميل عن عقد خدمات يبدأ تنفيذه في يناير ويمتد إلى الفترات التالية.</li>
+                  <li><span class="num">(7)</span> <span class="num">15/01/2026</span>: أداء خدمات لعملاء بمبلغ <span class="num">25,000</span> ج.م على الحساب.</li>
+                  <li><span class="num">(8)</span> <span class="num">18/01/2026</span>: تحصيل <span class="num">10,000</span> ج.م نقدًا من العملاء عن الخدمات السابقة.</li>
+                  <li><span class="num">(9)</span> <span class="num">20/01/2026</span>: دفع رواتب العاملين بمبلغ <span class="num">14,000</span> ج.م نقدًا عن الفترة حتى 20 يناير.</li>
+                  <li><span class="num">(10)</span> <span class="num">25/01/2026</span>: سداد <span class="num">4,000</span> ج.م نقدًا للمورد من ثمن المستلزمات.</li>
+                  <li><span class="num">(11)</span> <span class="num">28/01/2026</span>: سحب المالك <span class="num">5,000</span> ج.م نقدًا للاستعمال الشخصي.</li>
+                </ul>
+
+                <span class="example-block__label">معطيات التسوية في 31/01/2026</span>
+                <ul class="example-block__data">
+                  <li>(أ) انقضى شهر واحد من الإيجار المدفوع مقدمًا في الحدث <span class="num">(3)</span>.</li>
+                  <li>(ب) أظهر جرد المستلزمات في نهاية الشهر بقاء مستلزمات قيمتها <span class="num">2,500</span> ج.م.</li>
+                  <li>(ج) إهلاك المعدات بطريقة القسط الثابت (Straight-Line) عن شهر يناير.</li>
+                  <li>(د) رواتب العاملين عن الفترة من 21 إلى 31 يناير، وقيمتها <span class="num">2,000</span> ج.م، لم تُدفع بعد.</li>
+                  <li>(هـ) أُنجز في يناير من عقد الحدث <span class="num">(6)</span> خدمات قيمتها <span class="num">3,000</span> ج.م.</li>
+                </ul>
+
+                <span class="example-block__label">قيود اليومية للأحداث (1) إلى (11)</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين</th>
+                        <th>دائن</th>
+                      </tr>
+                    </thead>
+
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">01/01/2026</span></td>
+                        <td>من ح/ النقدية</td>
+                        <td class="num">200,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ رأس المال</td>
+                        <td></td>
+                        <td class="num">200,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td><span class="num">(1)</span> إثبات استثمار المالك في بداية النشاط</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">02/01/2026</span></td>
+                        <td>من ح/ المعدات</td>
+                        <td class="num">48,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ النقدية</td>
+                        <td></td>
+                        <td class="num">48,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td><span class="num">(2)</span> شراء معدات مكتبية نقدًا</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">03/01/2026</span></td>
+                        <td>من ح/ إيجار مدفوع مقدمًا</td>
+                        <td class="num">9,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ النقدية</td>
+                        <td></td>
+                        <td class="num">9,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td><span class="num">(3)</span> دفع إيجار ثلاثة أشهر مقدمًا</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">05/01/2026</span></td>
+                        <td>من ح/ المستلزمات</td>
+                        <td class="num">6,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ الدائنون</td>
+                        <td></td>
+                        <td class="num">6,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td><span class="num">(4)</span> شراء مستلزمات مكتبية على الحساب</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">10/01/2026</span></td>
+                        <td>من ح/ النقدية</td>
+                        <td class="num">30,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ إيرادات الخدمات</td>
+                        <td></td>
+                        <td class="num">30,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td><span class="num">(5)</span> أداء خدمات وتحصيل ثمنها نقدًا</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">12/01/2026</span></td>
+                        <td>من ح/ النقدية</td>
+                        <td class="num">8,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ إيرادات مقدمة</td>
+                        <td></td>
+                        <td class="num">8,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td><span class="num">(6)</span> تحصيل مبلغ مقدمًا عن خدمات لم تُنجز بعد</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">15/01/2026</span></td>
+                        <td>من ح/ العملاء</td>
+                        <td class="num">25,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ إيرادات الخدمات</td>
+                        <td></td>
+                        <td class="num">25,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td><span class="num">(7)</span> أداء خدمات على الحساب</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">18/01/2026</span></td>
+                        <td>من ح/ النقدية</td>
+                        <td class="num">10,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ العملاء</td>
+                        <td></td>
+                        <td class="num">10,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td><span class="num">(8)</span> تحصيل جزء من أرصدة العملاء</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">20/01/2026</span></td>
+                        <td>من ح/ مصروف الرواتب</td>
+                        <td class="num">14,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ النقدية</td>
+                        <td></td>
+                        <td class="num">14,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td><span class="num">(9)</span> دفع رواتب العاملين نقدًا</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">25/01/2026</span></td>
+                        <td>من ح/ الدائنون</td>
+                        <td class="num">4,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ النقدية</td>
+                        <td></td>
+                        <td class="num">4,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td><span class="num">(10)</span> سداد جزء من مستحقات المورد</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">28/01/2026</span></td>
+                        <td>من ح/ المسحوبات</td>
+                        <td class="num">5,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ النقدية</td>
+                        <td></td>
+                        <td class="num">5,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td><span class="num">(11)</span> سحب المالك مبلغًا للاستعمال الشخصي</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">الترحيل إلى حسابات الأستاذ (قبل التسوية)</span>
+                <div class="t-accounts">
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ النقدية</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li><span class="num">(1)</span><span class="num">200,000</span></li>
+                          <li><span class="num">(5)</span><span class="num">30,000</span></li>
+                          <li><span class="num">(6)</span><span class="num">8,000</span></li>
+                          <li><span class="num">(8)</span><span class="num">10,000</span></li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines">
+                          <li><span class="num">(2)</span><span class="num">48,000</span></li>
+                          <li><span class="num">(3)</span><span class="num">9,000</span></li>
+                          <li><span class="num">(9)</span><span class="num">14,000</span></li>
+                          <li><span class="num">(10)</span><span class="num">4,000</span></li>
+                          <li><span class="num">(11)</span><span class="num">5,000</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">168,000</span> مدين
+                    </div>
+                  </div>
+
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ العملاء</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li><span class="num">(7)</span><span class="num">25,000</span></li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines">
+                          <li><span class="num">(8)</span><span class="num">10,000</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">15,000</span> مدين
+                    </div>
+                  </div>
+
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ إيجار مدفوع مقدمًا</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li><span class="num">(3)</span><span class="num">9,000</span></li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines"></ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">9,000</span> مدين
+                    </div>
+                  </div>
+
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ المستلزمات</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li><span class="num">(4)</span><span class="num">6,000</span></li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines"></ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">6,000</span> مدين
+                    </div>
+                  </div>
+
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ المعدات</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li><span class="num">(2)</span><span class="num">48,000</span></li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines"></ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">48,000</span> مدين
+                    </div>
+                  </div>
+
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ الدائنون</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li><span class="num">(10)</span><span class="num">4,000</span></li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines">
+                          <li><span class="num">(4)</span><span class="num">6,000</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">2,000</span> دائن
+                    </div>
+                  </div>
+
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ إيرادات مقدمة</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines"></ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines">
+                          <li><span class="num">(6)</span><span class="num">8,000</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">8,000</span> دائن
+                    </div>
+                  </div>
+
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ رأس المال</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines"></ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines">
+                          <li><span class="num">(1)</span><span class="num">200,000</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">200,000</span> دائن
+                    </div>
+                  </div>
+
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ المسحوبات</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li><span class="num">(11)</span><span class="num">5,000</span></li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines"></ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">5,000</span> مدين
+                    </div>
+                  </div>
+
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ إيرادات الخدمات</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines"></ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines">
+                          <li><span class="num">(5)</span><span class="num">30,000</span></li>
+                          <li><span class="num">(7)</span><span class="num">25,000</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">55,000</span> دائن
+                    </div>
+                  </div>
+
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ مصروف الرواتب</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li><span class="num">(9)</span><span class="num">14,000</span></li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines"></ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">14,000</span> مدين
+                    </div>
+                  </div>
+                </div>
+
+                <span class="example-block__label">ميزان المراجعة قبل التسوية في 31/01/2026</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>اسم الحساب</th>
+                        <th>مدين</th>
+                        <th>دائن</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>النقدية</td><td class="num">168,000</td><td class="num"></td></tr>
+                      <tr><td>العملاء</td><td class="num">15,000</td><td class="num"></td></tr>
+                      <tr><td>إيجار مدفوع مقدمًا</td><td class="num">9,000</td><td class="num"></td></tr>
+                      <tr><td>المستلزمات</td><td class="num">6,000</td><td class="num"></td></tr>
+                      <tr><td>المعدات</td><td class="num">48,000</td><td class="num"></td></tr>
+                      <tr><td>الدائنون</td><td class="num"></td><td class="num">2,000</td></tr>
+                      <tr><td>إيرادات مقدمة</td><td class="num"></td><td class="num">8,000</td></tr>
+                      <tr><td>رأس المال</td><td class="num"></td><td class="num">200,000</td></tr>
+                      <tr><td>المسحوبات</td><td class="num">5,000</td><td class="num"></td></tr>
+                      <tr><td>إيرادات الخدمات</td><td class="num"></td><td class="num">55,000</td></tr>
+                      <tr><td>مصروف الرواتب</td><td class="num">14,000</td><td class="num"></td></tr>
+                      <tr class="acc-table__total">
+                        <td>الإجمالي</td>
+                        <td class="num">265,000</td>
+                        <td class="num">265,000</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">قيود التسوية في 31/01/2026</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين</th>
+                        <th>دائن</th>
+                      </tr>
+                    </thead>
+
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">31/01/2026</span></td>
+                        <td>من ح/ مصروف الإيجار</td>
+                        <td class="num">3,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ إيجار مدفوع مقدمًا</td>
+                        <td></td>
+                        <td class="num">3,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>(أ) إثبات إيجار شهر يناير من الإيجار المدفوع مقدمًا</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">31/01/2026</span></td>
+                        <td>من ح/ مصروف المستلزمات</td>
+                        <td class="num">3,500</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ المستلزمات</td>
+                        <td></td>
+                        <td class="num">3,500</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>(ب) إثبات قيمة المستلزمات المستهلكة خلال الشهر</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">31/01/2026</span></td>
+                        <td>من ح/ مصروف الإهلاك</td>
+                        <td class="num">800</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ مجمع الإهلاك</td>
+                        <td></td>
+                        <td class="num">800</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>(ج) إثبات إهلاك المعدات عن شهر يناير</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">31/01/2026</span></td>
+                        <td>من ح/ مصروف الرواتب</td>
+                        <td class="num">2,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ رواتب مستحقة</td>
+                        <td></td>
+                        <td class="num">2,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>(د) إثبات رواتب مستحقة عن الفترة من 21 إلى 31 يناير</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">31/01/2026</span></td>
+                        <td>من ح/ إيرادات مقدمة</td>
+                        <td class="num">3,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ إيرادات الخدمات</td>
+                        <td></td>
+                        <td class="num">3,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>(هـ) تحويل الجزء المُنجز من الإيراد المقبوض مقدمًا إلى إيراد الفترة</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">ميزان المراجعة بعد التسوية في 31/01/2026</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>اسم الحساب</th>
+                        <th>مدين</th>
+                        <th>دائن</th>
+                        <th>التسوية المؤثرة</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>النقدية</td><td class="num">168,000</td><td class="num"></td><td>بلا تسوية</td></tr>
+                      <tr><td>العملاء</td><td class="num">15,000</td><td class="num"></td><td>بلا تسوية</td></tr>
+                      <tr><td>إيجار مدفوع مقدمًا</td><td class="num">6,000</td><td class="num"></td><td>(أ)</td></tr>
+                      <tr><td>المستلزمات</td><td class="num">2,500</td><td class="num"></td><td>(ب)</td></tr>
+                      <tr><td>المعدات</td><td class="num">48,000</td><td class="num"></td><td>بلا تسوية</td></tr>
+                      <tr><td>مجمع الإهلاك</td><td class="num"></td><td class="num">800</td><td>(ج)</td></tr>
+                      <tr><td>الدائنون</td><td class="num"></td><td class="num">2,000</td><td>بلا تسوية</td></tr>
+                      <tr><td>رواتب مستحقة</td><td class="num"></td><td class="num">2,000</td><td>(د)</td></tr>
+                      <tr><td>إيرادات مقدمة</td><td class="num"></td><td class="num">5,000</td><td>(هـ)</td></tr>
+                      <tr><td>رأس المال</td><td class="num"></td><td class="num">200,000</td><td>بلا تسوية</td></tr>
+                      <tr><td>المسحوبات</td><td class="num">5,000</td><td class="num"></td><td>بلا تسوية</td></tr>
+                      <tr><td>إيرادات الخدمات</td><td class="num"></td><td class="num">58,000</td><td>(هـ)</td></tr>
+                      <tr><td>مصروف الرواتب</td><td class="num">16,000</td><td class="num"></td><td>(د)</td></tr>
+                      <tr><td>مصروف الإيجار</td><td class="num">3,000</td><td class="num"></td><td>(أ)</td></tr>
+                      <tr><td>مصروف المستلزمات</td><td class="num">3,500</td><td class="num"></td><td>(ب)</td></tr>
+                      <tr><td>مصروف الإهلاك</td><td class="num">800</td><td class="num"></td><td>(ج)</td></tr>
+                      <tr class="acc-table__total">
+                        <td>الإجمالي</td>
+                        <td class="num">267,800</td>
+                        <td class="num">267,800</td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">قائمة الدخل عن شهر يناير 2026</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البيان</th>
+                        <th>جزئي</th>
+                        <th>كلي</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>إيرادات الخدمات</td><td class="num"></td><td class="num">58,000</td></tr>
+                      <tr><td colspan="3"><strong>يُطرح: المصروفات</strong></td></tr>
+                      <tr><td>مصروف الرواتب</td><td class="num">16,000</td><td class="num"></td></tr>
+                      <tr><td>مصروف الإيجار</td><td class="num">3,000</td><td class="num"></td></tr>
+                      <tr><td>مصروف المستلزمات</td><td class="num">3,500</td><td class="num"></td></tr>
+                      <tr><td>مصروف الإهلاك</td><td class="num">800</td><td class="num"></td></tr>
+                      <tr><td>إجمالي المصروفات</td><td class="num"></td><td class="num">(23,300)</td></tr>
+                      <tr class="acc-table__total">
+                        <td>صافي الدخل</td>
+                        <td></td>
+                        <td class="num">34,700</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">قائمة حقوق الملكية عن شهر يناير 2026</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البيان</th>
+                        <th>جزئي</th>
+                        <th>كلي</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>رصيد حقوق الملكية في 01/01/2026 (بداية النشاط)</td><td class="num"></td><td class="num">0</td></tr>
+                      <tr><td>يُضاف: استثمار المالك</td><td class="num">200,000</td><td class="num"></td></tr>
+                      <tr><td>يُضاف: صافي الدخل (من قائمة الدخل)</td><td class="num">34,700</td><td class="num"></td></tr>
+                      <tr><td>يُطرح: المسحوبات</td><td class="num">(5,000)</td><td class="num"></td></tr>
+                      <tr class="acc-table__total">
+                        <td>رصيد حقوق الملكية في 31/01/2026</td>
+                        <td></td>
+                        <td class="num">229,700</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">قائمة المركز المالي في 31/01/2026</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البيان</th>
+                        <th>جزئي</th>
+                        <th>كلي</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td colspan="3"><strong>الأصول</strong></td></tr>
+                      <tr><td>النقدية</td><td class="num">168,000</td><td class="num"></td></tr>
+                      <tr><td>العملاء</td><td class="num">15,000</td><td class="num"></td></tr>
+                      <tr><td>إيجار مدفوع مقدمًا</td><td class="num">6,000</td><td class="num"></td></tr>
+                      <tr><td>المستلزمات</td><td class="num">2,500</td><td class="num"></td></tr>
+                      <tr><td>المعدات</td><td class="num">48,000</td><td class="num"></td></tr>
+                      <tr><td>يُطرح: مجمع الإهلاك</td><td class="num">(800)</td><td class="num"></td></tr>
+                      <tr class="acc-table__total">
+                        <td>إجمالي الأصول</td>
+                        <td></td>
+                        <td class="num">238,700</td>
+                      </tr>
+                      <tr><td colspan="3"><strong>الخصوم وحقوق الملكية</strong></td></tr>
+                      <tr><td>الدائنون</td><td class="num">2,000</td><td class="num"></td></tr>
+                      <tr><td>رواتب مستحقة</td><td class="num">2,000</td><td class="num"></td></tr>
+                      <tr><td>إيرادات مقدمة</td><td class="num">5,000</td><td class="num"></td></tr>
+                      <tr><td>إجمالي الخصوم</td><td class="num"></td><td class="num">9,000</td></tr>
+                      <tr><td>حقوق الملكية (من قائمة حقوق الملكية)</td><td class="num"></td><td class="num">229,700</td></tr>
+                      <tr class="acc-table__total">
+                        <td>إجمالي الخصوم وحقوق الملكية</td>
+                        <td></td>
+                        <td class="num">238,700</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <h4>كيف حُلِّل كل حدث؟</h4>
+            <p>
+              في الحدث <span class="num">(1)</span> زادت النقدية وهي أصل فسُجّلت مدينة، وزادت حقوق الملكية فسُجّل
+              رأس المال دائنًا. وفي الحدث <span class="num">(2)</span> تحوّل أصل إلى أصل آخر: زادت المعدات
+              (مدين) ونقصت النقدية (دائن) بمبلغ <span class="num">48,000</span> ج.م، فلم يتغير مجموع الأصول.
+              وفي الحدث <span class="num">(3)</span> لم يُسجَّل الإيجار مصروفًا لأن منفعته تمتد ثلاثة أشهر، فهو أصل
+              (إيجار مدفوع مقدمًا) يُستهلك تدريجيًا. وفي الحدث <span class="num">(4)</span> ظهر التزام جديد
+              تجاه المورد (الدائنون) مقابل أصل هو المستلزمات.
+            </p>
+            <p>
+              الحدثان <span class="num">(5)</span> و<span class="num">(7)</span> إيراد خدمات يُسجَّل دائنًا في الحالتين،
+              ويختلف الطرف الآخر: النقدية إن قُبض الثمن في الحال، والعملاء إن كان على الحساب. أما الحدث
+              <span class="num">(6)</span> فلا يُسجَّل إيرادًا لأن المنشأة لم تؤدِّ الخدمة بعد، بل هو التزام بتأديتها
+              فيظهر في خصوم المنشأة باسم الإيرادات المقدمة. وفي الحدث <span class="num">(8)</span> لا يتولد إيراد
+              جديد، فالإيراد أُثبت عند الحدث <span class="num">(7)</span> وإنما تحوّل جزء من أرصدة العملاء
+              إلى نقدية. وفي الحدث <span class="num">(9)</span> الرواتب مصروف يُسجَّل مدينًا. وفي الحدث
+              <span class="num">(10)</span> سداد جزء من الالتزام يُنقص الدائنين فيُسجَّل مدينًا. وفي الحدث
+              <span class="num">(11)</span> المسحوبات (Drawings) هي ما يأخذه المالك من المنشأة لنفسه، وتُنقص
+              حقوق الملكية ولا تُعدّ مصروفًا.
+            </p>
+
+            <h4>ماذا يخبرنا ميزان المراجعة قبل التسوية؟</h4>
+            <p>
+              بعد الترحيل استُخرج رصيد كل حساب، فبلغ مجموع الأرصدة المدينة
+              <span class="num">265,000</span> ج.م ومجموع الأرصدة الدائنة <span class="num">265,000</span> ج.م.
+              ويؤكد هذا التساوي أن كل قيد سُجّل بطرفين متساويين وأن الترحيل لم يُخلّ بالتوازن. لكنه لا يعني أن
+              النتائج صالحة للعرض بعد، فإيرادات الخدمات <span class="num">55,000</span> ج.م
+              لا تتضمن الجزء المُنجز من العقد المقبوض مقدمًا، ولا يظهر في الأرصدة مصروف إيجار ولا إهلاك،
+              والمستلزمات ما زالت بقيمة شرائها كاملة.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                توازن ميزان المراجعة لا يعني خلو الدفاتر من الأخطاء. فتسجيل المبلغ الصحيح في حساب خاطئ، أو
+                إغفال قيد كامل، يُبقي الميزان متوازنًا. والميزان قبل التسوية لا يصلح أساسًا لإعداد القوائم.
+              </p>
+            </div>
+
+            <h4>قيود التسوية: لماذا هذه المبالغ؟</h4>
+            <p>
+              <strong>(أ) الإيجار:</strong> دُفع <span class="num">9,000</span> ج.م عن ثلاثة أشهر، فنصيب كل شهر
+              <span class="num">9,000 ÷ 3 = 3,000</span> ج.م. يُثبَّت مصروفًا للشهر المنقضي (مدين)، ويُنقص الأصل
+              (دائن) فيبقى <span class="num">6,000</span> ج.م تخص فبراير ومارس.
+            </p>
+            <p>
+              <strong>(ب) المستلزمات:</strong> المستلزمات المشتراة <span class="num">6,000</span> ج.م والمتبقية بالجرد
+              <span class="num">2,500</span> ج.م، فالمستهلك <span class="num">6,000 − 2,500 = 3,500</span> ج.م
+              هو مصروف الشهر.
+            </p>
+            <p>
+              <strong>(ج) الإهلاك:</strong> تُوزَّع تكلفة المعدات بالتساوي على عمرها الإنتاجي في طريقة القسط الثابت:
+              <span class="num">48,000 ÷ (5 × 12) = 800</span> ج.م شهريًا. ويُسجَّل الطرف الدائن في حساب
+              مجمع الإهلاك (Accumulated Depreciation)، وهو حساب مقابل للأصل يُطرح منه في قائمة المركز المالي،
+              فتبقى تكلفة الشراء الأصلية ظاهرة في حساب المعدات.
+            </p>
+            <p>
+              <strong>(د) الرواتب المستحقة:</strong> عمل الموظفون من 21 إلى 31 يناير ولم تُدفع أجورهم، فالمصروف
+              تحقق في يناير (مدين <span class="num">2,000</span> ج.م) وتحقق معه التزام بالدفع (دائن) باسم الرواتب المستحقة.
+              وبهذا يصبح مصروف الرواتب <span class="num">14,000 + 2,000 = 16,000</span> ج.م.
+            </p>
+            <p>
+              <strong>(هـ) الإيراد المقبوض مقدمًا:</strong> أنجزت المنشأة خدمات بقيمة <span class="num">3,000</span> ج.م
+              من أصل <span class="num">8,000</span> ج.م، فينقص الالتزام إلى <span class="num">5,000</span> ج.م
+              ويرتفع إيراد الخدمات إلى <span class="num">55,000 + 3,000 = 58,000</span> ج.م.
+            </p>
+
+            <h4>من الميزان بعد التسوية إلى القوائم</h4>
+            <p>
+              تأكد توازن الميزان بعد التسوية عند <span class="num">267,800</span> ج.م لكل جانب، ثم أُخذت منه
+              أرصدة الإيرادات والمصروفات لإعداد قائمة الدخل: إيرادات <span class="num">58,000</span> ج.م
+              ناقص مصروفات <span class="num">23,300</span> ج.م يعطي صافي دخل <span class="num">34,700</span> ج.م.
+              وانتقل هذا الرقم إلى قائمة حقوق الملكية: <span class="num">0 + 200,000 + 34,700 − 5,000 = 229,700</span> ج.م.
+              وأخيرًا جاءت قائمة المركز المالي: إجمالي الأصول <span class="num">238,700</span> ج.م يساوي
+              الخصوم <span class="num">9,000</span> ج.م مضافًا إليها حقوق الملكية <span class="num">229,700</span> ج.م،
+              فتحققت المعادلة المحاسبية وتم الاطمئنان إلى سلامة الدورة من أولها إلى آخرها. وبعد إعداد القوائم
+              تُقفل (Closing Entries) حسابات الإيرادات والمصروفات والمسحوبات، أي تُصفَّر أرصدتها بقيود خاصة
+              لتبدأ الفترة التالية بأرصدة جديدة، وهي خطوة لاحقة لا تدخل في نطاق هذا المثال.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                ما دُفع ليس بالضرورة مصروف الفترة، وما قُبض ليس بالضرورة إيرادها. فالإيجار المدفوع مقدمًا أصل
+                حتى يُستهلك، والمبلغ المقبوض مقدمًا التزام حتى تُؤدَّى الخدمة. وكذلك لا تدخل المسحوبات في
+                قائمة الدخل لأنها توزيع على المالك وليست تكلفة لتحقيق الإيراد.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section content-section--tint" id="summary">
+      <div class="container">
+        <div class="content-section__eyebrow">الخلاصة</div>
+        <h2 class="content-section__title">أهم ما يجب تذكّره</h2>
+
+        <div class="summary-card" style="max-width: 900px">
+          <ul class="summary-card__list">
+            <li>✔ تبدأ الدورة بحدث مالي مؤيد بمستند ويمكن قياسه نقدًا، وتنتهي بالقوائم المالية.</li>
+            <li>✔ كل حدث يُسجَّل بقيد مزدوج: مجموع المدين يساوي مجموع الدائن دائمًا، وتبقى المعادلة المحاسبية متوازنة.</li>
+            <li>✔ الترحيل ينقل أطراف القيود إلى حسابات الأستاذ، وميزان المراجعة يتحقق من تساوي الأرصدة المدينة والدائنة لكنه لا يكشف كل الأخطاء.</li>
+            <li>✔ قيود التسوية تُثبت ما يخص الفترة من إيرادات ومصروفات وفق مبدأ الاستحقاق، ولا تُعدّ القوائم إلا من الميزان بعد التسوية.</li>
+            <li>✔ ترتيب القوائم: قائمة الدخل، ثم قائمة حقوق الملكية، ثم قائمة المركز المالي، لأن كل قائمة تغذّي ما بعدها.</li>
+            <li>✔ في المثال: صافي الدخل <span class="num">34,700</span> ج.م، وحقوق الملكية <span class="num">229,700</span> ج.م، وإجمالي الأصول <span class="num">238,700</span> ج.م.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>الفصل الثالث: دورة المحاسبة الكاملة</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      /* Sync Toolbar Title */
+      const heroTitle = document.querySelector('.hero__title')
+      const toolbarTitle = document.querySelector('[data-sync-title]')
+      if (heroTitle && toolbarTitle) {
+        const text = heroTitle.textContent.trim()
+        if (text) {
+          toolbarTitle.textContent = text
+          document.title = text
+        }
+      }
+    </script>
+  </body>
+</html>

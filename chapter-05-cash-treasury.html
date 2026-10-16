@@ -1,0 +1,1508 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الفصل الخامس: الخزينة والنقدية</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        
+        --clr-primary: #b378a6;
+        --clr-secondary: #7796bf;
+        --clr-light: #ffffff;
+        --clr-light-2: #f0f0f0;
+        --clr-border: #dedede;
+        --clr-dark: #1b1b1b;
+        --clr-dark-2: #444444;
+        --clr-text: #333333;
+        --clr-text-soft: #555555;
+
+        --font-body: 'Baloo Bhaijaan 2', sans-serif;
+
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 18px;
+
+        --shadow-soft: 0 4px 20px rgba(27, 27, 27, 0.07);
+        --shadow-hover: 0 12px 28px rgba(179, 120, 166, 0.16);
+
+        --section-pad: 4.5rem;
+        --content-width: 900px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--clr-light);
+        color: var(--clr-dark);
+        line-height: 1.9;
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: var(--clr-secondary);
+        text-decoration: none;
+        transition: 0.2s;
+      }
+
+      a:hover {
+        color: var(--clr-primary);
+      }
+
+      h1, h2, h3, h4, h5 {
+        font-family: var(--font-body);
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+        color: var(--clr-dark);
+      }
+
+      h1, h2 { font-weight: 800; }
+      h3, h4, h5 { font-weight: 700; }
+
+      p {
+        color: var(--clr-text);
+        margin-bottom: 1rem;
+      }
+
+      ul { margin: 0; padding: 0; }
+
+      section { scroll-margin-top: 90px; }
+
+      ::selection {
+        background: var(--clr-primary);
+        color: #fff;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--clr-secondary);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      .editor-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--clr-primary);
+        padding: 0.7rem 0;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .editor-toolbar__tab-title {
+        color: #fff;
+        font-size: 1.1rem;
+        direction: ltr;
+        font-weight: 700;
+      }
+
+      .hero {
+        background: var(--clr-secondary);
+        color: #fff;
+        padding: 4.5rem 0 3.5rem;
+      }
+
+      .hero__title {
+        color: #fff;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      .hero__lead {
+        color: #fff;
+        opacity: 0.95;
+        max-width: 760px;
+        font-size: 1.15rem;
+        margin-bottom: 0;
+      }
+
+      .content-section { padding: var(--section-pad) 0; }
+      .content-section--alt { background: #fcfcfc; }
+      .content-section--tint { background: var(--clr-light-2); }
+
+      .content-section__eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+        font-size: 0.86rem;
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+      }
+
+      .content-section__eyebrow::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        background: var(--clr-primary);
+      }
+
+      .content-section__title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+
+      .content-section__description {
+        max-width: 760px;
+        color: var(--clr-text-soft);
+        margin-bottom: 2.5rem;
+      }
+
+      .summary-card {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+        padding: 2rem;
+      }
+
+      .summary-card__list {
+        display: grid;
+        gap: 1rem;
+        list-style: none;
+      }
+
+      .summary-card__list li {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+      }
+
+      .callout {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        border-radius: var(--radius-md);
+        border-inline-start: 4px solid;
+      }
+
+      .callout__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 700;
+      }
+
+      .callout--note {
+        background: rgba(119, 150, 191, 0.08);
+        border-color: var(--clr-secondary);
+      }
+
+      .callout--warning {
+        background: rgba(179, 120, 166, 0.08);
+        border-color: var(--clr-primary);
+      }
+
+      .flow-diagram {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin: 2rem 0;
+      }
+
+      .flow-step {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        padding: 1rem 1.25rem;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .flow-step__title {
+        color: var(--clr-primary);
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+      }
+
+      .flow-step__description { color: var(--clr-text-soft); margin: 0; }
+
+      .flow-arrow {
+        text-align: center;
+        color: var(--clr-secondary);
+        font-size: 28px;
+        line-height: 1;
+      }
+
+      .topic-block { margin-bottom: 3rem; }
+      .topic-block:last-child { margin-bottom: 0; }
+
+      .topic-block__title {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+      }
+
+      .topic-divider {
+        border: none;
+        border-top: 1px dashed var(--clr-border);
+        margin: 2.5rem 0;
+      }
+
+      .num {
+        direction: ltr;
+        unicode-bidi: isolate;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .formula-box {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        text-align: center;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .formula-box__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--clr-primary);
+        font-weight: 700;
+      }
+
+      .formula-box__body {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--clr-dark);
+      }
+
+      .example-block {
+        overflow: hidden;
+        margin: 2rem 0;
+        background: var(--clr-light);
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .example-block__header {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.7rem 1.2rem;
+        background: var(--clr-dark);
+      }
+
+      .example-block__tag {
+        padding: 0 0.7rem;
+        background: var(--clr-primary);
+        color: #fff;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .example-block__title { color: #fff; font-weight: 600; }
+
+      .example-block__body { padding: 1.5rem; }
+
+      .example-block__label {
+        display: block;
+        margin: 1.6rem 0 0.6rem;
+        color: var(--clr-secondary);
+        font-weight: 700;
+      }
+
+      .example-block__label:first-child { margin-top: 0; }
+
+      .example-block__data {
+        margin: 0;
+        padding-inline-start: 1.2rem;
+        color: var(--clr-text);
+      }
+
+      .acc-table-wrap { overflow-x: auto; }
+
+      .acc-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+
+      .acc-table th,
+      .acc-table td {
+        padding: 0.5rem 0.8rem;
+        border: 1px solid var(--clr-border);
+      }
+
+      .acc-table thead th {
+        background: var(--clr-light-2);
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .acc-table td.num { text-align: end; }
+
+      .acc-table__total td {
+        background: #fcfcfc;
+        font-weight: 700;
+        border-top: 2px solid var(--clr-dark-2);
+        border-bottom: 4px double var(--clr-dark-2);
+      }
+
+      .journal__entry { border-bottom: 2px solid var(--clr-dark-2); }
+      .acc-table td.journal__credit { padding-inline-start: 2.5rem; }
+      .journal__note td { color: var(--clr-text-soft); font-size: 0.88rem; }
+
+      .t-accounts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+
+      .t-account {
+        overflow: hidden;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+      }
+
+      .t-account__title {
+        padding: 0.5rem;
+        text-align: center;
+        color: var(--clr-primary);
+        font-weight: 700;
+        border-bottom: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__sides { display: grid; grid-template-columns: 1fr 1fr; }
+
+      .t-account__side + .t-account__side {
+        border-inline-start: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__side-label {
+        padding: 0.3rem;
+        text-align: center;
+        color: var(--clr-text-soft);
+        font-size: 0.85rem;
+        font-weight: 700;
+        border-bottom: 1px solid var(--clr-border);
+      }
+
+      .t-account__lines {
+        min-height: 3rem;
+        margin: 0;
+        padding: 0.4rem 0.7rem;
+        list-style: none;
+      }
+
+      .t-account__lines li {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .t-account__balance {
+        padding: 0.45rem 0.7rem;
+        text-align: center;
+        font-weight: 700;
+        background: rgba(119, 150, 191, 0.08);
+        border-top: 1px solid var(--clr-border);
+      }
+
+      .site-footer {
+        background: var(--clr-light-2);
+        color: var(--clr-light);
+        padding: 1rem 0 0.5rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        :root { --section-pad: 3rem; }
+        .hero { padding: 3.5rem 0; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="editor-toolbar">
+      <div class="container d-flex align-items-center gap-3">
+        <span class="editor-toolbar__tab-title" data-sync-title></span>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="container">
+        <h1 class="hero__title">الفصل الخامس: الخزينة والنقدية</h1>
+        <p class="hero__lead">
+          النقدية (Cash) أسرع أصول المنشأة حركةً وأكثرها عرضةً للخطأ والاختلاس،
+          ولذلك تحتاج الخزينة (Treasury) إلى ضوابط وسجلات ومطابقات منتظمة. يعرض
+          هذا الفصل أربع مراحل متصلة: ضبط الصندوق (Cash Control)، ويومية
+          الصندوق (Cash Journal)، والعهدة (Custody Fund)، وتسوية الخزينة
+          (Cash Reconciliation)، بأمثلة عددية بالجنيه المصري (ج.م) لمنشأة
+          واحدة هي شركة النور للتجهيزات المكتبية.
+        </p>
+      </div>
+    </header>
+
+    <section class="content-section" id="explanation">
+      <div class="container">
+        <div class="content-section__eyebrow">شرح وتطبيق</div>
+        <h2 class="content-section__title">شرح وتطبيق كل مرحلة</h2>
+
+        <div class="article-content" style="max-width: 900px">
+          
+          <div class="topic-block" id="cash-control">
+            <h3 class="topic-block__title">ضبط الصندوق</h3>
+
+            <p>
+              الصندوق (Cash on Hand) هو الموضع الذي تحتفظ فيه المنشأة بما لديها
+              من أوراق نقدية وعملات معدنية، ويتولى حراسته والتعامل معه أمين
+              الصندوق (Cashier). ولأن النقدية أسهل الأصول تحويلًا إلى منفعة
+              شخصية، لا يكفي أن تكون أرصدتها مسجَّلة بدقة، بل ينبغي أن يحيط بها
+              نظام للرقابة الداخلية (Internal Control) يمنع وقوع الخطأ أو
+              الاختلاس أو يكشفهما سريعًا.
+            </p>
+
+            <p>
+              وتقوم هذه الرقابة في الخزينة على قواعد عملية أهمها: الفصل بين
+              المهام (Segregation of Duties)، فلا يجتمع في شخص واحد حفظ
+              النقدية وإمساك سجلاتها واعتماد الصرف؛ وعدم تحصيل أي مبلغ أو دفعه
+              إلا بمستند مرقَّم بتسلسل ثابت، هو سند القبض (Receipt Voucher)
+              عند الاستلام وسند الصرف (Payment Voucher) عند الدفع؛ وتسجيل كل
+              المقبوضات (Receipts) والمدفوعات (Payments) النقدية يوم حدوثها؛
+              وتوريد (Deposit) الفائض من المقبوضات إلى البنك بدل إنفاقه
+              مباشرة؛ وتحديد حد أقصى للنقدية التي يجوز بقاؤها بالصندوق؛ وحفظ
+              النقدية في خزينة محكمة لا يصل إليها إلا المصرَّح لهم.
+            </p>
+
+            <p>
+              أما الجرد الفعلي (Physical Count) فهو الأداة التي تختبر فعالية
+              هذه القواعد؛ إذ تُعدّ النقدية الموجودة فعلًا فئةً فئةً، ويُسجَّل
+              الناتج في محضر جرد (Count Sheet) يوقّعه القائم بالجرد وأمين
+              الصندوق. ويُفضَّل أن يتولاه شخص غير أمين الصندوق، وأن يتكرر على
+              فترات منتظمة وأخرى مفاجئة. ويُسمّى ناتجه الرصيد الفعلي (Actual
+              Balance)، تمييزًا له عن الرصيد الدفتري (Book Balance) المستخرج من
+              السجلات، وتُجرى المقارنة بينهما في مرحلة تسوية الخزينة.
+            </p>
+
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>
+                يُعرّف المعيار الدولي IAS 7 «النقد وما في حكمه (Cash and Cash
+                Equivalents)» بأنه النقد بالصندوق والودائع تحت الطلب، مضافًا
+                إليها الاستثمارات قصيرة الأجل عالية السيولة التي تتحول بسهولة
+                إلى مبلغ نقدي معلوم. ويقتصر تطبيقنا في هذا الفصل على النقدية
+                الموجودة بالصندوق.
+              </p>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">جرد الصندوق وإعداد محضر الجرد</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>
+                    المنشأة: شركة النور للتجهيزات المكتبية، والعملة المعتمدة في
+                    جميع أمثلة الفصل هي الجنيه المصري (ج.م).
+                  </li>
+                  <li>
+                    تاريخ الجرد: <span class="num">11/10/2026</span> بعد انتهاء
+                    العمل، أجراه المحاسب المالي بحضور أمين الصندوق.
+                  </li>
+                  <li>
+                    الموجود فعلًا بالصندوق: <span class="num">240</span> ورقة
+                    من فئة <span class="num">200</span> ج.م، و<span class="num">200</span>
+                    ورقة من فئة <span class="num">100</span> ج.م، و<span class="num">170</span>
+                    ورقة من فئة <span class="num">50</span> ج.م، و<span class="num">250</span>
+                    ورقة من فئة <span class="num">20</span> ج.م، و<span class="num">200</span>
+                    ورقة من فئة <span class="num">10</span> ج.م، و<span class="num">150</span>
+                    ورقة من فئة <span class="num">5</span> ج.م، و<span class="num">250</span>
+                    عملة معدنية من فئة <span class="num">1</span> ج.م.
+                  </li>
+                </ul>
+
+                <span class="example-block__label">محضر جرد الصندوق في <span class="num">11/10/2026</span></span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>الفئة (ج.م)</th>
+                        <th>العدد</th>
+                        <th>القيمة (ج.م)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="num">200</td>
+                        <td class="num">240</td>
+                        <td class="num">48,000</td>
+                      </tr>
+                      <tr>
+                        <td class="num">100</td>
+                        <td class="num">200</td>
+                        <td class="num">20,000</td>
+                      </tr>
+                      <tr>
+                        <td class="num">50</td>
+                        <td class="num">170</td>
+                        <td class="num">8,500</td>
+                      </tr>
+                      <tr>
+                        <td class="num">20</td>
+                        <td class="num">250</td>
+                        <td class="num">5,000</td>
+                      </tr>
+                      <tr>
+                        <td class="num">10</td>
+                        <td class="num">200</td>
+                        <td class="num">2,000</td>
+                      </tr>
+                      <tr>
+                        <td class="num">5</td>
+                        <td class="num">150</td>
+                        <td class="num">750</td>
+                      </tr>
+                      <tr>
+                        <td class="num">1 (عملات معدنية)</td>
+                        <td class="num">250</td>
+                        <td class="num">250</td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>إجمالي النقدية الفعلية بالصندوق</td>
+                        <td></td>
+                        <td class="num">84,500</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              تُحسب قيمة كل سطر بضرب الفئة في عدد القطع الموجودة منها، ثم تُجمع
+              القيم:
+              <span class="num">48,000 + 20,000 + 8,500 + 5,000 + 2,000 + 750 + 250 = 84,500</span>
+              ج.م. فهذا هو الرصيد الفعلي للصندوق عند إقفال اليوم، وسيُقارَن
+              بالرصيد الدفتري في مرحلة التسوية. وعدّ كل فئة على حدة يسهّل
+              مراجعة الجرد ويحصر موضع الخطأ إن وُجد.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                لا تُعدّ ضمن النقدية أي أوراق لا تمثل نقدًا فعليًا، كإيصال
+                استلام سلفة من زميل أو ورقة مكتوب عليها مبلغ مستحق على أحدهم.
+                بقاؤها داخل الصندوق يُظهر الرصيد مطابقًا بينما يخفي عجزًا
+                حقيقيًا؛ ويجب أن تُستبعد من الجرد وتُعرض على المسؤول فورًا.
+              </p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+
+          <div class="topic-block" id="cash-journal">
+            <h3 class="topic-block__title">يومية الصندوق</h3>
+
+            <p>
+              يومية الصندوق سجل يومي يُقيَّد فيه كل مقبوض ومدفوع نقدي فور
+              حدوثه وبترتيبه الزمني، استنادًا إلى سند القبض أو سند الصرف،
+              ويُستخلص منه رصيد الصندوق بعد كل عملية. وكل عملية نقدية تُنشئ
+              قيد يومية (Journal Entry) يكون ح/ الصندوق فيه مدينًا إن كانت
+              العملية مقبوضات، ودائنًا إن كانت مدفوعات، أما الحساب المقابل
+              فيتحدد بطبيعة العملية.
+            </p>
+
+            <p>
+              ويبدأ اليوم برصيد أول اليوم (Opening Balance)، وهو رصيد آخر اليوم
+              السابق، ثم تُضاف المقبوضات وتُطرح المدفوعات. وتُرحَّل (Posting)
+              العمليات بعد ذلك إلى ح/ الصندوق في الأستاذ العام (General
+              Ledger) فيتطابق رصيد الحساب مع رصيد اليومية. ومن أكثر الحسابات
+              التي تقابل الصندوق في القيود: العملاء (Accounts Receivable) وهم
+              من باعت لهم المنشأة بالآجل ولها عليهم مبالغ تُسدَّد لاحقًا،
+              والموردون (Accounts Payable) وهم من اشترت منهم بالآجل وعليها
+              لهم التزام، والمبيعات (Sales)، والمصروفات.
+            </p>
+
+            <div class="formula-box">
+              <span class="formula-box__label">رصيد الصندوق الدفتري في آخر اليوم</span>
+              <p class="formula-box__body">
+                رصيد أول اليوم + المقبوضات − المدفوعات = رصيد آخر اليوم
+              </p>
+            </div>
+
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>
+                يُنقل رصيد آخر اليوم إلى اليوم التالي رصيدًا افتتاحيًا بالمبلغ
+                نفسه؛ ولذلك يمتد أثر أي خطأ في الرصيد إلى الأيام التالية حتى
+                يُكتشف ويُصحَّح.
+              </p>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">يومية الصندوق ليوم <span class="num">11/10/2026</span></span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>
+                    المبالغ بالجنيه المصري (ج.م)، وتُعرض دون ضريبة القيمة
+                    المضافة تبسيطًا.
+                  </li>
+                  <li>رصيد أول اليوم: <span class="num">38,000</span> ج.م.</li>
+                  <li>
+                    سند قبض رقم <span class="num">1</span>: مبيعات نقدية
+                    <span class="num">42,500</span> ج.م.
+                  </li>
+                  <li>
+                    سند قبض رقم <span class="num">2</span>: تحصيل
+                    <span class="num">18,000</span> ج.م نقدًا من العميل شركة
+                    الأمل سدادًا لجزء من مديونيته.
+                  </li>
+                  <li>
+                    سند صرف رقم <span class="num">1</span>: سداد
+                    <span class="num">12,000</span> ج.م نقدًا للمورد مؤسسة
+                    الفجر.
+                  </li>
+                  <li>
+                    سند صرف رقم <span class="num">2</span>: دفع
+                    <span class="num">1,750</span> ج.م مصروفات نقل بضاعة.
+                  </li>
+                </ul>
+
+                <span class="example-block__label">قيود اليومية</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين</th>
+                        <th>دائن</th>
+                      </tr>
+                    </thead>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">11/10/2026</span></td>
+                        <td>من ح/ الصندوق</td>
+                        <td class="num">42,500</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ المبيعات</td>
+                        <td></td>
+                        <td class="num">42,500</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>إثبات مبيعات نقدية بموجب سند القبض رقم 1</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">11/10/2026</span></td>
+                        <td>من ح/ الصندوق</td>
+                        <td class="num">18,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ العملاء</td>
+                        <td></td>
+                        <td class="num">18,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>تحصيل نقدي من العميل شركة الأمل بموجب سند القبض رقم 2</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">11/10/2026</span></td>
+                        <td>من ح/ الموردون</td>
+                        <td class="num">12,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ الصندوق</td>
+                        <td></td>
+                        <td class="num">12,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>سداد نقدي للمورد مؤسسة الفجر بموجب سند الصرف رقم 1</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">11/10/2026</span></td>
+                        <td>من ح/ مصروفات النقل</td>
+                        <td class="num">1,750</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ الصندوق</td>
+                        <td></td>
+                        <td class="num">1,750</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>دفع مصروفات نقل بضاعة بموجب سند الصرف رقم 2</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">الترحيل إلى حسابات الأستاذ</span>
+                <div class="t-accounts">
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ الصندوق</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li><span>رصيد أول اليوم</span><span class="num">38,000</span></li>
+                          <li><span>من ح/ المبيعات</span><span class="num">42,500</span></li>
+                          <li><span>من ح/ العملاء</span><span class="num">18,000</span></li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines">
+                          <li><span>إلى ح/ الموردون</span><span class="num">12,000</span></li>
+                          <li><span>إلى ح/ مصروفات النقل</span><span class="num">1,750</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">84,750</span> مدين
+                    </div>
+                  </div>
+                </div>
+
+                <span class="example-block__label">يومية الصندوق ليوم <span class="num">11/10/2026</span></span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>رقم السند</th>
+                        <th>البيان</th>
+                        <th>مقبوضات</th>
+                        <th>مدفوعات</th>
+                        <th>الرصيد</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td></td>
+                        <td>رصيد أول اليوم</td>
+                        <td class="num"></td>
+                        <td class="num"></td>
+                        <td class="num">38,000</td>
+                      </tr>
+                      <tr>
+                        <td>قبض <span class="num">1</span></td>
+                        <td>مبيعات نقدية</td>
+                        <td class="num">42,500</td>
+                        <td class="num"></td>
+                        <td class="num">80,500</td>
+                      </tr>
+                      <tr>
+                        <td>قبض <span class="num">2</span></td>
+                        <td>تحصيل من العميل شركة الأمل</td>
+                        <td class="num">18,000</td>
+                        <td class="num"></td>
+                        <td class="num">98,500</td>
+                      </tr>
+                      <tr>
+                        <td>صرف <span class="num">1</span></td>
+                        <td>سداد للمورد مؤسسة الفجر</td>
+                        <td class="num"></td>
+                        <td class="num">12,000</td>
+                        <td class="num">86,500</td>
+                      </tr>
+                      <tr>
+                        <td>صرف <span class="num">2</span></td>
+                        <td>مصروفات نقل بضاعة</td>
+                        <td class="num"></td>
+                        <td class="num">1,750</td>
+                        <td class="num">84,750</td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td></td>
+                        <td>الإجماليات ورصيد آخر اليوم</td>
+                        <td class="num">60,500</td>
+                        <td class="num">13,750</td>
+                        <td class="num">84,750</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              يُحسب الرصيد التراكمي بعد كل سطر:
+              <span class="num">38,000 + 42,500 = 80,500</span>، ثم
+              <span class="num">80,500 + 18,000 = 98,500</span>، ثم
+              <span class="num">98,500 − 12,000 = 86,500</span>، ثم
+              <span class="num">86,500 − 1,750 = 84,750</span>. ويتفق ذلك مع
+              القاعدة:
+              <span class="num">38,000 + 60,500 − 13,750 = 84,750</span>
+              ج.م، ومع رصيد ح/ الصندوق بعد الترحيل
+              (<span class="num">98,500</span> مدين ناقصًا
+              <span class="num">13,750</span> دائن). وجاء الصندوق مدينًا في
+              قيدَي المقبوضات ودائنًا في قيدَي المدفوعات، وكل قيد متوازن
+              لتساوي مجموعَي طرفيه.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                لا يُتصوَّر أن يظهر لحساب الصندوق رصيد دائن، لأن الصندوق لا
+                يدفع أكثر مما فيه. فإن ظهر فهو دليل على خطأ، كتسجيل مدفوعات
+                قبل المقبوضات التي سبقتها، أو إغفال مقبوضات، أو قيد مبلغ
+                بالزيادة، ويجب تتبع السبب فورًا لا الاكتفاء بترحيل الرصيد
+                كما هو.
+              </p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+
+          <div class="topic-block" id="custody-fund">
+            <h3 class="topic-block__title">العهدة</h3>
+
+            <p>
+              العهدة مبلغ نقدي تسلّمه المنشأة لموظف مسؤول يُسمّى أمين العهدة
+              (Custodian) ليتولى به غرضًا محددًا، ويُحاسَب عليه بالمستندات.
+              وأكثر صورها استخدامًا في الخزينة العهدة المستديمة (Imprest Fund)
+              المخصصة للمصروفات النثرية (Petty Cash Expenses)، أي المصروفات
+              الصغيرة المتكررة كالضيافة والانتقالات والأدوات المكتبية التي لا
+              يناسبها إجراء صرف مستقل لكل منها.
+            </p>
+
+            <p>
+              وتقوم العهدة المستديمة على مبلغ ثابت (Fixed Amount) يُحدَّد عند
+              إنشائها ويبقى كما هو في الدفاتر. يُسلَّم المبلغ لأمين العهدة من
+              الصندوق، فيدفع منه المصروفات الصغيرة مقابل مستندات يحتفظ بها،
+              فينقص النقد الذي بحوزته وتزيد المستندات بالقدر نفسه، دون أي قيد
+              في الدفاتر عند كل دفعة. وعندما يقترب المبلغ من النفاد أو في موعد
+              دوري، يقدّم أمين العهدة كشفًا بالمصروفات ومستنداتها، فتُراجَع
+              ويُجرى التعزيز (Replenishment): يُصرف له من الصندوق مبلغ مساوٍ
+              للمصروفات المؤيدة بالمستندات فيعود نقده إلى المبلغ الثابت، وفي
+              هذه اللحظة تُثبَّت المصروفات في الدفاتر.
+            </p>
+
+            <div class="formula-box">
+              <span class="formula-box__label">قاعدة مطابقة العهدة المستديمة</span>
+              <p class="formula-box__body">
+                المبلغ الثابت = المصروفات المؤيدة بمستندات + النقدية المتبقية لدى أمين العهدة
+              </p>
+            </div>
+
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>
+                تختلف العهدة المستديمة عن العهدة المؤقتة (Temporary Advance)،
+                وهي مبلغ يُمنح لمهمة محددة كمأمورية أو شراء احتياج بعينه،
+                وتُسوّى بالكامل عند انتهاء المهمة بتقديم المستندات ورد المتبقي
+                نقدًا، ولا تبقى مبلغًا ثابتًا في الدفاتر.
+              </p>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">إنشاء عهدة مستديمة وتعزيزها</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>المبالغ بالجنيه المصري (ج.م).</li>
+                  <li>
+                    <span class="num">1/10/2026</span>: أنشأت شركة النور عهدة
+                    مستديمة للمصروفات النثرية بمبلغ ثابت
+                    <span class="num">5,000</span> ج.م، وسلّمتها من الصندوق
+                    لأمين العهدة (موظف الشؤون الإدارية).
+                  </li>
+                  <li>
+                    خلال الفترة من <span class="num">1/10/2026</span> إلى
+                    <span class="num">10/10/2026</span> دفع أمين العهدة
+                    مصروفات مؤيدة بسندات: ضيافة <span class="num">950</span>
+                    ج.م، وانتقالات <span class="num">1,300</span> ج.م، وأدوات
+                    مكتبية <span class="num">1,150</span> ج.م، ونظافة
+                    <span class="num">400</span> ج.م.
+                  </li>
+                  <li>
+                    <span class="num">10/10/2026</span>: قدّم أمين العهدة كشف
+                    المصروفات ومستنداتها، فاعتُمد وعُزِّزت العهدة نقدًا من
+                    الصندوق لتعود إلى مبلغها الثابت.
+                  </li>
+                </ul>
+
+                <span class="example-block__label">قيود اليومية</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين</th>
+                        <th>دائن</th>
+                      </tr>
+                    </thead>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">1/10/2026</span></td>
+                        <td>من ح/ عهدة المصروفات النثرية</td>
+                        <td class="num">5,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ الصندوق</td>
+                        <td></td>
+                        <td class="num">5,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>إنشاء عهدة مستديمة للمصروفات النثرية بمبلغ ثابت</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="6"><span class="num">10/10/2026</span></td>
+                        <td>من ح/ مصروفات الضيافة</td>
+                        <td class="num">950</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>من ح/ مصروفات الانتقالات</td>
+                        <td class="num">1,300</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>من ح/ مصروفات الأدوات المكتبية</td>
+                        <td class="num">1,150</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>من ح/ مصروفات النظافة</td>
+                        <td class="num">400</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ الصندوق</td>
+                        <td></td>
+                        <td class="num">3,800</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>تعزيز العهدة بالمصروفات المؤيدة بمستندات حتى <span class="num">10/10/2026</span></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">الترحيل إلى حسابات الأستاذ</span>
+                <div class="t-accounts">
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ عهدة المصروفات النثرية</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li><span>إنشاء العهدة 1/10</span><span class="num">5,000</span></li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines"></ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">5,000</span> مدين (ثابت)
+                    </div>
+                  </div>
+                </div>
+
+                <span class="example-block__label">كشف مصروفات العهدة حتى <span class="num">10/10/2026</span></span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البيان</th>
+                        <th>رقم السند</th>
+                        <th>المبلغ (ج.م)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>ضيافة</td>
+                        <td class="num">1</td>
+                        <td class="num">950</td>
+                      </tr>
+                      <tr>
+                        <td>انتقالات</td>
+                        <td class="num">2</td>
+                        <td class="num">1,300</td>
+                      </tr>
+                      <tr>
+                        <td>أدوات مكتبية</td>
+                        <td class="num">3</td>
+                        <td class="num">1,150</td>
+                      </tr>
+                      <tr>
+                        <td>نظافة</td>
+                        <td class="num">4</td>
+                        <td class="num">400</td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>إجمالي المصروفات المؤيدة بمستندات</td>
+                        <td></td>
+                        <td class="num">3,800</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">مطابقة العهدة قبل التعزيز</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البيان</th>
+                        <th>جزئي</th>
+                        <th>كلي</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>المصروفات المؤيدة بمستندات</td>
+                        <td class="num">3,800</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td>النقدية المتبقية لدى أمين العهدة بالجرد</td>
+                        <td class="num">1,200</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>إجمالي العهدة (المبلغ الثابت)</td>
+                        <td></td>
+                        <td class="num">5,000</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              جمعنا المصروفات الأربع:
+              <span class="num">950 + 1,300 + 1,150 + 400 = 3,800</span>
+              ج.م، وبقي مع أمين العهدة
+              <span class="num">5,000 − 3,800 = 1,200</span> ج.م، فتحققت
+              المطابقة:
+              <span class="num">3,800 + 1,200 = 5,000</span>. والقيد الثاني قيد
+              مركّب (Compound Entry)، أي قيد تتعدد فيه الحسابات في أحد
+              طرفيه، ومجموع المدين فيه
+              <span class="num">950 + 1,300 + 1,150 + 400 = 3,800</span> يساوي
+              الدائن
+              <span class="num">3,800</span>. ولم تظهر المصروفات في الدفاتر قبل
+              التعزيز، ولذلك ينبغي تعزيز العهدة قبل إقفال الفترة المالية حتى لا
+              تبقى مصروفات الفترة المدفوعة غير مثبتة فيها.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                الجانب الدائن في قيد التعزيز هو ح/ الصندوق وليس ح/ عهدة
+                المصروفات النثرية؛ فرصيد العهدة لم ينقص في الدفاتر، بل بقي
+                <span class="num">5,000</span> ج.م. ولا يتغير هذا الرصيد إلا
+                بقرار رسمي بزيادة المبلغ الثابت أو تخفيضه أو إلغاء العهدة.
+              </p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+
+          <div class="topic-block" id="cash-reconciliation">
+            <h3 class="topic-block__title">تسوية الخزينة</h3>
+
+            <p>
+              تسوية الخزينة هي مطابقة الرصيد الفعلي المستخرج من الجرد (مرحلة
+              ضبط الصندوق) بالرصيد الدفتري المستخرج من يومية الصندوق، وتحديد
+              أسباب أي فرق بينهما ومعالجته محاسبيًا. وتُجرى في نهاية كل يوم عمل.
+              فإذا قلّ الرصيد الفعلي عن الدفتري كان الفرق عجزًا (Shortage)،
+              وإذا زاد عليه كان زيادة (Overage).
+            </p>
+
+            <p>
+              وتُراجَع أولًا الأسباب المحتملة للفرق: عملية لم تُقيَّد، أو قُيِّدت
+              بمبلغ خاطئ، أو خطأ في الجمع، أو خطأ في رد الباقي للعميل. فما
+              اكتُشف من ذلك يُصحَّح بقيد يستند إلى السند الصحيح. أما الفرق الذي
+              يبقى بلا تفسير فيُثبَّت في ح/ عجز وزيادة الصندوق (Cash Short and
+              Over)، وهو حساب مؤقت تُسجَّل فيه الفروق غير المبرَّرة: يُقيَّد
+              العجز في جانبه المدين والزيادة في جانبه الدائن. ويُعالَج رصيده في
+              نهاية الفترة: مصروفًا إن كان مدينًا، وإيرادًا إن كان دائنًا، أو
+              يُحمَّل على أمين الصندوق إذا ثبتت مسؤوليته وفق سياسة المنشأة.
+            </p>
+
+            <div class="flow-diagram">
+              <div class="flow-step">
+                <div class="flow-step__title">1. استخراج الرصيد الدفتري</div>
+                <div class="flow-step__description">إقفال يومية الصندوق وتحديد رصيد آخر اليوم.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">2. الجرد الفعلي</div>
+                <div class="flow-step__description">عدّ النقدية وإعداد محضر الجرد وتوقيعه.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">3. المقارنة</div>
+                <div class="flow-step__description">مقارنة الرصيدين وتحديد الفرق ونوعه (عجز أم زيادة).</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">4. البحث عن الأسباب</div>
+                <div class="flow-step__description">مراجعة السندات والعمليات والجمع لتفسير الفرق.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">5. تصحيح الأخطاء المكتشفة</div>
+                <div class="flow-step__description">قيود تصحيح تستند إلى السندات الصحيحة.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">6. إثبات الفرق المتبقي</div>
+                <div class="flow-step__description">قيد في ح/ عجز وزيادة الصندوق بما لم يُفسَّر.</div>
+              </div>
+            </div>
+
+            <div class="formula-box">
+              <span class="formula-box__label">تحديد الفرق</span>
+              <p class="formula-box__body">
+                الفرق = الرصيد الفعلي − الرصيد الدفتري المعدَّل (السالب عجز، والموجب زيادة)
+              </p>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">تسوية الخزينة لشركة النور في <span class="num">11/10/2026</span></span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>المبالغ بالجنيه المصري (ج.م).</li>
+                  <li>
+                    الرصيد الدفتري وفق يومية الصندوق:
+                    <span class="num">84,750</span> ج.م.
+                  </li>
+                  <li>
+                    الرصيد الفعلي وفق محضر الجرد:
+                    <span class="num">84,500</span> ج.م.
+                  </li>
+                  <li>
+                    الفرق الأولي: عجز <span class="num">84,750 − 84,500 = 250</span> ج.م.
+                  </li>
+                  <li>
+                    عند مراجعة سندات اليوم تبيّن أن سند الصرف رقم
+                    <span class="num">3</span> بمبلغ <span class="num">100</span>
+                    ج.م (ضيافة عملاء) صُرف فعلًا ولم يُقيَّد في اليومية سهوًا.
+                  </li>
+                  <li>لم يُعثر على تفسير للباقي رغم مراجعة السندات والجمع.</li>
+                </ul>
+
+                <span class="example-block__label">قيود اليومية</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين</th>
+                        <th>دائن</th>
+                      </tr>
+                    </thead>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">11/10/2026</span></td>
+                        <td>من ح/ مصروفات الضيافة</td>
+                        <td class="num">100</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ الصندوق</td>
+                        <td></td>
+                        <td class="num">100</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>تصحيح بإثبات سند الصرف رقم 3 الذي لم يُقيَّد سهوًا</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">11/10/2026</span></td>
+                        <td>من ح/ عجز وزيادة الصندوق</td>
+                        <td class="num">150</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ الصندوق</td>
+                        <td></td>
+                        <td class="num">150</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>إثبات العجز غير المبرَّر الذي أظهره الجرد</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">الترحيل إلى حسابات الأستاذ</span>
+                <div class="t-accounts">
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ الصندوق</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li><span>رصيد أول اليوم</span><span class="num">38,000</span></li>
+                          <li><span>من ح/ المبيعات</span><span class="num">42,500</span></li>
+                          <li><span>من ح/ العملاء</span><span class="num">18,000</span></li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines">
+                          <li><span>إلى ح/ الموردون</span><span class="num">12,000</span></li>
+                          <li><span>إلى ح/ مصروفات النقل</span><span class="num">1,750</span></li>
+                          <li><span>إلى ح/ مصروفات الضيافة</span><span class="num">100</span></li>
+                          <li><span>إلى ح/ عجز وزيادة الصندوق</span><span class="num">150</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">84,500</span> مدين
+                    </div>
+                  </div>
+
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ عجز وزيادة الصندوق</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li><span>من ح/ الصندوق (عجز)</span><span class="num">150</span></li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines"></ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">150</span> مدين
+                    </div>
+                  </div>
+                </div>
+
+                <span class="example-block__label">مذكرة تسوية الصندوق في <span class="num">11/10/2026</span></span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البيان</th>
+                        <th>جزئي</th>
+                        <th>كلي</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>الرصيد الدفتري وفق يومية الصندوق</td>
+                        <td class="num"></td>
+                        <td class="num">84,750</td>
+                      </tr>
+                      <tr>
+                        <td>يُطرح: سند صرف رقم 3 (ضيافة) لم يُقيَّد سهوًا</td>
+                        <td class="num">100</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td>الرصيد الدفتري المعدَّل</td>
+                        <td class="num"></td>
+                        <td class="num">84,650</td>
+                      </tr>
+                      <tr>
+                        <td>يُطرح: الرصيد الفعلي وفق محضر الجرد</td>
+                        <td class="num"></td>
+                        <td class="num">84,500</td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>العجز غير المبرَّر</td>
+                        <td></td>
+                        <td class="num">150</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              بدأت التسوية بفرق كلي قدره <span class="num">250</span> ج.م. وبعد
+              استبعاد الجزء المفسَّر وهو سند الصرف الذي لم يُقيَّد
+              (<span class="num">100</span> ج.م)، صار الرصيد الدفتري المعدَّل
+              <span class="num">84,750 − 100 = 84,650</span> ج.م، وبقي فرق
+              <span class="num">84,650 − 84,500 = 150</span> ج.م لا تفسير له.
+              والقيد الأول تصحيح لخطأ إغفال وليس عجزًا، فطرفه المدين مصروف
+              حقيقي؛ أما القيد الثاني فيثبت العجز الحقيقي في الحساب المؤقت.
+              وبعد القيدين أصبح رصيد ح/ الصندوق
+              <span class="num">98,500 − 14,000 = 84,500</span> ج.م مدينًا،
+              مطابقًا للرصيد الفعلي، وبقي ح/ عجز وزيادة الصندوق مدينًا
+              بـ<span class="num">150</span> ج.م إلى أن يُعالَج وفق سياسة
+              المنشأة.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                لا يجوز تعديل الرصيد الدفتري ليطابق الفعلي دون سبب موثَّق، ولا
+                تغطية عجز بزيادة وقعت في يوم آخر دون إثبات كل منهما. فإخفاء
+                الفرق يعطّل الغرض من الرقابة، ويُبقي الخلل قائمًا بلا كشف.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section content-section--tint" id="comparison">
+      <div class="container">
+        <div class="content-section__eyebrow">مقارنة</div>
+        <h2 class="content-section__title">الصندوق الرئيسي مقابل العهدة المستديمة</h2>
+
+        <div class="table-responsive">
+          <table class="table table-bordered align-middle">
+            <thead>
+              <tr>
+                <th>وجه المقارنة</th>
+                <th>الصندوق الرئيسي (يومية الصندوق)</th>
+                <th>العهدة المستديمة</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>الغرض</td>
+                <td>استلام كل المقبوضات النقدية ودفع المدفوعات النقدية بأنواعها.</td>
+                <td>دفع المصروفات الصغيرة المتكررة فقط.</td>
+              </tr>
+              <tr>
+                <td>طبيعة الرصيد</td>
+                <td>متغير بحسب الحركة اليومية (<span class="num">84,750</span> ج.م في مثالنا).</td>
+                <td>ثابت عند المبلغ المحدد سلفًا (<span class="num">5,000</span> ج.م في مثالنا).</td>
+              </tr>
+              <tr>
+                <td>تسجيل العمليات</td>
+                <td>تُسجَّل كل عملية في اليومية وقت حدوثها بقيد مستقل.</td>
+                <td>لا قيد عند كل دفعة، وتُثبَّت المصروفات بقيد واحد عند التعزيز.</td>
+              </tr>
+              <tr>
+                <td>رصيد الحساب في الدفاتر</td>
+                <td>يتغير مع كل قيد ويُرحَّل رصيده إلى اليوم التالي.</td>
+                <td>يبقى كما هو ما لم يُعدَّل المبلغ الثابت رسميًا.</td>
+              </tr>
+              <tr>
+                <td>المسؤول</td>
+                <td>أمين الصندوق.</td>
+                <td>أمين العهدة.</td>
+              </tr>
+              <tr>
+                <td>أسلوب التحقق</td>
+                <td>جرد فعلي ومطابقة يومية بالرصيد الدفتري.</td>
+                <td>جرد دوري ومفاجئ، والنقدية المتبقية مع المستندات تساوي المبلغ الثابت.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="summary">
+      <div class="container">
+        <div class="content-section__eyebrow">الخلاصة</div>
+        <h2 class="content-section__title">أهم ما يجب تذكّره</h2>
+
+        <div class="summary-card" style="max-width: 900px">
+          <ul class="summary-card__list">
+            <li>✔ يقوم ضبط الصندوق على الفصل بين المهام، والمستندات المرقَّمة، والتوريد المنتظم، والجرد الفعلي بمعرفة شخص غير أمين الصندوق.</li>
+            <li>✔ رصيد الصندوق الدفتري في آخر اليوم = رصيد أول اليوم + المقبوضات − المدفوعات، والصندوق مدين عند القبض ودائن عند الدفع، ولا يكون رصيده دائنًا.</li>
+            <li>✔ العهدة المستديمة مبلغ ثابت في الدفاتر؛ لا قيد عند كل دفعة منها، وعند التعزيز يكون الصندوق دائنًا والمصروفات مدينة.</li>
+            <li>✔ المبلغ الثابت للعهدة = المصروفات المؤيدة بمستندات + النقدية المتبقية لدى أمين العهدة.</li>
+            <li>✔ تسوية الخزينة تقارن الرصيد الفعلي بالدفتري؛ تُصحَّح الأخطاء المفسَّرة بقيود، ويُثبَّت الفرق غير المبرَّر في ح/ عجز وزيادة الصندوق (مدين للعجز ودائن للزيادة).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>الفصل الخامس: الخزينة والنقدية</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      
+      const heroTitle = document.querySelector('.hero__title')
+      const toolbarTitle = document.querySelector('[data-sync-title]')
+      if (heroTitle && toolbarTitle) {
+        const text = heroTitle.textContent.trim()
+        if (text) {
+          toolbarTitle.textContent = text
+          document.title = text
+        }
+      }
+    </script>
+  </body>
+</html>

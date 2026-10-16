@@ -1,0 +1,1513 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الفصل العاشر: الذمم المدينة وإدارة العملاء</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+
+
+    <style>
+      :root {
+        /* ========= Colors ========= */
+        --clr-primary: #b378a6;
+        --clr-secondary: #7796bf;
+        --clr-light: #ffffff;
+        --clr-light-2: #f0f0f0;
+        --clr-border: #dedede;
+        --clr-dark: #1b1b1b;
+        --clr-dark-2: #444444;
+        --clr-text: #333333;
+        --clr-text-soft: #555555;
+
+        /* ========= Font ========= */
+        --font-body: 'Baloo Bhaijaan 2', sans-serif;
+
+        /* ========= Radius ========= */
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 18px;
+
+        /* ========= Shadow ========= */
+        --shadow-soft: 0 4px 20px rgba(27, 27, 27, 0.07);
+        --shadow-hover: 0 12px 28px rgba(179, 120, 166, 0.16);
+
+        /* ========= Layout ========= */
+        --section-pad: 4.5rem;
+        --content-width: 900px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--clr-light);
+        color: var(--clr-dark);
+        line-height: 1.9;
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: var(--clr-secondary);
+        text-decoration: none;
+        transition: 0.2s;
+      }
+
+      a:hover {
+        color: var(--clr-primary);
+      }
+
+      h1, h2, h3, h4, h5 {
+        font-family: var(--font-body);
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+        color: var(--clr-dark);
+      }
+
+      h1, h2 { font-weight: 800; }
+      h3, h4, h5 { font-weight: 700; }
+
+      p {
+        color: var(--clr-text);
+        margin-bottom: 1rem;
+      }
+
+      ul { margin: 0; padding: 0; }
+
+      section { scroll-margin-top: 90px; }
+
+      ::selection {
+        background: var(--clr-primary);
+        color: #fff;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--clr-secondary);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      /* ==========================================================
+         Editor Toolbar
+      ========================================================== */
+      .editor-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--clr-primary);
+        padding: 0.7rem 0;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .editor-toolbar__tab-title {
+        color: #fff;
+        font-size: 1.1rem;
+        direction: ltr;
+        font-weight: 700;
+      }
+
+      /* ==========================================================
+         Hero
+      ========================================================== */
+      .hero {
+        background: var(--clr-secondary);
+        color: #fff;
+        padding: 4.5rem 0 3.5rem;
+      }
+
+      .hero__title {
+        color: #fff;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      .hero__lead {
+        color: #fff;
+        opacity: 0.95;
+        max-width: 760px;
+        font-size: 1.15rem;
+        margin-bottom: 0;
+      }
+
+      /* ==========================================================
+         Sections
+      ========================================================== */
+      .content-section { padding: var(--section-pad) 0; }
+      .content-section--alt { background: #fcfcfc; }
+      .content-section--tint { background: var(--clr-light-2); }
+
+      .content-section__eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+        font-size: 0.86rem;
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+      }
+
+      .content-section__eyebrow::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        background: var(--clr-primary);
+      }
+
+      .content-section__title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+
+      .content-section__description {
+        max-width: 760px;
+        color: var(--clr-text-soft);
+        margin-bottom: 2.5rem;
+      }
+
+      /* ==========================================================
+         Summary Card
+      ========================================================== */
+      .summary-card {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+        padding: 2rem;
+      }
+
+      .summary-card__list {
+        display: grid;
+        gap: 1rem;
+        list-style: none;
+      }
+
+      .summary-card__list li {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+      }
+
+      /* ==========================================================
+         Callout
+      ========================================================== */
+      .callout {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        border-radius: var(--radius-md);
+        border-inline-start: 4px solid;
+      }
+
+      .callout__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 700;
+      }
+
+      .callout--note {
+        background: rgba(119, 150, 191, 0.08);
+        border-color: var(--clr-secondary);
+      }
+
+      .callout--warning {
+        background: rgba(179, 120, 166, 0.08);
+        border-color: var(--clr-primary);
+      }
+
+      /* ==========================================================
+         Flow Diagram
+      ========================================================== */
+      .flow-diagram {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin: 2rem 0;
+      }
+
+      .flow-step {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        padding: 1rem 1.25rem;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .flow-step__title {
+        color: var(--clr-primary);
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+      }
+
+      .flow-step__description { color: var(--clr-text-soft); margin: 0; }
+
+      .flow-arrow {
+        text-align: center;
+        color: var(--clr-secondary);
+        font-size: 28px;
+        line-height: 1;
+      }
+
+      /* ==========================================================
+         Topic Block
+      ========================================================== */
+      .topic-block { margin-bottom: 3rem; }
+      .topic-block:last-child { margin-bottom: 0; }
+
+      .topic-block__title {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+      }
+
+      .topic-divider {
+        border: none;
+        border-top: 1px dashed var(--clr-border);
+        margin: 2.5rem 0;
+      }
+
+      /* ==========================================================
+         Numbers
+      ========================================================== */
+      .num {
+        direction: ltr;
+        unicode-bidi: isolate;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* ==========================================================
+         Formula Box
+      ========================================================== */
+      .formula-box {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        text-align: center;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .formula-box__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--clr-primary);
+        font-weight: 700;
+      }
+
+      .formula-box__body {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--clr-dark);
+      }
+
+      /* ==========================================================
+         Example Block
+      ========================================================== */
+      .example-block {
+        overflow: hidden;
+        margin: 2rem 0;
+        background: var(--clr-light);
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .example-block__header {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.7rem 1.2rem;
+        background: var(--clr-dark);
+      }
+
+      .example-block__tag {
+        padding: 0 0.7rem;
+        background: var(--clr-primary);
+        color: #fff;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .example-block__title { color: #fff; font-weight: 600; }
+
+      .example-block__body { padding: 1.5rem; }
+
+      .example-block__label {
+        display: block;
+        margin: 1.6rem 0 0.6rem;
+        color: var(--clr-secondary);
+        font-weight: 700;
+      }
+
+      .example-block__label:first-child { margin-top: 0; }
+
+      .example-block__data {
+        margin: 0;
+        padding-inline-start: 1.2rem;
+        color: var(--clr-text);
+      }
+
+      /* ==========================================================
+         Accounting Tables
+      ========================================================== */
+      .acc-table-wrap { overflow-x: auto; }
+
+      .acc-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+
+      .acc-table th,
+      .acc-table td {
+        padding: 0.5rem 0.8rem;
+        border: 1px solid var(--clr-border);
+      }
+
+      .acc-table thead th {
+        background: var(--clr-light-2);
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .acc-table td.num { text-align: end; }
+
+      .acc-table__total td {
+        background: #fcfcfc;
+        font-weight: 700;
+        border-top: 2px solid var(--clr-dark-2);
+        border-bottom: 4px double var(--clr-dark-2);
+      }
+
+      .journal__entry { border-bottom: 2px solid var(--clr-dark-2); }
+      .acc-table td.journal__credit { padding-inline-start: 2.5rem; }
+      .journal__note td { color: var(--clr-text-soft); font-size: 0.88rem; }
+
+      /* ==========================================================
+         T-Accounts
+      ========================================================== */
+      .t-accounts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+
+      .t-account {
+        overflow: hidden;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+      }
+
+      .t-account__title {
+        padding: 0.5rem;
+        text-align: center;
+        color: var(--clr-primary);
+        font-weight: 700;
+        border-bottom: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__sides { display: grid; grid-template-columns: 1fr 1fr; }
+
+      .t-account__side + .t-account__side {
+        border-inline-start: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__side-label {
+        padding: 0.3rem;
+        text-align: center;
+        color: var(--clr-text-soft);
+        font-size: 0.85rem;
+        font-weight: 700;
+        border-bottom: 1px solid var(--clr-border);
+      }
+
+      .t-account__lines {
+        min-height: 3rem;
+        margin: 0;
+        padding: 0.4rem 0.7rem;
+        list-style: none;
+      }
+
+      .t-account__lines li {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .t-account__balance {
+        padding: 0.45rem 0.7rem;
+        text-align: center;
+        font-weight: 700;
+        background: rgba(119, 150, 191, 0.08);
+        border-top: 1px solid var(--clr-border);
+      }
+
+      /* ==========================================================
+         Footer
+      ========================================================== */
+      .site-footer {
+        background: var(--clr-light-2);
+        color: var(--clr-light);
+        padding: 1rem 0 0.5rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      /* ==========================================================
+         Responsive
+      ========================================================== */
+      @media (max-width: 768px) {
+        :root { --section-pad: 3rem; }
+        .hero { padding: 3.5rem 0; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="editor-toolbar">
+      <div class="container d-flex align-items-center gap-3">
+        <span class="editor-toolbar__tab-title" data-sync-title></span>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="container">
+        <h1 class="hero__title">الفصل العاشر: الذمم المدينة وإدارة العملاء</h1>
+        <p class="hero__lead">
+          تمثّل الذمم المدينة (Accounts Receivable) المبالغ المستحقة للمنشأة على
+          عملائها من المبيعات الآجلة (Credit Sales)، وهي أصل متداول لا يتحوّل إلى
+          نقد إلا بالتحصيل الفعلي. يبيّن هذا الفصل كيف تُدار هذه الأرصدة عمليًا:
+          من مطابقتها مع العميل، إلى قياس تأخره في السداد، ثم ضبط حجم الائتمان
+          الممنوح له قبل أن تتحوّل المبيعات إلى ديون متعثّرة.
+        </p>
+      </div>
+    </header>
+
+    <section class="content-section" id="explanation">
+      <div class="container">
+        <div class="content-section__eyebrow">شرح وتطبيق</div>
+        <h2 class="content-section__title">شرح وتطبيق كل مرحلة</h2>
+
+        <div class="article-content" style="max-width: 900px">
+          <!-- ============ المرحلة 1: كشوف الحساب ============ -->
+          <div class="topic-block" id="account-statements">
+            <h3 class="topic-block__title">كشوف الحساب</h3>
+
+            <p>
+              تحتفظ المنشأة لكل عميل بحساب مستقل في دفتر الأستاذ المساعد
+              (Subsidiary Ledger)، ويساوي مجموع أرصدة هذه الحسابات رصيد حساب
+              العملاء الإجمالي (Control Account) في الأستاذ العام (General
+              Ledger). وكشف الحساب (Statement of Account) هو نسخة من حساب العميل
+              الفردي عن فترة محددة تُرسَل إليه ليطابقها مع سجلاته: يبدأ برصيد أول
+              الفترة، ثم يسرد بترتيب زمني العمليات المدينة (الفواتير الآجلة)
+              والعمليات الدائنة (مردودات المبيعات (Sales Returns)، وهي بضاعة
+              أعادها العميل فتنخفض بها مستحقاتنا عليه، والتحصيلات)، وينتهي
+              بالرصيد الختامي المستحق على العميل.
+            </p>
+
+            <p>
+              طبيعة حساب العميل مدينة؛ فكل فاتورة آجلة تزيد الرصيد (في الجانب
+              المدين)، وكل مردود أو تحصيل يخفضه (في الجانب الدائن). ويعني الرصيد
+              المدين أن العميل مدين للمنشأة بهذا المبلغ، ويظهر مجموع هذه الأرصدة
+              في قائمة المركز المالي ضمن الأصول المتداولة. وتُثبَّت الفاتورة
+              الآجلة في تاريخ تسليم البضاعة لا في تاريخ التحصيل، إذ يتحقق الإيراد
+              عند انتقال السيطرة على البضاعة إلى العميل وفق المعيار الدولي للتقرير
+              المالي 15 (IFRS 15).
+            </p>
+
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>
+                يُرسَل الكشف دوريًا (شهريًا في الغالب) وعند طلب العميل، ويُطلب من
+                العميل تأكيد الرصيد أو الإشارة إلى أي فرق. وأي فرق يُحَلّ بمراجعة
+                المستندات (الفواتير وإشعارات المردودات وإيصالات التحصيل) لا
+                بتعديل الرصيد مباشرة.
+              </p>
+            </div>
+
+            <div class="formula-box">
+              <span class="formula-box__label">الرصيد الختامي لحساب العميل</span>
+              <p class="formula-box__body">
+                الرصيد الختامي = الرصيد الافتتاحي + الفواتير الآجلة − المردودات −
+                التحصيلات
+              </p>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">كشف حساب عميل عن شهر أكتوبر 2026</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>
+                    العميل: شركة النيل للتجارة، ورصيد حسابها المدين في
+                    <span class="num">01/10/2026</span> هو
+                    <span class="num">40,000</span> ج.م.
+                  </li>
+                  <li>
+                    <span class="num">05/10/2026</span>: بيع بضاعة آجلًا بالفاتورة
+                    رقم <span class="num">101</span> بمبلغ
+                    <span class="num">25,000</span> ج.م.
+                  </li>
+                  <li>
+                    <span class="num">12/10/2026</span>: أعاد العميل بضاعة من
+                    الفاتورة رقم <span class="num">101</span> قيمتها
+                    <span class="num">3,000</span> ج.م.
+                  </li>
+                  <li>
+                    <span class="num">15/10/2026</span>: حصّلت المنشأة من العميل
+                    <span class="num">30,000</span> ج.م بإيداعها في البنك.
+                  </li>
+                  <li>
+                    <span class="num">22/10/2026</span>: بيع بضاعة آجلًا بالفاتورة
+                    رقم <span class="num">102</span> بمبلغ
+                    <span class="num">18,000</span> ج.م.
+                  </li>
+                  <li>
+                    <span class="num">28/10/2026</span>: حصّلت المنشأة من العميل
+                    <span class="num">20,000</span> ج.م أخرى بإيداعها في البنك.
+                  </li>
+                  <li>
+                    جميع المبالغ بالجنيه المصري (ج.م) والتواريخ بصيغة
+                    يوم/شهر/سنة، وتُهمَل الضرائب وقيود المخزون تبسيطًا للتركيز
+                    على حساب العميل.
+                  </li>
+                </ul>
+
+                <span class="example-block__label">قيود اليومية</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين</th>
+                        <th>دائن</th>
+                      </tr>
+                    </thead>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">05/10/2026</span></td>
+                        <td>من ح/ العملاء – شركة النيل للتجارة</td>
+                        <td class="num">25,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ المبيعات</td>
+                        <td></td>
+                        <td class="num">25,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>بيع بضاعة آجلًا بالفاتورة رقم 101</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">12/10/2026</span></td>
+                        <td>من ح/ مردودات المبيعات</td>
+                        <td class="num">3,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ العملاء – شركة النيل للتجارة</td>
+                        <td></td>
+                        <td class="num">3,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>بضاعة مردودة من العميل من الفاتورة رقم 101</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">15/10/2026</span></td>
+                        <td>من ح/ البنك</td>
+                        <td class="num">30,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ العملاء – شركة النيل للتجارة</td>
+                        <td></td>
+                        <td class="num">30,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>تحصيل دفعة من العميل بإيداعها في البنك</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">22/10/2026</span></td>
+                        <td>من ح/ العملاء – شركة النيل للتجارة</td>
+                        <td class="num">18,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ المبيعات</td>
+                        <td></td>
+                        <td class="num">18,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>بيع بضاعة آجلًا بالفاتورة رقم 102</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">28/10/2026</span></td>
+                        <td>من ح/ البنك</td>
+                        <td class="num">20,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ العملاء – شركة النيل للتجارة</td>
+                        <td></td>
+                        <td class="num">20,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>تحصيل دفعة من العميل بإيداعها في البنك</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody>
+                      <tr class="acc-table__total">
+                        <td></td>
+                        <td>إجمالي القيود</td>
+                        <td class="num">96,000</td>
+                        <td class="num">96,000</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">الترحيل إلى حساب العميل في الأستاذ المساعد</span>
+                <div class="t-accounts">
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ العملاء – شركة النيل للتجارة</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li><span>رصيد أول الفترة</span><span class="num">40,000</span></li>
+                          <li><span>فاتورة 101</span><span class="num">25,000</span></li>
+                          <li><span>فاتورة 102</span><span class="num">18,000</span></li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines">
+                          <li><span>مردودات المبيعات</span><span class="num">3,000</span></li>
+                          <li><span>تحصيل 15/10</span><span class="num">30,000</span></li>
+                          <li><span>تحصيل 28/10</span><span class="num">20,000</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">30,000</span> مدين
+                    </div>
+                  </div>
+                </div>
+
+                <span class="example-block__label">
+                  كشف حساب العميل: شركة النيل للتجارة، عن الفترة من
+                  <span class="num">01/10/2026</span> إلى
+                  <span class="num">31/10/2026</span>
+                </span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين</th>
+                        <th>دائن</th>
+                        <th>الرصيد (مدين)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><span class="num">01/10/2026</span></td>
+                        <td>رصيد أول الفترة</td>
+                        <td class="num"></td>
+                        <td class="num"></td>
+                        <td class="num">40,000</td>
+                      </tr>
+                      <tr>
+                        <td><span class="num">05/10/2026</span></td>
+                        <td>فاتورة مبيعات آجلة رقم 101</td>
+                        <td class="num">25,000</td>
+                        <td class="num"></td>
+                        <td class="num">65,000</td>
+                      </tr>
+                      <tr>
+                        <td><span class="num">12/10/2026</span></td>
+                        <td>مردودات مبيعات من الفاتورة 101</td>
+                        <td class="num"></td>
+                        <td class="num">3,000</td>
+                        <td class="num">62,000</td>
+                      </tr>
+                      <tr>
+                        <td><span class="num">15/10/2026</span></td>
+                        <td>دفعة محصَّلة</td>
+                        <td class="num"></td>
+                        <td class="num">30,000</td>
+                        <td class="num">32,000</td>
+                      </tr>
+                      <tr>
+                        <td><span class="num">22/10/2026</span></td>
+                        <td>فاتورة مبيعات آجلة رقم 102</td>
+                        <td class="num">18,000</td>
+                        <td class="num"></td>
+                        <td class="num">50,000</td>
+                      </tr>
+                      <tr>
+                        <td><span class="num">28/10/2026</span></td>
+                        <td>دفعة محصَّلة</td>
+                        <td class="num"></td>
+                        <td class="num">20,000</td>
+                        <td class="num">30,000</td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td></td>
+                        <td>إجمالي الحركة والرصيد الختامي</td>
+                        <td class="num">43,000</td>
+                        <td class="num">53,000</td>
+                        <td class="num">30,000</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              قُيِّدت الفاتورتان مدينتين في حساب العميل لأن المنشأة اكتسبت حقًا في
+              التحصيل، ودائنتين في ح/ المبيعات لتحقق الإيراد عند التسليم. أما
+              المردودات فقُيِّدت مدينة في ح/ مردودات المبيعات (وهو حساب يخفض
+              الإيراد) ودائنة في حساب العميل لأن ما يستحق عليه انخفض. وعند
+              التحصيل أُثبت ما دخل البنك مدينًا وخُفِّض حساب العميل دائنًا. وتتحقق
+              المطابقة بين الكشف والحساب كما يلي:
+              <span class="num">40,000 + 43,000 − 53,000 = 30,000</span> ج.م، حيث
+              <span class="num">43,000</span> هي الفاتورتان
+              (<span class="num">25,000 + 18,000</span>) و<span class="num">53,000</span>
+              هي المردودات والتحصيلات (<span class="num">3,000 + 30,000 + 20,000</span>).
+              ويساوي الرصيد الختامي <span class="num">30,000</span> ج.م رصيد
+              الحساب في الأستاذ المساعد.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                يخطئ بعض المبتدئين فيظنون أن تحصيل مبلغ من العميل يزيد حسابه لأن
+                المنشأة «استلمت» نقدًا. والصحيح أن التحصيل يُقيَّد في الجانب الدائن
+                من حساب العميل فيخفض رصيده المدين، أما الجانب المدين فيقابله
+                حساب البنك (أو الصندوق).
+              </p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+
+          <!-- ============ المرحلة 2: تقرير عمر الديون ============ -->
+          <div class="topic-block" id="aging-report">
+            <h3 class="topic-block__title">تقرير عمر الديون</h3>
+
+            <p>
+              تقرير عمر الديون (Aging Report) جدول يوزّع أرصدة العملاء غير
+              المسدَّدة على فئات زمنية بحسب المدة المنقضية منذ تاريخ الفاتورة حتى
+              تاريخ إعداد التقرير. وبخلاف كشف الحساب الذي يخص عميلًا واحدًا، يجمع
+              هذا التقرير كل العملاء في صفحة واحدة فيكشف من تأخّر ومقدار تأخره.
+              ويخدم غرضين: توجيه جهود التحصيل نحو الأقدم والأكبر، وتقدير الخسائر
+              المتوقعة من عدم التحصيل.
+            </p>
+
+            <p>
+              كلما طال عمر الدين انخفض احتمال تحصيله. وتتطلب المعايير الدولية
+              (IFRS 9) أن تُثبِّت المنشأة مخصص الخسائر الائتمانية المتوقعة
+              (Expected Credit Loss Allowance) للذمم التجارية، وهو مبلغ يُقدَّر
+              لمقابلة الدين الذي يُحتمل ألا يُحصَّل، ويُخصم من إجمالي الذمم
+              المدينة عند عرضها في قائمة المركز المالي. ويُستخدم تقرير عمر
+              الديون لحسابه عبر مصفوفة مخصصات تطبّق نسبة خسارة متوقعة أعلى كلما
+              كانت الفئة أقدم.
+            </p>
+
+            <div class="formula-box">
+              <span class="formula-box__label">عمر الفاتورة</span>
+              <p class="formula-box__body">
+                عمر الفاتورة (بالأيام) = تاريخ إعداد التقرير − تاريخ الفاتورة
+              </p>
+            </div>
+
+            <div class="flow-diagram">
+              <div class="flow-step">
+                <div class="flow-step__title">1. جمع الفواتير المفتوحة</div>
+                <div class="flow-step__description">
+                  استخراج المبلغ المتبقي من كل فاتورة بعد خصم المردودات
+                  والتحصيلات المحمَّلة عليها.
+                </div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">2. حساب عمر كل فاتورة</div>
+                <div class="flow-step__description">
+                  عدد الأيام بين تاريخ الفاتورة وتاريخ إعداد التقرير.
+                </div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">3. التوزيع على فئات العمر</div>
+                <div class="flow-step__description">
+                  وضع كل مبلغ في فئته، وهي هنا: من <span class="num">0</span> إلى
+                  <span class="num">30</span> يومًا، ومن <span class="num">31</span> إلى
+                  <span class="num">60</span>، ومن <span class="num">61</span> إلى
+                  <span class="num">90</span>، وأكثر من <span class="num">90</span> يومًا.
+                </div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">4. التجميع والمطابقة والتحليل</div>
+                <div class="flow-step__description">
+                  جمع الصفوف والأعمدة، ومطابقة الإجمالي مع رصيد ح/ العملاء
+                  الإجمالي، ثم قراءة النتائج لتحديد أولويات التحصيل.
+                </div>
+              </div>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">تقرير عمر الديون في 31/10/2026 وتقدير المخصص</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>
+                    تاريخ إعداد التقرير <span class="num">31/10/2026</span>،
+                    وشروط البيع: السداد خلال <span class="num">30</span> يومًا من
+                    تاريخ الفاتورة؛ فما تجاوز هذه المدة فهو متأخر.
+                  </li>
+                  <li>
+                    الفواتير المفتوحة لأربعة عملاء هي المبيّنة في الجدول الأول
+                    أدناه، بعد خصم المردودات والتحصيلات.
+                  </li>
+                  <li>
+                    رصيد شركة النيل للتجارة <span class="num">30,000</span> ج.م
+                    (من الكشف السابق) يتكوّن من المتبقي من الفاتورة 101 وقدره
+                    <span class="num">12,000</span> ج.م، وهو
+                    <span class="num">25,000 − 3,000 − 10,000</span>؛ إذ حُمِّلت
+                    التحصيلات (<span class="num">50,000</span>) أولًا على الرصيد
+                    الافتتاحي الأقدم (<span class="num">40,000</span>) ثم على
+                    الفاتورة 101 بمبلغ <span class="num">10,000</span>، ومن
+                    الفاتورة 102 وقدرها <span class="num">18,000</span> ج.م.
+                  </li>
+                  <li>
+                    رصيد ح/ العملاء الإجمالي في الأستاذ العام
+                    <span class="num">112,000</span> ج.م.
+                  </li>
+                  <li>
+                    نسب الخسارة المتوقعة (افتراضية لغرض المثال) للفئات الأربع
+                    بالترتيب: <span class="num">1%</span> و<span class="num">5%</span>
+                    و<span class="num">20%</span> و<span class="num">50%</span>،
+                    ولا يوجد رصيد سابق لمخصص الخسائر الائتمانية المتوقعة.
+                  </li>
+                </ul>
+
+                <span class="example-block__label">تفصيل الفواتير المفتوحة وحساب أعمارها</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>العميل</th>
+                        <th>تاريخ الفاتورة</th>
+                        <th>المبلغ المفتوح (ج.م)</th>
+                        <th>العمر بالأيام</th>
+                        <th>الفئة</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>شركة النيل للتجارة</td>
+                        <td><span class="num">05/10/2026</span></td>
+                        <td class="num">12,000</td>
+                        <td class="num">26</td>
+                        <td><span class="num">0–30</span> يومًا</td>
+                      </tr>
+                      <tr>
+                        <td>شركة النيل للتجارة</td>
+                        <td><span class="num">22/10/2026</span></td>
+                        <td class="num">18,000</td>
+                        <td class="num">9</td>
+                        <td><span class="num">0–30</span> يومًا</td>
+                      </tr>
+                      <tr>
+                        <td>شركة الأمل</td>
+                        <td><span class="num">10/08/2026</span></td>
+                        <td class="num">15,000</td>
+                        <td class="num">82</td>
+                        <td><span class="num">61–90</span> يومًا</td>
+                      </tr>
+                      <tr>
+                        <td>شركة الأمل</td>
+                        <td><span class="num">20/09/2026</span></td>
+                        <td class="num">10,000</td>
+                        <td class="num">41</td>
+                        <td><span class="num">31–60</span> يومًا</td>
+                      </tr>
+                      <tr>
+                        <td>مؤسسة الواحة</td>
+                        <td><span class="num">15/06/2026</span></td>
+                        <td class="num">8,000</td>
+                        <td class="num">138</td>
+                        <td>أكثر من <span class="num">90</span> يومًا</td>
+                      </tr>
+                      <tr>
+                        <td>مؤسسة الواحة</td>
+                        <td><span class="num">09/10/2026</span></td>
+                        <td class="num">20,000</td>
+                        <td class="num">22</td>
+                        <td><span class="num">0–30</span> يومًا</td>
+                      </tr>
+                      <tr>
+                        <td>المتحدة للتوريدات</td>
+                        <td><span class="num">18/08/2026</span></td>
+                        <td class="num">6,000</td>
+                        <td class="num">74</td>
+                        <td><span class="num">61–90</span> يومًا</td>
+                      </tr>
+                      <tr>
+                        <td>المتحدة للتوريدات</td>
+                        <td><span class="num">12/09/2026</span></td>
+                        <td class="num">14,000</td>
+                        <td class="num">49</td>
+                        <td><span class="num">31–60</span> يومًا</td>
+                      </tr>
+                      <tr>
+                        <td>المتحدة للتوريدات</td>
+                        <td><span class="num">25/10/2026</span></td>
+                        <td class="num">9,000</td>
+                        <td class="num">6</td>
+                        <td><span class="num">0–30</span> يومًا</td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>الإجمالي</td>
+                        <td></td>
+                        <td class="num">112,000</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">
+                  تقرير عمر الديون كما في <span class="num">31/10/2026</span> (ج.م)
+                </span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>العميل</th>
+                        <th><span class="num">0–30</span> يومًا</th>
+                        <th><span class="num">31–60</span> يومًا</th>
+                        <th><span class="num">61–90</span> يومًا</th>
+                        <th>أكثر من <span class="num">90</span> يومًا</th>
+                        <th>الإجمالي</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>شركة النيل للتجارة</td>
+                        <td class="num">30,000</td>
+                        <td class="num">—</td>
+                        <td class="num">—</td>
+                        <td class="num">—</td>
+                        <td class="num">30,000</td>
+                      </tr>
+                      <tr>
+                        <td>شركة الأمل</td>
+                        <td class="num">—</td>
+                        <td class="num">10,000</td>
+                        <td class="num">15,000</td>
+                        <td class="num">—</td>
+                        <td class="num">25,000</td>
+                      </tr>
+                      <tr>
+                        <td>مؤسسة الواحة</td>
+                        <td class="num">20,000</td>
+                        <td class="num">—</td>
+                        <td class="num">—</td>
+                        <td class="num">8,000</td>
+                        <td class="num">28,000</td>
+                      </tr>
+                      <tr>
+                        <td>المتحدة للتوريدات</td>
+                        <td class="num">9,000</td>
+                        <td class="num">14,000</td>
+                        <td class="num">6,000</td>
+                        <td class="num">—</td>
+                        <td class="num">29,000</td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>الإجمالي</td>
+                        <td class="num">59,000</td>
+                        <td class="num">24,000</td>
+                        <td class="num">21,000</td>
+                        <td class="num">8,000</td>
+                        <td class="num">112,000</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">تقدير مخصص الخسائر الائتمانية المتوقعة</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>فئة العمر</th>
+                        <th>رصيد الفئة (ج.م)</th>
+                        <th>نسبة الخسارة المتوقعة</th>
+                        <th>المخصص المطلوب (ج.م)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><span class="num">0–30</span> يومًا</td>
+                        <td class="num">59,000</td>
+                        <td class="num">1%</td>
+                        <td class="num">590</td>
+                      </tr>
+                      <tr>
+                        <td><span class="num">31–60</span> يومًا</td>
+                        <td class="num">24,000</td>
+                        <td class="num">5%</td>
+                        <td class="num">1,200</td>
+                      </tr>
+                      <tr>
+                        <td><span class="num">61–90</span> يومًا</td>
+                        <td class="num">21,000</td>
+                        <td class="num">20%</td>
+                        <td class="num">4,200</td>
+                      </tr>
+                      <tr>
+                        <td>أكثر من <span class="num">90</span> يومًا</td>
+                        <td class="num">8,000</td>
+                        <td class="num">50%</td>
+                        <td class="num">4,000</td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>الإجمالي</td>
+                        <td class="num">112,000</td>
+                        <td></td>
+                        <td class="num">9,990</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">قيد تكوين المخصص</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين</th>
+                        <th>دائن</th>
+                      </tr>
+                    </thead>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">31/10/2026</span></td>
+                        <td>من ح/ مصروف الخسائر الائتمانية المتوقعة</td>
+                        <td class="num">9,990</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ مخصص الخسائر الائتمانية المتوقعة</td>
+                        <td></td>
+                        <td class="num">9,990</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>تكوين مخصص للخسائر المتوقعة من ذمم العملاء بحسب تقرير عمر الديون</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              حُسب عمر كل فاتورة بطرح تاريخها من <span class="num">31/10/2026</span>،
+              فمثلًا فاتورة <span class="num">10/08/2026</span> عمرها
+              <span class="num">21 + 30 + 31 = 82</span> يومًا فتقع في فئة
+              <span class="num">61–90</span>. وبعد توزيع الفواتير جُمعت الأعمدة
+              (<span class="num">59,000 + 24,000 + 21,000 + 8,000 = 112,000</span>)
+              والصفوف (<span class="num">30,000 + 25,000 + 28,000 + 29,000 = 112,000</span>)
+              فتطابق الإجمالي مع رصيد ح/ العملاء. وتشكّل الفئة الأولى
+              <span class="num">52.7%</span> من الذمم، أي أن
+              <span class="num">47.3%</span> منها تجاوز مدة السداد. وتتطلب قراءة
+              التقرير أولويات واضحة: دين مؤسسة الواحة البالغ <span class="num">8,000</span>
+              ج.م الذي تجاوز <span class="num">90</span> يومًا هو الأخطر رغم صغره،
+              ودين شركة الأمل البالغ <span class="num">15,000</span> ج.م أقرب
+              ما يكون إلى هذه الفئة (<span class="num">82</span> يومًا) فتجب متابعته
+              فورًا. أما المخصص فحُسب لكل فئة على حدة بضرب رصيدها في نسبتها:
+              <span class="num">590 + 1,200 + 4,200 + 4,000 = 9,990</span> ج.م، ويُعرض
+              صافي الذمم المدينة في قائمة المركز المالي بمبلغ
+              <span class="num">112,000 − 9,990 = 102,010</span> ج.م.
+            </p>
+
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>
+                لا يُعتمد التقرير قبل مطابقة إجماليه مع رصيد ح/ العملاء في الأستاذ
+                العام؛ فأي فرق يدل على فاتورة أو تحصيل غير مُرحَّل أو مُرحَّل إلى
+                حساب عميل خاطئ.
+              </p>
+            </div>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                يجب اعتماد أساس واحد لحساب العمر (تاريخ الفاتورة أو تاريخ
+                الاستحقاق) لجميع العملاء وفي كل التقارير، وإلا فقدت المقارنة بين
+                فترتين معناها. ويُطبَّق كل معدل خسارة على رصيد فئته وحدها، لا على
+                الإجمالي كله.
+              </p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+
+          <!-- ============ المرحلة 3: حد الائتمان ============ -->
+          <div class="topic-block" id="credit-limit">
+            <h3 class="topic-block__title">حد الائتمان</h3>
+
+            <p>
+              حد الائتمان (Credit Limit) هو أقصى رصيد مدين تسمح المنشأة بأن يبلغه
+              العميل في أي وقت. يُحدَّد قبل بدء التعامل الآجل بناءً على سجل
+              العميل في السداد وقوته المالية وحجم تعاملاته المتوقع، ويُراجَع
+              دوريًا في ضوء ما يظهره تقرير عمر الديون من التزامه بمواعيد السداد.
+              وهو ضابط رقابي وقائي؛ إذ يمنع الدين المتعثّر قبل أن ينشأ بدل أن
+              يُعالَج بعد وقوعه، وبذلك يكمّل كشف الحساب وتقرير عمر الديون.
+            </p>
+
+            <div class="formula-box">
+              <span class="formula-box__label">الائتمان المتاح</span>
+              <p class="formula-box__body">
+                الائتمان المتاح = حد الائتمان − رصيد العميل الحالي
+              </p>
+            </div>
+
+            <div class="formula-box">
+              <span class="formula-box__label">قاعدة قبول الطلب الآجل</span>
+              <p class="formula-box__body">
+                يُقبل الطلب إذا كان رصيد العميل بعده ≤ حد الائتمان، ولم تتجاوز
+                متأخراته السياسة المعتمدة
+              </p>
+            </div>
+
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>
+                حد الائتمان قرار إداري وسياسة رقابية، ولا يُثبَّت له قيد محاسبي،
+                لكنه يؤثر مباشرة في حجم الذمم المدينة وجودتها. ويجوز رفعه للعميل
+                الملتزم، وخفضه أو إيقافه للعميل المتأخر.
+              </p>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">مراجعة طلبات الشراء الآجل في 01/11/2026</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>
+                    حدود الائتمان المعتمدة (ج.م): شركة النيل للتجارة
+                    <span class="num">50,000</span>، وشركة الأمل
+                    <span class="num">30,000</span>، ومؤسسة الواحة
+                    <span class="num">40,000</span>، والمتحدة للتوريدات
+                    <span class="num">35,000</span>.
+                  </li>
+                  <li>
+                    الأرصدة الحالية من تقرير عمر الديون في
+                    <span class="num">31/10/2026</span>: <span class="num">30,000</span>
+                    و<span class="num">25,000</span> و<span class="num">28,000</span>
+                    و<span class="num">29,000</span> ج.م بالترتيب نفسه.
+                  </li>
+                  <li>
+                    طلبات الشراء الآجل الواردة في <span class="num">01/11/2026</span>:
+                    <span class="num">15,000</span> و<span class="num">8,000</span>
+                    و<span class="num">10,000</span> و<span class="num">5,000</span> ج.م
+                    بالترتيب نفسه.
+                  </li>
+                  <li>
+                    سياسة المنشأة: لا يُمنَح ائتمان جديد لعميل لديه مبالغ تجاوز
+                    عمرها <span class="num">90</span> يومًا حتى تُسوّى.
+                  </li>
+                </ul>
+
+                <span class="example-block__label">مراجعة الطلبات وقرارات الائتمان (ج.م)</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>العميل</th>
+                        <th>حد الائتمان</th>
+                        <th>الرصيد الحالي</th>
+                        <th>الائتمان المتاح</th>
+                        <th>قيمة الطلب</th>
+                        <th>الرصيد بعد الطلب</th>
+                        <th>القرار</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>شركة النيل للتجارة</td>
+                        <td class="num">50,000</td>
+                        <td class="num">30,000</td>
+                        <td class="num">20,000</td>
+                        <td class="num">15,000</td>
+                        <td class="num">45,000</td>
+                        <td>يُقبل</td>
+                      </tr>
+                      <tr>
+                        <td>شركة الأمل</td>
+                        <td class="num">30,000</td>
+                        <td class="num">25,000</td>
+                        <td class="num">5,000</td>
+                        <td class="num">8,000</td>
+                        <td class="num">33,000</td>
+                        <td>يتجاوز الحد بمقدار <span class="num">3,000</span>؛ يُحال إلى الإدارة</td>
+                      </tr>
+                      <tr>
+                        <td>مؤسسة الواحة</td>
+                        <td class="num">40,000</td>
+                        <td class="num">28,000</td>
+                        <td class="num">12,000</td>
+                        <td class="num">10,000</td>
+                        <td class="num">38,000</td>
+                        <td>يُوقَف؛ متأخرات <span class="num">8,000</span> تجاوزت <span class="num">90</span> يومًا</td>
+                      </tr>
+                      <tr>
+                        <td>المتحدة للتوريدات</td>
+                        <td class="num">35,000</td>
+                        <td class="num">29,000</td>
+                        <td class="num">6,000</td>
+                        <td class="num">5,000</td>
+                        <td class="num">34,000</td>
+                        <td>يُقبل</td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>الإجمالي</td>
+                        <td class="num">155,000</td>
+                        <td class="num">112,000</td>
+                        <td class="num">43,000</td>
+                        <td class="num">38,000</td>
+                        <td class="num">150,000</td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              حُسب الائتمان المتاح لكل عميل بطرح رصيده من حده، ثم قورن بقيمة
+              الطلب. فطلب شركة النيل (<span class="num">15,000</span>) أقل من
+              المتاح (<span class="num">20,000</span>) فيُقبل، وكذلك طلب المتحدة
+              للتوريدات. أما شركة الأمل فمتاحها <span class="num">5,000</span> ج.م
+              فقط وطلبها <span class="num">8,000</span> ج.م، فيتجاوز رصيدها بعد
+              الطلب حدَّها بمقدار <span class="num">33,000 − 30,000 = 3,000</span> ج.م؛
+              ويكون الحل بقبول جزء من الطلب في حدود المتاح، أو اشتراط سداد جزء
+              من الرصيد القائم، أو اعتماد الإدارة استثناءً. وتؤكد المطابقة صحة
+              الأرقام: <span class="num">112,000 + 38,000 = 150,000</span>، وهو
+              مجموع الأرصدة بعد الطلبات. ومجموع الائتمان المتاح
+              (<span class="num">155,000 − 112,000 = 43,000</span>) أكبر من مجموع
+              الطلبات، لكن هذا لا يعني قبول الجميع، لأن القرار يُتَّخذ لكل عميل
+              على حدة.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                لا يكفي أن يقع الطلب داخل الحد؛ فطلب مؤسسة الواحة يُبقي رصيدها
+                (<span class="num">38,000</span>) دون حدها (<span class="num">40,000</span>)
+                ومع ذلك يُوقَف لوجود دين عمره <span class="num">138</span> يومًا.
+                ويجب كذلك احتساب الطلبات المقبولة التي لم تُفوتَر بعد ضمن رصيد
+                العميل عند حساب الائتمان المتاح، وإلا تجاوز العميل حده فعليًا
+                دون أن يظهر ذلك في الأرصدة.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section content-section--tint" id="comparison">
+      <div class="container">
+        <div class="content-section__eyebrow">مقارنة</div>
+        <h2 class="content-section__title">كشف الحساب وتقرير عمر الديون وحد الائتمان</h2>
+
+        <div class="table-responsive">
+          <table class="table table-bordered align-middle">
+            <thead>
+              <tr>
+                <th>وجه المقارنة</th>
+                <th>كشف الحساب</th>
+                <th>تقرير عمر الديون</th>
+                <th>حد الائتمان</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>الغرض الأساسي</td>
+                <td>مطابقة رصيد العميل معه وتسوية الفروق</td>
+                <td>قياس تأخر الديون وتوجيه التحصيل وتقدير المخصص</td>
+                <td>ضبط حجم البيع الآجل ومنع تجاوز السقف المسموح</td>
+              </tr>
+              <tr>
+                <td>نطاقه</td>
+                <td>عميل واحد</td>
+                <td>جميع العملاء في تقرير واحد</td>
+                <td>سقف مستقل لكل عميل</td>
+              </tr>
+              <tr>
+                <td>أساس العرض</td>
+                <td>كل العمليات بالتتابع الزمني مع رصيد جارٍ</td>
+                <td>الأرصدة المفتوحة فقط موزعة على فئات العمر</td>
+                <td>مبلغ أقصى بالجنيه المصري يُقارَن بالرصيد الحالي</td>
+              </tr>
+              <tr>
+                <td>الجهة المستفيدة</td>
+                <td>العميل والمحاسب</td>
+                <td>الإدارة والمحاسب (استخدام داخلي)</td>
+                <td>الإدارة وقسم المبيعات (استخدام داخلي)</td>
+              </tr>
+              <tr>
+                <td>توقيته</td>
+                <td>دوري بعد انتهاء الفترة أو عند طلب العميل</td>
+                <td>دوري (شهري في الغالب) وقبل إعداد القوائم المالية</td>
+                <td>قبل قبول كل طلب آجل (رقابة وقائية)</td>
+              </tr>
+              <tr>
+                <td>السؤال الذي يجيب عنه</td>
+                <td>كم يبلغ رصيد العميل وكيف تكوّن؟</td>
+                <td>من تأخر في السداد وبكم، وما الخسارة المتوقعة؟</td>
+                <td>كم نستطيع أن نبيعه آجلًا بعد؟</td>
+              </tr>
+              <tr>
+                <td>الأثر المحاسبي</td>
+                <td>لا ينشئ قيدًا؛ هو عرض لحساب قائم</td>
+                <td>لا ينشئ قيدًا بذاته، ويُبنى عليه قيد المخصص</td>
+                <td>لا قيد محاسبيًا له؛ هو سياسة رقابية</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="summary">
+      <div class="container">
+        <div class="content-section__eyebrow">الخلاصة</div>
+        <h2 class="content-section__title">أهم ما يجب تذكّره</h2>
+
+        <div class="summary-card" style="max-width: 900px">
+          <ul class="summary-card__list">
+            <li>
+              ✔ كشف الحساب نسخة من حساب العميل عن فترة محددة، ورصيده الختامي =
+              الرصيد الافتتاحي + الفواتير − المردودات − التحصيلات
+              (<span class="num">40,000 + 43,000 − 53,000 = 30,000</span> ج.م في المثال).
+            </li>
+            <li>
+              ✔ حساب العميل مدين بطبيعته: الفاتورة الآجلة تزيده، والمردود والتحصيل
+              يخفضانه، ومجموع أرصدة العملاء يساوي رصيد ح/ العملاء الإجمالي.
+            </li>
+            <li>
+              ✔ تقرير عمر الديون يوزّع الأرصدة المفتوحة على فئات العمر بحسب تاريخ
+              الفاتورة، ويجب أن يطابق إجماليه (<span class="num">112,000</span> ج.م
+              في المثال) رصيد ح/ العملاء.
+            </li>
+            <li>
+              ✔ كلما قدم الدين ارتفعت نسبة الخسارة المتوقعة؛ فبلغ المخصص في المثال
+              <span class="num">9,990</span> ج.م، وصافي الذمم المدينة
+              <span class="num">102,010</span> ج.م.
+            </li>
+            <li>
+              ✔ الائتمان المتاح = حد الائتمان − الرصيد الحالي، ويُقارَن بقيمة
+              الطلب قبل قبول أي بيع آجل جديد.
+            </li>
+            <li>
+              ✔ القرار الائتماني السليم يجمع بين الحد وعمر الديون القائمة؛ فقد
+              يقع الطلب داخل الحد ويُوقَف لوجود دين متأخر.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>الجزء الرابع: الذمم والديون | الفصل العاشر: الذمم المدينة وإدارة العملاء</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      /* Sync Toolbar Title */
+      const heroTitle = document.querySelector('.hero__title')
+      const toolbarTitle = document.querySelector('[data-sync-title]')
+      if (heroTitle && toolbarTitle) {
+        const text = heroTitle.textContent.trim()
+        if (text) {
+          toolbarTitle.textContent = text
+          document.title = text
+        }
+      }
+    </script>
+  </body>
+</html>

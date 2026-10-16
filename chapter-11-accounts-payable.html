@@ -1,0 +1,1082 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الفصل الحادي عشر: الذمم الدائنة وإدارة الموردين</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        
+        --clr-primary: #b378a6;
+        --clr-secondary: #7796bf;
+        --clr-light: #ffffff;
+        --clr-light-2: #f0f0f0;
+        --clr-border: #dedede;
+        --clr-dark: #1b1b1b;
+        --clr-dark-2: #444444;
+        --clr-text: #333333;
+        --clr-text-soft: #555555;
+
+        --font-body: 'Baloo Bhaijaan 2', sans-serif;
+
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 18px;
+
+        --shadow-soft: 0 4px 20px rgba(27, 27, 27, 0.07);
+        --shadow-hover: 0 12px 28px rgba(179, 120, 166, 0.16);
+
+        --section-pad: 4.5rem;
+        --content-width: 900px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--clr-light);
+        color: var(--clr-dark);
+        line-height: 1.9;
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: var(--clr-secondary);
+        text-decoration: none;
+        transition: 0.2s;
+      }
+
+      a:hover {
+        color: var(--clr-primary);
+      }
+
+      h1, h2, h3, h4, h5 {
+        font-family: var(--font-body);
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+        color: var(--clr-dark);
+      }
+
+      h1, h2 { font-weight: 800; }
+      h3, h4, h5 { font-weight: 700; }
+
+      p {
+        color: var(--clr-text);
+        margin-bottom: 1rem;
+      }
+
+      ul { margin: 0; padding: 0; }
+
+      section { scroll-margin-top: 90px; }
+
+      ::selection {
+        background: var(--clr-primary);
+        color: #fff;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--clr-secondary);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      .editor-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--clr-primary);
+        padding: 0.7rem 0;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .editor-toolbar__tab-title {
+        color: #fff;
+        font-size: 1.1rem;
+        direction: ltr;
+        font-weight: 700;
+      }
+
+      .hero {
+        background: var(--clr-secondary);
+        color: #fff;
+        padding: 4.5rem 0 3.5rem;
+      }
+
+      .hero__title {
+        color: #fff;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      .hero__lead {
+        color: #fff;
+        opacity: 0.95;
+        max-width: 760px;
+        font-size: 1.15rem;
+        margin-bottom: 0;
+      }
+
+      .content-section { padding: var(--section-pad) 0; }
+      .content-section--alt { background: #fcfcfc; }
+      .content-section--tint { background: var(--clr-light-2); }
+
+      .content-section__eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+        font-size: 0.86rem;
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+      }
+
+      .content-section__eyebrow::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        background: var(--clr-primary);
+      }
+
+      .content-section__title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+
+      .content-section__description {
+        max-width: 760px;
+        color: var(--clr-text-soft);
+        margin-bottom: 2.5rem;
+      }
+
+      .summary-card {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+        padding: 2rem;
+      }
+
+      .summary-card__list {
+        display: grid;
+        gap: 1rem;
+        list-style: none;
+      }
+
+      .summary-card__list li {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+      }
+
+      .callout {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        border-radius: var(--radius-md);
+        border-inline-start: 4px solid;
+      }
+
+      .callout__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 700;
+      }
+
+      .callout--note {
+        background: rgba(119, 150, 191, 0.08);
+        border-color: var(--clr-secondary);
+      }
+
+      .callout--warning {
+        background: rgba(179, 120, 166, 0.08);
+        border-color: var(--clr-primary);
+      }
+
+      .flow-diagram {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin: 2rem 0;
+      }
+
+      .flow-step {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        padding: 1rem 1.25rem;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .flow-step__title {
+        color: var(--clr-primary);
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+      }
+
+      .flow-step__description { color: var(--clr-text-soft); margin: 0; }
+
+      .flow-arrow {
+        text-align: center;
+        color: var(--clr-secondary);
+        font-size: 28px;
+        line-height: 1;
+      }
+
+      .topic-block { margin-bottom: 3rem; }
+      .topic-block:last-child { margin-bottom: 0; }
+
+      .topic-block__title {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+      }
+
+      .topic-divider {
+        border: none;
+        border-top: 1px dashed var(--clr-border);
+        margin: 2.5rem 0;
+      }
+
+      .num {
+        direction: ltr;
+        unicode-bidi: isolate;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .formula-box {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        text-align: center;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .formula-box__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--clr-primary);
+        font-weight: 700;
+      }
+
+      .formula-box__body {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--clr-dark);
+      }
+
+      .example-block {
+        overflow: hidden;
+        margin: 2rem 0;
+        background: var(--clr-light);
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .example-block__header {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.7rem 1.2rem;
+        background: var(--clr-dark);
+      }
+
+      .example-block__tag {
+        padding: 0 0.7rem;
+        background: var(--clr-primary);
+        color: #fff;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .example-block__title { color: #fff; font-weight: 600; }
+
+      .example-block__body { padding: 1.5rem; }
+
+      .example-block__label {
+        display: block;
+        margin: 1.6rem 0 0.6rem;
+        color: var(--clr-secondary);
+        font-weight: 700;
+      }
+
+      .example-block__label:first-child { margin-top: 0; }
+
+      .example-block__data {
+        margin: 0;
+        padding-inline-start: 1.2rem;
+        color: var(--clr-text);
+      }
+
+      .acc-table-wrap { overflow-x: auto; }
+
+      .acc-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+
+      .acc-table th,
+      .acc-table td {
+        padding: 0.5rem 0.8rem;
+        border: 1px solid var(--clr-border);
+      }
+
+      .acc-table thead th {
+        background: var(--clr-light-2);
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .acc-table td.num { text-align: end; }
+
+      .acc-table__total td {
+        background: #fcfcfc;
+        font-weight: 700;
+        border-top: 2px solid var(--clr-dark-2);
+        border-bottom: 4px double var(--clr-dark-2);
+      }
+
+      .journal__entry { border-bottom: 2px solid var(--clr-dark-2); }
+      .acc-table td.journal__credit { padding-inline-start: 2.5rem; }
+      .journal__note td { color: var(--clr-text-soft); font-size: 0.88rem; }
+
+      .t-accounts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+
+      .t-account {
+        overflow: hidden;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+      }
+
+      .t-account__title {
+        padding: 0.5rem;
+        text-align: center;
+        color: var(--clr-primary);
+        font-weight: 700;
+        border-bottom: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__sides { display: grid; grid-template-columns: 1fr 1fr; }
+
+      .t-account__side + .t-account__side {
+        border-inline-start: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__side-label {
+        padding: 0.3rem;
+        text-align: center;
+        color: var(--clr-text-soft);
+        font-size: 0.85rem;
+        font-weight: 700;
+        border-bottom: 1px solid var(--clr-border);
+      }
+
+      .t-account__lines {
+        min-height: 3rem;
+        margin: 0;
+        padding: 0.4rem 0.7rem;
+        list-style: none;
+      }
+
+      .t-account__lines li {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .t-account__balance {
+        padding: 0.45rem 0.7rem;
+        text-align: center;
+        font-weight: 700;
+        background: rgba(119, 150, 191, 0.08);
+        border-top: 1px solid var(--clr-border);
+      }
+
+      .site-footer {
+        background: var(--clr-light-2);
+        color: var(--clr-light);
+        padding: 1rem 0 0.5rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        :root { --section-pad: 3rem; }
+        .hero { padding: 3.5rem 0; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="editor-toolbar">
+      <div class="container d-flex align-items-center gap-3">
+        <span class="editor-toolbar__tab-title" data-sync-title></span>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="container">
+        <h1 class="hero__title">الفصل الحادي عشر: الذمم الدائنة وإدارة الموردين</h1>
+        <p class="hero__lead">
+          يعالج هذا الفصل الجانب العملي لإدارة التزامات المنشأة تجاه مورديها (الذمم الدائنة – Accounts Payable): كيف نخطط للسداد بجدول يضبط السيولة ويلتقط الخصومات، وكيف يتحول الدَّين المفتوح إلى التزام مكتوب بموجب أوراق الدفع والكمبيالات، وكيف يُثبَّت كل ذلك في الدفاتر.
+        </p>
+      </div>
+    </header>
+
+    <section class="content-section" id="explanation">
+      <div class="container">
+        <div class="content-section__eyebrow">شرح وتطبيق</div>
+        <h2 class="content-section__title">شرح وتطبيق كل مرحلة</h2>
+
+        <div class="article-content" style="max-width: 900px">
+
+          <div class="topic-block" id="payment-schedule">
+            <h3 class="topic-block__title">جدول المدفوعات</h3>
+
+            <p>
+              جدول المدفوعات (Payment Schedule) كشفٌ تُعدّه إدارة الحسابات الدائنة يحصر فواتير الموردين غير المسددة، ويرتّبها بحسب تاريخ الدفع المقرر، مبيّنًا قيمة كل فاتورة والخصم النقدي المتاح والمبلغ الفعلي الواجب سداده. وله وظيفتان: تقدير احتياج المنشأة من النقدية في كل فترة حتى لا تتعثر في السداد، والاستفادة من الخصم النقدي (Cash Discount) وهو تخفيض يمنحه المورد لمن يسدد مبكرًا.
+            </p>
+            <p>
+              تُكتب شروط البيع الآجل عادةً بصيغة <span class="num">2/10، صافي 30</span>؛ أي خصم <span class="num">2%</span> إذا سُدّدت الفاتورة خلال <span class="num">10</span> أيام من تاريخها، وإلا استُحق المبلغ كاملًا خلال <span class="num">30</span> يومًا.
+            </p>
+
+            <div class="formula-box">
+              <span class="formula-box__label">قاعدة السداد المبكر</span>
+              <p class="formula-box__body">المبلغ المدفوع = قيمة الفاتورة − (قيمة الفاتورة × نسبة الخصم)</p>
+            </div>
+
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>
+                التنازل عن خصم <span class="num">2%</span> لتأجيل السداد <span class="num">20</span> يومًا إضافيًا يعادل كلفة تمويل سنوية تقارب <span class="num">37.2%</span>، وفق: (<span class="num">2 ÷ 98</span>) × (<span class="num">365 ÷ 20</span>). لذلك يكون السداد المبكر غالبًا أرخص من الاقتراض لتمويل المدفوعات.
+              </p>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">إعداد جدول مدفوعات لثلاثة موردين</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>الأمل: فاتورة بتاريخ 12 أكتوبر 2026 بمبلغ <span class="num">40,000</span> ج.م، الشروط <span class="num">2/10، صافي 30</span> (آخر موعد للخصم 22 أكتوبر، والاستحقاق 11 نوفمبر).</li>
+                  <li>النور: فاتورة بتاريخ 15 أكتوبر 2026 بمبلغ <span class="num">25,000</span> ج.م، الشروط صافي <span class="num">30</span> دون خصم (الاستحقاق 14 نوفمبر).</li>
+                  <li>الشروق: فاتورة بتاريخ 20 أكتوبر 2026 بمبلغ <span class="num">60,000</span> ج.م، الشروط <span class="num">2/10، صافي 30</span> (آخر موعد للخصم 30 أكتوبر، والاستحقاق 19 نوفمبر).</li>
+                  <li>قرّرت المنشأة الاستفادة من الخصم لدى كل مورد يمنحه، وتتبع طريقة الإجمالي (Gross Method): تُسجَّل المشتريات بقيمة الفاتورة كاملة ويُثبَّت الخصم عند السداد.</li>
+                </ul>
+
+                <span class="example-block__label">جدول المدفوعات المقرر</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>تاريخ الدفع المقرر</th>
+                        <th>المورد</th>
+                        <th>الشروط</th>
+                        <th>قيمة الفاتورة (ج.م)</th>
+                        <th>الخصم النقدي (ج.م)</th>
+                        <th>المبلغ المدفوع (ج.م)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>22 أكتوبر 2026</td>
+                        <td>الأمل</td>
+                        <td><span class="num">2/10، صافي 30</span></td>
+                        <td class="num">40,000</td>
+                        <td class="num">800</td>
+                        <td class="num">39,200</td>
+                      </tr>
+                      <tr>
+                        <td>30 أكتوبر 2026</td>
+                        <td>الشروق</td>
+                        <td><span class="num">2/10، صافي 30</span></td>
+                        <td class="num">60,000</td>
+                        <td class="num">1,200</td>
+                        <td class="num">58,800</td>
+                      </tr>
+                      <tr>
+                        <td>14 نوفمبر 2026</td>
+                        <td>النور</td>
+                        <td>صافي <span class="num">30</span></td>
+                        <td class="num">25,000</td>
+                        <td class="num">0</td>
+                        <td class="num">25,000</td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td colspan="3">الإجمالي</td>
+                        <td class="num">125,000</td>
+                        <td class="num">2,000</td>
+                        <td class="num">123,000</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">قيود اليومية (مورد الأمل)</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين</th>
+                        <th>دائن</th>
+                      </tr>
+                    </thead>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3">12 أكتوبر 2026</td>
+                        <td>من ح/ المشتريات</td>
+                        <td class="num">40,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ الموردون – الأمل</td>
+                        <td></td>
+                        <td class="num">40,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>إثبات شراء بضاعة آجلة بشروط 2/10، صافي 30</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="4">22 أكتوبر 2026</td>
+                        <td>من ح/ الموردون – الأمل</td>
+                        <td class="num">40,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ البنك</td>
+                        <td></td>
+                        <td class="num">39,200</td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ خصم نقدي مكتسب</td>
+                        <td></td>
+                        <td class="num">800</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>سداد الفاتورة خلال مدة الخصم (40,000 × 2% = 800)</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              رُتّبت السطور في الجدول بحسب تاريخ الدفع لا تاريخ الفاتورة، لأن الغاية معرفة متى تخرج النقدية. وقُيّد الخصم في الجانب الدائن بحساب «خصم نقدي مكتسب» (Discount Earned) لأن الفاتورة سقطت بكامل <span class="num">40,000</span> ج.م في حساب المورد، بينما خرج من البنك <span class="num">39,200</span> ج.م فقط؛ فالفرق <span class="num">800</span> ج.م مكسب يقلّل تكلفة المشتريات. وبالطريقة نفسها يُسدَّد الشروق بمبلغ <span class="num">58,800</span> ج.م (<span class="num">60,000 − 1,200</span>) ويُدفع للنور المبلغ كاملًا <span class="num">25,000</span> ج.م. ويبلغ إجمالي النقدية اللازمة <span class="num">123,000</span> ج.م مقابل <span class="num">125,000</span> ج.م لو سُدّدت الفواتير بلا خصم.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                يسقط الخصم بانقضاء مدته؛ فلا يجوز استقطاع <span class="num">2%</span> عند السداد في اليوم الحادي عشر. والخطأ الشائع هو احتساب مدة الخصم من تاريخ السداد أو الاستلام بدل تاريخ الفاتورة المنصوص عليه في الشروط.
+              </p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+
+          <div class="topic-block" id="notes-payable">
+            <h3 class="topic-block__title">أوراق الدفع</h3>
+
+            <p>
+              أوراق الدفع (Notes Payable) التزامات مكتوبة تتعهد فيها المنشأة تعهدًا غير مشروط بدفع مبلغ محدد في تاريخ محدد لطرف مستفيد. وأشهر صورها السند الإذني (Promissory Note) الذي تحرّره المنشأة بنفسها لمصلحة المورد. وتلجأ إليها حين يتعذر سداد رصيد المورد في موعده، فيقبل المورد تحويل الرصيد المفتوح إلى سند مكتوب يمنحه دليلًا قانونيًا أقوى ويحدد له موعد الدفع، وقد يتفق الطرفان على فائدة مقابل التأجيل.
+            </p>
+            <p>
+              وفق معيار المحاسبة الدولي رقم 1 (IAS 1) تُصنَّف الورقة التزامًا متداولًا إذا استحق سدادها خلال اثني عشر شهرًا من تاريخ قائمة المركز المالي، وإلا فهي التزام غير متداول. وتُثبَّت قصيرة الأجل بقيمتها الاسمية لأن أثر القيمة الزمنية فيها غير جوهري عادةً.
+            </p>
+
+            <div class="formula-box">
+              <span class="formula-box__label">حساب الفائدة</span>
+              <p class="formula-box__body">الفائدة = أصل الورقة × المعدل السنوي × المدة بالأشهر ÷ 12</p>
+            </div>
+
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>
+                الفائدة المستحقة (Accrued Interest) التزام عن فائدة نشأت بمرور الزمن ولم تُدفع بعد؛ فإذا انتهت السنة المالية قبل استحقاق الورقة وجب إثبات ما استحق من فائدة حتى ذلك التاريخ.
+              </p>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">تحويل رصيد المورد إلى سند إذني بفائدة</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>رصيد المورد «الصفا» المستحق على المنشأة <span class="num">30,000</span> ج.م وتعذّر سداده.</li>
+                  <li>في 1 ديسمبر 2026 حرّرت المنشأة سندًا إذنيًا لمصلحة الصفا بمبلغ <span class="num">30,000</span> ج.م، أجله 3 أشهر (الاستحقاق 1 مارس 2027)، بفائدة <span class="num">12%</span> سنويًا تُدفع مع أصل السند عند الاستحقاق.</li>
+                  <li>تنتهي السنة المالية في 31 ديسمبر 2026.</li>
+                  <li>الفائدة الشهرية: <span class="num">30,000 × 12% ÷ 12 = 300</span> ج.م، وإجمالي الفائدة لثلاثة أشهر <span class="num">900</span> ج.م.</li>
+                </ul>
+
+                <span class="example-block__label">قيود اليومية</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين</th>
+                        <th>دائن</th>
+                      </tr>
+                    </thead>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3">1 ديسمبر 2026</td>
+                        <td>من ح/ الموردون – الصفا</td>
+                        <td class="num">30,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ أوراق الدفع</td>
+                        <td></td>
+                        <td class="num">30,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>تحويل رصيد المورد إلى سند إذني لأجل 3 أشهر</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3">31 ديسمبر 2026</td>
+                        <td>من ح/ مصروف الفوائد</td>
+                        <td class="num">300</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ فوائد مستحقة</td>
+                        <td></td>
+                        <td class="num">300</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>إثبات فائدة شهر ديسمبر المستحقة على السند</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="5">1 مارس 2027</td>
+                        <td>من ح/ أوراق الدفع</td>
+                        <td class="num">30,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>من ح/ فوائد مستحقة</td>
+                        <td class="num">300</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>من ح/ مصروف الفوائد</td>
+                        <td class="num">600</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ البنك</td>
+                        <td></td>
+                        <td class="num">30,900</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>سداد السند وفائدته عند الاستحقاق (فائدة يناير وفبراير 600)</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">الترحيل إلى حسابات الأستاذ</span>
+                <div class="t-accounts">
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ أوراق الدفع</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li><span>سداد 1 مارس 2027</span><span class="num">30,000</span></li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines">
+                          <li><span>إصدار 1 ديسمبر 2026</span><span class="num">30,000</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">0</span> (مقفل)
+                    </div>
+                  </div>
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ فوائد مستحقة</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li><span>سداد 1 مارس 2027</span><span class="num">300</span></li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines">
+                          <li><span>31 ديسمبر 2026</span><span class="num">300</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">0</span> (مقفل)
+                    </div>
+                  </div>
+                </div>
+
+                <span class="example-block__label">الالتزامات المتداولة في 31 ديسمبر 2026 (مقتطف)</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البيان</th>
+                        <th>جزئي (ج.م)</th>
+                        <th>كلي (ج.م)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>أوراق الدفع</td>
+                        <td class="num">30,000</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td>فوائد مستحقة</td>
+                        <td class="num">300</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>إجمالي الالتزامات المتداولة المرتبطة بالسند</td>
+                        <td></td>
+                        <td class="num">30,300</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              في القيد الأول لم يتغير مقدار الالتزام تجاه الصفا، وإنما تغيّر شكله من ذمة مفتوحة إلى ورقة مكتوبة، فنقص ح/ الموردون وزاد ح/ أوراق الدفع بالمبلغ نفسه. أما فائدة ديسمبر فتُنسب إلى سنة 2026 وفق مبدأ الاستحقاق ولو لم تُدفع، فقُيّدت مصروفًا والتزامًا في آن واحد. وعند الاستحقاق قُيّد الجزء المستحق سابقًا (<span class="num">300</span>) على ح/ الفوائد المستحقة لا على المصروف تفاديًا لتحميل 2026 مرتين، وحُمّل المصروف بفائدة يناير وفبراير (<span class="num">600</span>) فقط؛ فيتوازن القيد: <span class="num">30,000 + 300 + 600 = 30,900</span> مدينًا مقابل <span class="num">30,900</span> دائنًا.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                لا تُضاف الفائدة إلى أصل الورقة عند إثباتها في ح/ أوراق الدفع؛ فالحساب يُظهر قيمة التعهد الأصلية <span class="num">30,000</span> ج.م، وتُثبَّت الفائدة في حساب مستقل. وإغفال فائدة آخر السنة يُظهر الالتزامات والمصروفات أقل من حقيقتها.
+              </p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+
+          <div class="topic-block" id="bills-of-exchange">
+            <h3 class="topic-block__title">الكمبيالات</h3>
+
+            <p>
+              الكمبيالة (Bill of Exchange) محرَّر مكتوب يتضمن أمرًا صادرًا من الساحب (Drawer) إلى المسحوب عليه (Drawee) بأن يدفع مبلغًا محددًا في تاريخ محدد للمستفيد (Payee)، وغالبًا ما يكون المستفيد هو الساحب نفسه. فهي في تجارة الموردين أمرٌ من المورد إلى المنشأة المشترية، وتختلف عن السند الإذني بأن المنشأة لا تتحرر منها بنفسها بل يسحبها عليها المورد.
+            </p>
+            <p>
+              لا تنشأ على المنشأة أي مسؤولية عن الكمبيالة إلا بالقبول (Acceptance)، وهو توقيعها على الورقة بما يفيد التزامها بالدفع عند الاستحقاق. وعند القبول تصبح الورقة «ورقة دفع» في دفاتر المنشأة المشترية، وهي نفسها «ورقة قبض» في دفاتر المورد.
+            </p>
+
+            <div class="flow-diagram">
+              <div class="flow-step">
+                <div class="flow-step__title">1) البيع الآجل</div>
+                <div class="flow-step__description">يسلّم المورد البضاعة ويثبت الدين على المنشأة في حساب المورد.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">2) سحب الكمبيالة</div>
+                <div class="flow-step__description">يحرّر المورد (الساحب) الكمبيالة على المنشأة (المسحوب عليه) بالمبلغ وتاريخ الاستحقاق.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">3) القبول</div>
+                <div class="flow-step__description">توقّع المنشأة على الكمبيالة، فيتحول رصيد المورد إلى أوراق الدفع.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">4) الاستحقاق والسداد</div>
+                <div class="flow-step__description">تدفع المنشأة قيمة الكمبيالة في تاريخها فتُقفل ورقة الدفع.</div>
+              </div>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">قبول كمبيالة وسدادها عند الاستحقاق</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>في 1 يناير 2027 اشترت المنشأة بضاعة آجلة من المورد «الرواد» بمبلغ <span class="num">80,000</span> ج.م.</li>
+                  <li>سحب الرواد على المنشأة كمبيالة بمبلغ <span class="num">80,000</span> ج.م لأجل 60 يومًا (الاستحقاق 2 مارس 2027)، وقبلتها المنشأة في اليوم نفسه.</li>
+                  <li>سُدّدت الكمبيالة في تاريخ استحقاقها عن طريق البنك.</li>
+                </ul>
+
+                <span class="example-block__label">قيود اليومية</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين</th>
+                        <th>دائن</th>
+                      </tr>
+                    </thead>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3">1 يناير 2027</td>
+                        <td>من ح/ المشتريات</td>
+                        <td class="num">80,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ الموردون – الرواد</td>
+                        <td></td>
+                        <td class="num">80,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>إثبات شراء بضاعة آجلة من الرواد</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3">1 يناير 2027</td>
+                        <td>من ح/ الموردون – الرواد</td>
+                        <td class="num">80,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ أوراق الدفع</td>
+                        <td></td>
+                        <td class="num">80,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>قبول كمبيالة مسحوبة من الرواد تستحق في 2 مارس 2027</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3">2 مارس 2027</td>
+                        <td>من ح/ أوراق الدفع</td>
+                        <td class="num">80,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ البنك</td>
+                        <td></td>
+                        <td class="num">80,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>سداد الكمبيالة المقبولة عند الاستحقاق</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">أثر العمليات على أرصدة الالتزامات (دائنة)</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البيان</th>
+                        <th>الموردون – الرواد (ج.م)</th>
+                        <th>أوراق الدفع (ج.م)</th>
+                        <th>إجمالي الالتزام (ج.م)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>بعد الشراء (1 يناير 2027)</td>
+                        <td class="num">80,000</td>
+                        <td class="num">0</td>
+                        <td class="num">80,000</td>
+                      </tr>
+                      <tr>
+                        <td>بعد القبول (1 يناير 2027)</td>
+                        <td class="num">0</td>
+                        <td class="num">80,000</td>
+                        <td class="num">80,000</td>
+                      </tr>
+                      <tr>
+                        <td>بعد السداد (2 مارس 2027)</td>
+                        <td class="num">0</td>
+                        <td class="num">0</td>
+                        <td class="num">0</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              يوضح الجدول الأخير أن القبول لا يزيد الالتزام ولا ينقصه؛ فإجمالي ما على المنشأة ظلّ <span class="num">80,000</span> ج.م وانتقل فقط من ح/ الموردون إلى ح/ أوراق الدفع. والخروج الفعلي للنقدية لا يحدث إلا يوم الاستحقاق، حين يُقفل ح/ أوراق الدفع مقابل ح/ البنك.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                الخطأ الشائع إثبات الكمبيالة المقبولة في ح/ أوراق الدفع دون تخفيض ح/ الموردون بالمبلغ نفسه، فيظهر الالتزام مرتين (<span class="num">160,000</span> ج.م بدل <span class="num">80,000</span> ج.م).
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section content-section--tint" id="comparison">
+      <div class="container">
+        <div class="content-section__eyebrow">مقارنة</div>
+        <h2 class="content-section__title">السند الإذني مقابل الكمبيالة المقبولة</h2>
+
+        <div class="table-responsive">
+          <table class="table table-bordered align-middle">
+            <thead>
+              <tr>
+                <th>وجه المقارنة</th>
+                <th>السند الإذني (ورقة دفع تحرّرها المنشأة)</th>
+                <th>الكمبيالة (مقبولة من المنشأة)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>محرِّر الورقة</td>
+                <td>المنشأة المدينة نفسها</td>
+                <td>المورد (الساحب)</td>
+              </tr>
+              <tr>
+                <td>عدد الأطراف</td>
+                <td>طرفان: المحرِّر والمستفيد</td>
+                <td>ثلاثة أطراف: الساحب والمسحوب عليه والمستفيد (وقد يجتمع الأول والثالث)</td>
+              </tr>
+              <tr>
+                <td>صيغة الورقة</td>
+                <td>تعهد بالدفع</td>
+                <td>أمر بالدفع</td>
+              </tr>
+              <tr>
+                <td>القبول</td>
+                <td>غير لازم؛ فالتوقيع عند التحرير هو الالتزام</td>
+                <td>لازم؛ ولا يلتزم المسحوب عليه إلا بعد توقيعه بالقبول</td>
+              </tr>
+              <tr>
+                <td>الإثبات في دفاتر المنشأة المدينة</td>
+                <td>من ح/ الموردون إلى ح/ أوراق الدفع</td>
+                <td>من ح/ الموردون إلى ح/ أوراق الدفع</td>
+              </tr>
+              <tr>
+                <td>السداد عند الاستحقاق</td>
+                <td>من ح/ أوراق الدفع إلى ح/ البنك (مع الفائدة إن وُجدت)</td>
+                <td>من ح/ أوراق الدفع إلى ح/ البنك</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="summary">
+      <div class="container">
+        <div class="content-section__eyebrow">الخلاصة</div>
+        <h2 class="content-section__title">أهم ما يجب تذكّره</h2>
+
+        <div class="summary-card" style="max-width: 900px">
+          <ul class="summary-card__list">
+            <li>✔ جدول المدفوعات يرتّب فواتير الموردين بحسب تاريخ الدفع المقرر، ويقدّر الاحتياج النقدي، ويلتقط الخصم النقدي؛ ويُثبَّت الخصم عند السداد في ح/ خصم نقدي مكتسب (طريقة الإجمالي).</li>
+            <li>✔ أوراق الدفع تعهد مكتوب بدفع مبلغ في موعد محدد؛ يُحوَّل إليها رصيد المورد بقيد من ح/ الموردون إلى ح/ أوراق الدفع دون تغيير في مقدار الالتزام.</li>
+            <li>✔ الفائدة على الورقة تُحسب بمرور الزمن وتُثبَّت مستحقة في نهاية السنة المالية، ولا تُضاف إلى أصل الورقة.</li>
+            <li>✔ الكمبيالة أمر بالدفع يسحبه المورد على المنشأة، ولا تلتزم بها إلا بالقبول؛ وبعده تُعامل كورقة دفع وتُقفل بالسداد عند الاستحقاق.</li>
+            <li>✔ تُصنَّف أوراق الدفع التزامًا متداولًا إذا استحقت خلال اثني عشر شهرًا من تاريخ قائمة المركز المالي (IAS 1).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>الفصل الحادي عشر: الذمم الدائنة وإدارة الموردين</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      /* Sync Toolbar Title */
+      const heroTitle = document.querySelector('.hero__title')
+      const toolbarTitle = document.querySelector('[data-sync-title]')
+      if (heroTitle && toolbarTitle) {
+        const text = heroTitle.textContent.trim()
+        if (text) {
+          toolbarTitle.textContent = text
+          document.title = text
+        }
+      }
+    </script>
+  </body>
+</html>

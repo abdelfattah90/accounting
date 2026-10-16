@@ -1,0 +1,911 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الفصل الأول: ما هي المحاسبة؟</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        
+        --clr-primary: #b378a6;
+        --clr-secondary: #7796bf;
+        --clr-light: #ffffff;
+        --clr-light-2: #f0f0f0;
+        --clr-border: #dedede;
+        --clr-dark: #1b1b1b;
+        --clr-dark-2: #444444;
+        --clr-text: #333333;
+        --clr-text-soft: #555555;
+
+        --font-body: 'Baloo Bhaijaan 2', sans-serif;
+
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 18px;
+
+        --shadow-soft: 0 4px 20px rgba(27, 27, 27, 0.07);
+        --shadow-hover: 0 12px 28px rgba(179, 120, 166, 0.16);
+
+        --section-pad: 4.5rem;
+        --content-width: 900px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--clr-light);
+        color: var(--clr-dark);
+        line-height: 1.9;
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: var(--clr-secondary);
+        text-decoration: none;
+        transition: 0.2s;
+      }
+
+      a:hover {
+        color: var(--clr-primary);
+      }
+
+      h1, h2, h3, h4, h5 {
+        font-family: var(--font-body);
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+        color: var(--clr-dark);
+      }
+
+      h1, h2 { font-weight: 800; }
+      h3, h4, h5 { font-weight: 700; }
+
+      p {
+        color: var(--clr-text);
+        margin-bottom: 1rem;
+      }
+
+      ul { margin: 0; padding: 0; }
+
+      section { scroll-margin-top: 90px; }
+
+      ::selection {
+        background: var(--clr-primary);
+        color: #fff;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--clr-secondary);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      .editor-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--clr-primary);
+        padding: 0.7rem 0;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .editor-toolbar__tab-title {
+        color: #fff;
+        font-size: 1.1rem;
+        direction: ltr;
+        font-weight: 700;
+      }
+
+      .hero {
+        background: var(--clr-secondary);
+        color: #fff;
+        padding: 4.5rem 0 3.5rem;
+      }
+
+      .hero__title {
+        color: #fff;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      .hero__lead {
+        color: #fff;
+        opacity: 0.95;
+        max-width: 760px;
+        font-size: 1.15rem;
+        margin-bottom: 0;
+      }
+
+      .content-section { padding: var(--section-pad) 0; }
+      .content-section--alt { background: #fcfcfc; }
+      .content-section--tint { background: var(--clr-light-2); }
+
+      .content-section__eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+        font-size: 0.86rem;
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+      }
+
+      .content-section__eyebrow::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        background: var(--clr-primary);
+      }
+
+      .content-section__title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+
+      .content-section__description {
+        max-width: 760px;
+        color: var(--clr-text-soft);
+        margin-bottom: 2.5rem;
+      }
+
+      .summary-card {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+        padding: 2rem;
+      }
+
+      .summary-card__list {
+        display: grid;
+        gap: 1rem;
+        list-style: none;
+      }
+
+      .summary-card__list li {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+      }
+
+      .callout {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        border-radius: var(--radius-md);
+        border-inline-start: 4px solid;
+      }
+
+      .callout__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 700;
+      }
+
+      .callout--note {
+        background: rgba(119, 150, 191, 0.08);
+        border-color: var(--clr-secondary);
+      }
+
+      .callout--warning {
+        background: rgba(179, 120, 166, 0.08);
+        border-color: var(--clr-primary);
+      }
+
+      .flow-diagram {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin: 2rem 0;
+      }
+
+      .flow-step {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        padding: 1rem 1.25rem;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .flow-step__title {
+        color: var(--clr-primary);
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+      }
+
+      .flow-step__description { color: var(--clr-text-soft); margin: 0; }
+
+      .flow-arrow {
+        text-align: center;
+        color: var(--clr-secondary);
+        font-size: 28px;
+        line-height: 1;
+      }
+
+      .topic-block { margin-bottom: 3rem; }
+      .topic-block:last-child { margin-bottom: 0; }
+
+      .topic-block__title {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+      }
+
+      .topic-divider {
+        border: none;
+        border-top: 1px dashed var(--clr-border);
+        margin: 2.5rem 0;
+      }
+
+      .num {
+        direction: ltr;
+        unicode-bidi: isolate;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .formula-box {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        text-align: center;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .formula-box__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--clr-primary);
+        font-weight: 700;
+      }
+
+      .formula-box__body {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--clr-dark);
+      }
+
+      .example-block {
+        overflow: hidden;
+        margin: 2rem 0;
+        background: var(--clr-light);
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .example-block__header {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.7rem 1.2rem;
+        background: var(--clr-dark);
+      }
+
+      .example-block__tag {
+        padding: 0 0.7rem;
+        background: var(--clr-primary);
+        color: #fff;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .example-block__title { color: #fff; font-weight: 600; }
+
+      .example-block__body { padding: 1.5rem; }
+
+      .example-block__label {
+        display: block;
+        margin: 1.6rem 0 0.6rem;
+        color: var(--clr-secondary);
+        font-weight: 700;
+      }
+
+      .example-block__label:first-child { margin-top: 0; }
+
+      .example-block__data {
+        margin: 0;
+        padding-inline-start: 1.2rem;
+        color: var(--clr-text);
+      }
+
+      .acc-table-wrap { overflow-x: auto; }
+
+      .acc-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+
+      .acc-table th,
+      .acc-table td {
+        padding: 0.5rem 0.8rem;
+        border: 1px solid var(--clr-border);
+      }
+
+      .acc-table thead th {
+        background: var(--clr-light-2);
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .acc-table td.num { text-align: end; }
+
+      .acc-table__total td {
+        background: #fcfcfc;
+        font-weight: 700;
+        border-top: 2px solid var(--clr-dark-2);
+        border-bottom: 4px double var(--clr-dark-2);
+      }
+
+      .journal__entry { border-bottom: 2px solid var(--clr-dark-2); }
+      .acc-table td.journal__credit { padding-inline-start: 2.5rem; }
+      .journal__note td { color: var(--clr-text-soft); font-size: 0.88rem; }
+
+      .t-accounts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+
+      .t-account {
+        overflow: hidden;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+      }
+
+      .t-account__title {
+        padding: 0.5rem;
+        text-align: center;
+        color: var(--clr-primary);
+        font-weight: 700;
+        border-bottom: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__sides { display: grid; grid-template-columns: 1fr 1fr; }
+
+      .t-account__side + .t-account__side {
+        border-inline-start: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__side-label {
+        padding: 0.3rem;
+        text-align: center;
+        color: var(--clr-text-soft);
+        font-size: 0.85rem;
+        font-weight: 700;
+        border-bottom: 1px solid var(--clr-border);
+      }
+
+      .t-account__lines {
+        min-height: 3rem;
+        margin: 0;
+        padding: 0.4rem 0.7rem;
+        list-style: none;
+      }
+
+      .t-account__lines li {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .t-account__balance {
+        padding: 0.45rem 0.7rem;
+        text-align: center;
+        font-weight: 700;
+        background: rgba(119, 150, 191, 0.08);
+        border-top: 1px solid var(--clr-border);
+      }
+
+      .site-footer {
+        background: var(--clr-light-2);
+        color: var(--clr-light);
+        padding: 1rem 0 0.5rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        :root { --section-pad: 3rem; }
+        .hero { padding: 3.5rem 0; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="editor-toolbar">
+      <div class="container d-flex align-items-center gap-3">
+        <span class="editor-toolbar__tab-title" data-sync-title></span>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="container">
+        <h1 class="hero__title">الفصل الأول: ما هي المحاسبة؟</h1>
+        <p class="hero__lead">
+          تبدأ رحلة تعلّم المحاسبة (Accounting) من سؤال بسيط: ماذا نقيس، ولمن نقدّم ما قسناه؟ يجيب هذا الفصل عن مفهوم المحاسبة وأهميتها وأنواعها وعلاقتها بالأعمال، ليكون أساسًا تبني عليه الفصول التالية.
+        </p>
+      </div>
+    </header>
+
+    <section class="content-section" id="explanation">
+      <div class="container">
+        <div class="content-section__eyebrow">شرح وتطبيق</div>
+        <h2 class="content-section__title">شرح وتطبيق كل مرحلة</h2>
+
+        <div class="article-content" style="max-width: 900px">
+          <div class="topic-block" id="stage-concept">
+            <h3 class="topic-block__title">مفهوم المحاسبة</h3>
+
+            <p>
+              المحاسبة نظام معلومات يحدّد الأحداث الاقتصادية للمنشأة ويقيسها بوحدة النقد ويسجّلها ويلخّصها، ثم يوصل نتائجها إلى من يحتاج إليها لاتخاذ قراراته. و«المنشأة» (Entity) وحدة اقتصادية مستقلة عن مالكها تُمسك لها سجلات خاصة بها، أما «الحدث الاقتصادي» (Economic Event) فهو عملية تؤثر فيما تملكه المنشأة أو ما عليها، كشراء أثاث أو إيداع المالك مبلغًا لبدء النشاط.
+            </p>
+
+            <p>
+              وتنسجم هذه الصياغة مع الإطار المفاهيمي للمعايير الدولية للتقرير المالي (IFRS)، الذي يجعل غاية التقرير المالي تقديم معلومات مفيدة للمستثمرين الحاليين والمحتملين والمقرضين وسائر الدائنين عند اتخاذ قرارات تقديم الموارد للمنشأة. ويتمثل ناتج العملية في القوائم المالية (Financial Statements)، وهي تقارير تلخّص مركز المنشأة ونتيجة نشاطها. وتمرّ المعالجة بالخطوات الآتية:
+            </p>
+
+            <div class="flow-diagram">
+              <div class="flow-step">
+                <div class="flow-step__title">تحديد الحدث الاقتصادي</div>
+                <div class="flow-step__description">رصد العملية التي تخص المنشأة ويمكن قياسها بالنقد.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">التسجيل</div>
+                <div class="flow-step__description">إثبات العملية في قيد اليومية (Journal Entry)، وهو تسجيل يبيّن الحساب المدين والحساب الدائن بمبلغ واحد.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">التلخيص</div>
+                <div class="flow-step__description">ترحيل القيود إلى حسابات الأستاذ (Ledger Accounts)، فيجمع كل حساب ما يخص بندًا واحدًا كالنقدية، ويظهر رصيده.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">الإيصال</div>
+                <div class="flow-step__description">إعداد القوائم المالية وتقديمها إلى مستخدميها.</div>
+              </div>
+            </div>
+
+            <p>
+              ويقوم التسجيل على علاقة ثابتة بين ثلاثة عناصر: الأصول (Assets)، وهي موارد اقتصادية تسيطر عليها المنشأة نتيجة أحداث سابقة؛ والالتزامات (Liabilities)، وهي واجبات المنشأة تجاه الغير؛ وحقوق الملكية (Equity)، وهي ما يتبقى للمالك من الأصول بعد خصم الالتزامات، ويبدأ برأس المال (Capital) الذي أودعه.
+            </p>
+
+            <div class="formula-box">
+              <span class="formula-box__label">المعادلة المحاسبية (Accounting Equation)</span>
+              <p class="formula-box__body">الأصول = الالتزامات + حقوق الملكية</p>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">من العملية إلى القائمة المالية: مكتبة النور</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>«مكتبة النور» منشأة فردية (يملكها شخص واحد)، وجميع المبالغ بالجنيه المصري (ج.م).</li>
+                  <li><span class="num">02/01/2026</span>: أودع المالك مبلغ <span class="num">200,000</span> نقدًا لبدء النشاط.</li>
+                  <li><span class="num">05/01/2026</span>: اشترت المنشأة أثاثًا نقدًا بمبلغ <span class="num">60,000</span>.</li>
+                  <li><span class="num">12/01/2026</span>: اشترت بضاعة معدّة للبيع نقدًا بمبلغ <span class="num">40,000</span>.</li>
+                </ul>
+
+                <span class="example-block__label">قيود اليومية</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين</th>
+                        <th>دائن</th>
+                      </tr>
+                    </thead>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">02/01/2026</span></td>
+                        <td>من ح/ النقدية</td>
+                        <td class="num">200,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ رأس المال</td>
+                        <td></td>
+                        <td class="num">200,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>إثبات بدء النشاط بإيداع المالك رأس المال نقدًا</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">05/01/2026</span></td>
+                        <td>من ح/ الأثاث</td>
+                        <td class="num">60,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ النقدية</td>
+                        <td></td>
+                        <td class="num">60,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>شراء أثاث نقدًا</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">12/01/2026</span></td>
+                        <td>من ح/ المخزون</td>
+                        <td class="num">40,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ النقدية</td>
+                        <td></td>
+                        <td class="num">40,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>شراء بضاعة معدّة للبيع نقدًا</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">الترحيل إلى حسابات الأستاذ</span>
+                <div class="t-accounts">
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ النقدية</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li><span>رأس المال</span><span class="num">200,000</span></li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines">
+                          <li><span>الأثاث</span><span class="num">60,000</span></li>
+                          <li><span>المخزون</span><span class="num">40,000</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">100,000</span> مدين
+                    </div>
+                  </div>
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ رأس المال</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines"></ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines">
+                          <li><span>النقدية</span><span class="num">200,000</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">200,000</span> دائن
+                    </div>
+                  </div>
+                </div>
+
+                <span class="example-block__label">قائمة المركز المالي (Statement of Financial Position) في <span class="num">12/01/2026</span></span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البيان</th>
+                        <th>جزئي</th>
+                        <th>كلي</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>النقدية</td>
+                        <td class="num">100,000</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td>الأثاث</td>
+                        <td class="num">60,000</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td>المخزون</td>
+                        <td class="num">40,000</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>إجمالي الأصول</td>
+                        <td></td>
+                        <td class="num">200,000</td>
+                      </tr>
+                      <tr>
+                        <td>الالتزامات</td>
+                        <td></td>
+                        <td class="num">0</td>
+                      </tr>
+                      <tr>
+                        <td>حقوق الملكية: رأس المال</td>
+                        <td class="num">200,000</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>إجمالي الالتزامات وحقوق الملكية</td>
+                        <td></td>
+                        <td class="num">200,000</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              في القيد الأول زاد أصل هو النقدية، وزادت معه حقوق الملكية (رأس المال) بالمبلغ نفسه، فسُجّلت النقدية مدينة ورأس المال دائنًا. وفي القيدين الثاني والثالث تحوّل جزء من النقدية إلى أصلين آخرين: الأثاث، والمخزون (Inventory) وهو البضاعة المحتفَظ بها للبيع؛ لذلك بقي مجموع الأصول ثابتًا عند <span class="num">200,000</span> وتغيّرت صورته فقط. ويُحسب رصيد النقدية هكذا: <span class="num">200,000</span> − (<span class="num">60,000</span> + <span class="num">40,000</span>) = <span class="num">100,000</span> مدين. وتتوازن القائمة لأن الأصول (<span class="num">200,000</span>) تساوي الالتزامات (صفر) مضافًا إليها حقوق الملكية (<span class="num">200,000</span>).
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>لا تُخلط المحاسبة بمسك الدفاتر (Bookkeeping)؛ فمسك الدفاتر يقتصر على تسجيل العمليات، أما المحاسبة فتشمل التسجيل ثم التلخيص والتحليل وتفسير النتائج لمتخذ القرار.</p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+
+          <div class="topic-block" id="stage-importance">
+            <h3 class="topic-block__title">أهمية المحاسبة</h3>
+
+            <p>
+              تنبع أهمية المحاسبة من أن القرار الاقتصادي السليم لا يقوم إلا على معلومات موثوقة. فهي تحفظ سجلًا منظمًا لما تملكه المنشأة وما عليها، وتقيس نتيجة نشاطها، وتتيح مساءلة الإدارة عن الموارد التي اؤتُمنت عليها.
+            </p>
+
+            <p>
+              وتتعدد الجهات المستفيدة منها: فالمالك يعرف الربح ويقيّم أداء إدارته، والإدارة تخطط وتسعّر وتضبط مصروفاتها، والبنوك والدائنون (Creditors) يقدّرون قدرة المنشأة على السداد، والمستثمرون (Investors) يقارنون فرص توظيف أموالهم، والجهات الضريبية تحدد على أساسها الوعاء الضريبي. ولقياس النتيجة نحتاج إلى مفهومين: الإيرادات (Revenues)، وهي ما تكسبه المنشأة من بيع بضاعتها أو خدماتها، والمصروفات (Expenses)، وهي تكاليف استُهلكت في سبيل تحقيق تلك الإيرادات. فإذا زادت الإيرادات على المصروفات كان الناتج ربحًا، وإلا فهو خسارة (Loss).
+            </p>
+
+            <div class="formula-box">
+              <span class="formula-box__label">قاعدة قياس النتيجة</span>
+              <p class="formula-box__body">صافي الربح (Net Profit) = الإيرادات − المصروفات</p>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">قرار مبني على الأرقام: مقارنة شهرين</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>نفترض أن «مكتبة النور» بدأت البيع، وجميع المبالغ بالجنيه المصري (ج.م).</li>
+                  <li>يناير 2026: الإيرادات <span class="num">90,000</span>، والمصروفات <span class="num">77,000</span>.</li>
+                  <li>فبراير 2026: الإيرادات <span class="num">100,000</span>، والمصروفات <span class="num">95,000</span>.</li>
+                </ul>
+
+                <span class="example-block__label">قائمة الدخل (Income Statement) المبسّطة لشهري يناير وفبراير 2026</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البيان</th>
+                        <th>يناير</th>
+                        <th>فبراير</th>
+                        <th>التغيّر</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>إجمالي الإيرادات</td>
+                        <td class="num">90,000</td>
+                        <td class="num">100,000</td>
+                        <td class="num">+10,000</td>
+                      </tr>
+                      <tr>
+                        <td>إجمالي المصروفات</td>
+                        <td class="num">77,000</td>
+                        <td class="num">95,000</td>
+                        <td class="num">+18,000</td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>صافي الربح</td>
+                        <td class="num">13,000</td>
+                        <td class="num">5,000</td>
+                        <td class="num">-8,000</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              صافي ربح يناير <span class="num">90,000</span> − <span class="num">77,000</span> = <span class="num">13,000</span>، وصافي ربح فبراير <span class="num">100,000</span> − <span class="num">95,000</span> = <span class="num">5,000</span>. ارتفعت الإيرادات بمقدار <span class="num">10,000</span> (نحو <span class="num">11.1%</span>)، بينما ارتفعت المصروفات بمقدار <span class="num">18,000</span> (نحو <span class="num">23.4%</span>)، فكان الفرق <span class="num">18,000</span> − <span class="num">10,000</span> = <span class="num">8,000</span> هو ما خفّض الربح من <span class="num">13,000</span> إلى <span class="num">5,000</span>. وبهذه المعلومة يفحص المالك بنود المصروفات لمعرفة سبب الزيادة قبل أن يتفاقم الأمر، وهو ما يتعذّر عليه إن اعتمد على الانطباع وحده.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>زيادة الإيرادات لا تعني بالضرورة زيادة الربح؛ فالمعيار هو الفرق بين الإيرادات والمصروفات، لا حجم الإيرادات وحده.</p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+
+          <div class="topic-block" id="stage-types">
+            <h3 class="topic-block__title">أنواع المحاسبة</h3>
+
+            <p>
+              تتفرع المحاسبة إلى فروع تختلف بحسب الجهة المستفيدة والغرض من المعلومات، وأبرزها:
+            </p>
+
+            <p>
+              <strong>المحاسبة المالية (Financial Accounting):</strong> تُعدّ القوائم المالية العامة لأطراف خارجية كالمستثمرين والدائنين، وتخضع لمعايير موحّدة مثل IFRS، وتصف في الأساس ما وقع خلال فترة انتهت.
+            </p>
+            <p>
+              <strong>المحاسبة الإدارية (Managerial Accounting):</strong> تخدم الإدارة داخل المنشأة بتقارير تدعم التخطيط والرقابة وتقويم الأداء، ولا تُلزَم بشكل موحّد، وتنظر غالبًا إلى المستقبل.
+            </p>
+            <p>
+              <strong>محاسبة التكاليف (Cost Accounting):</strong> تحدد تكلفة إنتاج السلعة أو أداء الخدمة، كتكلفة الدفتر الواحد في مصنع، لتعين على التسعير والرقابة.
+            </p>
+            <p>
+              <strong>المحاسبة الحكومية (Governmental Accounting):</strong> تعنى بحسابات الجهات العامة وتتتبع التزامها بالموازنة العامة، أي خطة الدولة لإيراداتها ومصروفاتها.
+            </p>
+            <p>
+              <strong>المحاسبة الضريبية (Tax Accounting):</strong> تحدد الربح الخاضع للضريبة وفق قوانين الضرائب، وقد يختلف عن الربح الظاهر في القوائم المالية.
+            </p>
+            <p>
+              ويرتبط بهذه الفروع نشاط مجاور هو المراجعة (Auditing)، وهي فحص مستقل للقوائم المالية لإبداء رأي في مدى عدالة عرضها.
+            </p>
+
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>كثيرًا ما تحتاج المنشأة الواحدة إلى هذه الفروع معًا، فالبيانات تُسجَّل مرة واحدة ثم تُصاغ بما يلائم كل مستفيد. وتنظّم المعايير الدولية القوائم المالية ذات الغرض العام، ولا تحكم التقارير الإدارية الداخلية.</p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+
+          <div class="topic-block" id="stage-business">
+            <h3 class="topic-block__title">علاقة المحاسبة بالأعمال</h3>
+
+            <p>
+              تُوصف المحاسبة بأنها «لغة الأعمال»، فكل نشاط تجاري يمرّ بها: يُجمع رأس المال، وتُشترى الأصول، وتُباع البضاعة، وتُسدَّد الأجور، وكلها عمليات تُسجَّل وتُلخَّص ثم تُقرأ نتائجها لتوجيه النشاط التالي. وبذلك تكون المحاسبة حلقة وصل بين ما حدث في المنشأة وما ستقرره الإدارة بعده.
+            </p>
+
+            <p>
+              ويمكن تصنيف عمليات أي منشأة في ثلاثة أنشطة: الأنشطة التمويلية (Financing Activities)، وهي الحصول على المال من المالكين أو المقرضين وسداده؛ والأنشطة الاستثمارية (Investing Activities)، وهي شراء الأصول طويلة الأجل كالأثاث والمعدات أو بيعها؛ والأنشطة التشغيلية (Operating Activities)، وهي الأنشطة اليومية الرئيسية كشراء البضاعة وبيعها وسداد الأجور. وتتصل المحاسبة بكل إدارة في المنشأة: فالمبيعات تعتمد على أرقام الإيرادات، والمشتريات على أرصدة المخزون، وشؤون العاملين على تكلفة الأجور، والتمويل على قدرة المنشأة على السداد.
+            </p>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">تصنيف عمليات مكتبة النور حسب نوع النشاط</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>العمليات الثلاث المسجَّلة في مثال المرحلة الأولى، بالجنيه المصري (ج.م).</li>
+                </ul>
+
+                <span class="example-block__label">تصنيف العمليات</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>العملية</th>
+                        <th>المبلغ</th>
+                        <th>نوع النشاط</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>إيداع المالك رأس المال</td>
+                        <td class="num">200,000</td>
+                        <td>تمويلي</td>
+                      </tr>
+                      <tr>
+                        <td>شراء الأثاث</td>
+                        <td class="num">60,000</td>
+                        <td>استثماري</td>
+                      </tr>
+                      <tr>
+                        <td>شراء البضاعة المعدّة للبيع</td>
+                        <td class="num">40,000</td>
+                        <td>تشغيلي</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              يظهر أثر كل نشاط في القوائم المالية: فالتمويلي أنشأ حقوق الملكية، والاستثماري أضاف الأثاث إلى الأصول، والتشغيلي أضاف مخزونًا سيتحول إلى مبيعات لاحقًا. وهكذا ترصد المحاسبة كيف جُمع المال وأين استُخدم، فتمكّن الإدارة والمالك من تقييم القرارات السابقة وبناء اللاحق منها.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="summary">
+      <div class="container">
+        <div class="content-section__eyebrow">الخلاصة</div>
+        <h2 class="content-section__title">أهم ما يجب تذكّره</h2>
+
+        <div class="summary-card" style="max-width: 900px">
+          <ul class="summary-card__list">
+            <li>✔ المحاسبة نظام معلومات يحدّد الأحداث الاقتصادية للمنشأة ويقيسها ويسجّلها ويلخّصها ويوصلها إلى مستخدميها لاتخاذ القرارات.</li>
+            <li>✔ الأصول = الالتزامات + حقوق الملكية، وكل قيد يومية متوازن: مجموع المدين يساوي مجموع الدائن.</li>
+            <li>✔ تكمن أهمية المحاسبة في توفير معلومات موثوقة لقياس الربح (الإيرادات − المصروفات) وللمساءلة ولاتخاذ القرارات.</li>
+            <li>✔ من فروعها: المالية، والإدارية، والتكاليف، والحكومية، والضريبية، ويجاورها نشاط المراجعة.</li>
+            <li>✔ المحاسبة لغة الأعمال، وتصنّف عمليات المنشأة إلى تمويلية واستثمارية وتشغيلية.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>الفصل الأول: ما هي المحاسبة؟</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const heroTitle = document.querySelector('.hero__title')
+      const toolbarTitle = document.querySelector('[data-sync-title]')
+      if (heroTitle && toolbarTitle) {
+        const text = heroTitle.textContent.trim()
+        if (text) {
+          toolbarTitle.textContent = text
+          document.title = text
+        }
+      }
+    </script>
+  </body>
+</html>
