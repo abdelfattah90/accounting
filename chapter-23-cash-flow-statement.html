@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الفصل الثالث والعشرون: قائمة التدفقات النقدية</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+
+
+    <style>
+      :root {
+        /* ========= Colors ========= */
+        --clr-primary: #b378a6;
+        --clr-secondary: #7796bf;
+        --clr-light: #ffffff;
+        --clr-light-2: #f0f0f0;
+        --clr-border: #dedede;
+        --clr-dark: #1b1b1b;
+        --clr-dark-2: #444444;
+        --clr-text: #333333;
+        --clr-text-soft: #555555;
+
+        /* ========= Font ========= */
+        --font-body: 'Baloo Bhaijaan 2', sans-serif;
+
+        /* ========= Radius ========= */
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 18px;
+
+        /* ========= Shadow ========= */
+        --shadow-soft: 0 4px 20px rgba(27, 27, 27, 0.07);
+        --shadow-hover: 0 12px 28px rgba(179, 120, 166, 0.16);
+
+        /* ========= Layout ========= */
+        --section-pad: 4.5rem;
+        --content-width: 900px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--clr-light);
+        color: var(--clr-dark);
+        line-height: 1.9;
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: var(--clr-secondary);
+        text-decoration: none;
+        transition: 0.2s;
+      }
+
+      a:hover {
+        color: var(--clr-primary);
+      }
+
+      h1, h2, h3, h4, h5 {
+        font-family: var(--font-body);
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+        color: var(--clr-dark);
+      }
+
+      h1, h2 { font-weight: 800; }
+      h3, h4, h5 { font-weight: 700; }
+
+      p {
+        color: var(--clr-text);
+        margin-bottom: 1rem;
+      }
+
+      ul { margin: 0; padding: 0; }
+
+      section { scroll-margin-top: 90px; }
+
+      ::selection {
+        background: var(--clr-primary);
+        color: #fff;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--clr-secondary);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      /* ==========================================================
+         Editor Toolbar
+      ========================================================== */
+      .editor-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--clr-primary);
+        padding: 0.7rem 0;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .editor-toolbar__tab-title {
+        color: #fff;
+        font-size: 1.1rem;
+        direction: ltr;
+        font-weight: 700;
+      }
+
+      /* ==========================================================
+         Hero
+         (مبسّط عمدًا: عنوان + سطر تعريف واحد فقط، بديل عن قسم "مقدمة"
+         منفصل. لا وسوم Language/Level/Category — لا تضيفها.)
+      ========================================================== */
+      .hero {
+        background: var(--clr-secondary);
+        color: #fff;
+        padding: 4.5rem 0 3.5rem;
+      }
+
+      .hero__title {
+        color: #fff;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      .hero__lead {
+        color: #fff;
+        opacity: 0.95;
+        max-width: 760px;
+        font-size: 1.15rem;
+        margin-bottom: 0;
+      }
+
+      /* ==========================================================
+         Sections
+      ========================================================== */
+      .content-section { padding: var(--section-pad) 0; }
+      .content-section--alt { background: #fcfcfc; }
+      .content-section--tint { background: var(--clr-light-2); }
+
+      .content-section__eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+        font-size: 0.86rem;
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+      }
+
+      .content-section__eyebrow::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        background: var(--clr-primary);
+      }
+
+      .content-section__title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+
+      .content-section__description {
+        max-width: 760px;
+        color: var(--clr-text-soft);
+        margin-bottom: 2.5rem;
+      }
+
+      /* ==========================================================
+         Summary Card (تُستخدم في: الخلاصة)
+      ========================================================== */
+      .summary-card {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+        padding: 2rem;
+      }
+
+      .summary-card__list {
+        display: grid;
+        gap: 1rem;
+        list-style: none;
+      }
+
+      .summary-card__list li {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+      }
+
+      /* ==========================================================
+         Callout
+         (المكان الوحيد للتنبيهات — بما فيها الأخطاء الشائعة الخاصة
+         بموضوع معيّن؛ تُستخدم callout--warning لهذا الغرض بدل قسم
+         "أخطاء شائعة" منفصل)
+      ========================================================== */
+      .callout {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        border-radius: var(--radius-md);
+        border-inline-start: 4px solid;
+      }
+
+      .callout__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 700;
+      }
+
+      .callout--note {
+        background: rgba(119, 150, 191, 0.08);
+        border-color: var(--clr-secondary);
+      }
+
+      .callout--warning {
+        background: rgba(179, 120, 166, 0.08);
+        border-color: var(--clr-primary);
+      }
+
+      /* ==========================================================
+         Flow Diagram
+      ========================================================== */
+      .flow-diagram {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin: 2rem 0;
+      }
+
+      .flow-step {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        padding: 1rem 1.25rem;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .flow-step__title {
+        color: var(--clr-primary);
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+      }
+
+      .flow-step__description { color: var(--clr-text-soft); margin: 0; }
+
+      .flow-arrow {
+        text-align: center;
+        color: var(--clr-secondary);
+        font-size: 28px;
+        line-height: 1;
+      }
+
+      /* ==========================================================
+         Topic Block
+         كل موضوع من موضوعات المرحلة = كتلة واحدة متكاملة (نظري + عملي
+         مدمجين معًا)، مش قسمين منفصلين.
+      ========================================================== */
+      .topic-block { margin-bottom: 3rem; }
+      .topic-block:last-child { margin-bottom: 0; }
+
+      .topic-block__title {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+      }
+
+      .topic-divider {
+        border: none;
+        border-top: 1px dashed var(--clr-border);
+        margin: 2.5rem 0;
+      }
+
+      /* ==========================================================
+         Numbers (كل مبلغ يُكتب داخل عنصر بهذا الصنف)
+      ========================================================== */
+      .num {
+        direction: ltr;
+        unicode-bidi: isolate;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* ==========================================================
+         Formula Box (اختياري: معادلة أو قاعدة محاسبية)
+      ========================================================== */
+      .formula-box {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        text-align: center;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .formula-box__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--clr-primary);
+        font-weight: 700;
+      }
+
+      .formula-box__body {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--clr-dark);
+      }
+
+      /* ==========================================================
+         Example Block (المثال التطبيقي: بديل الـ code-block)
+      ========================================================== */
+      .example-block {
+        overflow: hidden;
+        margin: 2rem 0;
+        background: var(--clr-light);
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .example-block__header {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.7rem 1.2rem;
+        background: var(--clr-dark);
+      }
+
+      .example-block__tag {
+        padding: 0 0.7rem;
+        background: var(--clr-primary);
+        color: #fff;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .example-block__title { color: #fff; font-weight: 600; }
+
+      .example-block__body { padding: 1.5rem; }
+
+      .example-block__label {
+        display: block;
+        margin: 1.6rem 0 0.6rem;
+        color: var(--clr-secondary);
+        font-weight: 700;
+      }
+
+      .example-block__label:first-child { margin-top: 0; }
+
+      .example-block__data {
+        margin: 0;
+        padding-inline-start: 1.2rem;
+        color: var(--clr-text);
+      }
+
+      /* ==========================================================
+         Accounting Tables (قيود اليومية، القوائم، المذكرات، الموازين)
+      ========================================================== */
+      .acc-table-wrap { overflow-x: auto; }
+
+      .acc-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+
+      .acc-table th,
+      .acc-table td {
+        padding: 0.5rem 0.8rem;
+        border: 1px solid var(--clr-border);
+      }
+
+      .acc-table thead th {
+        background: var(--clr-light-2);
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .acc-table td.num { text-align: end; }
+
+      .acc-table__total td {
+        background: #fcfcfc;
+        font-weight: 700;
+        border-top: 2px solid var(--clr-dark-2);
+        border-bottom: 4px double var(--clr-dark-2);
+      }
+
+      .journal__entry { border-bottom: 2px solid var(--clr-dark-2); }
+      .acc-table td.journal__credit { padding-inline-start: 2.5rem; }
+      .journal__note td { color: var(--clr-text-soft); font-size: 0.88rem; }
+
+      /* ==========================================================
+         T-Accounts (حسابات الأستاذ): المدين يمين والدائن يسار
+      ========================================================== */
+      .t-accounts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+
+      .t-account {
+        overflow: hidden;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+      }
+
+      .t-account__title {
+        padding: 0.5rem;
+        text-align: center;
+        color: var(--clr-primary);
+        font-weight: 700;
+        border-bottom: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__sides { display: grid; grid-template-columns: 1fr 1fr; }
+
+      .t-account__side + .t-account__side {
+        border-inline-start: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__side-label {
+        padding: 0.3rem;
+        text-align: center;
+        color: var(--clr-text-soft);
+        font-size: 0.85rem;
+        font-weight: 700;
+        border-bottom: 1px solid var(--clr-border);
+      }
+
+      .t-account__lines {
+        min-height: 3rem;
+        margin: 0;
+        padding: 0.4rem 0.7rem;
+        list-style: none;
+      }
+
+      .t-account__lines li {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .t-account__balance {
+        padding: 0.45rem 0.7rem;
+        text-align: center;
+        font-weight: 700;
+        background: rgba(119, 150, 191, 0.08);
+        border-top: 1px solid var(--clr-border);
+      }
+
+      /* ==========================================================
+         Footer
+      ========================================================== */
+      .site-footer {
+        background: var(--clr-light-2);
+        color: var(--clr-light);
+        padding: 1rem 0 0.5rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      /* ==========================================================
+         Responsive
+      ========================================================== */
+      @media (max-width: 768px) {
+        :root { --section-pad: 3rem; }
+        .hero { padding: 3.5rem 0; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="editor-toolbar">
+      <div class="container d-flex align-items-center gap-3">
+        <span class="editor-toolbar__tab-title" data-sync-title></span>
+      </div>
+    </div>
+
+<header class="hero"><div class="container"><h1 class="hero__title">الفصل الثالث والعشرون: قائمة التدفقات النقدية</h1>
+<p class="hero__lead">تُبيّن قائمة التدفقات النقدية (Statement of Cash Flows) من أين جاءت نقدية المنشأة خلال الفترة وفيمَ أُنفقت، فتُكمل الصورة التي لا يكشفها الربح وحده؛ إذ قد تربح المنشأة ويظل ربحها محبوسًا في العملاء والمخزون فلا تجد ما تسدّد به التزاماتها. يعرض الفصل وفق المعيار الدولي IAS 7 تبويب التدفقات إلى ثلاثة أنشطة، مع مثال عددي لكل نشاط بالجنيه المصري (ج.م).</p></div></header><section class="content-section" id="explanation"><div class="container">
+<div class="content-section__eyebrow">شرح وتطبيق</div><h2 class="content-section__title">شرح وتطبيق كل مرحلة</h2>
+<div class="article-content" style="max-width: 900px"><div class="topic-block" id="operating">
+<h3 class="topic-block__title">أولًا: الأنشطة التشغيلية (Operating Activities)</h3>
+<p>الأنشطة التشغيلية هي الأنشطة الرئيسة المنتِجة للإيراد في المنشأة، كالبيع والشراء ودفع الأجور والمصروفات. وبها يُعرف مقدار النقدية التي تولّدها المنشأة من عملياتها دون الاعتماد على تمويل خارجي. والمقصود بالنقدية هنا «النقدية وما في حكمها» (Cash and Cash Equivalents)، أي الصندوق والحسابات الجارية في البنوك والاستثمارات قصيرة الأجل عالية السيولة التي يمكن تحويلها بسهولة إلى مبلغ نقدي معلوم.</p>
+<p>يجيز المعيار الدولي IAS 7 عرض هذا القسم بإحدى طريقتين: الطريقة المباشرة (Direct Method) التي تعرض المقبوضات والمدفوعات النقدية الرئيسة كما هي، والطريقة غير المباشرة (Indirect Method) التي تبدأ بصافي الربح (Net Income) المحسوب على أساس الاستحقاق ثم تُعدّله ليصبح تدفقًا نقديًا. وتُعرض في هذا الفصل الطريقة غير المباشرة لشيوعها. وتتم التسوية على ثلاث خطوات: إضافة المصروفات التي لم تخرج بها نقدية كالإهلاك (Depreciation)، واستبعاد أرباح وخسائر البنود الاستثمارية والتمويلية لأنها تُعرض في أنشطتها، ثم تعديل الربح بأثر التغير في الأصول والالتزامات المتداولة التشغيلية.</p>
+<div class="formula-box"><span class="formula-box__label">معادلة الطريقة غير المباشرة</span><p class="formula-box__body">صافي التدفق التشغيلي = صافي الربح + الإهلاك − أرباح البيع ± أثر التغيرات التشغيلية</p></div>
+<div class="callout callout--note"><span class="callout__label">ملاحظة</span><p>الزيادة في الأصل المتداول مثل العملاء (Accounts Receivable) والمخزون (Inventory) تُطرح لأن النقدية احتُجزت فيه، ونقصه يُضاف. أما الالتزام المتداول مثل الموردين (Accounts Payable) والمصروفات المستحقة (Accrued Expenses) فالعكس: زيادته تُضاف لأن المنشأة استفادت دون أن تدفع بعد، ونقصه يُطرح.</p></div>
+<div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">إعداد قسم الأنشطة التشغيلية بالطريقة غير المباشرة</span></div><div class="example-block__body"><span class="example-block__label">المعطيات</span><ul class="example-block__data"><li>شركة النور للتجارة، السنة المالية المنتهية في <span class="num">31/12/2026</span>.</li><li>صافي ربح السنة <span class="num">180,000</span> ج.م، ويتضمن أرباح بيع معدات (Gain on Disposal of Equipment) قدرها <span class="num">5,000</span> ج.م؛ وهي زيادة ثمن بيع الأصل على قيمته الدفترية، وتفصيلها في المرحلة التالية.</li><li>إهلاك الأصول الثابتة <span class="num">40,000</span> ج.م.</li><li>الزيادة في العملاء <span class="num">25,000</span> ج.م، والنقص في المخزون <span class="num">15,000</span> ج.م.</li><li>الزيادة في الموردين <span class="num">30,000</span> ج.م، والنقص في المصروفات المستحقة <span class="num">10,000</span> ج.م.</li></ul><span class="example-block__label">قسم الأنشطة التشغيلية من قائمة التدفقات النقدية</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البيان</th><th>جزئي</th><th>كلي</th></tr></thead><tbody><tr><td>صافي ربح السنة</td><td class="num"></td><td class="num">180,000</td></tr><tr><td>الإهلاك</td><td class="num">40,000</td><td class="num"></td></tr><tr><td>أرباح بيع معدات</td><td class="num">(5,000)</td><td class="num"></td></tr><tr><td>إجمالي التسويات</td><td class="num"></td><td class="num">35,000</td></tr><tr><td>الزيادة في العملاء</td><td class="num">(25,000)</td><td class="num"></td></tr><tr><td>النقص في المخزون</td><td class="num">15,000</td><td class="num"></td></tr><tr><td>الزيادة في الموردين</td><td class="num">30,000</td><td class="num"></td></tr><tr><td>النقص في المصروفات المستحقة</td><td class="num">(10,000)</td><td class="num"></td></tr><tr><td>صافي أثر التغيرات التشغيلية</td><td class="num"></td><td class="num">10,000</td></tr><tr class="acc-table__total"><td>صافي التدفق النقدي من الأنشطة التشغيلية</td><td class="num"></td><td class="num">225,000</td></tr></tbody></table></div></div></div>
+<p>بدأنا بصافي الربح <span class="num">180,000</span> ج.م، وأضفنا الإهلاك <span class="num">40,000</span> ج.م لأنه خُصم من الربح دون خروج نقدية، وطرحنا أرباح البيع <span class="num">5,000</span> ج.م لأن ثمن البيع كاملًا سيُعرض في النشاط الاستثماري. وطُرحت الزيادة في العملاء <span class="num">25,000</span> ج.م لأن جزءًا من الإيراد لم يُحصَّل بعد، وأُضيف النقص في المخزون <span class="num">15,000</span> ج.م لأن البيع تمّ من بضاعة سابقة دون شراء جديد، وأُضيفت الزيادة في الموردين <span class="num">30,000</span> ج.م لأن مشتريات لم تُسدَّد، وطُرح النقص في المصروفات المستحقة <span class="num">10,000</span> ج.م لأنه سداد لمصروفات متراكمة. فكان صافي أثر التغيرات <span class="num">10,000</span> ج.م، وبه يبلغ التدفق التشغيلي <span class="num">225,000</span> ج.م.</p>
+<div class="callout callout--warning"><span class="callout__label">انتبه</span><p>الإهلاك ليس مصدرًا للنقدية؛ إضافته تُلغي أثره غير النقدي على الربح فحسب. وتجنّب إضافة أرباح البيع بدل طرحها، فذلك يضاعف الربح غير النقدي بدل إزالته.</p></div>
+</div><hr class="topic-divider" /><div class="topic-block" id="investing">
+<h3 class="topic-block__title">ثانيًا: الأنشطة الاستثمارية (Investing Activities)</h3>
+<p>الأنشطة الاستثمارية هي اقتناء الأصول طويلة الأجل وبيعها، كالمعدات والمباني والأسهم والسندات التي تحتفظ بها المنشأة لأجل طويل، إضافة إلى القروض الممنوحة للغير وتحصيلها. وهي تعكس ما تنفقه المنشأة لبناء طاقتها المستقبلية، ولذلك يغلب أن يكون صافيها سالبًا في المنشآت النامية، وهو أمر سليم لا يدل على ضعف.</p>
+<p>لا يدخل القائمة إلا ما دُفع أو قُبض نقدًا فعلًا. وتُعرض متحصلات بيع الأصل بالمبلغ النقدي الكامل المقبوض، لا بالربح أو الخسارة الناتجة عنه، ولذلك استُبعد ربح البيع من النشاط التشغيلي في المرحلة السابقة حتى لا يُحتسب مرتين.</p>
+<div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">شراء معدات وبيع معدات قديمة وشراء استثمارات</span></div><div class="example-block__body"><span class="example-block__label">المعطيات</span><ul class="example-block__data"><li><span class="num">15/03/2026</span>: شراء معدات جديدة نقدًا بمبلغ <span class="num">150,000</span> ج.م.</li><li><span class="num">01/06/2026</span>: بيع معدات تكلفتها <span class="num">60,000</span> ج.م ومجمع إهلاكها (Accumulated Depreciation) <span class="num">45,000</span> ج.م بمبلغ <span class="num">20,000</span> ج.م نقدًا، فتكون قيمتها الدفترية <span class="num">15,000</span> ج.م.</li><li><span class="num">20/09/2026</span>: شراء أسهم نقدًا بمبلغ <span class="num">30,000</span> ج.م بقصد الاحتفاظ بها لأجل طويل.</li></ul><span class="example-block__label">قيود اليومية</span><div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين</th><th>دائن</th></tr></thead><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">15/03/2026</span></td><td>من ح/ المعدات</td><td class="num">150,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ النقدية</td><td></td><td class="num">150,000</td></tr><tr class="journal__note"><td>شراء معدات جديدة نقدًا</td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="5"><span class="num">01/06/2026</span></td><td>من ح/ النقدية</td><td class="num">20,000</td><td></td></tr><tr><td>من ح/ مجمع إهلاك المعدات</td><td class="num">45,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ المعدات</td><td></td><td class="num">60,000</td></tr><tr><td class="journal__credit">إلى ح/ أرباح بيع معدات</td><td></td><td class="num">5,000</td></tr><tr class="journal__note"><td>بيع معدات قديمة بربح 5,000 ج.م (20,000 − 15,000)</td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">20/09/2026</span></td><td>من ح/ الاستثمارات طويلة الأجل</td><td class="num">30,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ النقدية</td><td></td><td class="num">30,000</td></tr><tr class="journal__note"><td>شراء أسهم بقصد الاحتفاظ بها لأجل طويل</td><td></td><td></td></tr></tbody></table></div><span class="example-block__label">قسم الأنشطة الاستثمارية من قائمة التدفقات النقدية</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البيان</th><th>جزئي</th><th>كلي</th></tr></thead><tbody><tr><td>شراء معدات</td><td class="num">(150,000)</td><td class="num"></td></tr><tr><td>متحصلات بيع معدات</td><td class="num">20,000</td><td class="num"></td></tr><tr><td>شراء استثمارات طويلة الأجل</td><td class="num">(30,000)</td><td class="num"></td></tr><tr class="acc-table__total"><td>صافي التدفق النقدي المستخدم في الأنشطة الاستثمارية</td><td class="num"></td><td class="num">(160,000)</td></tr></tbody></table></div></div></div>
+<p>لا يظهر في القائمة من كل قيد إلا طرفه النقدي. فالمعدات الجديدة <span class="num">150,000</span> ج.م والأسهم <span class="num">30,000</span> ج.م تدفقان خارجان، ومتحصلات البيع <span class="num">20,000</span> ج.م تدفق داخل بكامل المبلغ المقبوض. وبذلك يكون الصافي <span class="num">20,000</span> ج.م − <span class="num">150,000</span> ج.م − <span class="num">30,000</span> ج.م = <span class="num">(160,000)</span> ج.م. أما مجمع الإهلاك <span class="num">45,000</span> ج.م فلا أثر نقديًا له، وأما ربح البيع <span class="num">5,000</span> ج.م فهو جزء من ثمن البيع المعروض أصلًا.</p>
+<div class="callout callout--warning"><span class="callout__label">انتبه</span><p>لا تعرض ربح البيع <span class="num">5,000</span> ج.م في النشاط الاستثماري ولا تتركه في التشغيلي؛ يُعرض الثمن كاملًا في الاستثماري ويُطرح الربح من التشغيلي، وإلا حدث ازدواج.</p></div>
+</div><hr class="topic-divider" /><div class="topic-block" id="financing">
+<h3 class="topic-block__title">ثالثًا: الأنشطة التمويلية (Financing Activities)</h3>
+<p>الأنشطة التمويلية هي التي تغيّر حجم حقوق الملكية والاقتراض: إصدار الأسهم وزيادة رأس المال (Share Capital)، والحصول على القروض (Loans) وسداد أصلها، وتوزيعات الأرباح (Dividends) المدفوعة للمساهمين والتي تُخصم من الأرباح المحتجزة (Retained Earnings). وتُبيّن للمستثمرين والدائنين كيف مُوّلت المنشأة، وكم عاد إلى أصحاب الأموال.</p>
+<p>تُعرض كل حركة بإجمالي مبلغها، فالقرض المحصَّل والقسط المسدَّد بندان مستقلان لا يُقاصّ أحدهما بالآخر. وبعد جمع صافي الأنشطة الثلاثة نصل إلى صافي التغير في النقدية، ثم نضيف رصيد أول الفترة لنحصل على رصيد آخرها، وهو الرقم الذي يجب أن يطابق النقدية في قائمة المركز المالي (Statement of Financial Position).</p>
+<div class="formula-box"><span class="formula-box__label">معادلة التسوية النقدية</span><p class="formula-box__body">صافي التغير في النقدية = التدفق التشغيلي ± الاستثماري ± التمويلي</p></div>
+<div class="callout callout--note"><span class="callout__label">ملاحظة</span><p>يجيز IAS 7 تبويب الفوائد والتوزيعات المقبوضة والمدفوعة تشغيلية أو استثمارية أو تمويلية بحسب طبيعتها، بشرط ثبات المعالجة من فترة إلى أخرى. ويفترض هذا الفصل أن توزيعات الأرباح المدفوعة تمويلية.</p></div>
+<div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">الأنشطة التمويلية وإعداد قائمة التدفقات النقدية الكاملة</span></div><div class="example-block__body"><span class="example-block__label">المعطيات</span><ul class="example-block__data"><li><span class="num">10/02/2026</span>: إصدار أسهم جديدة نقدًا بمبلغ <span class="num">100,000</span> ج.م.</li><li><span class="num">01/04/2026</span>: الحصول على قرض طويل الأجل من البنك بمبلغ <span class="num">80,000</span> ج.م.</li><li><span class="num">01/10/2026</span>: سداد جزء من أصل القرض بمبلغ <span class="num">50,000</span> ج.م.</li><li><span class="num">15/12/2026</span>: دفع توزيعات أرباح نقدية للمساهمين بمبلغ <span class="num">40,000</span> ج.م.</li><li>رصيد النقدية في <span class="num">01/01/2026</span> هو <span class="num">55,000</span> ج.م، وصافي التدفقين التشغيلي والاستثماري هو نتيجة المثالين السابقين.</li></ul><span class="example-block__label">قيود اليومية</span><div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين</th><th>دائن</th></tr></thead><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">10/02/2026</span></td><td>من ح/ النقدية</td><td class="num">100,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ رأس المال</td><td></td><td class="num">100,000</td></tr><tr class="journal__note"><td>إصدار أسهم جديدة نقدًا</td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">01/04/2026</span></td><td>من ح/ النقدية</td><td class="num">80,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ القروض طويلة الأجل</td><td></td><td class="num">80,000</td></tr><tr class="journal__note"><td>الحصول على قرض طويل الأجل من البنك</td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">01/10/2026</span></td><td>من ح/ القروض طويلة الأجل</td><td class="num">50,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ النقدية</td><td></td><td class="num">50,000</td></tr><tr class="journal__note"><td>سداد جزء من أصل القرض</td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">15/12/2026</span></td><td>من ح/ الأرباح المحتجزة</td><td class="num">40,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ النقدية</td><td></td><td class="num">40,000</td></tr><tr class="journal__note"><td>دفع توزيعات أرباح نقدية للمساهمين</td><td></td><td></td></tr></tbody></table></div><span class="example-block__label">قسم الأنشطة التمويلية من قائمة التدفقات النقدية</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البيان</th><th>جزئي</th><th>كلي</th></tr></thead><tbody><tr><td>متحصلات من إصدار أسهم</td><td class="num">100,000</td><td class="num"></td></tr><tr><td>متحصلات من قرض طويل الأجل</td><td class="num">80,000</td><td class="num"></td></tr><tr><td>سداد أصل القرض</td><td class="num">(50,000)</td><td class="num"></td></tr><tr><td>توزيعات أرباح مدفوعة</td><td class="num">(40,000)</td><td class="num"></td></tr><tr class="acc-table__total"><td>صافي التدفق النقدي من الأنشطة التمويلية</td><td class="num"></td><td class="num">90,000</td></tr></tbody></table></div><span class="example-block__label">قائمة التدفقات النقدية — عن السنة المنتهية في 31/12/2026 (ج.م)</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البيان</th><th></th><th>المبلغ (ج.م)</th></tr></thead><tbody><tr><td>صافي التدفق النقدي من الأنشطة التشغيلية</td><td class="num"></td><td class="num">225,000</td></tr><tr><td>صافي التدفق النقدي المستخدم في الأنشطة الاستثمارية</td><td class="num"></td><td class="num">(160,000)</td></tr><tr><td>صافي التدفق النقدي من الأنشطة التمويلية</td><td class="num"></td><td class="num">90,000</td></tr><tr><td>صافي الزيادة في النقدية وما في حكمها</td><td class="num"></td><td class="num">155,000</td></tr><tr><td>رصيد النقدية في 01/01/2026</td><td class="num"></td><td class="num">55,000</td></tr><tr class="acc-table__total"><td>رصيد النقدية في 31/12/2026</td><td class="num"></td><td class="num">210,000</td></tr></tbody></table></div></div></div>
+<p>جمعنا الأنشطة الثلاثة: <span class="num">225,000</span> − <span class="num">160,000</span> + <span class="num">90,000</span> = <span class="num">155,000</span> ج.م، وهي صافي الزيادة في النقدية خلال السنة. وبإضافة رصيد أول السنة <span class="num">55,000</span> ج.م يصبح رصيد آخرها <span class="num">210,000</span> ج.م، وهو الرقم الذي يجب أن تظهر به النقدية في قائمة المركز المالي في <span class="num">31/12/2026</span>؛ فإن اختلف دلّ ذلك على خطأ في أحد الأنشطة.</p>
+<div class="callout callout--warning"><span class="callout__label">انتبه</span><p>المعتبر في توزيعات الأرباح هو المبلغ المدفوع فعلًا؛ فالتوزيعات المعلنة التي لم تُدفع لا تدخل القائمة بعد. وكذلك لا يُحسب مع سداد أصل القرض ما دُفع منه فوائد.</p></div>
+</div></div></div></section><section class="content-section content-section--tint" id="comparison"><div class="container">
+<div class="content-section__eyebrow">مقارنة</div><h2 class="content-section__title">مقارنة بين الأنشطة الثلاثة</h2>
+<div class="table-responsive"><table class="table table-bordered align-middle"><thead><tr><th>وجه المقارنة</th><th>الأنشطة التشغيلية</th><th>الأنشطة الاستثمارية</th><th>الأنشطة التمويلية</th></tr></thead><tbody>
+<tr><td>طبيعة النشاط</td><td>العمليات الرئيسة المنتِجة للإيراد</td><td>اقتناء الأصول طويلة الأجل وبيعها</td><td>مصادر التمويل من الملاك والدائنين</td></tr>
+<tr><td>أمثلة التدفقات الداخلة</td><td>التحصيل من العملاء</td><td>متحصلات بيع المعدات والاستثمارات</td><td>إصدار الأسهم والاقتراض</td></tr>
+<tr><td>أمثلة التدفقات الخارجة</td><td>السداد للموردين ودفع المصروفات</td><td>شراء المعدات والاستثمارات</td><td>سداد القرض وتوزيعات الأرباح</td></tr>
+<tr><td>صافي المثال (<span class="num">ج.م</span>)</td><td><span class="num">225,000</span></td><td><span class="num">(160,000)</span></td><td><span class="num">90,000</span></td></tr>
+<tr><td>ما يدل عليه</td><td>قدرة المنشأة على توليد النقدية من عملياتها</td><td>حجم الإنفاق على النمو المستقبلي</td><td>كيفية تمويل المنشأة وما رجع إلى المموِّلين</td></tr>
+</tbody></table></div></div></section><section class="content-section" id="summary"><div class="container">
+<div class="content-section__eyebrow">الخلاصة</div><h2 class="content-section__title">أهم ما يجب تذكّره</h2>
+<div class="summary-card" style="max-width: 900px"><ul class="summary-card__list">
+<li>✔ تبوّب قائمة التدفقات النقدية الحركات النقدية إلى ثلاثة أنشطة: تشغيلية واستثمارية وتمويلية، ويفسّر مجموعها التغير في النقدية وما في حكمها.</li>
+<li>✔ في الطريقة غير المباشرة يبدأ النشاط التشغيلي بصافي الربح، ثم يُضاف الإهلاك ويُطرح ربح البيع، ثم يُعدَّل بأثر التغير في العملاء والمخزون والموردين والمصروفات المستحقة.</li>
+<li>✔ يُعرض ثمن بيع الأصل كاملًا في النشاط الاستثماري، ويُستبعد ربح البيع من النشاط التشغيلي منعًا للازدواج.</li>
+<li>✔ يضم النشاط التمويلي إصدار الأسهم والاقتراض وسداد أصله وتوزيعات الأرباح المدفوعة، وتُعرض كل حركة بإجمالي مبلغها.</li>
+<li>✔ رصيد النقدية في آخر الفترة = رصيد أولها + صافي التغير، ويجب أن يطابق النقدية في قائمة المركز المالي.</li>
+</ul></div></div></section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>الفصل الثالث والعشرون: قائمة التدفقات النقدية</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      /* Sync Toolbar Title */
+      const heroTitle = document.querySelector('.hero__title')
+      const toolbarTitle = document.querySelector('[data-sync-title]')
+      if (heroTitle && toolbarTitle) {
+        const text = heroTitle.textContent.trim()
+        if (text) {
+          toolbarTitle.textContent = text
+          document.title = text
+        }
+      }
+    </script>
+  </body>
+</html>

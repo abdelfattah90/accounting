@@ -1,0 +1,1114 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الفصل الحادي والعشرون: قائمة الدخل</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --clr-primary: #b378a6;
+        --clr-secondary: #7796bf;
+        --clr-light: #ffffff;
+        --clr-light-2: #f0f0f0;
+        --clr-border: #dedede;
+        --clr-dark: #1b1b1b;
+        --clr-dark-2: #444444;
+        --clr-text: #333333;
+        --clr-text-soft: #555555;
+
+        --font-body: 'Baloo Bhaijaan 2', sans-serif;
+
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 18px;
+
+        --shadow-soft: 0 4px 20px rgba(27, 27, 27, 0.07);
+        --shadow-hover: 0 12px 28px rgba(179, 120, 166, 0.16);
+
+        --section-pad: 4.5rem;
+        --content-width: 900px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--clr-light);
+        color: var(--clr-dark);
+        line-height: 1.9;
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: var(--clr-secondary);
+        text-decoration: none;
+        transition: 0.2s;
+      }
+
+      a:hover {
+        color: var(--clr-primary);
+      }
+
+      h1, h2, h3, h4, h5 {
+        font-family: var(--font-body);
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+        color: var(--clr-dark);
+      }
+
+      h1, h2 { font-weight: 800; }
+      h3, h4, h5 { font-weight: 700; }
+
+      p {
+        color: var(--clr-text);
+        margin-bottom: 1rem;
+      }
+
+      ul { margin: 0; padding: 0; }
+
+      section { scroll-margin-top: 90px; }
+
+      ::selection {
+        background: var(--clr-primary);
+        color: #fff;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--clr-secondary);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      .editor-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--clr-primary);
+        padding: 0.7rem 0;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .editor-toolbar__tab-title {
+        color: #fff;
+        font-size: 1.1rem;
+        direction: ltr;
+        font-weight: 700;
+      }
+
+      .hero {
+        background: var(--clr-secondary);
+        color: #fff;
+        padding: 4.5rem 0 3.5rem;
+      }
+
+      .hero__title {
+        color: #fff;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      .hero__lead {
+        color: #fff;
+        opacity: 0.95;
+        max-width: 760px;
+        font-size: 1.15rem;
+        margin-bottom: 0;
+      }
+
+      .content-section { padding: var(--section-pad) 0; }
+      .content-section--alt { background: #fcfcfc; }
+      .content-section--tint { background: var(--clr-light-2); }
+
+      .content-section__eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+        font-size: 0.86rem;
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+      }
+
+      .content-section__eyebrow::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        background: var(--clr-primary);
+      }
+
+      .content-section__title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+
+      .content-section__description {
+        max-width: 760px;
+        color: var(--clr-text-soft);
+        margin-bottom: 2.5rem;
+      }
+
+      .summary-card {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+        padding: 2rem;
+      }
+
+      .summary-card__list {
+        display: grid;
+        gap: 1rem;
+        list-style: none;
+      }
+
+      .summary-card__list li {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+      }
+
+      .callout {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        border-radius: var(--radius-md);
+        border-inline-start: 4px solid;
+      }
+
+      .callout__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 700;
+      }
+
+      .callout--note {
+        background: rgba(119, 150, 191, 0.08);
+        border-color: var(--clr-secondary);
+      }
+
+      .callout--warning {
+        background: rgba(179, 120, 166, 0.08);
+        border-color: var(--clr-primary);
+      }
+
+      .flow-diagram {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin: 2rem 0;
+      }
+
+      .flow-step {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        padding: 1rem 1.25rem;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .flow-step__title {
+        color: var(--clr-primary);
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+      }
+
+      .flow-step__description { color: var(--clr-text-soft); margin: 0; }
+
+      .flow-arrow {
+        text-align: center;
+        color: var(--clr-secondary);
+        font-size: 28px;
+        line-height: 1;
+      }
+
+      .topic-block { margin-bottom: 3rem; }
+      .topic-block:last-child { margin-bottom: 0; }
+
+      .topic-block__title {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+      }
+
+      .topic-divider {
+        border: none;
+        border-top: 1px dashed var(--clr-border);
+        margin: 2.5rem 0;
+      }
+
+      .num {
+        direction: ltr;
+        unicode-bidi: isolate;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .formula-box {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        text-align: center;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .formula-box__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--clr-primary);
+        font-weight: 700;
+      }
+
+      .formula-box__body {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--clr-dark);
+      }
+
+      .example-block {
+        overflow: hidden;
+        margin: 2rem 0;
+        background: var(--clr-light);
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .example-block__header {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.7rem 1.2rem;
+        background: var(--clr-dark);
+      }
+
+      .example-block__tag {
+        padding: 0 0.7rem;
+        background: var(--clr-primary);
+        color: #fff;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .example-block__title { color: #fff; font-weight: 600; }
+
+      .example-block__body { padding: 1.5rem; }
+
+      .example-block__label {
+        display: block;
+        margin: 1.6rem 0 0.6rem;
+        color: var(--clr-secondary);
+        font-weight: 700;
+      }
+
+      .example-block__label:first-child { margin-top: 0; }
+
+      .example-block__data {
+        margin: 0;
+        padding-inline-start: 1.2rem;
+        color: var(--clr-text);
+      }
+
+      .acc-table-wrap { overflow-x: auto; }
+
+      .acc-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+
+      .acc-table th,
+      .acc-table td {
+        padding: 0.5rem 0.8rem;
+        border: 1px solid var(--clr-border);
+      }
+
+      .acc-table thead th {
+        background: var(--clr-light-2);
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .acc-table td.num { text-align: end; }
+
+      .acc-table__total td {
+        background: #fcfcfc;
+        font-weight: 700;
+        border-top: 2px solid var(--clr-dark-2);
+        border-bottom: 4px double var(--clr-dark-2);
+      }
+
+      .journal__entry { border-bottom: 2px solid var(--clr-dark-2); }
+      .acc-table td.journal__credit { padding-inline-start: 2.5rem; }
+      .journal__note td { color: var(--clr-text-soft); font-size: 0.88rem; }
+
+      .t-accounts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+
+      .t-account {
+        overflow: hidden;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+      }
+
+      .t-account__title {
+        padding: 0.5rem;
+        text-align: center;
+        color: var(--clr-primary);
+        font-weight: 700;
+        border-bottom: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__sides { display: grid; grid-template-columns: 1fr 1fr; }
+
+      .t-account__side + .t-account__side {
+        border-inline-start: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__side-label {
+        padding: 0.3rem;
+        text-align: center;
+        color: var(--clr-text-soft);
+        font-size: 0.85rem;
+        font-weight: 700;
+        border-bottom: 1px solid var(--clr-border);
+      }
+
+      .t-account__lines {
+        min-height: 3rem;
+        margin: 0;
+        padding: 0.4rem 0.7rem;
+        list-style: none;
+      }
+
+      .t-account__lines li {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .t-account__balance {
+        padding: 0.45rem 0.7rem;
+        text-align: center;
+        font-weight: 700;
+        background: rgba(119, 150, 191, 0.08);
+        border-top: 1px solid var(--clr-border);
+      }
+
+      .site-footer {
+        background: var(--clr-light-2);
+        color: var(--clr-light);
+        padding: 1rem 0 0.5rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        :root { --section-pad: 3rem; }
+        .hero { padding: 3.5rem 0; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="editor-toolbar">
+      <div class="container d-flex align-items-center gap-3">
+        <span class="editor-toolbar__tab-title" data-sync-title></span>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="container">
+        <h1 class="hero__title">الفصل الحادي والعشرون: قائمة الدخل</h1>
+        <p class="hero__lead">
+          بعد أن تُسجَّل العمليات وتُسوّى الحسابات، تُجمَّع نتائج النشاط خلال الفترة في قائمة واحدة تجيب عن سؤال محدد: هل حققت المنشأة ربحًا، ومن أين جاء، وأين ذهب؟ يتناول هذا الفصل من الجزء الثامن (القوائم المالية) بنود قائمة الدخل، ثم ترتيبها، ثم كيفية قراءتها وتحليلها.
+        </p>
+      </div>
+    </header>
+
+    <section class="content-section" id="explanation">
+      <div class="container">
+        <div class="content-section__eyebrow">شرح وتطبيق</div>
+        <h2 class="content-section__title">شرح وتطبيق كل مرحلة</h2>
+
+        <div class="article-content" style="max-width: 900px">
+          <div class="topic-block" id="items">
+            <h3 class="topic-block__title">البنود</h3>
+
+            <p>
+              قائمة الدخل (Income Statement) هي القائمة المالية التي تعرض إيرادات المنشأة ومصروفاتها عن فترة زمنية محددة، وينتهي بها المطاف إلى صافي الربح أو صافي الخسارة. وهي تستمد أرقامها من الحسابات الاسمية (المؤقتة)، أي حسابات الإيرادات والمصروفات التي تبدأ كل فترة برصيد صفري، وتختلف في ذلك عن حسابات الأصول والالتزامات التي تنتقل أرصدتها من فترة إلى أخرى. وتأخذ الحسابات الاسمية مواضعها في القائمة بحسب طبيعتها وبحسب الوظيفة التي أُنفقت المصروفات من أجلها، وهو الأسلوب الذي يتيحه المعيار المحاسبي الدولي رقم <span class="num">1</span> (IAS <span class="num">1</span>) إلى جانب عرض المصروفات بحسب طبيعتها.
+            </p>
+
+            <p>
+              وتتوزع البنود على المجموعات الآتية:
+            </p>
+            <p>
+              <strong>الإيرادات (Revenue):</strong> المبالغ المكتسبة من النشاط الرئيسي للمنشأة، وهي هنا المبيعات. ويُخصم منها مردودات ومسموحات المبيعات (Sales Returns and Allowances)، أي قيمة البضاعة التي رُدَّت من العملاء وما مُنح لهم من تخفيض في السعر، لنصل إلى صافي المبيعات (Net Sales).
+              <br />
+              <strong>تكلفة المبيعات (Cost of Goods Sold):</strong> تكلفة البضاعة التي بيعت فعلًا خلال الفترة، ويُسمى الفرق بينها وبين صافي المبيعات مجمل الربح (Gross Profit).
+              <br />
+              <strong>مصروفات التشغيل (Operating Expenses):</strong> تكاليف إدارة النشاط وتسويقه، وتنقسم إلى مصروفات البيع والتسويق (Selling and Marketing Expenses) كالرواتب والعمولات والإعلان، والمصروفات العمومية والإدارية (General and Administrative Expenses) كرواتب الإدارة والإيجار والإهلاك (Depreciation)، وهو توزيع تكلفة الأصل الثابت على سنوات استخدامه.
+              <br />
+              <strong>الإيرادات الأخرى (Other Income):</strong> مكاسب تنشأ من أنشطة جانبية غير النشاط الرئيسي، كالربح من بيع أصل ثابت.
+              <br />
+              <strong>تكاليف التمويل (Finance Costs):</strong> ما تتحمله المنشأة مقابل الاقتراض، وأبرزها فوائد القروض.
+              <br />
+              <strong>ضريبة الدخل (Income Tax Expense):</strong> الضريبة المحتسبة على الربح قبل الضريبة.
+            </p>
+
+            <div class="formula-box">
+              <span class="formula-box__label">صافي المبيعات</span>
+              <p class="formula-box__body">صافي المبيعات = المبيعات − مردودات ومسموحات المبيعات</p>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">تصنيف حسابات شركة النيل للتجارة إلى بنود قائمة الدخل</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>شركة النيل للتجارة، والسنة المالية المنتهية في <span class="num">2026/12/31</span>، والعملة الجنيه المصري (ج.م).</li>
+                  <li>الأرصدة التالية مأخوذة من ميزان المراجعة بعد التسويات، وهي لحسابات الإيرادات والمصروفات فقط.</li>
+                  <li>في <span class="num">2026/12/31</span> سُدّدت فوائد القروض عن السنة بمبلغ <span class="num">26,000</span> ج.م من حساب البنك.</li>
+                </ul>
+
+                <span class="example-block__label">قيود اليومية</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين</th>
+                        <th>دائن</th>
+                      </tr>
+                    </thead>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">2026/12/31</span></td>
+                        <td>من ح/ مصروف الفوائد</td>
+                        <td class="num">26,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ البنك</td>
+                        <td></td>
+                        <td class="num">26,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>إثبات فوائد القروض المسدَّدة عن سنة <span class="num">2026</span></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                      <tr class="acc-table__total">
+                        <td colspan="2">المجموع</td>
+                        <td class="num">26,000</td>
+                        <td class="num">26,000</td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+
+                <span class="example-block__label">تصنيف الأرصدة إلى بنود القائمة</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>الحساب</th>
+                        <th>طبيعة الرصيد</th>
+                        <th>البند في قائمة الدخل</th>
+                        <th>المبلغ (ج.م)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>المبيعات</td>
+                        <td>دائن</td>
+                        <td>الإيرادات</td>
+                        <td class="num">1,200,000</td>
+                      </tr>
+                      <tr>
+                        <td>مردودات ومسموحات المبيعات</td>
+                        <td>مدين</td>
+                        <td>خصم من الإيرادات</td>
+                        <td class="num">60,000</td>
+                      </tr>
+                      <tr>
+                        <td>تكلفة المبيعات</td>
+                        <td>مدين</td>
+                        <td>تكلفة المبيعات</td>
+                        <td class="num">684,000</td>
+                      </tr>
+                      <tr>
+                        <td>رواتب وعمولات البيع</td>
+                        <td>مدين</td>
+                        <td>مصروفات البيع والتسويق</td>
+                        <td class="num">70,000</td>
+                      </tr>
+                      <tr>
+                        <td>دعاية وإعلان</td>
+                        <td>مدين</td>
+                        <td>مصروفات البيع والتسويق</td>
+                        <td class="num">30,000</td>
+                      </tr>
+                      <tr>
+                        <td>رواتب إدارية</td>
+                        <td>مدين</td>
+                        <td>المصروفات العمومية والإدارية</td>
+                        <td class="num">90,000</td>
+                      </tr>
+                      <tr>
+                        <td>إيجار المقر الإداري</td>
+                        <td>مدين</td>
+                        <td>المصروفات العمومية والإدارية</td>
+                        <td class="num">36,000</td>
+                      </tr>
+                      <tr>
+                        <td>إهلاك الأصول الثابتة الإدارية</td>
+                        <td>مدين</td>
+                        <td>المصروفات العمومية والإدارية</td>
+                        <td class="num">24,000</td>
+                      </tr>
+                      <tr>
+                        <td>مصروفات عمومية متنوعة</td>
+                        <td>مدين</td>
+                        <td>المصروفات العمومية والإدارية</td>
+                        <td class="num">10,000</td>
+                      </tr>
+                      <tr>
+                        <td>أرباح بيع أصل ثابت</td>
+                        <td>دائن</td>
+                        <td>الإيرادات الأخرى</td>
+                        <td class="num">14,000</td>
+                      </tr>
+                      <tr>
+                        <td>مصروف الفوائد</td>
+                        <td>مدين</td>
+                        <td>تكاليف التمويل</td>
+                        <td class="num">26,000</td>
+                      </tr>
+                      <tr>
+                        <td>مصروف ضريبة الدخل</td>
+                        <td>مدين</td>
+                        <td>ضريبة الدخل</td>
+                        <td class="num">41,400</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              تُجمَّع حسابات كل مجموعة في بند واحد: فمصروفات البيع والتسويق هي <span class="num">70,000 + 30,000 = 100,000</span> ج.م، والمصروفات العمومية والإدارية هي <span class="num">90,000 + 36,000 + 24,000 + 10,000 = 160,000</span> ج.م. أما صافي المبيعات فهو <span class="num">1,200,000 − 60,000 = 1,140,000</span> ج.م. ويلاحظ أن طبيعة الرصيد وحدها لا تحدد موضع الحساب في القائمة: فمردودات ومسموحات المبيعات رصيدها مدين كالمصروفات، لكنها تُخصم من المبيعات ولا تُدرج بين المصروفات. وقيد الفوائد في المثال يبيّن لماذا ينتهي مصروف الفوائد برصيد مدين، إذ إن كل مصروف يُثبت بمدين الحساب نفسه.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                لا تُدرج الأرباح العارضة مثل ربح بيع أصل ثابت ضمن المبيعات. فالمبيعات تمثل النشاط الرئيسي المتكرر، أما الربح من بيع أصل ثابت فيُعرض في بند الإيرادات الأخرى حتى لا يضخّم حجم النشاط الحقيقي.
+              </p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+
+          <div class="topic-block" id="order">
+            <h3 class="topic-block__title">الترتيب</h3>
+
+            <p>
+              لا يقتصر ترتيب البنود على الشكل، بل هو الذي يُظهر مستويات الربح المختلفة. ويوجد شكلان شائعان: قائمة الدخل متعددة الخطوات (Multi-step)، وفيها تُعرض مستويات الربح تباعًا من مجمل الربح إلى الربح التشغيلي إلى الربح قبل الضريبة إلى صافي الربح، وقائمة الدخل ذات الخطوة الواحدة (Single-step)، وفيها تُجمَّع كل الإيرادات والمكاسب في جهة وكل المصروفات في جهة أخرى، ويُطرح مجموع الثانية من الأولى للوصول إلى صافي الربح مباشرة. ويُفضَّل الشكل متعدد الخطوات لأنه يفصل نتائج النشاط الرئيسي عن بنود التمويل والضريبة.
+            </p>
+
+            <p>
+              ويسير الترتيب المعتمد في الشكل متعدد الخطوات على النحو التالي: تُعرض الإيرادات ثم تُخصم منها تكلفة المبيعات فيظهر مجمل الربح، ثم تُخصم مصروفات التشغيل فيظهر الربح التشغيلي (Operating Profit)، ثم تُضاف الإيرادات الأخرى وتُخصم تكاليف التمويل فيظهر الربح قبل الضريبة (Profit Before Tax)، ثم تُخصم ضريبة الدخل ليظهر صافي الربح (Net Profit).
+            </p>
+
+            <div class="flow-diagram">
+              <div class="flow-step">
+                <div class="flow-step__title">صافي المبيعات</div>
+                <div class="flow-step__description">المبيعات بعد خصم مردودات ومسموحات المبيعات.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">مجمل الربح</div>
+                <div class="flow-step__description">صافي المبيعات بعد خصم تكلفة المبيعات.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">الربح التشغيلي</div>
+                <div class="flow-step__description">مجمل الربح بعد خصم مصروفات البيع والتسويق والمصروفات العمومية والإدارية.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">الربح قبل الضريبة</div>
+                <div class="flow-step__description">الربح التشغيلي بعد إضافة الإيرادات الأخرى وخصم تكاليف التمويل.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">صافي الربح</div>
+                <div class="flow-step__description">الربح قبل الضريبة بعد خصم ضريبة الدخل.</div>
+              </div>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">إعداد قائمة دخل شركة النيل للتجارة عن سنة <span class="num">2026</span></span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>الأرصدة المصنَّفة في المرحلة السابقة لشركة النيل للتجارة عن السنة المنتهية في <span class="num">2026/12/31</span>، بالجنيه المصري.</li>
+                  <li>ضريبة الدخل بمعدل <span class="num">22.5%</span> من الربح قبل الضريبة.</li>
+                </ul>
+
+                <span class="example-block__label">قائمة الدخل متعددة الخطوات عن السنة المنتهية في <span class="num">2026/12/31</span></span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البيان</th>
+                        <th>جزئي (ج.م)</th>
+                        <th>كلي (ج.م)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>المبيعات</td>
+                        <td class="num">1,200,000</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td>يخصم: مردودات ومسموحات المبيعات</td>
+                        <td class="num">(60,000)</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td><strong>صافي المبيعات</strong></td>
+                        <td class="num"></td>
+                        <td class="num"><strong>1,140,000</strong></td>
+                      </tr>
+                      <tr>
+                        <td>يخصم: تكلفة المبيعات</td>
+                        <td class="num"></td>
+                        <td class="num">(684,000)</td>
+                      </tr>
+                      <tr>
+                        <td><strong>مجمل الربح</strong></td>
+                        <td class="num"></td>
+                        <td class="num"><strong>456,000</strong></td>
+                      </tr>
+                      <tr>
+                        <td>مصروفات البيع والتسويق</td>
+                        <td class="num">(100,000)</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td>المصروفات العمومية والإدارية</td>
+                        <td class="num">(160,000)</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td>إجمالي مصروفات التشغيل</td>
+                        <td class="num"></td>
+                        <td class="num">(260,000)</td>
+                      </tr>
+                      <tr>
+                        <td><strong>الربح التشغيلي</strong></td>
+                        <td class="num"></td>
+                        <td class="num"><strong>196,000</strong></td>
+                      </tr>
+                      <tr>
+                        <td>يضاف: أرباح بيع أصل ثابت (إيرادات أخرى)</td>
+                        <td class="num"></td>
+                        <td class="num">14,000</td>
+                      </tr>
+                      <tr>
+                        <td>يخصم: تكاليف التمويل (فوائد القروض)</td>
+                        <td class="num"></td>
+                        <td class="num">(26,000)</td>
+                      </tr>
+                      <tr>
+                        <td><strong>الربح قبل الضريبة</strong></td>
+                        <td class="num"></td>
+                        <td class="num"><strong>184,000</strong></td>
+                      </tr>
+                      <tr>
+                        <td>يخصم: ضريبة الدخل (<span class="num">22.5%</span>)</td>
+                        <td class="num"></td>
+                        <td class="num">(41,400)</td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>صافي الربح</td>
+                        <td></td>
+                        <td class="num">142,600</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">الشكل ذو الخطوة الواحدة للمعطيات نفسها</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البيان</th>
+                        <th>جزئي (ج.م)</th>
+                        <th>كلي (ج.م)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>صافي المبيعات</td>
+                        <td class="num">1,140,000</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td>أرباح بيع أصل ثابت</td>
+                        <td class="num">14,000</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td><strong>إجمالي الإيرادات والمكاسب</strong></td>
+                        <td class="num"></td>
+                        <td class="num"><strong>1,154,000</strong></td>
+                      </tr>
+                      <tr>
+                        <td>تكلفة المبيعات</td>
+                        <td class="num">684,000</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td>مصروفات البيع والتسويق</td>
+                        <td class="num">100,000</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td>المصروفات العمومية والإدارية</td>
+                        <td class="num">160,000</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td>تكاليف التمويل</td>
+                        <td class="num">26,000</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td>ضريبة الدخل</td>
+                        <td class="num">41,400</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td><strong>إجمالي المصروفات</strong></td>
+                        <td class="num"></td>
+                        <td class="num"><strong>(1,011,400)</strong></td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>صافي الربح</td>
+                        <td></td>
+                        <td class="num">142,600</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              في الشكل الأول يبدأ الحساب بصافي المبيعات <span class="num">1,140,000</span> ج.م، وتُخصم منه تكلفة المبيعات <span class="num">684,000</span> فيبقى مجمل الربح <span class="num">456,000.</span> ثم يُخصم إجمالي مصروفات التشغيل (<span class="num">100,000 + 160,000 = 260,000)</span> فيبقى الربح التشغيلي <span class="num">196,000.</span> وبعد إضافة <span class="num">14,000</span> وخصم <span class="num">26,000</span> يصل الربح قبل الضريبة إلى <span class="num">184,000</span>، وتكون الضريبة <span class="num">184,000 × 22.5% = 41,400</span>، فيستقر صافي الربح عند <span class="num">142,600</span> ج.م. وفي الشكل الثاني تُجمَّع الإيرادات والمكاسب (<span class="num">1,140,000 + 14,000 = 1,154,000)</span> وتُجمَّع المصروفات (<span class="num">1,011,400</span>) ويكون الفرق بينهما هو الرقم نفسه <span class="num">142,600</span> ج.م. فالشكلان لا يختلفان في النتيجة، وإنما في كمية المعلومات التي يكشفها الترتيب.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                من الأخطاء الشائعة إدراج فوائد القروض ضمن المصروفات العمومية والإدارية، أو خصم ضريبة الدخل قبل الوصول إلى الربح قبل الضريبة. الأول يُخفي أثر التمويل ويُنقص الربح التشغيلي، فلا يعكس كفاءة النشاط الرئيسي، والثاني يجعل الضريبة تُحتسب على رقم غير صحيح.
+              </p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+
+          <div class="topic-block" id="analysis">
+            <h3 class="topic-block__title">القراءة والتحليل</h3>
+
+            <p>
+              لا تكتمل الفائدة من قائمة الدخل بإعدادها، بل بقراءتها. وتقوم القراءة على أداتين بسيطتين. الأولى التحليل الأفقي (Horizontal Analysis)، وهو مقارنة كل بند بنظيره في سنة سابقة لمعرفة مقدار التغير واتجاهه. والثانية التحليل الرأسي (Vertical Analysis)، وهو التعبير عن كل بند كنسبة مئوية من صافي المبيعات في السنة نفسها، فتظهر بنية القائمة وتصبح المقارنة ممكنة بين سنتين مهما اختلف حجم النشاط. وتُسمى النسب الرأسية للأرباح هوامش الربح: هامش مجمل الربح (Gross Margin)، والهامش التشغيلي (Operating Margin)، وهامش صافي الربح (Net Margin).
+            </p>
+
+            <div class="formula-box">
+              <span class="formula-box__label">نسبة التغير (التحليل الأفقي)</span>
+              <p class="formula-box__body">نسبة التغير = (قيمة السنة الحالية − قيمة السنة السابقة) ÷ قيمة السنة السابقة × <span class="num">100</span></p>
+            </div>
+
+            <div class="formula-box">
+              <span class="formula-box__label">هامش الربح (التحليل الرأسي)</span>
+              <p class="formula-box__body">هامش الربح = مستوى الربح ÷ صافي المبيعات × <span class="num">100</span></p>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">تحليل قائمة دخل شركة النيل للتجارة بين سنتي <span class="num">2025</span> و<span class="num">2026</span></span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>أرقام سنة <span class="num">2026</span> هي الواردة في قائمة الدخل أعلاه.</li>
+                  <li>أرقام سنة <span class="num">2025</span>: صافي المبيعات <span class="num">1,000,000</span>، وتكلفة المبيعات <span class="num">650,000</span>، ومصروفات التشغيل <span class="num">230,000</span>، والإيرادات الأخرى <span class="num">10,000</span>، وتكاليف التمويل <span class="num">30,000</span>، وضريبة الدخل بالمعدل نفسه <span class="num">22.5%</span>.</li>
+                  <li>النتائج المشتقة لسنة <span class="num">2025</span>: مجمل الربح <span class="num">350,000</span>، والربح التشغيلي <span class="num">120,000</span>، والربح قبل الضريبة <span class="num">100,000</span>، وضريبة الدخل <span class="num">22,500</span>، وصافي الربح <span class="num">77,500</span> ج.م.</li>
+                </ul>
+
+                <span class="example-block__label">التحليل الأفقي</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البند</th>
+                        <th><span class="num">2026</span> (ج.م)</th>
+                        <th><span class="num">2025</span> (ج.م)</th>
+                        <th>التغير (ج.م)</th>
+                        <th>نسبة التغير</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>صافي المبيعات</td>
+                        <td class="num">1,140,000</td>
+                        <td class="num">1,000,000</td>
+                        <td class="num">140,000</td>
+                        <td class="num">14.00%</td>
+                      </tr>
+                      <tr>
+                        <td>تكلفة المبيعات</td>
+                        <td class="num">684,000</td>
+                        <td class="num">650,000</td>
+                        <td class="num">34,000</td>
+                        <td class="num">5.23%</td>
+                      </tr>
+                      <tr>
+                        <td>مجمل الربح</td>
+                        <td class="num">456,000</td>
+                        <td class="num">350,000</td>
+                        <td class="num">106,000</td>
+                        <td class="num">30.29%</td>
+                      </tr>
+                      <tr>
+                        <td>إجمالي مصروفات التشغيل</td>
+                        <td class="num">260,000</td>
+                        <td class="num">230,000</td>
+                        <td class="num">30,000</td>
+                        <td class="num">13.04%</td>
+                      </tr>
+                      <tr>
+                        <td>الربح التشغيلي</td>
+                        <td class="num">196,000</td>
+                        <td class="num">120,000</td>
+                        <td class="num">76,000</td>
+                        <td class="num">63.33%</td>
+                      </tr>
+                      <tr>
+                        <td>الإيرادات الأخرى</td>
+                        <td class="num">14,000</td>
+                        <td class="num">10,000</td>
+                        <td class="num">4,000</td>
+                        <td class="num">40.00%</td>
+                      </tr>
+                      <tr>
+                        <td>تكاليف التمويل</td>
+                        <td class="num">26,000</td>
+                        <td class="num">30,000</td>
+                        <td class="num">(4,000)</td>
+                        <td class="num">(13.33%)</td>
+                      </tr>
+                      <tr>
+                        <td>الربح قبل الضريبة</td>
+                        <td class="num">184,000</td>
+                        <td class="num">100,000</td>
+                        <td class="num">84,000</td>
+                        <td class="num">84.00%</td>
+                      </tr>
+                      <tr>
+                        <td>ضريبة الدخل</td>
+                        <td class="num">41,400</td>
+                        <td class="num">22,500</td>
+                        <td class="num">18,900</td>
+                        <td class="num">84.00%</td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>صافي الربح</td>
+                        <td class="num">142,600</td>
+                        <td class="num">77,500</td>
+                        <td class="num">65,100</td>
+                        <td class="num">84.00%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">التحليل الرأسي (كنسبة من صافي المبيعات)</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البند</th>
+                        <th><span class="num">2026</span> (ج.م)</th>
+                        <th>نسبة <span class="num">2026</span></th>
+                        <th><span class="num">2025</span> (ج.م)</th>
+                        <th>نسبة <span class="num">2025</span></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>صافي المبيعات</td>
+                        <td class="num">1,140,000</td>
+                        <td class="num">100.00%</td>
+                        <td class="num">1,000,000</td>
+                        <td class="num">100.00%</td>
+                      </tr>
+                      <tr>
+                        <td>تكلفة المبيعات</td>
+                        <td class="num">684,000</td>
+                        <td class="num">60.00%</td>
+                        <td class="num">650,000</td>
+                        <td class="num">65.00%</td>
+                      </tr>
+                      <tr>
+                        <td>مجمل الربح</td>
+                        <td class="num">456,000</td>
+                        <td class="num">40.00%</td>
+                        <td class="num">350,000</td>
+                        <td class="num">35.00%</td>
+                      </tr>
+                      <tr>
+                        <td>إجمالي مصروفات التشغيل</td>
+                        <td class="num">260,000</td>
+                        <td class="num">22.81%</td>
+                        <td class="num">230,000</td>
+                        <td class="num">23.00%</td>
+                      </tr>
+                      <tr>
+                        <td>الربح التشغيلي</td>
+                        <td class="num">196,000</td>
+                        <td class="num">17.19%</td>
+                        <td class="num">120,000</td>
+                        <td class="num">12.00%</td>
+                      </tr>
+                      <tr>
+                        <td>الربح قبل الضريبة</td>
+                        <td class="num">184,000</td>
+                        <td class="num">16.14%</td>
+                        <td class="num">100,000</td>
+                        <td class="num">10.00%</td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>صافي الربح</td>
+                        <td class="num">142,600</td>
+                        <td class="num">12.51%</td>
+                        <td class="num">77,500</td>
+                        <td class="num">7.75%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              تُظهر المقارنة الأفقية أن صافي المبيعات نما <span class="num">14%</span>، بينما نما صافي الربح <span class="num">84%</span>، أي إن الربح نما أسرع من المبيعات بكثير. ويفسّر التحليل الرأسي السبب: فتكلفة المبيعات انخفضت من <span class="num">65%</span> إلى <span class="num">60%</span> من صافي المبيعات، فارتفع هامش مجمل الربح من <span class="num">35%</span> إلى <span class="num">40%</span>. ولتقدير أثر ذلك، لو بقي الهامش <span class="num">35%</span> لكان مجمل الربح <span class="num">1,140,000 × 35% = 399,000</span> ج.م، أي بزيادة <span class="num">49,000</span> على سنة <span class="num">2025</span> تعود إلى نمو المبيعات وحده، أما الزيادة الباقية <span class="num">456,000 − 399,000 = 57,000</span> فتعود إلى تحسّن الهامش. ويبلغ مجموع الأثرين <span class="num">49,000 + 57,000 = 106,000</span> ج.م وهو التغير الكلي في مجمل الربح. وتكمّل ذلك بنود أخرى: فمصروفات التشغيل نمت <span class="num">13.04%</span> بأقل قليلًا من نمو المبيعات، وانخفضت تكاليف التمويل <span class="num">13.33%</span>، وبقي معدل الضريبة الفعلي <span class="num">22.5%</span> في السنتين (<span class="num">41,400 ÷ 184,000</span> و<span class="num">22,500 ÷ 100,000)</span>، ولذلك نما مصروف الضريبة وصافي الربح بالنسبة نفسها <span class="num">84%</span>.
+            </p>
+
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>
+                تبيّن النسب أين حدث التغير، لكنها لا تبيّن لماذا حدث. فانخفاض تكلفة المبيعات إلى <span class="num">60%</span> قد يعود إلى رفع الأسعار أو إلى انخفاض أسعار الشراء أو إلى تغير في تشكيلة المنتجات المباعة، ولا تكفي القائمة وحدها للجزم بأحدها.
+              </p>
+            </div>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                لا يعني صافي الربح أن المنشأة حصلت على هذا المبلغ نقدًا، فالإيراد يُثبت عند تحقّقه ولو لم يُحصَّل ثمنه بعد. ولا يُحكم على الأداء من نسبة التغير وحدها، فنمو الربح بنسبة كبيرة قد يرجع جزئيًا إلى صغر الرقم الذي تُقاس عليه النسبة في السنة السابقة، ولذلك تُقرأ النسبة مع المبلغ المطلق ومع هوامش الربح.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="summary">
+      <div class="container">
+        <div class="content-section__eyebrow">الخلاصة</div>
+        <h2 class="content-section__title">أهم ما يجب تذكّره</h2>
+
+        <div class="summary-card" style="max-width: 900px">
+          <ul class="summary-card__list">
+            <li>✔ قائمة الدخل تعرض إيرادات فترة محددة ومصروفاتها وتنتهي بصافي الربح أو الخسارة، وتُستمد من الحسابات الاسمية وحدها.</li>
+            <li>✔ تُصنَّف البنود إلى: الإيرادات، تكلفة المبيعات، مصروفات التشغيل، الإيرادات الأخرى، تكاليف التمويل، ضريبة الدخل؛ ولا يحدد رصيد الحساب موضعه وحده، فمردودات المبيعات مدينة لكنها تُخصم من المبيعات.</li>
+            <li>✔ الترتيب متعدد الخطوات يكشف مستويات الربح بالتسلسل: مجمل الربح، ثم الربح التشغيلي، ثم الربح قبل الضريبة، ثم صافي الربح؛ والشكل ذو الخطوة الواحدة يصل إلى الرقم نفسه بمعلومات أقل.</li>
+            <li>✔ التحليل الأفقي يقيس التغير بين سنتين، والرأسي يقيس وزن كل بند من صافي المبيعات، ويُفسَّر بهما نمو صافي الربح من <span class="num">77,500</span> إلى <span class="num">142,600</span> ج.م.</li>
+            <li>✔ النسب تدل على موضع التغير لا على سببه، وصافي الربح ليس رصيدًا نقديًا.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>الجزء الثامن: القوائم المالية — الفصل الحادي والعشرون: قائمة الدخل</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      /* Sync Toolbar Title */
+      const heroTitle = document.querySelector('.hero__title')
+      const toolbarTitle = document.querySelector('[data-sync-title]')
+      if (heroTitle && toolbarTitle) {
+        const text = heroTitle.textContent.trim()
+        if (text) {
+          toolbarTitle.textContent = text
+          document.title = text
+        }
+      }
+    </script>
+  </body>
+</html>

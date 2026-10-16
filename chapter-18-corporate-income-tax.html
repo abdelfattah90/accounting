@@ -1,0 +1,1236 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الفصل الثامن عشر: ضريبة الدخل على الشركات والمنشآت</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        
+        --clr-primary: #b378a6;
+        --clr-secondary: #7796bf;
+        --clr-light: #ffffff;
+        --clr-light-2: #f0f0f0;
+        --clr-border: #dedede;
+        --clr-dark: #1b1b1b;
+        --clr-dark-2: #444444;
+        --clr-text: #333333;
+        --clr-text-soft: #555555;
+
+        --font-body: 'Baloo Bhaijaan 2', sans-serif;
+
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 18px;
+
+        --shadow-soft: 0 4px 20px rgba(27, 27, 27, 0.07);
+        --shadow-hover: 0 12px 28px rgba(179, 120, 166, 0.16);
+
+        --section-pad: 4.5rem;
+        --content-width: 900px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--clr-light);
+        color: var(--clr-dark);
+        line-height: 1.9;
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: var(--clr-secondary);
+        text-decoration: none;
+        transition: 0.2s;
+      }
+
+      a:hover {
+        color: var(--clr-primary);
+      }
+
+      h1, h2, h3, h4, h5 {
+        font-family: var(--font-body);
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+        color: var(--clr-dark);
+      }
+
+      h1, h2 { font-weight: 800; }
+      h3, h4, h5 { font-weight: 700; }
+
+      p {
+        color: var(--clr-text);
+        margin-bottom: 1rem;
+      }
+
+      ul { margin: 0; padding: 0; }
+
+      section { scroll-margin-top: 90px; }
+
+      ::selection {
+        background: var(--clr-primary);
+        color: #fff;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--clr-secondary);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      .editor-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--clr-primary);
+        padding: 0.7rem 0;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .editor-toolbar__tab-title {
+        color: #fff;
+        font-size: 1.1rem;
+        direction: ltr;
+        font-weight: 700;
+      }
+
+      .hero {
+        background: var(--clr-secondary);
+        color: #fff;
+        padding: 4.5rem 0 3.5rem;
+      }
+
+      .hero__title {
+        color: #fff;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      .hero__lead {
+        color: #fff;
+        opacity: 0.95;
+        max-width: 760px;
+        font-size: 1.15rem;
+        margin-bottom: 0;
+      }
+
+      .content-section { padding: var(--section-pad) 0; }
+      .content-section--alt { background: #fcfcfc; }
+      .content-section--tint { background: var(--clr-light-2); }
+
+      .content-section__eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+        font-size: 0.86rem;
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+      }
+
+      .content-section__eyebrow::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        background: var(--clr-primary);
+      }
+
+      .content-section__title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+
+      .content-section__description {
+        max-width: 760px;
+        color: var(--clr-text-soft);
+        margin-bottom: 2.5rem;
+      }
+
+      .summary-card {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+        padding: 2rem;
+      }
+
+      .summary-card__list {
+        display: grid;
+        gap: 1rem;
+        list-style: none;
+      }
+
+      .summary-card__list li {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+      }
+
+      .callout {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        border-radius: var(--radius-md);
+        border-inline-start: 4px solid;
+      }
+
+      .callout__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 700;
+      }
+
+      .callout--note {
+        background: rgba(119, 150, 191, 0.08);
+        border-color: var(--clr-secondary);
+      }
+
+      .callout--warning {
+        background: rgba(179, 120, 166, 0.08);
+        border-color: var(--clr-primary);
+      }
+
+      .flow-diagram {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin: 2rem 0;
+      }
+
+      .flow-step {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        padding: 1rem 1.25rem;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .flow-step__title {
+        color: var(--clr-primary);
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+      }
+
+      .flow-step__description { color: var(--clr-text-soft); margin: 0; }
+
+      .flow-arrow {
+        text-align: center;
+        color: var(--clr-secondary);
+        font-size: 28px;
+        line-height: 1;
+      }
+
+      .topic-block { margin-bottom: 3rem; }
+      .topic-block:last-child { margin-bottom: 0; }
+
+      .topic-block__title {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+      }
+
+      .topic-divider {
+        border: none;
+        border-top: 1px dashed var(--clr-border);
+        margin: 2.5rem 0;
+      }
+
+      .num {
+        direction: ltr;
+        unicode-bidi: isolate;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .formula-box {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        text-align: center;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .formula-box__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--clr-primary);
+        font-weight: 700;
+      }
+
+      .formula-box__body {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--clr-dark);
+      }
+
+      .example-block {
+        overflow: hidden;
+        margin: 2rem 0;
+        background: var(--clr-light);
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .example-block__header {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.7rem 1.2rem;
+        background: var(--clr-dark);
+      }
+
+      .example-block__tag {
+        padding: 0 0.7rem;
+        background: var(--clr-primary);
+        color: #fff;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .example-block__title { color: #fff; font-weight: 600; }
+
+      .example-block__body { padding: 1.5rem; }
+
+      .example-block__label {
+        display: block;
+        margin: 1.6rem 0 0.6rem;
+        color: var(--clr-secondary);
+        font-weight: 700;
+      }
+
+      .example-block__label:first-child { margin-top: 0; }
+
+      .example-block__data {
+        margin: 0;
+        padding-inline-start: 1.2rem;
+        color: var(--clr-text);
+      }
+
+      .acc-table-wrap { overflow-x: auto; }
+
+      .acc-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+
+      .acc-table th,
+      .acc-table td {
+        padding: 0.5rem 0.8rem;
+        border: 1px solid var(--clr-border);
+      }
+
+      .acc-table thead th {
+        background: var(--clr-light-2);
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .acc-table td.num { text-align: end; }
+
+      .acc-table__total td {
+        background: #fcfcfc;
+        font-weight: 700;
+        border-top: 2px solid var(--clr-dark-2);
+        border-bottom: 4px double var(--clr-dark-2);
+      }
+
+      .journal__entry { border-bottom: 2px solid var(--clr-dark-2); }
+      .acc-table td.journal__credit { padding-inline-start: 2.5rem; }
+      .journal__note td { color: var(--clr-text-soft); font-size: 0.88rem; }
+
+      .t-accounts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+
+      .t-account {
+        overflow: hidden;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+      }
+
+      .t-account__title {
+        padding: 0.5rem;
+        text-align: center;
+        color: var(--clr-primary);
+        font-weight: 700;
+        border-bottom: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__sides { display: grid; grid-template-columns: 1fr 1fr; }
+
+      .t-account__side + .t-account__side {
+        border-inline-start: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__side-label {
+        padding: 0.3rem;
+        text-align: center;
+        color: var(--clr-text-soft);
+        font-size: 0.85rem;
+        font-weight: 700;
+        border-bottom: 1px solid var(--clr-border);
+      }
+
+      .t-account__lines {
+        min-height: 3rem;
+        margin: 0;
+        padding: 0.4rem 0.7rem;
+        list-style: none;
+      }
+
+      .t-account__lines li {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .t-account__balance {
+        padding: 0.45rem 0.7rem;
+        text-align: center;
+        font-weight: 700;
+        background: rgba(119, 150, 191, 0.08);
+        border-top: 1px solid var(--clr-border);
+      }
+
+      .site-footer {
+        background: var(--clr-light-2);
+        color: var(--clr-light);
+        padding: 1rem 0 0.5rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        :root { --section-pad: 3rem; }
+        .hero { padding: 3.5rem 0; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="editor-toolbar">
+      <div class="container d-flex align-items-center gap-3">
+        <span class="editor-toolbar__tab-title" data-sync-title></span>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="container">
+        <h1 class="hero__title">الفصل الثامن عشر: ضريبة الدخل على الشركات والمنشآت</h1>
+        <p class="hero__lead">
+          يجيب هذا الفصل عن سؤال يتكرر عند إغلاق كل سنة مالية: لماذا لا تساوي الضريبة المستحقة
+          <span class="num">22.5%</span> من الربح الظاهر في قائمة الدخل؟ ستتعلم كيف ينتقل المحاسب
+          من الربح الذي تعرضه الدفاتر إلى الربح الذي تُحسب عليه الضريبة، وكيف تُقدِّم الشركة
+          إقرارها السنوي وتسدد رصيده، وما المصروفات التي ترفضها مصلحة الضرائب رغم أنها مثبتة
+          في الدفاتر.
+        </p>
+      </div>
+    </header>
+
+    <section class="content-section" id="explanation">
+      <div class="container">
+        <div class="content-section__eyebrow">شرح وتطبيق</div>
+        <h2 class="content-section__title">شرح وتطبيق كل مرحلة</h2>
+
+        <div class="article-content" style="max-width: 900px">
+          <div class="topic-block" id="accounting-vs-taxable-profit">
+            <h3 class="topic-block__title">الربح المحاسبي مقابل الربح الضريبي</h3>
+
+            <p>
+              تخضع أرباح الشركات في مصر لضريبة الدخل على الشركات (Corporate Income Tax)
+              بموجب قانون الضريبة على الدخل رقم 91 لسنة 2005 ولائحته التنفيذية، وبسعر عام قدره
+              <span class="num">22.5%</span> وفق الأحكام السارية عند إعداد هذا الفصل. غير أن هذه
+              النسبة لا تُطبَّق على الرقم الذي تعرضه قائمة الدخل مباشرة، بل على رقم آخر يُستخرج منه.
+            </p>
+
+            <p>
+              الربح المحاسبي (Accounting Profit) هو صافي الربح قبل ضريبة الدخل كما تُظهره قائمة
+              الدخل (Income Statement) المعدّة وفق المعايير المحاسبية المطبَّقة (المعايير الدولية
+              IFRS أو ما يقابلها من المعايير المصرية)، وغايته عرض الأداء بصورة عادلة لمستخدمي القوائم
+              المالية. أما الربح الضريبي (Taxable Profit) فهو الربح الذي يحدده القانون الضريبي،
+              وهو الوعاء الضريبي (Tax Base) الذي يُضرب فيه سعر الضريبة. ويبدأ الربح الضريبي من
+              الربح المحاسبي ثم يُعدَّل بما يقتضيه القانون، وتسمى هذه العملية التسوية الضريبية
+              (Tax Reconciliation).
+            </p>
+
+            <p>
+              ويرجع الاختلاف بين الربحين إلى أن المحاسبة تثبت كل مصروف تحقق فعلًا، بينما يرفض
+              القانون الضريبي خصم بعض المصروفات، أو يقيّدها بشروط وحدود، وقد يعفي بعض الإيرادات.
+              وتُسمى المصروفات التي يرفض القانون خصمها المصروفات غير المقبولة ضريبيًا
+              (Non-deductible Expenses)، وتُفصَّل في المرحلة الثالثة. وتنقسم الفروق بين الربحين
+              إلى نوعين: فروق دائمة (Permanent Differences) لا تنعكس في أي سنة لاحقة، كالغرامة
+              التي لا تُخصم أبدًا، وفروق مؤقتة (Temporary Differences) تنعكس في سنوات تالية،
+              كالمخصص الذي يُقبل خصمه عند استخدامه فعليًا.
+            </p>
+
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>
+                الفروق المؤقتة ينشأ عنها أثر ضريبي مستقبلي يُسمى الضريبة المؤجلة (Deferred Tax)
+                ويعالجه معيار المحاسبة الدولي 12 (IAS 12)، وهو خارج نطاق هذا الفصل. ولذلك تقتصر
+                أمثلته على الفروق الدائمة، فيتساوى مصروف ضريبة الدخل في قائمة الدخل مع الضريبة
+                المستحقة عن السنة.
+              </p>
+            </div>
+
+            <div class="formula-box">
+              <span class="formula-box__label">معادلة التسوية الضريبية</span>
+              <p class="formula-box__body">
+                الربح الضريبي = الربح المحاسبي + المصروفات غير المقبولة − الإيرادات المعفاة − الخسائر الضريبية المرحّلة
+              </p>
+            </div>
+
+            <p>
+              الإيرادات المعفاة (Exempt Income) هي إيرادات نصّ القانون على إعفائها فتُستبعد من
+              الوعاء، والخسائر الضريبية المرحّلة (Tax Losses Carried Forward) هي خسارة ضريبية لسنة
+              سابقة يجيز القانون خصمها من أرباح السنوات التالية لمدة خمس سنوات. ولا يتضمن المثال
+              التالي أيًّا من هذين البندين، حتى يتركز الانتباه على الإضافة الناتجة عن المصروفات
+              غير المقبولة. وبعد استخراج الربح الضريبي تُحسب الضريبة بالمعادلة الآتية:
+            </p>
+
+            <div class="formula-box">
+              <span class="formula-box__label">ضريبة الدخل المستحقة</span>
+              <p class="formula-box__body">
+                ضريبة الدخل المستحقة = الربح الضريبي × <span class="num">22.5%</span>
+              </p>
+            </div>
+
+            <p>
+              ويقتصر هذا الفصل على الأشخاص الاعتبارية الخاضعة للسعر العام. أما المنشآت الفردية
+              فيخضع صاحبها لضريبة الأشخاص الطبيعيين بشرائح تصاعدية، ويُستخرج ربحها الخاضع للضريبة
+              بالمنطق نفسه: ربح محاسبي يُعدَّل وفق أحكام القانون.
+            </p>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">تسوية الربح المحاسبي إلى الربح الضريبي وإثبات الضريبة</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>شركة الأمل للتجارة، تنتهي سنتها المالية في <span class="num">31/12/2026</span>، وتخضع للسعر العام <span class="num">22.5%</span>.</li>
+                  <li>المبيعات <span class="num">4,800,000</span> ج.م، وتكلفة المبيعات <span class="num">3,000,000</span> ج.م.</li>
+                  <li>المصروفات التشغيلية <span class="num">600,000</span> ج.م، منها <span class="num">100,000</span> ج.م مصروفات غير مقبولة ضريبيًا (يُفصَّل فرزها في المرحلة الثالثة).</li>
+                  <li>لا توجد إيرادات معفاة ولا خسائر ضريبية مرحّلة.</li>
+                </ul>
+
+                <span class="example-block__label">قائمة الدخل قبل الضريبة (ج.م)</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البيان</th>
+                        <th>المبلغ</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>المبيعات</td>
+                        <td class="num">4,800,000</td>
+                      </tr>
+                      <tr>
+                        <td>يخصم: تكلفة المبيعات</td>
+                        <td class="num">(3,000,000)</td>
+                      </tr>
+                      <tr>
+                        <td>مجمل الربح</td>
+                        <td class="num">1,800,000</td>
+                      </tr>
+                      <tr>
+                        <td>يخصم: المصروفات التشغيلية</td>
+                        <td class="num">(600,000)</td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>الربح المحاسبي قبل ضريبة الدخل</td>
+                        <td class="num">1,200,000</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">مذكرة التسوية الضريبية (ج.م)</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البيان</th>
+                        <th>المبلغ</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>الربح المحاسبي قبل ضريبة الدخل</td>
+                        <td class="num">1,200,000</td>
+                      </tr>
+                      <tr>
+                        <td>يضاف: المصروفات غير المقبولة ضريبيًا</td>
+                        <td class="num">100,000</td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>الربح الضريبي (الوعاء الضريبي)</td>
+                        <td class="num">1,300,000</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">حساب ضريبة الدخل المستحقة (ج.م)</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البيان</th>
+                        <th>المبلغ</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>الربح الضريبي</td>
+                        <td class="num">1,300,000</td>
+                      </tr>
+                      <tr>
+                        <td>سعر الضريبة</td>
+                        <td class="num">22.5%</td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>ضريبة الدخل المستحقة (1,300,000 × 22.5%)</td>
+                        <td class="num">292,500</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">قيود اليومية</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين</th>
+                        <th>دائن</th>
+                      </tr>
+                    </thead>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">31/12/2026</span></td>
+                        <td>من ح/ مصروف ضريبة الدخل (Income Tax Expense)</td>
+                        <td class="num">292,500</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ ضريبة الدخل المستحقة (Income Tax Payable)</td>
+                        <td></td>
+                        <td class="num">292,500</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>إثبات ضريبة الدخل المستحقة عن سنة 2026 على الربح الضريبي</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              بدأنا من الربح المحاسبي <span class="num">1,200,000</span> ج.م، وأضفنا
+              <span class="num">100,000</span> ج.م لأن القانون لا يقبل خصمها، فصار الوعاء
+              <span class="num">1,300,000</span> ج.م. وبضربه في <span class="num">22.5%</span>
+              تكون الضريبة <span class="num">292,500</span> ج.م. جاء القيد مدينًا بمصروف الضريبة
+              لتحميله على قائمة الدخل، ودائنًا بالالتزام لأن الضريبة لم تُسدَّد بعد. وبذلك يكون
+              صافي الربح بعد الضريبة <span class="num">1,200,000</span> − <span class="num">292,500</span>
+              = <span class="num">907,500</span> ج.م. ولا يوجد قيد يعدّل مبلغ الـ
+              <span class="num">100,000</span> ج.م، فالمصروفات غير المقبولة تبقى في الدفاتر وقائمة
+              الدخل كما هي، وتُعدَّل في المذكرة والإقرار فقط.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                من الأخطاء الشائعة حساب الضريبة على الربح المحاسبي مباشرة:
+                <span class="num">1,200,000</span> × <span class="num">22.5%</span> =
+                <span class="num">270,000</span> ج.م. هذا يُنقص الضريبة بمقدار
+                <span class="num">22,500</span> ج.م (<span class="num">100,000</span> ×
+                <span class="num">22.5%</span>)، وهو الفرق الذي تطالب به مصلحة الضرائب عند الفحص
+                مضافًا إليه ما يترتب من غرامات وفوائد تأخير.
+              </p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+          <div class="topic-block" id="annual-tax-return">
+            <h3 class="topic-block__title">الإقرار السنوي</h3>
+
+            <p>
+              الإقرار الضريبي (Tax Return) هو النموذج الذي تقدمه الشركة إلكترونيًا إلى مصلحة
+              الضرائب المصرية (Egyptian Tax Authority) عن كل سنة مالية (Fiscal Year)، ويتضمن الربح
+              المحاسبي والتسوية الضريبية والوعاء والضريبة المستحقة وما سُدِّد منها. وتُرفق به عادةً
+              القوائم المالية المراجعة والمستندات المؤيدة للبيانات الواردة فيه.
+            </p>
+
+            <p>
+              ويجب تقديم الإقرار خلال أربعة أشهر من نهاية السنة المالية، ويُسدَّد رصيد الضريبة
+              المستحق في تاريخ التقديم. فإذا انتهت السنة في <span class="num">31/12/2026</span>
+              كان آخر موعد <span class="num">30/04/2027</span>، وإذا انتهت في
+              <span class="num">30/06/2026</span> كان آخر موعد <span class="num">31/10/2026</span>.
+              ويُعرِّض التأخير أو عدم الدقة في البيانات الشركة لغرامات وفوائد تأخير وفق قانون
+              الإجراءات الضريبية الموحد رقم 206 لسنة 2020. ويُنصح بتقديم الإقرار حتى في سنة الخسارة
+              لإثبات الخسارة الضريبية التي يجوز ترحيلها.
+            </p>
+
+            <div class="flow-diagram">
+              <div class="flow-step">
+                <div class="flow-step__title">1. إقفال السنة وإعداد القوائم المالية</div>
+                <div class="flow-step__description">إثبات قيود الإقفال واستخراج الربح المحاسبي قبل الضريبة، ثم مراجعة القوائم.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">2. التسوية الضريبية</div>
+                <div class="flow-step__description">إضافة المصروفات غير المقبولة واستبعاد الإيرادات المعفاة للوصول إلى الربح الضريبي.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">3. حساب الضريبة وخصم المسدَّد</div>
+                <div class="flow-step__description">تطبيق سعر الضريبة على الوعاء، ثم خصم ضرائب الخصم والتحصيل تحت حساب الضريبة.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">4. تقديم الإقرار وسداد الرصيد</div>
+                <div class="flow-step__description">إرسال الإقرار إلكترونيًا مع المرفقات وسداد الرصيد خلال أربعة أشهر من نهاية السنة المالية.</div>
+              </div>
+            </div>
+
+            <p>
+              ضرائب الخصم والتحصيل تحت حساب الضريبة (Withholding Tax Credits) هي مبالغ تقتطعها
+              جهات معينة من مدفوعاتها للشركة وتوردها لمصلحة الضرائب نيابةً عنها، فتحصل الشركة على
+              شهادات بها وتخصمها من الضريبة النهائية عند تقديم الإقرار. وتُعالَج محاسبيًا كأصل
+              (حق لدى المصلحة) إلى أن تُسوَّى مع الضريبة المستحقة.
+            </p>
+
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>
+                المواعيد والنسب الواردة هنا وفق الأحكام السارية عند إعداد الفصل، وهي عرضة للتعديل
+                التشريعي، فيلزم الرجوع إلى القانون واللوائح والتعليمات الصادرة عن مصلحة الضرائب
+                قبل التطبيق العملي.
+              </p>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">إعداد الإقرار وسداد رصيد الضريبة</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>الشركة نفسها (شركة الأمل للتجارة)، والسنة المالية المنتهية في <span class="num">31/12/2026</span>.</li>
+                  <li>الربح الضريبي المحتسب في المرحلة السابقة <span class="num">1,300,000</span> ج.م، والضريبة المستحقة <span class="num">292,500</span> ج.م.</li>
+                  <li>اقتطع العملاء من مدفوعاتهم خلال سنة 2026 ضرائب خصم وتحصيل قدرها <span class="num">52,500</span> ج.م، وحصلت الشركة على الشهادات المؤيدة لها.</li>
+                  <li>قُدِّم الإقرار وسُدِّد الرصيد بشيك مصرفي في <span class="num">20/04/2027</span>، أي قبل الموعد النهائي <span class="num">30/04/2027</span>.</li>
+                </ul>
+
+                <span class="example-block__label">بيانات الإقرار الضريبي (ج.م)</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البيان</th>
+                        <th>جزئي</th>
+                        <th>كلي</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>الربح الضريبي (الوعاء الضريبي)</td>
+                        <td class="num"></td>
+                        <td class="num">1,300,000</td>
+                      </tr>
+                      <tr>
+                        <td>الضريبة المستحقة بسعر 22.5%</td>
+                        <td class="num">292,500</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td>يخصم: ضرائب الخصم والتحصيل تحت حساب الضريبة</td>
+                        <td class="num">(52,500)</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>رصيد الضريبة الواجب سداده مع الإقرار</td>
+                        <td></td>
+                        <td class="num">240,000</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">قيود اليومية</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين</th>
+                        <th>دائن</th>
+                      </tr>
+                    </thead>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3">خلال <span class="num">2026</span></td>
+                        <td>من ح/ ضرائب الخصم والتحصيل تحت حساب الضريبة</td>
+                        <td class="num">52,500</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ العملاء</td>
+                        <td></td>
+                        <td class="num">52,500</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>إثبات الضرائب التي اقتطعها العملاء من مدفوعاتهم خلال السنة (مبلغ مجمَّع)</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="4"><span class="num">20/04/2027</span></td>
+                        <td>من ح/ ضريبة الدخل المستحقة</td>
+                        <td class="num">292,500</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ ضرائب الخصم والتحصيل تحت حساب الضريبة</td>
+                        <td></td>
+                        <td class="num">52,500</td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ البنك</td>
+                        <td></td>
+                        <td class="num">240,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>تسوية الضريبة المستحقة عن سنة 2026 عند تقديم الإقرار وسداد رصيدها</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">الترحيل إلى حسابات الأستاذ</span>
+                <div class="t-accounts">
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ ضريبة الدخل المستحقة</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li><span>تسوية الإقرار</span><span class="num">292,500</span></li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines">
+                          <li><span>استحقاق 2026</span><span class="num">292,500</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">0</span> (مقفل)
+                    </div>
+                  </div>
+
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ ضرائب الخصم والتحصيل تحت حساب الضريبة</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li><span>اقتطاع العملاء</span><span class="num">52,500</span></li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines">
+                          <li><span>تسوية الإقرار</span><span class="num">52,500</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">0</span> (مقفل)
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              الضريبة المستحقة <span class="num">292,500</span> ج.م أُثبتت في القيد الدائن لحساب
+              ضريبة الدخل المستحقة عند الإقفال (المرحلة الأولى)، وخُصم منها ما اقتُطع من الشركة
+              مسبقًا <span class="num">52,500</span> ج.م، فبقي <span class="num">240,000</span> ج.م
+              تُسدَّد نقدًا. ويتوازن قيد التسوية لأن المدين <span class="num">292,500</span> يساوي
+              الدائن <span class="num">52,500</span> + <span class="num">240,000</span> =
+              <span class="num">292,500</span>. وبعد القيد يُقفل الحسابان بالكامل، فلا يبقى على
+              الشركة التزام عن سنة 2026 ما لم تُسفر الفحوص اللاحقة عن فروق.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                يُحسب موعد الإقرار من نهاية السنة المالية، لا من تاريخ اعتماد القوائم المالية أو
+                انعقاد الجمعية العامة. كما أن خصم ضرائب الخصم والتحصيل من الضريبة المستحقة مشروط
+                بوجود الشهادات المؤيدة لها؛ فالمبلغ الذي لا تسنده مستندات قد لا تقبله المصلحة،
+                فيُضاف إلى الرصيد الواجب سداده.
+              </p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+          <div class="topic-block" id="non-deductible-expenses">
+            <h3 class="topic-block__title">المصروفات غير المقبولة</h3>
+
+            <p>
+              يُقبل المصروف ضريبيًا (Deductible Expense) فيُخصم من الإيرادات إذا كان لازمًا لنشاط
+              الشركة ومحقَّقًا فعلًا ومؤيَّدًا بمستند، ولم يمنع القانون خصمه أو يحدد له سقفًا. فإذا
+              تخلف شرط من هذه الشروط صار المصروف غير مقبول، وتتم إضافته إلى الربح المحاسبي عند
+              استخراج الربح الضريبي.
+            </p>
+
+            <div class="flow-diagram">
+              <div class="flow-step">
+                <div class="flow-step__title">1. هل يتعلق بنشاط الشركة ولازم لتحقيق إيراداتها؟</div>
+                <div class="flow-step__description">إن كان شخصيًا أو بعيدًا عن النشاط فهو غير مقبول.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">2. هل هو محقَّق فعلًا ومؤيَّد بمستند؟</div>
+                <div class="flow-step__description">يلزم وجود فاتورة أو مستند معتمد، ومنه الفاتورة الإلكترونية (E-Invoice) حيث تُشترط، وإلا فهو غير مقبول.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">3. هل يمنع القانون خصمه أو يضع له سقفًا؟</div>
+                <div class="flow-step__description">إن كان محظورًا فهو غير مقبول، وإن تجاوز السقف فالزيادة وحدها غير مقبولة.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">النتيجة</div>
+                <div class="flow-step__description">يبقى المصروف المقبول مخصومًا، ويُضاف غير المقبول إلى الربح المحاسبي في التسوية.</div>
+              </div>
+            </div>
+
+            <p>
+              وتتوزع المصروفات غير المقبولة على أربع فئات رئيسية. <strong>الفئة الأولى</strong>
+              ما يحظر القانون خصمه بنص: ضريبة الدخل نفسها وفروقها، والغرامات والجزاءات المالية
+              المدفوعة عن مخالفة القوانين، والمصروفات الشخصية للمالك أو الشركاء، والتبرعات المدفوعة
+              لجهات لم يجز القانون خصم التبرعات لها. <strong>الفئة الثانية</strong> المصروفات غير
+              المؤيدة بمستندات أو بفواتير إلكترونية حيث تُشترط. <strong>الفئة الثالثة</strong>
+              المخصصات (Provisions)، فهي التزامات مقدَّرة لم تتحقق بعد، ولا تُخصم بوجه عام عند
+              تكوينها وإنما عند استخدامها فعليًا، فتُضاف في سنة التكوين. <strong>الفئة الرابعة</strong>
+              ما يتجاوز حدًا قانونيًا، ومثاله فوائد القروض الزائدة عن نسبة المديونية إلى حقوق
+              الملكية <span class="num">4:1</span> (Thin Capitalization)، إذ لا تُخصم فوائد الجزء
+              الزائد.
+            </p>
+
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>
+                المصروف غير المقبول ليس خطأً محاسبيًا؛ فهو مصروف حقيقي يجب إثباته في الدفاتر
+                ويؤثر في الربح المحاسبي. والفرق أن القانون الضريبي لا يعترف به عند احتساب الوعاء،
+                فتُجرى الإضافة في المذكرة والإقرار دون أي قيد تعديلي في الدفاتر.
+              </p>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">فرز مصروفات شركة الأمل وتحديد غير المقبول منها</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>المصروفات التشغيلية لسنة 2026 تبلغ <span class="num">600,000</span> ج.م، وهي المبلغ نفسه الوارد في المرحلة الأولى.</li>
+                  <li>تضم غرامة مالية دُفعت لجهة حكومية بسبب مخالفة <span class="num">25,000</span> ج.م، ومصروفات شخصية لأحد الشركاء قُيِّدت ضمن المصروفات العمومية <span class="num">40,000</span> ج.م.</li>
+                  <li>تضم أيضًا مصروفات لا تسندها فواتير إلكترونية أو مستندات <span class="num">15,000</span> ج.م، وتبرعًا لجهة لا يجيز القانون خصم التبرعات لها <span class="num">20,000</span> ج.م.</li>
+                  <li>باقي المصروفات متعلق بالنشاط ومؤيد بمستنداته، وإهلاك الأصول الثابتة <span class="num">45,000</span> ج.م مطابق للحدود التي يسمح بها القانون.</li>
+                  <li>مصروف ضريبة الدخل ليس ضمن هذه المصروفات، فهو يظهر في سطر مستقل بعد الربح المحاسبي.</li>
+                </ul>
+
+                <span class="example-block__label">قيود اليومية</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين</th>
+                        <th>دائن</th>
+                      </tr>
+                    </thead>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">14/09/2026</span></td>
+                        <td>من ح/ غرامات ومخالفات</td>
+                        <td class="num">25,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ البنك</td>
+                        <td></td>
+                        <td class="num">25,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>سداد غرامة مخالفة، تُثبت مصروفًا محاسبيًا وتُضاف ضريبيًا في المذكرة والإقرار فقط</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">كشف فرز المصروفات التشغيلية (ج.م)</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البند</th>
+                        <th>المبلغ الدفتري</th>
+                        <th>مقبول</th>
+                        <th>غير مقبول</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>رواتب وأجور</td>
+                        <td class="num">240,000</td>
+                        <td class="num">240,000</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td>إيجار</td>
+                        <td class="num">110,000</td>
+                        <td class="num">110,000</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td>مرافق واتصالات</td>
+                        <td class="num">40,000</td>
+                        <td class="num">40,000</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td>دعاية وإعلان</td>
+                        <td class="num">50,000</td>
+                        <td class="num">50,000</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td>صيانة</td>
+                        <td class="num">15,000</td>
+                        <td class="num">15,000</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td>إهلاك الأصول الثابتة</td>
+                        <td class="num">45,000</td>
+                        <td class="num">45,000</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td>غرامات ومخالفات</td>
+                        <td class="num">25,000</td>
+                        <td class="num"></td>
+                        <td class="num">25,000</td>
+                      </tr>
+                      <tr>
+                        <td>مصروفات شخصية للشريك</td>
+                        <td class="num">40,000</td>
+                        <td class="num"></td>
+                        <td class="num">40,000</td>
+                      </tr>
+                      <tr>
+                        <td>مصروفات غير مؤيدة بمستندات</td>
+                        <td class="num">15,000</td>
+                        <td class="num"></td>
+                        <td class="num">15,000</td>
+                      </tr>
+                      <tr>
+                        <td>تبرع لجهة غير معتمدة</td>
+                        <td class="num">20,000</td>
+                        <td class="num"></td>
+                        <td class="num">20,000</td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>الإجمالي</td>
+                        <td class="num">600,000</td>
+                        <td class="num">500,000</td>
+                        <td class="num">100,000</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              جميع البنود الستة الأولى متعلقة بالنشاط ومؤيدة بمستنداتها، فمجموعها المقبول
+              <span class="num">500,000</span> ج.م، وهو ما يبقى مخصومًا من الإيرادات. أما البنود
+              الأربعة الأخيرة فتُمثل المصروفات غير المقبولة ومجموعها
+              <span class="num">25,000</span> + <span class="num">40,000</span> +
+              <span class="num">15,000</span> + <span class="num">20,000</span> =
+              <span class="num">100,000</span> ج.م، وهي المبلغ الذي أُضيف إلى الربح المحاسبي في
+              مذكرة التسوية بالمرحلة الأولى. ويؤكد المجموع صحة الفرز، إذ
+              <span class="num">500,000</span> + <span class="num">100,000</span> =
+              <span class="num">600,000</span> ج.م تطابق إجمالي المصروفات التشغيلية في قائمة
+              الدخل. والأثر الضريبي لهذه الإضافة <span class="num">100,000</span> ×
+              <span class="num">22.5%</span> = <span class="num">22,500</span> ج.م زيادة في
+              الضريبة المستحقة.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                الأصل محاسبيًا أن ما يسحبه الشريك لنفسه من أموال الشركة لا يُعدّ مصروفًا، بل
+                مسحوبات (Drawings) تُخصم من حقوقه. فإذا قُيِّدت المصروفات الشخصية ضمن المصروفات
+                العمومية انخفض الربح المحاسبي دون وجه حق، ثم تعيدها التسوية الضريبية إلى الوعاء.
+                والأسلم تصحيح المعالجة المحاسبية من الأساس لا الاكتفاء بالإضافة الضريبية.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section content-section--tint" id="comparison">
+      <div class="container">
+        <div class="content-section__eyebrow">مقارنة</div>
+        <h2 class="content-section__title">الربح المحاسبي مقابل الربح الضريبي</h2>
+
+        <div class="table-responsive">
+          <table class="table table-bordered align-middle">
+            <thead>
+              <tr>
+                <th>وجه المقارنة</th>
+                <th>الربح المحاسبي</th>
+                <th>الربح الضريبي</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>المرجع الحاكم</td>
+                <td>المعايير المحاسبية (IFRS أو ما يقابلها من المعايير المصرية)</td>
+                <td>قانون الضريبة على الدخل رقم 91 لسنة 2005 ولائحته التنفيذية</td>
+              </tr>
+              <tr>
+                <td>الغرض</td>
+                <td>عرض الأداء بصورة عادلة لمستخدمي القوائم المالية</td>
+                <td>تحديد الوعاء الذي تُحسب عليه الضريبة المستحقة للدولة</td>
+              </tr>
+              <tr>
+                <td>معالجة المصروفات</td>
+                <td>تُثبت كل المصروفات المتحققة</td>
+                <td>تُخصم المصروفات المقبولة فقط، وتُضاف غير المقبولة</td>
+              </tr>
+              <tr>
+                <td>مكان الظهور</td>
+                <td>قائمة الدخل في الدفاتر</td>
+                <td>مذكرة التسوية والإقرار الضريبي، خارج قيود الدفاتر</td>
+              </tr>
+              <tr>
+                <td>الجهة المعتمِدة</td>
+                <td>الإدارة والمراجع</td>
+                <td>مصلحة الضرائب المصرية بعد الفحص</td>
+              </tr>
+              <tr>
+                <td>مثال الفصل (ج.م)</td>
+                <td><span class="num">1,200,000</span></td>
+                <td><span class="num">1,300,000</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="summary">
+      <div class="container">
+        <div class="content-section__eyebrow">الخلاصة</div>
+        <h2 class="content-section__title">أهم ما يجب تذكّره</h2>
+
+        <div class="summary-card" style="max-width: 900px">
+          <ul class="summary-card__list">
+            <li>✔ تُحسب الضريبة بسعر <span class="num">22.5%</span> على الربح الضريبي لا على الربح المحاسبي، ويُستخرج الأول من الثاني بالتسوية الضريبية.</li>
+            <li>✔ الربح الضريبي = الربح المحاسبي + المصروفات غير المقبولة − الإيرادات المعفاة − الخسائر الضريبية المرحّلة.</li>
+            <li>✔ يُثبت مصروف ضريبة الدخل بقيد مدين له ودائن لضريبة الدخل المستحقة، ولا يُعدَّل الربح المحاسبي بقيود التسوية الضريبية.</li>
+            <li>✔ يُقدَّم الإقرار إلكترونيًا خلال أربعة أشهر من نهاية السنة المالية، ويُسدَّد رصيد الضريبة عند تقديمه بعد خصم ضرائب الخصم والتحصيل المؤيدة بشهادات.</li>
+            <li>✔ المصروف غير المقبول مصروف حقيقي في الدفاتر، لكنه يُضاف في الإقرار: الغرامات، والمصروفات الشخصية، وغير المؤيد بمستندات، وضريبة الدخل نفسها، والمخصصات عند تكوينها، وما جاوز الحد القانوني.</li>
+            <li>✔ في المثال: ربح محاسبي <span class="num">1,200,000</span> + مصروفات غير مقبولة <span class="num">100,000</span> = ربح ضريبي <span class="num">1,300,000</span>، وضريبة <span class="num">292,500</span> يُسدَّد منها <span class="num">240,000</span> نقدًا.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>الفصل الثامن عشر: ضريبة الدخل على الشركات والمنشآت</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const heroTitle = document.querySelector('.hero__title')
+      const toolbarTitle = document.querySelector('[data-sync-title]')
+      if (heroTitle && toolbarTitle) {
+        const text = heroTitle.textContent.trim()
+        if (text) {
+          toolbarTitle.textContent = text
+          document.title = text
+        }
+      }
+    </script>
+  </body>
+</html>

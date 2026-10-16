@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الفصل التاسع عشر: الخصم والإضافة (Withholding Tax)</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+
+
+    <style>
+      :root {
+        --clr-primary: #b378a6;
+        --clr-secondary: #7796bf;
+        --clr-light: #ffffff;
+        --clr-light-2: #f0f0f0;
+        --clr-border: #dedede;
+        --clr-dark: #1b1b1b;
+        --clr-dark-2: #444444;
+        --clr-text: #333333;
+        --clr-text-soft: #555555;
+        --font-body: 'Baloo Bhaijaan 2', sans-serif;
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 18px;
+        --shadow-soft: 0 4px 20px rgba(27, 27, 27, 0.07);
+        --shadow-hover: 0 12px 28px rgba(179, 120, 166, 0.16);
+        --section-pad: 4.5rem;
+        --content-width: 900px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--clr-light);
+        color: var(--clr-dark);
+        line-height: 1.9;
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: var(--clr-secondary);
+        text-decoration: none;
+        transition: 0.2s;
+      }
+
+      a:hover {
+        color: var(--clr-primary);
+      }
+
+      h1, h2, h3, h4, h5 {
+        font-family: var(--font-body);
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+        color: var(--clr-dark);
+      }
+
+      h1, h2 { font-weight: 800; }
+      h3, h4, h5 { font-weight: 700; }
+
+      p {
+        color: var(--clr-text);
+        margin-bottom: 1rem;
+      }
+
+      ul { margin: 0; padding: 0; }
+
+      section { scroll-margin-top: 90px; }
+
+      ::selection {
+        background: var(--clr-primary);
+        color: #fff;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--clr-secondary);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+      .editor-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--clr-primary);
+        padding: 0.7rem 0;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .editor-toolbar__tab-title {
+        color: #fff;
+        font-size: 1.1rem;
+        direction: ltr;
+        font-weight: 700;
+      }
+      .hero {
+        background: var(--clr-secondary);
+        color: #fff;
+        padding: 4.5rem 0 3.5rem;
+      }
+
+      .hero__title {
+        color: #fff;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      .hero__lead {
+        color: #fff;
+        opacity: 0.95;
+        max-width: 760px;
+        font-size: 1.15rem;
+        margin-bottom: 0;
+      }
+      .content-section { padding: var(--section-pad) 0; }
+      .content-section--alt { background: #fcfcfc; }
+      .content-section--tint { background: var(--clr-light-2); }
+
+      .content-section__eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+        font-size: 0.86rem;
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+      }
+
+      .content-section__eyebrow::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        background: var(--clr-primary);
+      }
+
+      .content-section__title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+
+      .content-section__description {
+        max-width: 760px;
+        color: var(--clr-text-soft);
+        margin-bottom: 2.5rem;
+      }
+      .summary-card {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+        padding: 2rem;
+      }
+
+      .summary-card__list {
+        display: grid;
+        gap: 1rem;
+        list-style: none;
+      }
+
+      .summary-card__list li {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+      }
+      .callout {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        border-radius: var(--radius-md);
+        border-inline-start: 4px solid;
+      }
+
+      .callout__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 700;
+      }
+
+      .callout--note {
+        background: rgba(119, 150, 191, 0.08);
+        border-color: var(--clr-secondary);
+      }
+
+      .callout--warning {
+        background: rgba(179, 120, 166, 0.08);
+        border-color: var(--clr-primary);
+      }
+      .flow-diagram {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin: 2rem 0;
+      }
+
+      .flow-step {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        padding: 1rem 1.25rem;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .flow-step__title {
+        color: var(--clr-primary);
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+      }
+
+      .flow-step__description { color: var(--clr-text-soft); margin: 0; }
+
+      .flow-arrow {
+        text-align: center;
+        color: var(--clr-secondary);
+        font-size: 28px;
+        line-height: 1;
+      }
+      .topic-block { margin-bottom: 3rem; }
+      .topic-block:last-child { margin-bottom: 0; }
+
+      .topic-block__title {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+      }
+
+      .topic-divider {
+        border: none;
+        border-top: 1px dashed var(--clr-border);
+        margin: 2.5rem 0;
+      }
+      .num {
+        direction: ltr;
+        unicode-bidi: isolate;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+      .formula-box {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        text-align: center;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .formula-box__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--clr-primary);
+        font-weight: 700;
+      }
+
+      .formula-box__body {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--clr-dark);
+      }
+      .example-block {
+        overflow: hidden;
+        margin: 2rem 0;
+        background: var(--clr-light);
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .example-block__header {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.7rem 1.2rem;
+        background: var(--clr-dark);
+      }
+
+      .example-block__tag {
+        padding: 0 0.7rem;
+        background: var(--clr-primary);
+        color: #fff;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .example-block__title { color: #fff; font-weight: 600; }
+
+      .example-block__body { padding: 1.5rem; }
+
+      .example-block__label {
+        display: block;
+        margin: 1.6rem 0 0.6rem;
+        color: var(--clr-secondary);
+        font-weight: 700;
+      }
+
+      .example-block__label:first-child { margin-top: 0; }
+
+      .example-block__data {
+        margin: 0;
+        padding-inline-start: 1.2rem;
+        color: var(--clr-text);
+      }
+      .acc-table-wrap { overflow-x: auto; }
+
+      .acc-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+
+      .acc-table th,
+      .acc-table td {
+        padding: 0.5rem 0.8rem;
+        border: 1px solid var(--clr-border);
+      }
+
+      .acc-table thead th {
+        background: var(--clr-light-2);
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .acc-table td.num { text-align: end; }
+
+      .acc-table__total td {
+        background: #fcfcfc;
+        font-weight: 700;
+        border-top: 2px solid var(--clr-dark-2);
+        border-bottom: 4px double var(--clr-dark-2);
+      }
+
+      .journal__entry { border-bottom: 2px solid var(--clr-dark-2); }
+      .acc-table td.journal__credit { padding-inline-start: 2.5rem; }
+      .journal__note td { color: var(--clr-text-soft); font-size: 0.88rem; }
+      .t-accounts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+
+      .t-account {
+        overflow: hidden;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+      }
+
+      .t-account__title {
+        padding: 0.5rem;
+        text-align: center;
+        color: var(--clr-primary);
+        font-weight: 700;
+        border-bottom: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__sides { display: grid; grid-template-columns: 1fr 1fr; }
+
+      .t-account__side + .t-account__side {
+        border-inline-start: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__side-label {
+        padding: 0.3rem;
+        text-align: center;
+        color: var(--clr-text-soft);
+        font-size: 0.85rem;
+        font-weight: 700;
+        border-bottom: 1px solid var(--clr-border);
+      }
+
+      .t-account__lines {
+        min-height: 3rem;
+        margin: 0;
+        padding: 0.4rem 0.7rem;
+        list-style: none;
+      }
+
+      .t-account__lines li {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .t-account__balance {
+        padding: 0.45rem 0.7rem;
+        text-align: center;
+        font-weight: 700;
+        background: rgba(119, 150, 191, 0.08);
+        border-top: 1px solid var(--clr-border);
+      }
+      .site-footer {
+        background: var(--clr-light-2);
+        color: var(--clr-light);
+        padding: 1rem 0 0.5rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+      @media (max-width: 768px) {
+        :root { --section-pad: 3rem; }
+        .hero { padding: 3.5rem 0; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="editor-toolbar">
+      <div class="container d-flex align-items-center gap-3">
+        <span class="editor-toolbar__tab-title" data-sync-title></span>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="container">
+        <h1 class="hero__title">الفصل التاسع عشر: الخصم والإضافة (Withholding Tax)</h1>
+        <p class="hero__lead">
+          تلتزم جهات معيّنة بأن تقتطع من مدفوعاتها للموردين ومقدمي الخدمات نسبةً من قيمة المعاملة وتورّدها لمصلحة الضرائب لحساب المستفيد، وهو ما يُعرف بالخصم تحت حساب الضريبة (Withholding Tax). يوضّح هذا الفصل من يخضع لهذا النظام، والنسب المقررة، وكيفية إثبات الضريبة المخصومة وتوريدها للمصلحة، بأمثلة بالجنيه المصري (ج.م).
+        </p>
+      </div>
+    </header>
+
+    <section class="content-section" id="explanation">
+      <div class="container">
+        <div class="content-section__eyebrow">شرح وتطبيق</div>
+        <h2 class="content-section__title">شرح وتطبيق كل مرحلة</h2>
+
+        <div class="article-content" style="max-width: 900px">
+          <div class="topic-block" id="who-is-subject">
+            <h3 class="topic-block__title">من يخضع لها</h3>
+            <p>
+              يقوم النظام على طرفين: الجهة الملتزمة بالخصم (Withholding Agent) وهي الجهة الدافعة، والمستفيد وهو من تُخصم الضريبة من مستحقاته. فالجهات الواردة في المادة (59) من قانون الضريبة على الدخل رقم <span class="num">91</span> لسنة <span class="num">2005</span>، ومنها الجهات الحكومية والهيئات العامة ووحدات القطاع العام وقطاع الأعمال العام وشركات الأموال، تلتزم عند سداد قيمة مشترياتها أو الخدمات التي تتلقاها بأن تخصم النسبة المقررة قبل السداد. ويقع الخصم على المبالغ المدفوعة لأشخاص القطاع الخاص ممن يزاولون نشاطًا تجاريًا أو صناعيًا أو يؤدون خدمات، وفق أوجه النشاط التي حددها قرار وزير المالية رقم <span class="num">537</span> لسنة <span class="num">2005</span> وتعديلاته.
+            </p>
+            <p>
+              والضريبة المخصومة ليست عبئًا على الجهة الدافعة، فهي مبلغ تقتطعه لحساب المصلحة. أما المستفيد فتمثل له دفعةً مقدّمة من ضريبة دخله، يخصمها من الضريبة المستحقة عليه عند تقديم إقراره الضريبي مستندًا إلى إشعار الخصم (Withholding Certificate) الذي تسلّمه له الجهة الدافعة.
+            </p>
+
+            <div class="formula-box">
+              <span class="formula-box__label">قاعدة الخصم</span>
+              <p class="formula-box__body">الضريبة المخصومة = قيمة المعاملة × نسبة الخصم<br />الصافي المسدد = قيمة المعاملة − الضريبة المخصومة</p>
+            </div>
+
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة: الإضافة</span>
+              <p>
+                الإضافة تحت حساب الضريبة (Addition on Account of Tax) هي الوجه المقابل للخصم؛ فبدلًا من أن يقتطع المشتري، يضيف البائع نسبةً إلى قيمة بيع السلع التي يحددها قرار وزير المالية رقم <span class="num">310</span> لسنة <span class="num">2013</span> (ويشمل كذلك بعض الإيجارات)، ويحصّلها من المشتري ويوردها للمصلحة. وتركّز أمثلة هذا الفصل على الخصم.
+              </p>
+            </div>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                لا يسري الخصم على المستفيد الذي يقدّم شهادة تفيد إعفاءه من الضريبة أو عدم خضوعه لها (المادة <span class="num">73</span>)، أو ما يفيد خضوعه لنظام الدفعات المقدمة (Advance Payments) (المادة <span class="num">60</span>)، وهو نظام يسدد فيه الممول مبالغ ربع سنوية مقدمًا عن ضريبته بدلًا من الخصم عند الدفع. فتُطلب هذه المستندات قبل السداد وتُحفظ بملف المعاملة.
+              </p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+
+          <div class="topic-block" id="rates">
+            <h3 class="topic-block__title">النسب</h3>
+            <p>
+              تتفاوت النسبة بحسب طبيعة المعاملة لا بحسب هوية المورد، وقد حددها قرار وزير المالية رقم <span class="num">405</span> لسنة <span class="num">2018</span> تنفيذًا للمادة (59). وتُطبَّق على قيمة المعاملة الأصلية، ثم يُسدَّد للمستفيد الصافي بعد الخصم.
+            </p>
+            <div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>نوع المعاملة</th><th>نسبة الخصم</th></tr></thead><tbody><tr><td>المقاولات والتوريدات (عدا توريدات المحاصيل البستانية للحكومة والقطاع العام من مالكي الغراس في حدود غراسهم)</td><td class="num">1%</td></tr><tr><td>المشتريات</td><td class="num">1%</td></tr><tr><td>الخدمات</td><td class="num">3%</td></tr><tr><td>المبالغ التي تدفعها الجمعيات التعاونية للنقل بالسيارات لأعضائها مقابل النقل بسياراتهم</td><td class="num">1%</td></tr><tr><td>الوكالة بالعمولة والسمسرة</td><td class="num">5%</td></tr><tr><td>الخصومات والمنح والعمولات والحوافز الاستثنائية والإضافية التي تمنحها شركات الدخان والأسمدة والأسمنت</td><td class="num">5%</td></tr><tr><td>الخصومات والمنح والعمولات التي تمنحها شركات البترول والاتصالات والأجهزة الكهربائية والملابس والسلع الغذائية والمنظفات والصناعات الورقية</td><td class="num">2%</td></tr><tr><td>مساندة دعم الصادرات التي يمنحها صندوق تنمية الصادرات للمصدِّر</td><td class="num">2%</td></tr></tbody></table></div>
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>قد تُعدَّل النسب بقرارات لاحقة، فيُراجع القرار النافذ وقت التطبيق.</p>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">حساب الضريبة المخصومة وإثباتها</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>الجهة الدافعة: شركة النور للتجارة (شركة مساهمة)، والفترة: الربع الثالث من عام <span class="num">2026</span>.</li>
+                  <li><span class="num">10/07/2026</span>: شراء بضاعة من أحد الموردين بقيمة <span class="num">80,000</span> ج.م، وسُدد الصافي بتحويل بنكي.</li>
+                  <li><span class="num">20/08/2026</span>: خدمة صيانة بقيمة <span class="num">20,000</span> ج.م، وسُدد صافيها بتحويل بنكي.</li>
+                  <li><span class="num">05/09/2026</span>: عمولة سمسرة بقيمة <span class="num">10,000</span> ج.م، وسُدد صافيها بتحويل بنكي.</li>
+                  <li>المبالغ قبل أي ضرائب أخرى، تبسيطًا.</li>
+                </ul>
+
+                <span class="example-block__label">مذكرة احتساب الضريبة المخصومة</span>
+                <div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البند</th><th>قيمة المعاملة</th><th>النسبة</th><th>الضريبة المخصومة</th><th>الصافي المسدد</th></tr></thead><tbody><tr><td>مشتريات بضاعة</td><td class="num">80,000</td><td class="num">1%</td><td class="num">800</td><td class="num">79,200</td></tr><tr><td>خدمة صيانة</td><td class="num">20,000</td><td class="num">3%</td><td class="num">600</td><td class="num">19,400</td></tr><tr><td>عمولة سمسرة</td><td class="num">10,000</td><td class="num">5%</td><td class="num">500</td><td class="num">9,500</td></tr><tr class="acc-table__total"><td>الإجمالي</td><td class="num">110,000</td><td></td><td class="num">1,900</td><td class="num">108,100</td></tr></tbody></table></div>
+
+                <span class="example-block__label">قيود اليومية</span>
+                <div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين</th><th>دائن</th></tr></thead><tbody class="journal__entry"><tr><td rowspan="4"><span class="num">10/07/2026</span></td><td>من ح/ المشتريات</td><td class="num">80,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ البنك</td><td></td><td class="num">79,200</td></tr><tr><td class="journal__credit">إلى ح/ مصلحة الضرائب – ضريبة الخصم</td><td></td><td class="num">800</td></tr><tr class="journal__note"><td>إثبات مشتريات بضاعة مع خصم النسبة المقررة تحت حساب الضريبة</td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="4"><span class="num">20/08/2026</span></td><td>من ح/ مصروف الصيانة</td><td class="num">20,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ البنك</td><td></td><td class="num">19,400</td></tr><tr><td class="journal__credit">إلى ح/ مصلحة الضرائب – ضريبة الخصم</td><td></td><td class="num">600</td></tr><tr class="journal__note"><td>إثبات خدمة صيانة مع خصم النسبة المقررة تحت حساب الضريبة</td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="4"><span class="num">05/09/2026</span></td><td>من ح/ مصروف عمولة السمسرة</td><td class="num">10,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ البنك</td><td></td><td class="num">9,500</td></tr><tr><td class="journal__credit">إلى ح/ مصلحة الضرائب – ضريبة الخصم</td><td></td><td class="num">500</td></tr><tr class="journal__note"><td>إثبات عمولة سمسرة مع خصم النسبة المقررة تحت حساب الضريبة</td><td></td><td></td></tr></tbody></table></div>
+              </div>
+            </div>
+
+            <p>
+              طُبقت نسبة <span class="num">1%</span> على البضاعة لأنها مشتريات، ونسبة <span class="num">3%</span> على الصيانة لأنها خدمة، ونسبة <span class="num">5%</span> على العمولة لأنها سمسرة. وفي كل قيد أُثبتت المشتريات أو المصروف بكامل قيمته في الجانب المدين، بينما انقسم الجانب الدائن إلى شقين: الصافي المدفوع (ح/ البنك)، والضريبة المخصومة بوصفها التزامًا لحساب المصلحة. ولذلك تتساوى الأطراف في القيد الأول: <span class="num">80,000</span> = <span class="num">79,200</span> + <span class="num">800</span>.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>تُحتسب النسبة على القيمة الأصلية للمعاملة لا على الصافي المسدد؛ فاحتساب <span class="num">1%</span> على <span class="num">79,200</span> يعطي <span class="num">792</span> بدلًا من <span class="num">800</span>.</p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+
+          <div class="topic-block" id="remittance">
+            <h3 class="topic-block__title">التوريد للمصلحة</h3>
+            <p>
+              تبقى الضريبة المخصومة أمانةً في ذمة الجهة الدافعة إلى أن تُورَّد. وتقدّم الجهة نموذج <span class="num">41</span> (خصم وتحصيل تحت حساب الضريبة) بصفة ربع سنوية، وتورّد المبالغ التي خصمتها عن الربع في موعد أقصاه نهاية الشهر التالي له، وتسلّم كل مستفيد إشعار الخصم.
+            </p>
+
+            <div class="flow-diagram">
+              <div class="flow-step">
+                <div class="flow-step__title">١. الخصم عند السداد</div>
+                <div class="flow-step__description">تقتطع الجهة الدافعة النسبة من قيمة المعاملة وتسدد الصافي للمستفيد.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">٢. إثبات الالتزام</div>
+                <div class="flow-step__description">تُقيَّد الضريبة المخصومة دائنًا في ح/ مصلحة الضرائب – ضريبة الخصم.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">٣. التوريد بنموذج <span class="num">41</span></div>
+                <div class="flow-step__description">تقدّم الجهة النموذج وتورّد إجمالي الربع، وتسلّم المستفيد إشعار الخصم.</div>
+              </div>
+            </div>
+
+            <div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>الربع</th><th>فترة الخصم</th><th>آخر موعد للتقديم والتوريد</th></tr></thead><tbody><tr><td>الربع الأول</td><td>يناير – مارس</td><td><span class="num">30</span> أبريل</td></tr><tr><td>الربع الثاني</td><td>أبريل – يونيو</td><td><span class="num">31</span> يوليو</td></tr><tr><td>الربع الثالث</td><td>يوليو – سبتمبر</td><td><span class="num">31</span> أكتوبر</td></tr><tr><td>الربع الرابع</td><td>أكتوبر – ديسمبر</td><td><span class="num">31</span> يناير (من العام التالي)</td></tr></tbody></table></div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">توريد ضريبة الربع الثالث من عام 2026</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>الضريبة المخصومة خلال الربع (من المثال السابق): <span class="num">800</span> + <span class="num">600</span> + <span class="num">500</span> = <span class="num">1,900</span> ج.م.</li>
+                  <li>وُرِّد المبلغ بتحويل بنكي بتاريخ <span class="num">28/10/2026</span>، أي قبل آخر موعد وهو <span class="num">31/10/2026</span>.</li>
+                </ul>
+
+                <span class="example-block__label">قيود اليومية</span>
+                <div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين</th><th>دائن</th></tr></thead><tbody class="journal__entry"><tr><td rowspan="3"><span class="num">28/10/2026</span></td><td>من ح/ مصلحة الضرائب – ضريبة الخصم</td><td class="num">1,900</td><td></td></tr><tr><td class="journal__credit">إلى ح/ البنك</td><td></td><td class="num">1,900</td></tr><tr class="journal__note"><td>توريد الضريبة المخصومة عن الربع الثالث بموجب نموذج 41</td><td></td><td></td></tr></tbody></table></div>
+
+                <span class="example-block__label">الترحيل إلى حسابات الأستاذ</span>
+                <div class="t-accounts"><div class="t-account"><div class="t-account__title">ح/ مصلحة الضرائب – ضريبة الخصم</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>التوريد بنموذج 41</span><span class="num">1,900</span></li></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"><li><span>خصم المشتريات</span><span class="num">800</span></li><li><span>خصم الصيانة</span><span class="num">600</span></li><li><span>خصم السمسرة</span><span class="num">500</span></li></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">0</span> (مُسوّى)</div></div></div>
+              </div>
+            </div>
+
+            <p>
+              بالتوريد يُسوّى الالتزام: يتساوى مجموع الجانب الدائن (<span class="num">800</span> + <span class="num">600</span> + <span class="num">500</span> = <span class="num">1,900</span>) مع الجانب المدين (<span class="num">1,900</span>)، فيصبح رصيد الحساب صفرًا. ولا يمس التوريد المشتريات ولا المصروفات، لأنها أُثبتت كاملة عند الخصم.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>لا تُقيَّد الضريبة المخصومة مصروفًا على الجهة الدافعة؛ فهي التزام تجاه المصلحة يبقى رصيدًا دائنًا حتى لحظة التوريد.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="summary">
+      <div class="container">
+        <div class="content-section__eyebrow">الخلاصة</div>
+        <h2 class="content-section__title">أهم ما يجب تذكّره</h2>
+
+        <div class="summary-card" style="max-width: 900px">
+          <ul class="summary-card__list">
+            <li>✔ الجهات الملتزمة بالخصم هي الجهات الواردة في المادة (59)، ويقع الخصم على مدفوعاتها لأشخاص القطاع الخاص، ما لم يقدّم المستفيد شهادة إعفاء أو ما يفيد خضوعه لنظام الدفعات المقدمة.</li>
+            <li>✔ النسب بحسب نوع المعاملة وفق القرار رقم <span class="num">405</span> لسنة <span class="num">2018</span>: <span class="num">1%</span> للمشتريات والتوريدات والمقاولات، و<span class="num">3%</span> للخدمات، و<span class="num">5%</span> للوكالة بالعمولة والسمسرة.</li>
+            <li>✔ تُحتسب النسبة على القيمة الأصلية للمعاملة، ويُسدَّد للمستفيد الصافي بعد الخصم.</li>
+            <li>✔ تُثبت الجهة الدافعة المشتريات أو المصروف كاملًا، وتقيّد الضريبة المخصومة دائنة في ح/ مصلحة الضرائب – ضريبة الخصم، وهي التزام لا مصروف.</li>
+            <li>✔ تُورَّد الضريبة بنموذج <span class="num">41</span> ربع سنويًا في موعد أقصاه نهاية الشهر التالي للربع، ويُسلَّم المستفيد إشعار الخصم.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>الفصل التاسع عشر: الخصم والإضافة (Withholding Tax)</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const heroTitle = document.querySelector('.hero__title')
+      const toolbarTitle = document.querySelector('[data-sync-title]')
+      if (heroTitle && toolbarTitle) {
+        const text = heroTitle.textContent.trim()
+        if (text) {
+          toolbarTitle.textContent = text
+          document.title = text
+        }
+      }
+    </script>
+  </body>
+</html>

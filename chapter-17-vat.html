@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ضريبة القيمة المضافة (VAT)</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --clr-primary: #b378a6;
+        --clr-secondary: #7796bf;
+        --clr-light: #ffffff;
+        --clr-light-2: #f0f0f0;
+        --clr-border: #dedede;
+        --clr-dark: #1b1b1b;
+        --clr-dark-2: #444444;
+        --clr-text: #333333;
+        --clr-text-soft: #555555;
+        --font-body: 'Baloo Bhaijaan 2', sans-serif;
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 18px;
+        --shadow-soft: 0 4px 20px rgba(27, 27, 27, 0.07);
+        --shadow-hover: 0 12px 28px rgba(179, 120, 166, 0.16);
+        --section-pad: 4.5rem;
+        --content-width: 900px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--clr-light);
+        color: var(--clr-dark);
+        line-height: 1.9;
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: var(--clr-secondary);
+        text-decoration: none;
+        transition: 0.2s;
+      }
+
+      a:hover {
+        color: var(--clr-primary);
+      }
+
+      h1, h2, h3, h4, h5 {
+        font-family: var(--font-body);
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+        color: var(--clr-dark);
+      }
+
+      h1, h2 { font-weight: 800; }
+      h3, h4, h5 { font-weight: 700; }
+
+      p {
+        color: var(--clr-text);
+        margin-bottom: 1rem;
+      }
+
+      ul { margin: 0; padding: 0; }
+
+      section { scroll-margin-top: 90px; }
+
+      ::selection {
+        background: var(--clr-primary);
+        color: #fff;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--clr-secondary);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+      .editor-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--clr-primary);
+        padding: 0.7rem 0;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .editor-toolbar__tab-title {
+        color: #fff;
+        font-size: 1.1rem;
+        direction: ltr;
+        font-weight: 700;
+      }
+      .hero {
+        background: var(--clr-secondary);
+        color: #fff;
+        padding: 4.5rem 0 3.5rem;
+      }
+
+      .hero__title {
+        color: #fff;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      .hero__lead {
+        color: #fff;
+        opacity: 0.95;
+        max-width: 760px;
+        font-size: 1.15rem;
+        margin-bottom: 0;
+      }
+      .content-section { padding: var(--section-pad) 0; }
+      .content-section--alt { background: #fcfcfc; }
+      .content-section--tint { background: var(--clr-light-2); }
+
+      .content-section__eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+        font-size: 0.86rem;
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+      }
+
+      .content-section__eyebrow::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        background: var(--clr-primary);
+      }
+
+      .content-section__title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+
+      .content-section__description {
+        max-width: 760px;
+        color: var(--clr-text-soft);
+        margin-bottom: 2.5rem;
+      }
+      .summary-card {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+        padding: 2rem;
+      }
+
+      .summary-card__list {
+        display: grid;
+        gap: 1rem;
+        list-style: none;
+      }
+
+      .summary-card__list li {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+      }
+      .callout {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        border-radius: var(--radius-md);
+        border-inline-start: 4px solid;
+      }
+
+      .callout__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 700;
+      }
+
+      .callout--note {
+        background: rgba(119, 150, 191, 0.08);
+        border-color: var(--clr-secondary);
+      }
+
+      .callout--warning {
+        background: rgba(179, 120, 166, 0.08);
+        border-color: var(--clr-primary);
+      }
+      .flow-diagram {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin: 2rem 0;
+      }
+
+      .flow-step {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        padding: 1rem 1.25rem;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .flow-step__title {
+        color: var(--clr-primary);
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+      }
+
+      .flow-step__description { color: var(--clr-text-soft); margin: 0; }
+
+      .flow-arrow {
+        text-align: center;
+        color: var(--clr-secondary);
+        font-size: 28px;
+        line-height: 1;
+      }
+      .topic-block { margin-bottom: 3rem; }
+      .topic-block:last-child { margin-bottom: 0; }
+
+      .topic-block__title {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+      }
+
+      .topic-divider {
+        border: none;
+        border-top: 1px dashed var(--clr-border);
+        margin: 2.5rem 0;
+      }
+      .num {
+        direction: ltr;
+        unicode-bidi: isolate;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+      .formula-box {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        text-align: center;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .formula-box__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--clr-primary);
+        font-weight: 700;
+      }
+
+      .formula-box__body {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--clr-dark);
+      }
+      .example-block {
+        overflow: hidden;
+        margin: 2rem 0;
+        background: var(--clr-light);
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .example-block__header {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.7rem 1.2rem;
+        background: var(--clr-dark);
+      }
+
+      .example-block__tag {
+        padding: 0 0.7rem;
+        background: var(--clr-primary);
+        color: #fff;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .example-block__title { color: #fff; font-weight: 600; }
+
+      .example-block__body { padding: 1.5rem; }
+
+      .example-block__label {
+        display: block;
+        margin: 1.6rem 0 0.6rem;
+        color: var(--clr-secondary);
+        font-weight: 700;
+      }
+
+      .example-block__label:first-child { margin-top: 0; }
+
+      .example-block__data {
+        margin: 0;
+        padding-inline-start: 1.2rem;
+        color: var(--clr-text);
+      }
+      .acc-table-wrap { overflow-x: auto; }
+
+      .acc-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+
+      .acc-table th,
+      .acc-table td {
+        padding: 0.5rem 0.8rem;
+        border: 1px solid var(--clr-border);
+      }
+
+      .acc-table thead th {
+        background: var(--clr-light-2);
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .acc-table td.num { text-align: end; }
+
+      .acc-table__total td {
+        background: #fcfcfc;
+        font-weight: 700;
+        border-top: 2px solid var(--clr-dark-2);
+        border-bottom: 4px double var(--clr-dark-2);
+      }
+
+      .journal__entry { border-bottom: 2px solid var(--clr-dark-2); }
+      .acc-table td.journal__credit { padding-inline-start: 2.5rem; }
+      .journal__note td { color: var(--clr-text-soft); font-size: 0.88rem; }
+      .t-accounts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+
+      .t-account {
+        overflow: hidden;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+      }
+
+      .t-account__title {
+        padding: 0.5rem;
+        text-align: center;
+        color: var(--clr-primary);
+        font-weight: 700;
+        border-bottom: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__sides { display: grid; grid-template-columns: 1fr 1fr; }
+
+      .t-account__side + .t-account__side {
+        border-inline-start: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__side-label {
+        padding: 0.3rem;
+        text-align: center;
+        color: var(--clr-text-soft);
+        font-size: 0.85rem;
+        font-weight: 700;
+        border-bottom: 1px solid var(--clr-border);
+      }
+
+      .t-account__lines {
+        min-height: 3rem;
+        margin: 0;
+        padding: 0.4rem 0.7rem;
+        list-style: none;
+      }
+
+      .t-account__lines li {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .t-account__balance {
+        padding: 0.45rem 0.7rem;
+        text-align: center;
+        font-weight: 700;
+        background: rgba(119, 150, 191, 0.08);
+        border-top: 1px solid var(--clr-border);
+      }
+      .site-footer {
+        background: var(--clr-light-2);
+        color: var(--clr-light);
+        padding: 1rem 0 0.5rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+      @media (max-width: 768px) {
+        :root { --section-pad: 3rem; }
+        .hero { padding: 3.5rem 0; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; }
+      }
+    </style>
+  </head>
+
+<body>
+  <div class="editor-toolbar">
+    <div class="container d-flex align-items-center gap-3">
+      <span class="editor-toolbar__tab-title" data-sync-title></span>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="container">
+      <h1 class="hero__title">ضريبة القيمة المضافة (VAT)</h1>
+      <p class="hero__lead">يشرح هذا الفصل كيف تحصّل المنشأة ضريبة القيمة المضافة من عملائها وتورّد صافيها إلى مصلحة الضرائب المصرية: كيف تُحسب وتُقيَّد محاسبيًا، وكيف يُعدّ إقرارها الشهري ويُسدَّد، ولماذا صارت الفاتورة الإلكترونية شرطًا لإثبات العمليات وخصم الضريبة. ويهم ذلك الآن لأن خطأً واحدًا في الفاتورة أو الإقرار يعني ضريبة غير قابلة للخصم وغرامات تأخير.</p>
+    </div>
+  </header>
+
+  <section class="content-section" id="explanation">
+    <div class="container">
+      <div class="content-section__eyebrow">شرح وتطبيق</div>
+      <h2 class="content-section__title">شرح وتطبيق كل مرحلة</h2>
+      <div class="article-content" style="max-width: 900px">
+
+<div class="topic-block" id="calculation-mechanism">
+  <h3 class="topic-block__title">آلية الحساب</h3>
+  <p>ضريبة القيمة المضافة (Value Added Tax - VAT) ضريبة غير مباشرة (Indirect Tax) تُفرض على السلع والخدمات في كل حلقة من حلقات التداول، لكن عبأها الفعلي يقع على المستهلك النهائي. فالمنشأة المسجلة تحصّل الضريبة من عملائها، وتخصم منها ما سبق أن دفعته لمورديها، ثم تورّد الفرق وحده إلى مصلحة الضرائب المصرية (Egyptian Tax Authority - ETA). ولذلك سُمّيت «مضافة»: فكل منشأة تسدّد الضريبة عن القيمة التي أضافتها هي فقط.</p>
+  <p>تقوم الآلية على نوعين من الضريبة. الأول ضريبة المخرجات (Output Tax)، وهي الضريبة التي تُضاف إلى فواتير المبيعات. والثاني ضريبة المدخلات (Input Tax)، وهي الضريبة الواردة في فواتير المشتريات والمصروفات الخاضعة. وتُحسب الضريبة بالمعدل العام 14% على الوعاء الضريبي (Tax Base)، أي ثمن السلعة أو الخدمة قبل الضريبة. وتوجد معاملة خاصة لبعض العمليات: فالصادرات تخضع لمعدل صفر (Zero-rated)، أي لا تُحمَّل الضريبة على العميل مع بقاء حق خصم ضريبة مدخلاتها، أما العمليات المعفاة (Exempt) كالخدمات الصحية والتعليمية فلا ضريبة عليها ولا يُخصم ما يتعلق بها من مدخلات. وتُطبَّق نسبة مخفضة هي 5% على بعض الآلات والمعدات.</p>
+  <div class="formula-box"><span class="formula-box__label">حساب الضريبة على العملية</span><p class="formula-box__body">الضريبة = الوعاء الضريبي (قبل الضريبة) × 14%</p></div>
+  <div class="formula-box"><span class="formula-box__label">صافي الضريبة عن الفترة</span><p class="formula-box__body">صافي الضريبة = ضريبة المخرجات − ضريبة المدخلات</p></div>
+  <div class="flow-diagram"><div class="flow-step"><div class="flow-step__title">مبيعات الشهر</div><div class="flow-step__description">تُحسب ضريبة المخرجات على كل فاتورة بيع خاضعة وتُسجَّل في حساب مستقل.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">مشتريات ومصروفات الشهر</div><div class="flow-step__description">تُسجَّل ضريبة المدخلات المؤيدة بفواتير صحيحة في حساب مستقل.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">المقارنة في نهاية الشهر</div><div class="flow-step__description">تُقارن ضريبة المخرجات بضريبة المدخلات وتُقفل الحسابات.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">النتيجة</div><div class="flow-step__description">المخرجات أكبر: صافي ضريبة مستحق السداد. المدخلات أكبر: رصيد دائن لدى المصلحة.</div></div></div>
+  <div class="callout callout--note"><span class="callout__label">ملاحظة</span><p>تلتزم المنشأة بالتسجيل في ضريبة القيمة المضافة متى بلغت مبيعاتها الخاضعة <span class="num">500,000</span> ج.م خلال اثني عشر شهرًا، وفق القانون رقم 67 لسنة 2016 وتعديلاته. وتصدر مصلحة الضرائب قرارات تنظيمية قد تغيّر نطاق الإلزام، فيُرجَع إلى أحدث ما تعلنه قبل التطبيق.</p></div>
+  <div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">احتساب ضريبة مارس 2026 وقيدها</span></div><div class="example-block__body">
+<span class="example-block__label">المعطيات</span><ul class="example-block__data"><li>3 مارس 2026: شراء بضاعة بالأجل بمبلغ <span class="num">200,000</span> ج.م قبل الضريبة.</li><li>10 مارس 2026: بيع بضاعة بالأجل بمبلغ <span class="num">500,000</span> ج.م قبل الضريبة.</li><li>15 مارس 2026: شراء مستلزمات مكتبية بتحويل بنكي بمبلغ <span class="num">10,000</span> ج.م قبل الضريبة.</li><li>20 مارس 2026: بيع تصديري بالأجل بمبلغ <span class="num">100,000</span> ج.م (معدل صفر).</li><li>المعدل العام 14%، والمنشأة مسجلة وتحتفظ بفواتير صحيحة لكل عملية، ويُستخدم نظام الجرد الدوري ولا يتناول المثال تكلفة البضاعة المباعة.</li></ul>
+<span class="example-block__label">قيود اليومية</span>
+<div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين</th><th>دائن</th></tr></thead>
+<tbody class="journal__entry">
+<tr><td rowspan="4">3 مارس 2026</td><td>من ح/ المشتريات</td><td class="num">200,000</td><td></td></tr>
+<tr><td>من ح/ ضريبة القيمة المضافة (مدخلات)</td><td class="num">28,000</td><td></td></tr>
+<tr><td class="journal__credit">إلى ح/ الموردين</td><td></td><td class="num">228,000</td></tr>
+<tr class="journal__note"><td>شراء بضاعة بالأجل مع إثبات ضريبة المدخلات بحساب مستقل</td><td></td><td></td></tr></tbody>
+<tbody class="journal__entry">
+<tr><td rowspan="4">10 مارس 2026</td><td>من ح/ العملاء</td><td class="num">570,000</td><td></td></tr>
+<tr><td class="journal__credit">إلى ح/ المبيعات</td><td></td><td class="num">500,000</td></tr>
+<tr><td class="journal__credit">إلى ح/ ضريبة القيمة المضافة (مخرجات)</td><td></td><td class="num">70,000</td></tr>
+<tr class="journal__note"><td>بيع بضاعة بالأجل مع إثبات ضريبة المخرجات المحصَّلة لحساب المصلحة</td><td></td><td></td></tr></tbody>
+<tbody class="journal__entry">
+<tr><td rowspan="4">15 مارس 2026</td><td>من ح/ مصروفات المستلزمات المكتبية</td><td class="num">10,000</td><td></td></tr>
+<tr><td>من ح/ ضريبة القيمة المضافة (مدخلات)</td><td class="num">1,400</td><td></td></tr>
+<tr><td class="journal__credit">إلى ح/ البنك</td><td></td><td class="num">11,400</td></tr>
+<tr class="journal__note"><td>شراء مستلزمات مكتبية بتحويل بنكي مع إثبات ضريبة المدخلات</td><td></td><td></td></tr></tbody>
+<tbody class="journal__entry">
+<tr><td rowspan="3">20 مارس 2026</td><td>من ح/ العملاء</td><td class="num">100,000</td><td></td></tr>
+<tr><td class="journal__credit">إلى ح/ المبيعات (صادرات)</td><td></td><td class="num">100,000</td></tr>
+<tr class="journal__note"><td>بيع تصديري بمعدل صفر؛ لا ضريبة مخرجات عليه</td><td></td><td></td></tr></tbody>
+<tbody class="journal__entry">
+<tr><td rowspan="4">31 مارس 2026</td><td>من ح/ ضريبة القيمة المضافة (مخرجات)</td><td class="num">70,000</td><td></td></tr>
+<tr><td class="journal__credit">إلى ح/ ضريبة القيمة المضافة (مدخلات)</td><td></td><td class="num">29,400</td></tr>
+<tr><td class="journal__credit">إلى ح/ مصلحة الضرائب – ضريبة القيمة المضافة المستحقة</td><td></td><td class="num">40,600</td></tr>
+<tr class="journal__note"><td>إقفال ضريبتي المخرجات والمدخلات وإثبات صافي الضريبة المستحقة عن مارس</td><td></td><td></td></tr></tbody>
+</table></div>
+<span class="example-block__label">الترحيل إلى حسابات الأستاذ</span>
+<div class="t-accounts"><div class="t-account"><div class="t-account__title">ح/ ضريبة القيمة المضافة (مدخلات)</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>3 مارس</span><span class="num">28,000</span></li><li><span>15 مارس</span><span class="num">1,400</span></li></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"><li><span>إقفال 31 مارس</span><span class="num">29,400</span></li></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">0</span> (الحساب مقفل)</div></div><div class="t-account"><div class="t-account__title">ح/ ضريبة القيمة المضافة (مخرجات)</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>إقفال 31 مارس</span><span class="num">70,000</span></li></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"><li><span>10 مارس</span><span class="num">70,000</span></li></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">0</span> (الحساب مقفل)</div></div><div class="t-account"><div class="t-account__title">ح/ مصلحة الضرائب – ضريبة القيمة المضافة المستحقة</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"><li><span>صافي مارس</span><span class="num">40,600</span></li></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">40,600</span> دائن</div></div></div>
+<span class="example-block__label">مذكرة احتساب صافي الضريبة</span>
+<div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البيان</th><th>الوعاء الضريبي</th><th>الضريبة</th></tr></thead><tbody>
+<tr><td>مبيعات خاضعة بمعدل 14%</td><td class="num">500,000</td><td class="num">70,000</td></tr>
+<tr><td>مبيعات بمعدل صفر (صادرات)</td><td class="num">100,000</td><td class="num">0</td></tr>
+<tr><td>ناقصًا: مشتريات ومصروفات خاضعة (200,000 + 10,000)</td><td class="num">210,000</td><td class="num">29,400</td></tr>
+<tr class="acc-table__total"><td>صافي الضريبة المستحقة (70,000 − 29,400)</td><td class="num"></td><td class="num">40,600</td></tr>
+</tbody></table></div>
+</div></div>
+  <p>حُسبت كل ضريبة بضرب الوعاء في 14%: ضريبة مشتريات البضاعة <span class="num">28,000</span> ج.م، وضريبة المبيعات <span class="num">70,000</span> ج.م، وضريبة المستلزمات المكتبية <span class="num">1,400</span> ج.م. أما التصدير فسُجّل بمبلغه كاملًا دون ضريبة لأنه بمعدل صفر. وفي نهاية الشهر بلغت ضريبة المدخلات <span class="num">29,400</span> ج.م (<span class="num">28,000</span> + <span class="num">1,400</span>) فخُصمت من ضريبة المخرجات <span class="num">70,000</span> ج.م، فنتج صافٍ مستحق قدره <span class="num">40,600</span> ج.م. وكان قيد الإقفال بمدين واحد هو ضريبة المخرجات ودائنين هما ضريبة المدخلات وحساب المصلحة، لأن الحسابين الأولين يُقفلان في الثالث الذي يمثل الالتزام الفعلي.</p>
+  <div class="callout callout--warning"><span class="callout__label">انتبه</span><p>ضريبة المخرجات ليست إيرادًا للمنشأة، وضريبة المدخلات القابلة للخصم ليست جزءًا من تكلفة المشتريات. لذلك لا يُدرَج مبلغ الضريبة في ح/ المبيعات أو ح/ المشتريات؛ فإدراجه يضخّم المبيعات ويُسقط حق الخصم المحاسبي والضريبي.</p></div>
+</div>
+
+<hr class="topic-divider" />
+
+<div class="topic-block" id="monthly-return">
+  <h3 class="topic-block__title">الإقرار الشهري</h3>
+  <p>الإقرار الشهري (Monthly VAT Return) هو النموذج الذي تُبلغ به المنشأة المسجلة مصلحة الضرائب بنتيجة حساب الضريبة عن فترة ضريبية (Tax Period) مدتها شهر ميلادي كامل. ويُقدَّم إلكترونيًا عبر بوابة المصلحة، ويتضمن المبيعات الخاضعة وذات المعدل الصفري والمعفاة وضريبة المخرجات عنها، ثم المشتريات والمصروفات وضريبة المدخلات القابلة للخصم، وأخيرًا صافي الضريبة. ويكون الموعد الأقصى للتقديم والسداد نهاية الشهر التالي لانتهاء الفترة؛ فإقرار شهر مارس يُقدَّم ويُسدَّد حتى نهاية أبريل.</p>
+  <div class="flow-diagram"><div class="flow-step"><div class="flow-step__title">تجميع المستندات</div><div class="flow-step__description">حصر فواتير البيع والشراء والإشعارات المقبولة في المنظومة الإلكترونية عن الشهر.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">المطابقة مع الدفاتر</div><div class="flow-step__description">مطابقة أرصدة حسابي ضريبة المخرجات والمدخلات مع بيانات الفواتير.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">إعداد الإقرار وتقديمه</div><div class="flow-step__description">إدخال الأوعية والضرائب في النموذج الإلكتروني وتقديمه في موعده.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">السداد أو الترحيل</div><div class="flow-step__description">سداد الصافي المستحق، أو ترحيل الرصيد الدائن إلى الشهر التالي.</div></div></div>
+  <div class="callout callout--note"><span class="callout__label">ملاحظة</span><p>إذا زادت ضريبة المدخلات على ضريبة المخرجات نشأ رصيد مرحَّل (Carried-forward Credit)، أي حق للمنشأة لدى المصلحة يُخصم من ضريبة الشهر التالي. ولطلب استرداده نقدًا شروط ومدد يحددها القانون ولائحته التنفيذية.</p></div>
+  <div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">إقرار مارس 2026 وسداد ضريبته</span></div><div class="example-block__body">
+<span class="example-block__label">المعطيات</span><ul class="example-block__data"><li>تُستخدم عمليات مارس 2026 الواردة في مثال آلية الحساب: مبيعات خاضعة <span class="num">500,000</span> ج.م، وصادرات <span class="num">100,000</span> ج.م، ومشتريات ومصروفات خاضعة <span class="num">210,000</span> ج.م.</li><li>ضريبة المخرجات <span class="num">70,000</span> ج.م وضريبة المدخلات <span class="num">29,400</span> ج.م.</li><li>قُدِّم الإقرار وسُدِّد صافي الضريبة بتحويل بنكي يوم 28 أبريل 2026، أي قبل نهاية المهلة.</li></ul>
+<span class="example-block__label">بيانات الإقرار</span>
+<div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البيان</th><th>الوعاء الضريبي</th><th>الضريبة</th></tr></thead><tbody>
+<tr><td>مبيعات خاضعة بمعدل 14%</td><td class="num">500,000</td><td class="num">70,000</td></tr>
+<tr><td>مبيعات بمعدل صفر (صادرات)</td><td class="num">100,000</td><td class="num">0</td></tr>
+<tr><td>إجمالي المبيعات وضريبة المخرجات</td><td class="num">600,000</td><td class="num">70,000</td></tr>
+<tr><td>المشتريات والمصروفات الخاضعة وضريبة المدخلات</td><td class="num">210,000</td><td class="num">29,400</td></tr>
+<tr class="acc-table__total"><td>صافي الضريبة المستحقة عن مارس 2026</td><td class="num"></td><td class="num">40,600</td></tr>
+</tbody></table></div>
+<span class="example-block__label">قيد اليومية</span>
+<div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين</th><th>دائن</th></tr></thead>
+<tbody class="journal__entry">
+<tr><td rowspan="3">28 أبريل 2026</td><td>من ح/ مصلحة الضرائب – ضريبة القيمة المضافة المستحقة</td><td class="num">40,600</td><td></td></tr>
+<tr><td class="journal__credit">إلى ح/ البنك</td><td></td><td class="num">40,600</td></tr>
+<tr class="journal__note"><td>سداد صافي ضريبة مارس عند تقديم الإقرار</td><td></td><td></td></tr></tbody>
+</table></div>
+<span class="example-block__label">الترحيل إلى حساب الأستاذ</span>
+<div class="t-accounts"><div class="t-account"><div class="t-account__title">ح/ مصلحة الضرائب – ضريبة القيمة المضافة المستحقة</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>سداد 28 أبريل</span><span class="num">40,600</span></li></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"><li><span>صافي مارس (31 مارس)</span><span class="num">40,600</span></li></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">0</span> (الحساب مقفل)</div></div></div>
+</div></div>
+  <p>جاء إجمالي المبيعات <span class="num">600,000</span> ج.م (<span class="num">500,000</span> + <span class="num">100,000</span>)، ولا تتعلق به ضريبة إلا على الجزء الخاضع. وأُدرجت الصادرات في الإقرار بمعدل صفر حتى تظهر للمصلحة ويبقى حق خصم مدخلاتها قائمًا. وطابق صافي الإقرار <span class="num">40,600</span> ج.م رصيد حساب المصلحة في الدفاتر، فأُقفل الحساب بقيد السداد دون فروق.</p>
+  <div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">إقرار أبريل 2026 وترحيل الرصيد الدائن</span></div><div class="example-block__body">
+<span class="example-block__label">المعطيات</span><ul class="example-block__data"><li>مبيعات خاضعة <span class="num">150,000</span> ج.م قبل الضريبة، ومشتريات خاضعة <span class="num">300,000</span> ج.م قبل الضريبة، وكلها بالأجل بمعدل 14%.</li><li>ضريبة المخرجات <span class="num">21,000</span> ج.م وضريبة المدخلات <span class="num">42,000</span> ج.م، وقد أُثبتت العمليتان في الدفاتر قبل الإقفال.</li><li>لا توجد مبالغ مستحقة من فترات سابقة سوى ضريبة مارس التي سُدِّدت.</li></ul>
+<span class="example-block__label">قيد اليومية</span>
+<div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين</th><th>دائن</th></tr></thead>
+<tbody class="journal__entry">
+<tr><td rowspan="4">30 أبريل 2026</td><td>من ح/ ضريبة القيمة المضافة (مخرجات)</td><td class="num">21,000</td><td></td></tr>
+<tr><td>من ح/ رصيد ضريبة القيمة المضافة المرحَّل (مدين)</td><td class="num">21,000</td><td></td></tr>
+<tr><td class="journal__credit">إلى ح/ ضريبة القيمة المضافة (مدخلات)</td><td></td><td class="num">42,000</td></tr>
+<tr class="journal__note"><td>إقفال ضريبتي المخرجات والمدخلات وترحيل الزيادة إلى الفترة التالية</td><td></td><td></td></tr></tbody>
+</table></div>
+<span class="example-block__label">بيانات الإقرار</span>
+<div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البيان</th><th>الوعاء الضريبي</th><th>الضريبة</th></tr></thead><tbody>
+<tr><td>مبيعات خاضعة بمعدل 14%</td><td class="num">150,000</td><td class="num">21,000</td></tr>
+<tr><td>المشتريات الخاضعة وضريبة المدخلات</td><td class="num">300,000</td><td class="num">42,000</td></tr>
+<tr><td>صافي الضريبة (21,000 − 42,000)</td><td class="num"></td><td class="num">(21,000)</td></tr>
+<tr class="acc-table__total"><td>رصيد دائن مرحَّل إلى إقرار مايو 2026</td><td class="num"></td><td class="num">21,000</td></tr>
+</tbody></table></div>
+</div></div>
+  <p>لأن ضريبة المدخلات <span class="num">42,000</span> ج.م زادت على ضريبة المخرجات <span class="num">21,000</span> ج.م بمقدار <span class="num">21,000</span> ج.م، لا يوجد مبلغ يُسدَّد في أبريل. وتُثبَّت الزيادة في حساب مدين يمثل أصلًا (حقًا لدى المصلحة) يُخصم من ضريبة مايو. ولو بلغت ضريبة مخرجات مايو <span class="num">30,000</span> ج.م وضريبة مدخلاته <span class="num">10,000</span> ج.م لكان صافي الإقرار <span class="num">-1,000</span> ج.م (<span class="num">30,000</span> − <span class="num">10,000</span> − <span class="num">21,000</span>).</p>
+  <div class="callout callout--warning"><span class="callout__label">انتبه</span><p>يجب أن تتطابق أرقام الإقرار مع أرصدة الدفاتر ومع الفواتير المقبولة في المنظومة الإلكترونية. والفرق بينهما مؤشر على خطأ في الإثبات أو فاتورة غير مسجلة. ويُقدَّم الإقرار في موعده حتى لو كانت الفترة بلا نشاط أو انتهت برصيد دائن، لأن التأخر في التقديم أو السداد تترتب عليه غرامات وفوائد تأخير.</p></div>
+</div>
+
+<hr class="topic-divider" />
+
+<div class="topic-block" id="e-invoice">
+  <h3 class="topic-block__title">الفاتورة الإلكترونية</h3>
+  <p>الفاتورة الإلكترونية (Electronic Invoice) مستند ضريبي رقمي منظَّم البيانات، تُصدره المنشأة من نظامها المحاسبي أو من بوابة المصلحة، وتُرسله فور إصداره إلى منظومة مصلحة الضرائب للتحقق منه. وهي بديل عن الفاتورة الورقية في إثبات المبيعات. أما البيع للمستهلك النهائي فيُثبَّت عادةً بإيصال إلكتروني (Electronic Receipt) يؤدي الوظيفة نفسها لعمليات التجزئة. وتضم الفاتورة بيانات البائع والمشتري ورقم التسجيل الضريبي، وبنود الصنف والكمية والسعر، ومعدل الضريبة ومبلغها، والإجمالي، مع توقيع إلكتروني (Digital Signature) يثبت هوية المُصدِر.</p>
+  <div class="flow-diagram"><div class="flow-step"><div class="flow-step__title">إصدار الفاتورة</div><div class="flow-step__description">تُعدّ المنشأة الفاتورة ببياناتها الكاملة وتوقّعها إلكترونيًا.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">الإرسال إلى المنظومة</div><div class="flow-step__description">تُرسَل الفاتورة إلى منظومة المصلحة فور إصدارها.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">التحقق</div><div class="flow-step__description">تفحص المنظومة اكتمال البيانات وصحة الحسابات، ثم تقبل الفاتورة أو ترفضها.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">التعريف والتسليم</div><div class="flow-step__description">تُمنح الفاتورة المقبولة رقم تعريف فريدًا ورمز استجابة سريعة (QR Code)، وتصل إلى المشتري.</div></div></div>
+  <p>تتجاوز أهمية الفاتورة الإلكترونية الجانب الشكلي إلى الأثر المحاسبي المباشر. فالفاتورة المقبولة في المنظومة هي المستند الذي يُثبت ضريبة المخرجات عند البائع، وهي المستند الذي يستند إليه المشتري في خصم ضريبة المدخلات. وإذا نشأ ما يوجب تخفيض قيمة الفاتورة المقبولة، كالمردودات أو الخصم، فلا تُعدَّل الفاتورة نفسها، بل يُصدر البائع إشعارًا دائنًا (Credit Note) إلكترونيًا يخفّض الذمة والضريبة معًا. ويتيح النظام إلغاء الفاتورة أو رفضها من المشتري خلال المهلة التي تحددها المصلحة؛ وبعد انقضائها يكون الإشعار هو الطريق الوحيد للتصحيح.</p>
+  <div class="callout callout--note"><span class="callout__label">ملاحظة</span><p>نطاق الإلزام بالفاتورة الإلكترونية والإيصال الإلكتروني يتوسع على مراحل بقرارات من مصلحة الضرائب، فيُراجَع أحدث القرارات لمعرفة موقف المنشأة منها.</p></div>
+  <div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">فاتورة مبيعات مايو 2026 والإشعار الدائن عنها</span></div><div class="example-block__body">
+<span class="example-block__label">المعطيات</span><ul class="example-block__data"><li>5 مايو 2026: أصدرت المنشأة فاتورة إلكترونية لعميل ببضاعة قيمتها <span class="num">80,000</span> ج.م قبل الضريبة، وقُبلت في المنظومة، والبيع بالأجل بمعدل 14%.</li><li>12 مايو 2026: ردّ العميل جزءًا من البضاعة قيمته <span class="num">10,000</span> ج.م قبل الضريبة، فأصدرت المنشأة إشعارًا دائنًا إلكترونيًا قُبل في المنظومة.</li><li>المثال مستقل عن أمثلة الإقرارات السابقة.</li></ul>
+<span class="example-block__label">بنود الفاتورة الإلكترونية</span>
+<div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البيان</th><th>جزئي</th><th>كلي</th></tr></thead><tbody>
+<tr><td>صافي قيمة البضاعة (قبل الضريبة)</td><td class="num">80,000</td><td class="num"></td></tr>
+<tr><td>ضريبة القيمة المضافة 14%</td><td class="num">11,200</td><td class="num"></td></tr>
+<tr class="acc-table__total"><td>إجمالي الفاتورة المستحق على العميل</td><td class="num"></td><td class="num">91,200</td></tr>
+</tbody></table></div>
+<span class="example-block__label">قيود اليومية</span>
+<div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين</th><th>دائن</th></tr></thead>
+<tbody class="journal__entry">
+<tr><td rowspan="4">5 مايو 2026</td><td>من ح/ العملاء</td><td class="num">91,200</td><td></td></tr>
+<tr><td class="journal__credit">إلى ح/ المبيعات</td><td></td><td class="num">80,000</td></tr>
+<tr><td class="journal__credit">إلى ح/ ضريبة القيمة المضافة (مخرجات)</td><td></td><td class="num">11,200</td></tr>
+<tr class="journal__note"><td>بيع بضاعة بالأجل بموجب فاتورة إلكترونية مقبولة</td><td></td><td></td></tr></tbody>
+<tbody class="journal__entry">
+<tr><td rowspan="4">12 مايو 2026</td><td>من ح/ مردودات المبيعات</td><td class="num">10,000</td><td></td></tr>
+<tr><td>من ح/ ضريبة القيمة المضافة (مخرجات)</td><td class="num">1,400</td><td></td></tr>
+<tr><td class="journal__credit">إلى ح/ العملاء</td><td></td><td class="num">11,400</td></tr>
+<tr class="journal__note"><td>مردود جزء من البضاعة بموجب إشعار دائن إلكتروني مقبول</td><td></td><td></td></tr></tbody>
+</table></div>
+<span class="example-block__label">أثر الإشعار الدائن في ضريبة المخرجات</span>
+<div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البيان</th><th>جزئي</th><th>كلي</th></tr></thead><tbody>
+<tr><td>ضريبة المخرجات بموجب الفاتورة</td><td class="num">11,200</td><td class="num"></td></tr>
+<tr><td>ناقصًا: ضريبة الإشعار الدائن</td><td class="num">(1,400)</td><td class="num"></td></tr>
+<tr class="acc-table__total"><td>صافي ضريبة المخرجات عن العملية</td><td class="num"></td><td class="num">9,800</td></tr>
+</tbody></table></div>
+</div></div>
+  <p>سُجّل البيع بإجمالي الفاتورة <span class="num">91,200</span> ج.م في ح/ العملاء، مقسَّمًا بين مبيعات <span class="num">80,000</span> ج.م وضريبة مخرجات <span class="num">11,200</span> ج.م. وعند المردود لم يُمسّ قيد الفاتورة، بل أُثبت قيد جديد بمقدار الإشعار الدائن: تخفيض ح/ العملاء بمبلغ <span class="num">11,400</span> ج.م، وتحميل ح/ مردودات المبيعات بالقيمة قبل الضريبة <span class="num">10,000</span> ج.م، وتحميل ح/ ضريبة المخرجات بضريبة المردود <span class="num">1,400</span> ج.م. وبذلك صار صافي ضريبة المخرجات عن هذه العملية <span class="num">9,800</span> ج.م، وهو ما يظهر في إقرار مايو.</p>
+  <div class="callout callout--warning"><span class="callout__label">انتبه</span><p>لا تُخصم ضريبة المدخلات إلا بمستند إلكتروني صحيح ومقبول في المنظومة. فالفاتورة الورقية أو الفاتورة المرفوضة أو غير المسجلة تُفقد المشتري حق الخصم، لذلك يجب التحقق من حالة قبول فاتورة المورد قبل إدراج ضريبتها في الإقرار.</p></div>
+</div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section" id="summary">
+    <div class="container">
+      <div class="content-section__eyebrow">الخلاصة</div>
+      <h2 class="content-section__title">أهم ما يجب تذكّره</h2>
+      <div class="summary-card" style="max-width: 900px">
+        <ul class="summary-card__list">
+          <li>✔ الضريبة = الوعاء الضريبي × 14%، وصافيها = ضريبة المخرجات − ضريبة المدخلات.</li>
+          <li>✔ تُثبَّت ضريبتا المخرجات والمدخلات في حسابين مستقلين، ولا تدخلان في المبيعات أو تكلفة المشتريات.</li>
+          <li>✔ الصادرات بمعدل صفر مع بقاء حق خصم مدخلاتها، أما العمليات المعفاة فلا يُخصم ما يتعلق بها.</li>
+          <li>✔ تُقدَّم الإقرارات شهريًا ويُسدَّد الصافي حتى نهاية الشهر التالي، والزيادة في المدخلات تُرحَّل إلى الفترة التالية.</li>
+          <li>✔ لا يُعتدّ بفاتورة غير مقبولة في المنظومة الإلكترونية، والتصحيح بعد القبول يتم بإشعار دائن لا بتعديل الفاتورة.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>ضريبة القيمة المضافة (VAT)</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const heroTitle = document.querySelector('.hero__title')
+    const toolbarTitle = document.querySelector('[data-sync-title]')
+    if (heroTitle && toolbarTitle) {
+      const text = heroTitle.textContent.trim()
+      if (text) {
+        toolbarTitle.textContent = text
+        document.title = text
+      }
+    }
+  </script>
+</body>
+</html>

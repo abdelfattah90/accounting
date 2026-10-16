@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الفصل الخامس عشر: الأصول الثابتة</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+
+
+    <style>
+      :root {
+        /* ========= Colors ========= */
+        --clr-primary: #b378a6;
+        --clr-secondary: #7796bf;
+        --clr-light: #ffffff;
+        --clr-light-2: #f0f0f0;
+        --clr-border: #dedede;
+        --clr-dark: #1b1b1b;
+        --clr-dark-2: #444444;
+        --clr-text: #333333;
+        --clr-text-soft: #555555;
+
+        /* ========= Font ========= */
+        --font-body: 'Baloo Bhaijaan 2', sans-serif;
+
+        /* ========= Radius ========= */
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 18px;
+
+        /* ========= Shadow ========= */
+        --shadow-soft: 0 4px 20px rgba(27, 27, 27, 0.07);
+        --shadow-hover: 0 12px 28px rgba(179, 120, 166, 0.16);
+
+        /* ========= Layout ========= */
+        --section-pad: 4.5rem;
+        --content-width: 900px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--clr-light);
+        color: var(--clr-dark);
+        line-height: 1.9;
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: var(--clr-secondary);
+        text-decoration: none;
+        transition: 0.2s;
+      }
+
+      a:hover {
+        color: var(--clr-primary);
+      }
+
+      h1, h2, h3, h4, h5 {
+        font-family: var(--font-body);
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+        color: var(--clr-dark);
+      }
+
+      h1, h2 { font-weight: 800; }
+      h3, h4, h5 { font-weight: 700; }
+
+      p {
+        color: var(--clr-text);
+        margin-bottom: 1rem;
+      }
+
+      ul { margin: 0; padding: 0; }
+
+      section { scroll-margin-top: 90px; }
+
+      ::selection {
+        background: var(--clr-primary);
+        color: #fff;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--clr-secondary);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      /* ==========================================================
+         Editor Toolbar
+      ========================================================== */
+      .editor-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--clr-primary);
+        padding: 0.7rem 0;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .editor-toolbar__tab-title {
+        color: #fff;
+        font-size: 1.1rem;
+        direction: ltr;
+        font-weight: 700;
+      }
+
+      /* ==========================================================
+         Hero
+         (مبسّط عمدًا: عنوان + سطر تعريف واحد فقط، بديل عن قسم "مقدمة"
+         منفصل. لا وسوم Language/Level/Category — لا تضيفها.)
+      ========================================================== */
+      .hero {
+        background: var(--clr-secondary);
+        color: #fff;
+        padding: 4.5rem 0 3.5rem;
+      }
+
+      .hero__title {
+        color: #fff;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      .hero__lead {
+        color: #fff;
+        opacity: 0.95;
+        max-width: 760px;
+        font-size: 1.15rem;
+        margin-bottom: 0;
+      }
+
+      /* ==========================================================
+         Sections
+      ========================================================== */
+      .content-section { padding: var(--section-pad) 0; }
+      .content-section--alt { background: #fcfcfc; }
+      .content-section--tint { background: var(--clr-light-2); }
+
+      .content-section__eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+        font-size: 0.86rem;
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+      }
+
+      .content-section__eyebrow::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        background: var(--clr-primary);
+      }
+
+      .content-section__title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+
+      .content-section__description {
+        max-width: 760px;
+        color: var(--clr-text-soft);
+        margin-bottom: 2.5rem;
+      }
+
+      /* ==========================================================
+         Summary Card (تُستخدم في: الخلاصة)
+      ========================================================== */
+      .summary-card {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+        padding: 2rem;
+      }
+
+      .summary-card__list {
+        display: grid;
+        gap: 1rem;
+        list-style: none;
+      }
+
+      .summary-card__list li {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+      }
+
+      /* ==========================================================
+         Callout
+         (المكان الوحيد للتنبيهات — بما فيها الأخطاء الشائعة الخاصة
+         بموضوع معيّن؛ تُستخدم callout--warning لهذا الغرض بدل قسم
+         "أخطاء شائعة" منفصل)
+      ========================================================== */
+      .callout {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        border-radius: var(--radius-md);
+        border-inline-start: 4px solid;
+      }
+
+      .callout__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 700;
+      }
+
+      .callout--note {
+        background: rgba(119, 150, 191, 0.08);
+        border-color: var(--clr-secondary);
+      }
+
+      .callout--warning {
+        background: rgba(179, 120, 166, 0.08);
+        border-color: var(--clr-primary);
+      }
+
+      /* ==========================================================
+         Flow Diagram
+      ========================================================== */
+      .flow-diagram {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin: 2rem 0;
+      }
+
+      .flow-step {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        padding: 1rem 1.25rem;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .flow-step__title {
+        color: var(--clr-primary);
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+      }
+
+      .flow-step__description { color: var(--clr-text-soft); margin: 0; }
+
+      .flow-arrow {
+        text-align: center;
+        color: var(--clr-secondary);
+        font-size: 28px;
+        line-height: 1;
+      }
+
+      /* ==========================================================
+         Topic Block
+         كل موضوع من موضوعات المرحلة = كتلة واحدة متكاملة (نظري + عملي
+         مدمجين معًا)، مش قسمين منفصلين.
+      ========================================================== */
+      .topic-block { margin-bottom: 3rem; }
+      .topic-block:last-child { margin-bottom: 0; }
+
+      .topic-block__title {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+      }
+
+      .topic-divider {
+        border: none;
+        border-top: 1px dashed var(--clr-border);
+        margin: 2.5rem 0;
+      }
+
+      /* ==========================================================
+         Numbers (كل مبلغ يُكتب داخل عنصر بهذا الصنف)
+      ========================================================== */
+      .num {
+        direction: ltr;
+        unicode-bidi: isolate;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* ==========================================================
+         Formula Box (اختياري: معادلة أو قاعدة محاسبية)
+      ========================================================== */
+      .formula-box {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        text-align: center;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .formula-box__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--clr-primary);
+        font-weight: 700;
+      }
+
+      .formula-box__body {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--clr-dark);
+      }
+
+      /* ==========================================================
+         Example Block (المثال التطبيقي: بديل الـ code-block)
+      ========================================================== */
+      .example-block {
+        overflow: hidden;
+        margin: 2rem 0;
+        background: var(--clr-light);
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .example-block__header {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.7rem 1.2rem;
+        background: var(--clr-dark);
+      }
+
+      .example-block__tag {
+        padding: 0 0.7rem;
+        background: var(--clr-primary);
+        color: #fff;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .example-block__title { color: #fff; font-weight: 600; }
+
+      .example-block__body { padding: 1.5rem; }
+
+      .example-block__label {
+        display: block;
+        margin: 1.6rem 0 0.6rem;
+        color: var(--clr-secondary);
+        font-weight: 700;
+      }
+
+      .example-block__label:first-child { margin-top: 0; }
+
+      .example-block__data {
+        margin: 0;
+        padding-inline-start: 1.2rem;
+        color: var(--clr-text);
+      }
+
+      /* ==========================================================
+         Accounting Tables (قيود اليومية، القوائم، المذكرات، الموازين)
+      ========================================================== */
+      .acc-table-wrap { overflow-x: auto; }
+
+      .acc-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+
+      .acc-table th,
+      .acc-table td {
+        padding: 0.5rem 0.8rem;
+        border: 1px solid var(--clr-border);
+      }
+
+      .acc-table thead th {
+        background: var(--clr-light-2);
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .acc-table td.num { text-align: end; }
+
+      .acc-table__total td {
+        background: #fcfcfc;
+        font-weight: 700;
+        border-top: 2px solid var(--clr-dark-2);
+        border-bottom: 4px double var(--clr-dark-2);
+      }
+
+      .journal__entry { border-bottom: 2px solid var(--clr-dark-2); }
+      .acc-table td.journal__credit { padding-inline-start: 2.5rem; }
+      .journal__note td { color: var(--clr-text-soft); font-size: 0.88rem; }
+
+      /* ==========================================================
+         T-Accounts (حسابات الأستاذ): المدين يمين والدائن يسار
+      ========================================================== */
+      .t-accounts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+
+      .t-account {
+        overflow: hidden;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+      }
+
+      .t-account__title {
+        padding: 0.5rem;
+        text-align: center;
+        color: var(--clr-primary);
+        font-weight: 700;
+        border-bottom: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__sides { display: grid; grid-template-columns: 1fr 1fr; }
+
+      .t-account__side + .t-account__side {
+        border-inline-start: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__side-label {
+        padding: 0.3rem;
+        text-align: center;
+        color: var(--clr-text-soft);
+        font-size: 0.85rem;
+        font-weight: 700;
+        border-bottom: 1px solid var(--clr-border);
+      }
+
+      .t-account__lines {
+        min-height: 3rem;
+        margin: 0;
+        padding: 0.4rem 0.7rem;
+        list-style: none;
+      }
+
+      .t-account__lines li {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .t-account__balance {
+        padding: 0.45rem 0.7rem;
+        text-align: center;
+        font-weight: 700;
+        background: rgba(119, 150, 191, 0.08);
+        border-top: 1px solid var(--clr-border);
+      }
+
+      /* ==========================================================
+         Footer
+      ========================================================== */
+      .site-footer {
+        background: var(--clr-light-2);
+        color: var(--clr-light);
+        padding: 1rem 0 0.5rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      /* ==========================================================
+         Responsive
+      ========================================================== */
+      @media (max-width: 768px) {
+        :root { --section-pad: 3rem; }
+        .hero { padding: 3.5rem 0; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="editor-toolbar">
+      <div class="container d-flex align-items-center gap-3">
+        <span class="editor-toolbar__tab-title" data-sync-title></span>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="container">
+        <h1 class="hero__title">الفصل الخامس عشر: الأصول الثابتة</h1>
+        <p class="hero__lead">
+          تعتمد المنشأة على أصول تستخدمها سنوات طويلة، وتُعرف بـ الأصول الثابتة (Fixed Assets)، وهي في الغالب أكبر بنود قائمة المركز المالي (Statement of Financial Position). يبيّن هذا الفصل كيف تُصنَّف هذه الأصول وتُميَّز عن غيرها، وكيف تُسجَّل بتكلفتها الصحيحة، وكيف تُعالَج الإضافات عليها والتصرفات فيها، لأن أي خطأ في هذه الخطوات يمتد أثره إلى كل فترة لاحقة.
+        </p>
+      </div>
+    </header>
+
+    <section class="content-section" id="explanation">
+      <div class="container">
+        <div class="content-section__eyebrow">شرح وتطبيق</div>
+        <h2 class="content-section__title">شرح وتطبيق كل مرحلة</h2>
+        <div class="article-content" style="max-width: 900px">
+
+<div class="topic-block" id="classification">
+<h3 class="topic-block__title">المرحلة الأولى: التصنيف</h3>
+<p>التصنيف (Classification) هو تحديد ما إذا كان البند المقتنى أصلًا ثابتًا أم لا، ثم إدراجه في المجموعة المناسبة. والأصل الثابت مورد ملموس تقتنيه المنشأة لاستخدامه في الإنتاج أو تقديم الخدمات أو الأغراض الإدارية أو التأجير، لا لإعادة بيعه، ويُتوقع أن تنتفع به أكثر من فترة مالية واحدة. وهذه الشروط متوافقة مع معيار المحاسبة الدولي (16) (IAS 16) الخاص بالممتلكات والآلات والمعدات، الذي يضيف شرطين: أن يكون من المحتمل تدفق منافع اقتصادية مستقبلية من الأصل، وأن تُقاس تكلفته بدرجة موثوقة.</p>
+<p>وتُقسَّم الأصول الثابتة عادةً إلى مجموعات متجانسة: الأراضي (Land)، والمباني (Buildings)، والآلات والمعدات (Machinery and Equipment)، والأثاث والتجهيزات (Furniture and Fixtures)، ووسائل النقل (Vehicles)، وأجهزة الحاسب. والغرض من التجميع أن يكون لكل مجموعة حساب مستقل، وأن يُطبَّق عليها لاحقًا الاستهلاك (Depreciation)، وهو توزيع تكلفة الأصل على سنوات الانتفاع به، علمًا بأن الأرض لا تُستهلك عادةً لأن عمرها غير محدود.</p>
+<div class="flow-diagram"><div class="flow-step"><div class="flow-step__title">1) هل اقتُني للاستخدام داخل المنشأة؟</div><div class="flow-step__description">إن اقتُني بغرض البيع فهو مخزون (Inventory) وليس أصلًا ثابتًا.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">2) هل يزيد عمره الإنتاجي (Useful Life) على فترة مالية واحدة؟</div><div class="flow-step__description">إن استُنفدت منفعته خلال الفترة فهو مصروف.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">3) هل له كيان مادي ملموس؟</div><div class="flow-step__description">إن لم يكن له كيان مادي (كالعلامة التجارية) فهو أصل غير ملموس يُعالج بمعيار آخر خارج هذا الفصل.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">النتيجة: أصل ثابت</div><div class="flow-step__description">يُدرج في مجموعته المناسبة ويُسجَّل في الدفاتر.</div></div></div>
+<div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">تصنيف بنود اقتنتها شركة النور للتجارة خلال عام 2026</span></div><div class="example-block__body"><ul class="example-block__data"><li>اقتنت شركة النور للتجارة خلال عام 2026 البنود الموضحة في الجدول التالي بقيمها بالجنيه المصري.</li><li>المطلوب: تصنيف كل بند، ثم إعداد ملخص بالأصول الثابتة حسب مجموعاتها.</li></ul><span class="example-block__label">جدول تصنيف البنود</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البند</th><th>سبب التصنيف</th><th>التصنيف</th><th>المبلغ (ج.م)</th></tr></thead><tbody><tr><td>أرض أُقيم عليها مقر الشركة</td><td>مقتناة للاستخدام وعمرها غير محدود</td><td>أصل ثابت: أراضي</td><td class="num">800,000</td></tr><tr><td>مبنى المقر الإداري</td><td>للاستخدام الإداري وعمره طويل</td><td>أصل ثابت: مباني</td><td class="num">1,500,000</td></tr><tr><td>سيارة نقل لتوزيع بضاعة الشركة</td><td>للاستخدام في التوزيع وليس للبيع</td><td>أصل ثابت: وسائل نقل</td><td class="num">420,000</td></tr><tr><td>أثاث مكاتب</td><td>للاستخدام الإداري لسنوات</td><td>أصل ثابت: أثاث وتجهيزات</td><td class="num">110,000</td></tr><tr><td>أجهزة حاسب لموظفي الشركة</td><td>للاستخدام الداخلي لسنوات</td><td>أصل ثابت: أجهزة حاسب</td><td class="num">90,000</td></tr><tr><td>أجهزة حاسب محمولة لإعادة بيعها للعملاء</td><td>مقتناة بغرض البيع</td><td>مخزون</td><td class="num">150,000</td></tr><tr><td>أقلام وأوراق مكتبية</td><td>تُستهلك خلال الفترة الحالية</td><td>مصروف (مستلزمات)</td><td class="num">6,000</td></tr><tr class="acc-table__total"><td>إجمالي البنود المقتناة</td><td></td><td></td><td class="num">3,076,000</td></tr></tbody></table></div><span class="example-block__label">ملخص الأصول الثابتة حسب المجموعة</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البيان</th><th>جزئي</th><th>كلي</th></tr></thead><tbody><tr><td>الأراضي</td><td class="num">800,000</td><td class="num"></td></tr><tr><td>المباني</td><td class="num">1,500,000</td><td class="num"></td></tr><tr><td>وسائل النقل</td><td class="num">420,000</td><td class="num"></td></tr><tr><td>الأثاث والتجهيزات</td><td class="num">110,000</td><td class="num"></td></tr><tr><td>أجهزة الحاسب</td><td class="num">90,000</td><td class="num"></td></tr><tr class="acc-table__total"><td>إجمالي الأصول الثابتة</td><td></td><td class="num">2,920,000</td></tr></tbody></table></div></div></div>
+<p>اختُبر كل بند وفق الأسئلة الثلاثة: فالأرض والمبنى والسيارة والأثاث وأجهزة الموظفين ملموسة ومقتناة للاستخدام وعمرها يزيد على فترة، فصُنفت أصولًا ثابتة مجموعها <span class="num">2,920,000</span> ج.م. أما الأجهزة المحمولة فاقتُنيت للبيع فهي مخزون بقيمة <span class="num">150,000</span> ج.م، والأوراق والأقلام تُستهلك خلال الفترة فهي مصروف بقيمة <span class="num">6,000</span> ج.م. ومجموع المجموعات الثلاث (<span class="num">2,920,000</span> + <span class="num">150,000</span> + <span class="num">6,000</span>) يساوي <span class="num">3,076,000</span> ج.م، وهو إجمالي البنود المقتناة.</p>
+<div class="callout callout--warning"><span class="callout__label">انتبه</span><p>يتحدد التصنيف بـ<strong>غرض الاقتناء</strong> لا بنوع الشيء. فأجهزة الحاسب ظهرت في المثال مرتين بتصنيفين مختلفين: أصل ثابت حين تُستخدم داخل الشركة، ومخزون حين تُقتنى لإعادة بيعها.</p></div>
+</div>
+
+<hr class="topic-divider" />
+
+<div class="topic-block" id="recording">
+<h3 class="topic-block__title">المرحلة الثانية: التسجيل</h3>
+<p>التسجيل (Recording) هو إثبات الأصل في الدفاتر عند اقتنائه. ويُقاس الأصل عند الإثبات الأول بـ التكلفة التاريخية (Historical Cost)، أي كل ما أُنفق للحصول عليه ووضعه في مكانه وحالته اللازمة للتشغيل. وتشمل التكلفة صافي سعر الشراء بعد خصم الخصم التجاري (Trade Discount)، وهو تخفيض يمنحه البائع من سعر القائمة عند الشراء، مضافًا إليه التكاليف المباشرة مثل النقل والتركيب والتجربة والفحص ورسوم التسجيل والرسوم الجمركية غير المستردة.</p>
+<p>ويستلزم ذلك التمييز بين نوعين من الإنفاق: النفقة الرأسمالية (Capital Expenditure) التي تُنشئ الأصل أو تجعله جاهزًا للتشغيل فتُضاف إلى تكلفته لأن منفعتها تمتد لفترات متعددة، والنفقة الإيرادية (Revenue Expenditure) التي تُستنفد منفعتها في الفترة الحالية فتُحمَّل مصروفًا مباشرة، مثل تدريب العاملين على تشغيل الآلة، فهو لا يُعد جزءًا من تكلفتها ولو ارتبط بها.</p>
+<div class="formula-box"><span class="formula-box__label">قاعدة تحديد التكلفة</span><p class="formula-box__body">تكلفة الأصل = سعر القائمة − الخصم التجاري + التكاليف المباشرة اللازمة لتجهيزه للتشغيل</p></div>
+<div class="callout callout--note"><span class="callout__label">ملاحظة</span><p>يُحتفظ لكل أصل في سجل الأصول الثابتة (Fixed Assets Register)، وهو سجل تفصيلي يضم رقم الأصل ووصفه وتاريخ شرائه وتكلفته ومكانه، ويجب أن يتطابق مجموع تكاليفه مع رصيد حساب المجموعة في الأستاذ العام.</p></div>
+<div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">شراء آلة تغليف بتاريخ 1 مارس 2026</span></div><div class="example-block__body"><ul class="example-block__data"><li>اشترت شركة النور للتجارة آلة تغليف بسعر قائمة <span class="num">500,000</span> ج.م، ومُنحت خصمًا تجاريًا نسبته 5%.</li><li>تكاليف نقل الآلة <span class="num">12,000</span> ج.م، وتركيبها <span class="num">18,000</span> ج.م، وتجربتها وفحصها <span class="num">5,000</span> ج.م.</li><li>دُرِّب العاملون على تشغيل الآلة بتكلفة <span class="num">7,000</span> ج.م.</li><li>سُددت تكلفة الآلة بشيكات على البنك، وسُدد التدريب نقدًا.</li></ul><span class="example-block__label">مذكرة تحديد تكلفة الآلة</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البيان</th><th>جزئي</th><th>كلي</th></tr></thead><tbody><tr><td>سعر القائمة</td><td class="num">500,000</td><td class="num"></td></tr><tr><td>يخصم: الخصم التجاري (5%)</td><td class="num">(25,000)</td><td class="num"></td></tr><tr><td>صافي سعر الشراء</td><td class="num"></td><td class="num">475,000</td></tr><tr><td>تكاليف النقل</td><td class="num">12,000</td><td class="num"></td></tr><tr><td>تكاليف التركيب</td><td class="num">18,000</td><td class="num"></td></tr><tr><td>تكاليف التجربة والفحص</td><td class="num">5,000</td><td class="num"></td></tr><tr><td>مجموع التكاليف المباشرة</td><td class="num"></td><td class="num">35,000</td></tr><tr class="acc-table__total"><td>تكلفة الآلة (تُرسمل)</td><td></td><td class="num">510,000</td></tr></tbody></table></div><span class="example-block__label">قيود اليومية</span><div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين</th><th>دائن</th></tr></thead><tbody class="journal__entry"><tr><td rowspan="5">1 مارس 2026</td><td>من ح/ الآلات والمعدات</td><td class="num">510,000</td><td></td></tr><tr><td>من ح/ مصروفات التدريب</td><td class="num">7,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ البنك</td><td></td><td class="num">510,000</td></tr><tr><td class="journal__credit">إلى ح/ الصندوق</td><td></td><td class="num">7,000</td></tr><tr class="journal__note"><td>إثبات شراء آلة تغليف بتكلفتها الكاملة، وتحميل تدريب العاملين مصروفًا</td><td></td><td></td></tr></tbody></table></div><span class="example-block__label">الترحيل إلى حسابات الأستاذ</span><div class="t-accounts"><div class="t-account"><div class="t-account__title">ح/ الآلات والمعدات</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>شراء آلة التغليف</span><span class="num">510,000</span></li></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">510,000</span> مدين</div></div><div class="t-account"><div class="t-account__title">ح/ مصروفات التدريب</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>تدريب العاملين</span><span class="num">7,000</span></li></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">7,000</span> مدين</div></div></div></div></div>
+<p>بدأنا بسعر القائمة <span class="num">500,000</span> ج.م وطرحنا الخصم التجاري (<span class="num">500,000</span> × 5% = <span class="num">25,000</span>) فصار صافي سعر الشراء <span class="num">475,000</span> ج.م. ثم أضفنا النقل والتركيب والتجربة (<span class="num">12,000</span> + <span class="num">18,000</span> + <span class="num">5,000</span> = <span class="num">35,000</span>) لأن كلًّا منها لازم لوصول الآلة إلى حالة التشغيل، فبلغت التكلفة <span class="num">510,000</span> ج.م. أما التدريب فنفقة إيرادية فحُمّل مصروفًا بمبلغ <span class="num">7,000</span> ج.م. ولهذا جاء القيد متوازنًا بمجموع مدين <span class="num">517,000</span> (<span class="num">510,000</span> + <span class="num">7,000</span>) يساوي مجموع الدائن <span class="num">517,000</span> (<span class="num">510,000</span> + <span class="num">7,000</span>).</p>
+<div class="callout callout--warning"><span class="callout__label">انتبه</span><p>لا يُسجَّل الأصل بسعر القائمة، ولا يُضاف إلى تكلفته ما لا يلزم لتشغيله كالتدريب والنفقات الإدارية العامة. كما أن إغفال تكاليف النقل والتركيب يجعل الأصل أقل من تكلفته الحقيقية ويضخم مصروفات الفترة.</p></div>
+</div>
+
+<hr class="topic-divider" />
+
+<div class="topic-block" id="additions-disposals">
+<h3 class="topic-block__title">المرحلة الثالثة: الإضافات والتصرفات</h3>
+<h4>أولًا: الإضافات</h4>
+<p>الإضافات (Additions) هي نفقات تُنفق على أصل قائم بعد اقتنائه. فإذا زادت طاقته الإنتاجية أو أطالت عمره أو حسّنت جودة مخرجاته، عُدّت نفقة رأسمالية وأُضيفت إلى تكلفة الأصل، وتُسمى هذه المعالجة الرسملة (Capitalization). أما إذا كان الغرض إبقاء الأصل صالحًا للتشغيل بحالته الحالية، كالإصلاحات الدورية، فهي الصيانة والإصلاح (Repairs and Maintenance)، وتُعد نفقة إيرادية تُحمَّل مصروفًا في الفترة.</p>
+<div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">إضافة وإصلاح على آلة التغليف خلال يوليو 2026</span></div><div class="example-block__body"><ul class="example-block__data"><li>تكلفة آلة التغليف المسجلة <span class="num">510,000</span> ج.م (من مثال المرحلة الثانية).</li><li>في 1 يوليو 2026 أُضيفت للآلة وحدة تبريد ترفع طاقتها الإنتاجية بتكلفة <span class="num">60,000</span> ج.م سُددت بشيك على البنك.</li><li>في 20 يوليو 2026 أُجري إصلاح دوري للآلة بتكلفة <span class="num">4,000</span> ج.م سُددت نقدًا.</li></ul><span class="example-block__label">تكلفة الآلة بعد الإضافة</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البيان</th><th>جزئي</th><th>كلي</th></tr></thead><tbody><tr><td>تكلفة الآلة عند الشراء في 1 مارس 2026</td><td class="num">510,000</td><td class="num"></td></tr><tr><td>إضافة وحدة التبريد في 1 يوليو 2026</td><td class="num">60,000</td><td class="num"></td></tr><tr class="acc-table__total"><td>تكلفة الآلة بعد الإضافة</td><td></td><td class="num">570,000</td></tr></tbody></table></div><span class="example-block__label">قيود اليومية</span><div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين</th><th>دائن</th></tr></thead><tbody class="journal__entry"><tr><td rowspan="3">1 يوليو 2026</td><td>من ح/ الآلات والمعدات</td><td class="num">60,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ البنك</td><td></td><td class="num">60,000</td></tr><tr class="journal__note"><td>إثبات إضافة وحدة تبريد ترفع الطاقة الإنتاجية للآلة (نفقة رأسمالية)</td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="3">20 يوليو 2026</td><td>من ح/ مصروفات الصيانة والإصلاح</td><td class="num">4,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ الصندوق</td><td></td><td class="num">4,000</td></tr><tr class="journal__note"><td>إثبات إصلاح دوري لا يزيد طاقة الآلة (نفقة إيرادية)</td><td></td><td></td></tr></tbody></table></div><span class="example-block__label">الترحيل إلى حسابات الأستاذ</span><div class="t-accounts"><div class="t-account"><div class="t-account__title">ح/ الآلات والمعدات</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>رصيد الشراء</span><span class="num">510,000</span></li><li><span>إضافة وحدة التبريد</span><span class="num">60,000</span></li></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">570,000</span> مدين</div></div><div class="t-account"><div class="t-account__title">ح/ مصروفات الصيانة والإصلاح</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>إصلاح الآلة</span><span class="num">4,000</span></li></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">4,000</span> مدين</div></div></div></div></div>
+<p>رُسملت وحدة التبريد لأنها ترفع الطاقة الإنتاجية، فارتفع حساب الآلات والمعدات من <span class="num">510,000</span> إلى <span class="num">570,000</span> ج.م (<span class="num">510,000</span> + <span class="num">60,000</span>). أما الإصلاح الدوري فلم يغيّر طاقة الآلة، فحُمّل مصروفًا بمبلغ <span class="num">4,000</span> ج.م.</p>
+<hr class="topic-divider" />
+<h4>ثانيًا: التصرفات</h4>
+<p>التصرفات (Disposals) هي خروج الأصل من المنشأة بالبيع أو بالتخريد (Scrapping) أي إتلافه أو التخلص منه. ولمعالجتها نحتاج إلى مفهومين: مجمع الاستهلاك (Accumulated Depreciation)، وهو حساب مقابل للأصل يتجمع فيه الجزء المستنفد من تكلفته ويظهر مخصومًا منها، والقيمة الدفترية (Carrying Amount)، وهي تكلفة الأصل مطروحًا منها مجمع استهلاكه. وعند التصرف تُلغى تكلفة الأصل ومجمع استهلاكه من الدفاتر، ويُقارن ثمن البيع بالقيمة الدفترية، فينتج ربح أو خسارة تُثبت في قائمة الدخل (Income Statement). وفي حالة التخريد دون متحصلات تكون الخسارة مساوية للقيمة الدفترية كاملة.</p>
+<div class="formula-box"><span class="formula-box__label">قاعدة الربح أو الخسارة</span><p class="formula-box__body">الربح / (الخسارة) = ثمن البيع − القيمة الدفترية  حيث القيمة الدفترية = التكلفة − مجمع الاستهلاك</p></div>
+<div class="flow-diagram"><div class="flow-step"><div class="flow-step__title">1) إلغاء تكلفة الأصل</div><div class="flow-step__description">يُقفل حساب الأصل بجعله دائنًا بتكلفته الكاملة.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">2) إلغاء مجمع الاستهلاك</div><div class="flow-step__description">يُجعل حساب المجمع مدينًا بالرصيد المتجمع حتى تاريخ التصرف.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">3) إثبات المتحصلات</div><div class="flow-step__description">يُجعل الصندوق أو البنك مدينًا بثمن البيع المقبوض.</div></div><div class="flow-arrow">↓</div><div class="flow-step"><div class="flow-step__title">4) إثبات الفرق</div><div class="flow-step__description">يُثبت الفرق ربحًا (دائن) أو خسارة (مدين) بما يوازن القيد.</div></div></div>
+<div class="callout callout--note"><span class="callout__label">ملاحظة</span><p>يجب إثبات استهلاك الأصل حتى تاريخ التصرف قبل تسجيل قيد البيع، وإلا اختلت القيمة الدفترية وانعكس ذلك على الربح أو الخسارة. وطريقة احتساب الاستهلاك موضوع مستقل خارج هذا الفصل، لذلك يُعطى مجمع الاستهلاك في المثال معلومةً جاهزة.</p></div>
+<div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">بيع سيارة نقل بتاريخ 1 أكتوبر 2026</span></div><div class="example-block__body"><ul class="example-block__data"><li>تكلفة السيارة المسجلة <span class="num">300,000</span> ج.م، ومجمع استهلاكها حتى تاريخ البيع <span class="num">210,000</span> ج.م (مثبت مسبقًا).</li><li>الحالة الأولى: بيعت السيارة نقدًا بمبلغ <span class="num">100,000</span> ج.م.</li><li>الحالة الثانية (افتراض مستقل): بيعت السيارة نقدًا بمبلغ <span class="num">75,000</span> ج.م.</li></ul><span class="example-block__label">حساب الربح أو الخسارة</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البيان</th><th>الحالة الأولى</th><th>الحالة الثانية</th></tr></thead><tbody><tr><td>تكلفة السيارة</td><td class="num">300,000</td><td class="num">300,000</td></tr><tr><td>يخصم: مجمع الاستهلاك</td><td class="num">(210,000)</td><td class="num">(210,000)</td></tr><tr><td>القيمة الدفترية</td><td class="num">90,000</td><td class="num">90,000</td></tr><tr><td>ثمن البيع</td><td class="num">100,000</td><td class="num">75,000</td></tr><tr class="acc-table__total"><td>الربح / (الخسارة)</td><td class="num">10,000</td><td class="num">(15,000)</td></tr></tbody></table></div><span class="example-block__label">قيود اليومية</span><div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين</th><th>دائن</th></tr></thead><tbody class="journal__entry"><tr><td rowspan="5">1 أكتوبر 2026 (الحالة الأولى)</td><td>من ح/ الصندوق</td><td class="num">100,000</td><td></td></tr><tr><td>من ح/ مجمع استهلاك السيارات</td><td class="num">210,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ السيارات</td><td></td><td class="num">300,000</td></tr><tr><td class="journal__credit">إلى ح/ أرباح بيع أصول ثابتة</td><td></td><td class="num">10,000</td></tr><tr class="journal__note"><td>إثبات بيع سيارة بثمن أعلى من قيمتها الدفترية</td><td></td><td></td></tr></tbody><tbody class="journal__entry"><tr><td rowspan="5">1 أكتوبر 2026 (الحالة الثانية)</td><td>من ح/ الصندوق</td><td class="num">75,000</td><td></td></tr><tr><td>من ح/ مجمع استهلاك السيارات</td><td class="num">210,000</td><td></td></tr><tr><td>من ح/ خسائر بيع أصول ثابتة</td><td class="num">15,000</td><td></td></tr><tr><td class="journal__credit">إلى ح/ السيارات</td><td></td><td class="num">300,000</td></tr><tr class="journal__note"><td>إثبات بيع السيارة بثمن أقل من قيمتها الدفترية</td><td></td><td></td></tr></tbody></table></div><span class="example-block__label">الترحيل إلى حسابات الأستاذ (الحالة الأولى)</span><div class="t-accounts"><div class="t-account"><div class="t-account__title">ح/ السيارات</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>رصيد أول</span><span class="num">300,000</span></li></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"><li><span>بيع السيارة</span><span class="num">300,000</span></li></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">0</span> (مقفل)</div></div><div class="t-account"><div class="t-account__title">ح/ مجمع استهلاك السيارات</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"><li><span>بيع السيارة</span><span class="num">210,000</span></li></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"><li><span>رصيد أول</span><span class="num">210,000</span></li></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">0</span> (مقفل)</div></div><div class="t-account"><div class="t-account__title">ح/ أرباح بيع أصول ثابتة</div><div class="t-account__sides"><div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"></ul></div><div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines"><li><span>بيع السيارة</span><span class="num">10,000</span></li></ul></div></div><div class="t-account__balance">الرصيد: <span class="num">10,000</span> دائن</div></div></div></div></div>
+<p>القيمة الدفترية للسيارة <span class="num">90,000</span> ج.م (<span class="num">300,000</span> − <span class="num">210,000</span>). في الحالة الأولى ثمن البيع <span class="num">100,000</span> أعلى منها بمقدار <span class="num">10,000</span> فنتج ربح، وجاء القيد متوازنًا بمدين <span class="num">310,000</span> (<span class="num">100,000</span> + <span class="num">210,000</span>) ودائن <span class="num">310,000</span> (<span class="num">300,000</span> + <span class="num">10,000</span>). وفي الحالة الثانية ثمن البيع <span class="num">75,000</span> أقل منها بمقدار <span class="num">15,000</span> فنتجت خسارة، وجاء القيد متوازنًا بمدين <span class="num">300,000</span> (<span class="num">75,000</span> + <span class="num">210,000</span> + <span class="num">15,000</span>) ودائن <span class="num">300,000</span>. وبعد القيد يُقفل حسابا السيارات ومجمع استهلاكها برصيد صفري.</p>
+<div class="callout callout--warning"><span class="callout__label">انتبه</span><p>الربح أو الخسارة يُحسب بمقارنة ثمن البيع بـ<strong>القيمة الدفترية</strong> لا بالتكلفة الأصلية. فمقارنة ثمن البيع <span class="num">100,000</span> بالتكلفة <span class="num">300,000</span> تُظهر خسارة وهمية قدرها <span class="num">200,000</span> ج.م، بينما الربح الفعلي <span class="num">10,000</span> ج.م.</p></div>
+</div>
+
+        </div>
+      </div>
+    </section>
+
+<section class="content-section content-section--tint" id="comparison">
+<div class="container">
+<div class="content-section__eyebrow">مقارنة</div>
+<h2 class="content-section__title">النفقة الرأسمالية مقابل النفقة الإيرادية</h2>
+<div class="table-responsive"><table class="table table-bordered align-middle">
+<thead><tr><th>وجه المقارنة</th><th>النفقة الرأسمالية</th><th>النفقة الإيرادية</th></tr></thead>
+<tbody>
+<tr><td>التعريف</td><td>إنفاق يُنشئ الأصل أو يجهزه للتشغيل أو يزيد طاقته أو عمره أو جودته</td><td>إنفاق يُبقي الأصل صالحًا بحالته أو تُستنفد منفعته في الفترة الحالية</td></tr>
+<tr><td>امتداد المنفعة</td><td>تمتد لفترات مالية متعددة</td><td>تخص الفترة الحالية فقط</td></tr>
+<tr><td>المعالجة المحاسبية</td><td>تُضاف إلى تكلفة الأصل (رسملة)</td><td>تُحمَّل مصروفًا على قائمة الدخل</td></tr>
+<tr><td>أمثلة من الفصل</td><td>النقل والتركيب والتجربة (<span class="num">35,000</span> ج.م) ووحدة التبريد (<span class="num">60,000</span> ج.م)</td><td>التدريب (<span class="num">7,000</span> ج.م) والإصلاح الدوري (<span class="num">4,000</span> ج.م)</td></tr>
+<tr><td>أثر الخطأ في التصنيف</td><td>رسملة ما هو مصروف تُضخم الأصل والربح</td><td>تحميل ما هو رأسمالي مصروفًا يُقلل الأصل وربح الفترة</td></tr>
+</tbody></table></div>
+</div>
+</section>
+
+
+<section class="content-section" id="summary">
+<div class="container">
+<div class="content-section__eyebrow">الخلاصة</div>
+<h2 class="content-section__title">أهم ما يجب تذكّره</h2>
+<div class="summary-card" style="max-width: 900px"><ul class="summary-card__list">
+<li>✔ الأصل الثابت مورد ملموس يُقتنى للاستخدام لا للبيع، وتزيد منفعته على فترة مالية واحدة، ويتحدد تصنيفه بغرض الاقتناء.</li>
+<li>✔ يُسجَّل الأصل بالتكلفة التاريخية: سعر الشراء بعد الخصم التجاري مضافًا إليه كل تكلفة مباشرة لازمة لتشغيله، ولا يدخل فيها التدريب ولا النفقات الإدارية العامة.</li>
+<li>✔ الإنفاق اللاحق الذي يزيد الطاقة أو العمر أو الجودة يُرسمل على الأصل، أما الإصلاح الدوري فمصروف.</li>
+<li>✔ عند التصرف تُلغى تكلفة الأصل ومجمع استهلاكه، ويُثبت الفرق بين ثمن البيع والقيمة الدفترية ربحًا أو خسارة.</li>
+<li>✔ كل قيد يجب أن يتوازن: مجموع المدين يساوي مجموع الدائن.</li>
+</ul></div>
+</div>
+</section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>الفصل الخامس عشر: الأصول الثابتة</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      /* Sync Toolbar Title */
+      const heroTitle = document.querySelector('.hero__title')
+      const toolbarTitle = document.querySelector('[data-sync-title]')
+      if (heroTitle && toolbarTitle) {
+        const text = heroTitle.textContent.trim()
+        if (text) {
+          toolbarTitle.textContent = text
+          document.title = text
+        }
+      }
+    </script>
+  </body>
+</html>

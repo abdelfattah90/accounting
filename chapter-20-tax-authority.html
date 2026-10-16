@@ -1,0 +1,873 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الفصل العشرون: التعامل مع مصلحة الضرائب</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+
+
+    <style>
+      :root {
+        /* ========= Colors ========= */
+        --clr-primary: #b378a6;
+        --clr-secondary: #7796bf;
+        --clr-light: #ffffff;
+        --clr-light-2: #f0f0f0;
+        --clr-border: #dedede;
+        --clr-dark: #1b1b1b;
+        --clr-dark-2: #444444;
+        --clr-text: #333333;
+        --clr-text-soft: #555555;
+
+        /* ========= Font ========= */
+        --font-body: 'Baloo Bhaijaan 2', sans-serif;
+
+        /* ========= Radius ========= */
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 18px;
+
+        /* ========= Shadow ========= */
+        --shadow-soft: 0 4px 20px rgba(27, 27, 27, 0.07);
+        --shadow-hover: 0 12px 28px rgba(179, 120, 166, 0.16);
+
+        /* ========= Layout ========= */
+        --section-pad: 4.5rem;
+        --content-width: 900px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--clr-light);
+        color: var(--clr-dark);
+        line-height: 1.9;
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: var(--clr-secondary);
+        text-decoration: none;
+        transition: 0.2s;
+      }
+
+      a:hover {
+        color: var(--clr-primary);
+      }
+
+      h1, h2, h3, h4, h5 {
+        font-family: var(--font-body);
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+        color: var(--clr-dark);
+      }
+
+      h1, h2 { font-weight: 800; }
+      h3, h4, h5 { font-weight: 700; }
+
+      p {
+        color: var(--clr-text);
+        margin-bottom: 1rem;
+      }
+
+      ul { margin: 0; padding: 0; }
+
+      section { scroll-margin-top: 90px; }
+
+      ::selection {
+        background: var(--clr-primary);
+        color: #fff;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--clr-secondary);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      /* ==========================================================
+         Editor Toolbar
+      ========================================================== */
+      .editor-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--clr-primary);
+        padding: 0.7rem 0;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .editor-toolbar__tab-title {
+        color: #fff;
+        font-size: 1.1rem;
+        direction: ltr;
+        font-weight: 700;
+      }
+
+      /* ==========================================================
+         Hero
+         (مبسّط عمدًا: عنوان + سطر تعريف واحد فقط، بديل عن قسم "مقدمة"
+         منفصل. لا وسوم Language/Level/Category — لا تضيفها.)
+      ========================================================== */
+      .hero {
+        background: var(--clr-secondary);
+        color: #fff;
+        padding: 4.5rem 0 3.5rem;
+      }
+
+      .hero__title {
+        color: #fff;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      .hero__lead {
+        color: #fff;
+        opacity: 0.95;
+        max-width: 760px;
+        font-size: 1.15rem;
+        margin-bottom: 0;
+      }
+
+      /* ==========================================================
+         Sections
+      ========================================================== */
+      .content-section { padding: var(--section-pad) 0; }
+      .content-section--alt { background: #fcfcfc; }
+      .content-section--tint { background: var(--clr-light-2); }
+
+      .content-section__eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+        font-size: 0.86rem;
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+      }
+
+      .content-section__eyebrow::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        background: var(--clr-primary);
+      }
+
+      .content-section__title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+
+      .content-section__description {
+        max-width: 760px;
+        color: var(--clr-text-soft);
+        margin-bottom: 2.5rem;
+      }
+
+      /* ==========================================================
+         Summary Card (تُستخدم في: الخلاصة)
+      ========================================================== */
+      .summary-card {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+        padding: 2rem;
+      }
+
+      .summary-card__list {
+        display: grid;
+        gap: 1rem;
+        list-style: none;
+      }
+
+      .summary-card__list li {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+      }
+
+      /* ==========================================================
+         Callout
+         (المكان الوحيد للتنبيهات — بما فيها الأخطاء الشائعة الخاصة
+         بموضوع معيّن؛ تُستخدم callout--warning لهذا الغرض بدل قسم
+         "أخطاء شائعة" منفصل)
+      ========================================================== */
+      .callout {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        border-radius: var(--radius-md);
+        border-inline-start: 4px solid;
+      }
+
+      .callout__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 700;
+      }
+
+      .callout--note {
+        background: rgba(119, 150, 191, 0.08);
+        border-color: var(--clr-secondary);
+      }
+
+      .callout--warning {
+        background: rgba(179, 120, 166, 0.08);
+        border-color: var(--clr-primary);
+      }
+
+      /* ==========================================================
+         Flow Diagram
+      ========================================================== */
+      .flow-diagram {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin: 2rem 0;
+      }
+
+      .flow-step {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        padding: 1rem 1.25rem;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .flow-step__title {
+        color: var(--clr-primary);
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+      }
+
+      .flow-step__description { color: var(--clr-text-soft); margin: 0; }
+
+      .flow-arrow {
+        text-align: center;
+        color: var(--clr-secondary);
+        font-size: 28px;
+        line-height: 1;
+      }
+
+      /* ==========================================================
+         Topic Block
+         كل موضوع من موضوعات المرحلة = كتلة واحدة متكاملة (نظري + عملي
+         مدمجين معًا)، مش قسمين منفصلين.
+      ========================================================== */
+      .topic-block { margin-bottom: 3rem; }
+      .topic-block:last-child { margin-bottom: 0; }
+
+      .topic-block__title {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+      }
+
+      .topic-divider {
+        border: none;
+        border-top: 1px dashed var(--clr-border);
+        margin: 2.5rem 0;
+      }
+
+      /* ==========================================================
+         Numbers (كل مبلغ يُكتب داخل عنصر بهذا الصنف)
+      ========================================================== */
+      .num {
+        direction: ltr;
+        unicode-bidi: isolate;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* ==========================================================
+         Formula Box (اختياري: معادلة أو قاعدة محاسبية)
+      ========================================================== */
+      .formula-box {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        text-align: center;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .formula-box__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--clr-primary);
+        font-weight: 700;
+      }
+
+      .formula-box__body {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--clr-dark);
+      }
+
+      /* ==========================================================
+         Example Block (المثال التطبيقي: بديل الـ code-block)
+      ========================================================== */
+      .example-block {
+        overflow: hidden;
+        margin: 2rem 0;
+        background: var(--clr-light);
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .example-block__header {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.7rem 1.2rem;
+        background: var(--clr-dark);
+      }
+
+      .example-block__tag {
+        padding: 0 0.7rem;
+        background: var(--clr-primary);
+        color: #fff;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .example-block__title { color: #fff; font-weight: 600; }
+
+      .example-block__body { padding: 1.5rem; }
+
+      .example-block__label {
+        display: block;
+        margin: 1.6rem 0 0.6rem;
+        color: var(--clr-secondary);
+        font-weight: 700;
+      }
+
+      .example-block__label:first-child { margin-top: 0; }
+
+      .example-block__data {
+        margin: 0;
+        padding-inline-start: 1.2rem;
+        color: var(--clr-text);
+      }
+
+      /* ==========================================================
+         Accounting Tables (قيود اليومية، القوائم، المذكرات، الموازين)
+      ========================================================== */
+      .acc-table-wrap { overflow-x: auto; }
+
+      .acc-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+
+      .acc-table th,
+      .acc-table td {
+        padding: 0.5rem 0.8rem;
+        border: 1px solid var(--clr-border);
+      }
+
+      .acc-table thead th {
+        background: var(--clr-light-2);
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .acc-table td.num { text-align: end; }
+
+      .acc-table__total td {
+        background: #fcfcfc;
+        font-weight: 700;
+        border-top: 2px solid var(--clr-dark-2);
+        border-bottom: 4px double var(--clr-dark-2);
+      }
+
+      .journal__entry { border-bottom: 2px solid var(--clr-dark-2); }
+      .acc-table td.journal__credit { padding-inline-start: 2.5rem; }
+      .journal__note td { color: var(--clr-text-soft); font-size: 0.88rem; }
+
+      /* ==========================================================
+         T-Accounts (حسابات الأستاذ): المدين يمين والدائن يسار
+      ========================================================== */
+      .t-accounts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+
+      .t-account {
+        overflow: hidden;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+      }
+
+      .t-account__title {
+        padding: 0.5rem;
+        text-align: center;
+        color: var(--clr-primary);
+        font-weight: 700;
+        border-bottom: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__sides { display: grid; grid-template-columns: 1fr 1fr; }
+
+      .t-account__side + .t-account__side {
+        border-inline-start: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__side-label {
+        padding: 0.3rem;
+        text-align: center;
+        color: var(--clr-text-soft);
+        font-size: 0.85rem;
+        font-weight: 700;
+        border-bottom: 1px solid var(--clr-border);
+      }
+
+      .t-account__lines {
+        min-height: 3rem;
+        margin: 0;
+        padding: 0.4rem 0.7rem;
+        list-style: none;
+      }
+
+      .t-account__lines li {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .t-account__balance {
+        padding: 0.45rem 0.7rem;
+        text-align: center;
+        font-weight: 700;
+        background: rgba(119, 150, 191, 0.08);
+        border-top: 1px solid var(--clr-border);
+      }
+
+      /* ==========================================================
+         Footer
+      ========================================================== */
+      .site-footer {
+        background: var(--clr-light-2);
+        color: var(--clr-light);
+        padding: 1rem 0 0.5rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      /* ==========================================================
+         Responsive
+      ========================================================== */
+      @media (max-width: 768px) {
+        :root { --section-pad: 3rem; }
+        .hero { padding: 3.5rem 0; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="editor-toolbar">
+      <div class="container d-flex align-items-center gap-3">
+        <span class="editor-toolbar__tab-title" data-sync-title></span>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="container">
+        <h1 class="hero__title">الفصل العشرون: التعامل مع مصلحة الضرائب</h1>
+        <p class="hero__lead">
+          يبيّن هذا الفصل كيف تتعامل المنشأة مع مصلحة الضرائب المصرية (Egyptian Tax Authority) منذ إخطارها بالفحص حتى تسوية الفروق، وكيف تحمي حقوقها بمستندات منظَّمة تجعل أي مطالبة قابلة للإثبات أو الدحض. وتأتي أهميته من أن الخلاف الضريبي كثيرًا ما يُحسم بالأدلة لا بالرأي.
+        </p>
+      </div>
+    </header>
+
+    <section class="content-section" id="explanation">
+      <div class="container">
+        <div class="content-section__eyebrow">شرح وتطبيق</div>
+        <h2 class="content-section__title">شرح وتطبيق كل مرحلة</h2>
+
+        <div class="article-content" style="max-width: 900px">
+
+          <div class="topic-block" id="tax-inspection">
+            <h3 class="topic-block__title">الفحص الضريبي</h3>
+            <p>
+              الفحص الضريبي (Tax Audit) هو مراجعة تجريها المأمورية (Tax Office) المختصة لإقرار المنشأة الضريبي (Tax Return) ودفاترها ومستنداتها، للتحقق من أن الربح المُقرّ به صحيح وأن الضريبة المسدَّدة كافية. ويقوم الفحص عادةً على اختيار عينات وفق معايير مخاطر تحددها المصلحة، ثم تنتهي المأمورية إلى الربط الضريبي (Tax Assessment)، أي تحديد الضريبة المستحقة بحسب رأي الفاحص، ويُخطَر به الممول.
+            </p>
+            <p>
+              وأهم ما يبحث عنه الفاحص هو المصروفات غير واجبة الخصم (Non-deductible Expenses)، وهي مصروفات مثبتة في الدفاتر لكن لا يجوز خصمها ضريبيًا، كالمصروفات الشخصية والغرامات، أو التي لا يؤيدها مستند مقبول. وكل مبلغ يُستبعد منها يُضاف إلى الربح المحاسبي فيرتفع الربح الخاضع للضريبة.
+            </p>
+
+            <div class="flow-diagram">
+              <div class="flow-step">
+                <div class="flow-step__title">إخطار الفحص</div>
+                <div class="flow-step__description">تُخطر المأمورية المنشأة بموعد الفحص والفترة المطلوب فحصها.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">تقديم الدفاتر والمستندات</div>
+                <div class="flow-step__description">تُسلَّم المستندات المطلوبة وفق كشف يُوقَّع عليه لإثبات ما سُلِّم.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">ملاحظات الفاحص</div>
+                <div class="flow-step__description">يحدد الفاحص البنود المستبعدة أو المعدّلة ويطلب إيضاحات عنها.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">نموذج الربط</div>
+                <div class="flow-step__description">تنتهي المأمورية إلى الضريبة المستحقة وتُخطر بها المنشأة.</div>
+              </div>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">نتيجة فحص شركة النور للتجارة عن سنة 2025</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>الربح المحاسبي المُقرّ به عن سنة 2025: <span class="num">1,200,000</span> ج.م.</li>
+                  <li>سعر الضريبة على أرباح الشركات المفترض في الأمثلة: 22.5%، والضريبة المسددة بالإقرار: <span class="num">270,000</span> ج.م.</li>
+                  <li>ملاحظات الفاحص: مصروفات شخصية للمالك <span class="num">80,000</span> ج.م، وغرامات حكومية <span class="num">20,000</span> ج.م، ومصروف صيانة لا يؤيده مستند <span class="num">50,000</span> ج.م.</li>
+                </ul>
+
+                <span class="example-block__label">الربح الضريبي وفق الفحص</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead><tr><th>البيان</th><th>جزئي</th><th>كلي</th></tr></thead>
+                    <tbody>
+                      <tr><td>الربح المحاسبي</td><td class="num"></td><td class="num">1,200,000</td></tr>
+                      <tr><td>يضاف: مصروفات شخصية</td><td class="num">80,000</td><td class="num"></td></tr>
+                      <tr><td>يضاف: غرامات حكومية</td><td class="num">20,000</td><td class="num"></td></tr>
+                      <tr><td>يضاف: مصروف صيانة بلا مستند</td><td class="num">50,000</td><td class="num"></td></tr>
+                      <tr><td>إجمالي الإضافات</td><td class="num"></td><td class="num">150,000</td></tr>
+                      <tr class="acc-table__total"><td>الربح الضريبي وفق الفحص</td><td></td><td class="num">1,350,000</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">المطالبة الضريبية</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead><tr><th>البيان</th><th>المبلغ (ج.م)</th></tr></thead>
+                    <tbody>
+                      <tr><td>الضريبة وفق الفحص (1,350,000 × 22.5%)</td><td class="num">303,750</td></tr>
+                      <tr><td>يخصم: الضريبة المسددة بالإقرار (1,200,000 × 22.5%)</td><td class="num">270,000</td></tr>
+                      <tr class="acc-table__total"><td>فروق الضريبة المطالَب بها</td><td class="num">33,750</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              أُضيفت البنود الثلاثة إلى الربح لأن كلًا منها لا يُقبل خصمه من وجهة نظر الفاحص، فارتفع الربح الخاضع للضريبة بمقدار <span class="num">150,000</span> ج.م، وضُربت الزيادة في سعر الضريبة (<span class="num">150,000</span> × 22.5% = <span class="num">33,750</span>) فتطابق الناتج مع الفرق بين الضريبتين. ولا يُثبت قيد محاسبي بهذه الفروق بمجرد المطالبة، بل بعد تسويتها كما في المرحلة التالية.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>التأخر في الرد على طلبات الفاحص أو توقيع محاضره دون قراءتها من الأخطاء الشائعة. فما يُدوَّن فيها يصبح أساسًا للربط، ويصعب الرجوع عنه دون دليل.</p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+
+          <div class="topic-block" id="objection">
+            <h3 class="topic-block__title">المناقشة والاعتراض</h3>
+            <p>
+              المناقشة تبادل للحجج والمستندات مع الفاحص أو رئيس المأمورية قبل استقرار الربط أو بعد صدوره، أما الاعتراض (Objection) فهو طلب كتابي رسمي تتقدم به المنشأة للطعن في نتيجة الفحص. وبموجب قانون الإجراءات الضريبية الموحد رقم 206 لسنة 2020 يكون الطعن خلال 30 يومًا من تاريخ العلم بالربط، فإذا فات الميعاد صار الربط نهائيًا في الغالب.
+            </p>
+
+            <div class="flow-diagram">
+              <div class="flow-step">
+                <div class="flow-step__title">الاعتراض أمام المأمورية</div>
+                <div class="flow-step__description">طلب كتابي مسبَّب ومرفق بالمستندات خلال 30 يومًا.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">اللجنة الداخلية</div>
+                <div class="flow-step__description">لجنة بالمأمورية (Internal Committee) تعيد دراسة أوجه الخلاف وتبدي رأيها.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">لجنة الطعن</div>
+                <div class="flow-step__description">جهة محايدة (Appeal Committee) تنظر الخلاف إذا لم تُحسم النقاط في اللجنة الداخلية.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">المحكمة المختصة</div>
+                <div class="flow-step__description">اللجوء إلى القضاء هو الملاذ الأخير بعد قرار لجنة الطعن.</div>
+              </div>
+            </div>
+
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>المواعيد التفصيلية للجان وآثارها تتحدد في القانون ولائحته التنفيذية وتعديلاتهما، لذا يُرجع إلى النص النافذ وقت الاعتراض، ويُستحسن تسليم الاعتراض بإيصال استلام.</p>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">تسوية الفروق بعد اعتراض شركة النور</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>اعترضت الشركة خلال المدة القانونية على نموذج الربط في المثال السابق.</li>
+                  <li>قدمت فاتورة ومستندات تؤيد مصروف الصيانة البالغ <span class="num">50,000</span> ج.م فقبلت اللجنة خصمه.</li>
+                  <li>سلّمت الشركة بالمصروفات الشخصية والغرامات (<span class="num">100,000</span> ج.م مجتمعة).</li>
+                  <li>تمت التسوية بتاريخ <span class="num">30/09/2026</span> وسُدّد الفرق بتاريخ <span class="num">05/10/2026</span> عن طريق البنك.</li>
+                </ul>
+
+                <span class="example-block__label">أثر المناقشة والاعتراض على الربط</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead><tr><th>البيان</th><th>وفق الفحص</th><th>بعد التسوية</th><th>الفرق</th></tr></thead>
+                    <tbody>
+                      <tr><td>الربح المحاسبي</td><td class="num">1,200,000</td><td class="num">1,200,000</td><td class="num">0</td></tr>
+                      <tr><td>مصروفات شخصية</td><td class="num">80,000</td><td class="num">80,000</td><td class="num">0</td></tr>
+                      <tr><td>غرامات حكومية</td><td class="num">20,000</td><td class="num">20,000</td><td class="num">0</td></tr>
+                      <tr><td>مصروف صيانة بلا مستند</td><td class="num">50,000</td><td class="num">0</td><td class="num">50,000</td></tr>
+                      <tr><td>الربح الضريبي</td><td class="num">1,350,000</td><td class="num">1,300,000</td><td class="num">50,000</td></tr>
+                      <tr><td>الضريبة بسعر 22.5%</td><td class="num">303,750</td><td class="num">292,500</td><td class="num">11,250</td></tr>
+                      <tr><td>الضريبة المسددة بالإقرار</td><td class="num">270,000</td><td class="num">270,000</td><td class="num">0</td></tr>
+                      <tr class="acc-table__total"><td>الفروق المستحقة</td><td class="num">33,750</td><td class="num">22,500</td><td class="num">11,250</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">قيود اليومية</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead><tr><th>التاريخ</th><th>البيان</th><th>مدين</th><th>دائن</th></tr></thead>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3" class="num">30/09/2026</td>
+                        <td>من ح/ مصروف ضريبة الدخل (فروق سنة 2025)</td>
+                        <td class="num">22,500</td><td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ مصلحة الضرائب (ضريبة دخل مستحقة)</td>
+                        <td></td><td class="num">22,500</td>
+                      </tr>
+                      <tr class="journal__note"><td>إثبات فروق الضريبة المتفق عليها بعد الاعتراض</td><td></td><td></td></tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3" class="num">05/10/2026</td>
+                        <td>من ح/ مصلحة الضرائب (ضريبة دخل مستحقة)</td>
+                        <td class="num">22,500</td><td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ البنك</td>
+                        <td></td><td class="num">22,500</td>
+                      </tr>
+                      <tr class="journal__note"><td>سداد فروق الضريبة المستحقة بعد التسوية</td><td></td><td></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">الترحيل إلى حسابات الأستاذ</span>
+                <div class="t-accounts">
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ مصلحة الضرائب (ضريبة دخل مستحقة)</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines"><li><span>البنك</span><span class="num">22,500</span></li></ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines"><li><span>مصروف الضريبة</span><span class="num">22,500</span></li></ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">الرصيد: <span class="num">0</span> (مُسدَّد بالكامل)</div>
+                  </div>
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ مصروف ضريبة الدخل (فروق سنة 2025)</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines"><li><span>مصلحة الضرائب</span><span class="num">22,500</span></li></ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines"></ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">الرصيد: <span class="num">22,500</span> مدين</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              انخفضت المطالبة من <span class="num">33,750</span> إلى <span class="num">22,500</span> ج.م لأن بند الصيانة (<span class="num">50,000</span>) سقط بعد تأييده بالمستندات، فانخفض الربح الضريبي بالمبلغ نفسه، ووفّرت الشركة <span class="num">50,000</span> × 22.5% = <span class="num">11,250</span> ج.م. وأُثبتت الفروق المتبقية بقيد واحد عند التسوية لأنها أصبحت التزامًا مؤكدًا، ثم أُقفل حساب المصلحة بقيد السداد.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>لا تغني المناقشة الودية مع الفاحص عن الاعتراض الكتابي. فالاستمرار في الحوار دون تقديم الاعتراض خلال الميعاد قد يضيّع حق المنشأة في الطعن.</p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+
+          <div class="topic-block" id="documents">
+            <h3 class="topic-block__title">الحماية بالمستندات</h3>
+            <p>
+              الحماية بالمستندات تعني أن كل مصروف أو إيراد مثبت في الدفاتر له مستند مؤيد (Supporting Document) يثبت حدوثه ومبلغه وتاريخه وارتباطه بنشاط المنشأة، كالعقود والفواتير وإيصالات السداد وكشوف المرتبات. والمصروف الذي يفتقر إلى هذا الدليل يُعرَّض للاستبعاد من الفاحص ولو كان حقيقيًا.
+            </p>
+            <p>
+              ومن أبرز المستندات الفاتورة الإلكترونية (E-Invoice)، وهي فاتورة تصدر وتُسجَّل عبر منظومة مصلحة الضرائب، وتُعد الأساس المعتمد لإثبات المشتريات والمصروفات. ويُحتفظ بالدفاتر والمستندات مدة لا تقل عن خمس سنوات وفق القاعدة العامة، وتمتد إلى حين انتهاء أي نزاع قائم، مع مراجعة النص النافذ.
+            </p>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">مطابقة مصروفات شركة النور بمستنداتها قبل الفحص</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>أجرت الشركة مطابقة داخلية لمصروفات التشغيل المعنية لسنة 2025 بالمستندات.</li>
+                  <li>بنود المصروفات: إيجار <span class="num">240,000</span> ج.م، مرتبات <span class="num">600,000</span> ج.م، دعاية <span class="num">90,000</span> ج.م، صيانة <span class="num">50,000</span> ج.م.</li>
+                </ul>
+
+                <span class="example-block__label">كشف مطابقة المصروفات بالمستندات</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead><tr><th>البند</th><th>المبلغ (ج.م)</th><th>المستند المؤيد</th><th>الحالة</th></tr></thead>
+                    <tbody>
+                      <tr><td>إيجار</td><td class="num">240,000</td><td>عقد إيجار وإيصالات سداد</td><td>مدعوم</td></tr>
+                      <tr><td>مرتبات</td><td class="num">600,000</td><td>كشوف مرتبات وإيصالات سداد</td><td>مدعوم</td></tr>
+                      <tr><td>دعاية</td><td class="num">90,000</td><td>فواتير إلكترونية</td><td>مدعوم</td></tr>
+                      <tr><td>صيانة</td><td class="num">50,000</td><td>لا يوجد</td><td>غير مدعوم</td></tr>
+                      <tr class="acc-table__total"><td>إجمالي المصروفات</td><td class="num">980,000</td><td></td><td></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">أثر الفجوة المستندية</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead><tr><th>البيان</th><th>المبلغ (ج.م)</th></tr></thead>
+                    <tbody>
+                      <tr><td>مصروفات مدعومة (240,000 + 600,000 + 90,000)</td><td class="num">930,000</td></tr>
+                      <tr><td>مصروفات غير مدعومة</td><td class="num">50,000</td></tr>
+                      <tr class="acc-table__total"><td>الضريبة المعرَّضة للمطالبة (50,000 × 22.5%)</td><td class="num">11,250</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              تكشف المطابقة أن <span class="num">930,000</span> ج.م من أصل <span class="num">980,000</span> ج.م مؤيدة بمستندات، وأن الفجوة هي بند الصيانة وحده. ولو سُدّت قبل الفحص بالحصول على فاتورة من المورّد لما نشأت مطالبة بـ <span class="num">11,250</span> ج.م ولا احتاجت الشركة إلى اعتراض، وهذا هو معنى الحماية الاستباقية.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>وجود مستند لا يكفي وحده، فيجب أن يتطابق مع الدفاتر في المبلغ والتاريخ واسم المنشأة. والاعتماد على المعاملات النقدية دون إيصال أو أثر بنكي يضعف الدفاع أمام الفاحص.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section content-section--tint" id="comparison">
+      <div class="container">
+        <div class="content-section__eyebrow">مقارنة</div>
+        <h2 class="content-section__title">المناقشة أثناء الفحص مقابل الاعتراض الرسمي</h2>
+
+        <div class="table-responsive">
+          <table class="table table-bordered align-middle">
+            <thead>
+              <tr><th>وجه المقارنة</th><th>المناقشة مع الفاحص</th><th>الاعتراض الرسمي</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>الطبيعة</td><td>حوار وتبادل مستندات وإيضاحات</td><td>طلب كتابي مسبَّب للطعن في نتيجة الفحص</td></tr>
+              <tr><td>الجهة</td><td>الفاحص أو رئيس المأمورية</td><td>اللجنة الداخلية ثم لجنة الطعن ثم القضاء</td></tr>
+              <tr><td>أثره على الميعاد</td><td>لا يُعوَّل عليها في حفظ ميعاد الاعتراض</td><td>يحفظ حق المنشأة في الطعن إذا قُدِّم في ميعاده</td></tr>
+              <tr><td>النتيجة</td><td>قد تعدّل الفاحص قبل نموذج الربط</td><td>قرار ملزم من الجهة المختصة بالنظر</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="summary">
+      <div class="container">
+        <div class="content-section__eyebrow">الخلاصة</div>
+        <h2 class="content-section__title">أهم ما يجب تذكّره</h2>
+
+        <div class="summary-card" style="max-width: 900px">
+          <ul class="summary-card__list">
+            <li>✔ الفحص الضريبي يستبعد المصروفات غير المؤيدة أو غير واجبة الخصم فيرتفع الربح الخاضع للضريبة، وكل زيادة قدرها 150,000 ج.م تقابلها ضريبة إضافية 33,750 ج.م بسعر 22.5%.</li>
+            <li>✔ الاعتراض الكتابي خلال 30 يومًا من العلم بالربط هو ما يحفظ الحق، ولا يغني عنه الحوار الودي.</li>
+            <li>✔ مسار الخلاف: المأمورية ثم اللجنة الداخلية ثم لجنة الطعن ثم المحكمة المختصة.</li>
+            <li>✔ تُثبت فروق الضريبة المتفق عليها بقيد من ح/ مصروف ضريبة الدخل إلى ح/ مصلحة الضرائب، ثم يُقفل الحساب بالسداد.</li>
+            <li>✔ المستند المؤيد المطابق للدفاتر هو خط الدفاع الأول، وسدّ الفجوات قبل الفحص أرخص من الدفاع عنها بعده.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>الفصل العشرون: التعامل مع مصلحة الضرائب</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      /* Sync Toolbar Title */
+      const heroTitle = document.querySelector('.hero__title')
+      const toolbarTitle = document.querySelector('[data-sync-title]')
+      if (heroTitle && toolbarTitle) {
+        const text = heroTitle.textContent.trim()
+        if (text) {
+          toolbarTitle.textContent = text
+          document.title = text
+        }
+      }
+    </script>
+  </body>
+</html>

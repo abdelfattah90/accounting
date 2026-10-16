@@ -1,0 +1,1719 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الفصل الخامس والعشرون: برامج المحاسبة في السوق المصري</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --clr-primary: #b378a6;
+        --clr-secondary: #7796bf;
+        --clr-light: #ffffff;
+        --clr-light-2: #f0f0f0;
+        --clr-border: #dedede;
+        --clr-dark: #1b1b1b;
+        --clr-dark-2: #444444;
+        --clr-text: #333333;
+        --clr-text-soft: #555555;
+
+        --font-body: 'Baloo Bhaijaan 2', sans-serif;
+
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 18px;
+
+        --shadow-soft: 0 4px 20px rgba(27, 27, 27, 0.07);
+        --shadow-hover: 0 12px 28px rgba(179, 120, 166, 0.16);
+
+        --section-pad: 4.5rem;
+        --content-width: 900px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--clr-light);
+        color: var(--clr-dark);
+        line-height: 1.9;
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: var(--clr-secondary);
+        text-decoration: none;
+        transition: 0.2s;
+      }
+
+      a:hover {
+        color: var(--clr-primary);
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        font-family: var(--font-body);
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+        color: var(--clr-dark);
+      }
+
+      h1,
+      h2 {
+        font-weight: 800;
+      }
+      h3,
+      h4,
+      h5 {
+        font-weight: 700;
+      }
+
+      p {
+        color: var(--clr-text);
+        margin-bottom: 1rem;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+
+      section {
+        scroll-margin-top: 90px;
+      }
+
+      ::selection {
+        background: var(--clr-primary);
+        color: #fff;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--clr-secondary);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      .editor-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--clr-primary);
+        padding: 0.7rem 0;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .editor-toolbar__tab-title {
+        color: #fff;
+        font-size: 1.1rem;
+        direction: ltr;
+        font-weight: 700;
+      }
+
+      .hero {
+        background: var(--clr-secondary);
+        color: #fff;
+        padding: 4.5rem 0 3.5rem;
+      }
+
+      .hero__title {
+        color: #fff;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      .hero__lead {
+        color: #fff;
+        opacity: 0.95;
+        max-width: 760px;
+        font-size: 1.15rem;
+        margin-bottom: 0;
+      }
+
+      .content-section {
+        padding: var(--section-pad) 0;
+      }
+      .content-section--alt {
+        background: #fcfcfc;
+      }
+      .content-section--tint {
+        background: var(--clr-light-2);
+      }
+
+      .content-section__eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+        font-size: 0.86rem;
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+      }
+
+      .content-section__eyebrow::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        background: var(--clr-primary);
+      }
+
+      .content-section__title {
+        font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+      }
+
+      .content-section__description {
+        max-width: 760px;
+        color: var(--clr-text-soft);
+        margin-bottom: 2.5rem;
+      }
+
+      .summary-card {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+        padding: 2rem;
+      }
+
+      .summary-card__list {
+        display: grid;
+        gap: 1rem;
+        list-style: none;
+      }
+
+      .summary-card__list li {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+      }
+
+      .callout {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        border-radius: var(--radius-md);
+        border-inline-start: 4px solid;
+      }
+
+      .callout__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 700;
+      }
+
+      .callout--note {
+        background: rgba(119, 150, 191, 0.08);
+        border-color: var(--clr-secondary);
+      }
+
+      .callout--warning {
+        background: rgba(179, 120, 166, 0.08);
+        border-color: var(--clr-primary);
+      }
+
+      .flow-diagram {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin: 2rem 0;
+      }
+
+      .flow-step {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        padding: 1rem 1.25rem;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .flow-step__title {
+        color: var(--clr-primary);
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+      }
+
+      .flow-step__description {
+        color: var(--clr-text-soft);
+        margin: 0;
+      }
+
+      .flow-arrow {
+        text-align: center;
+        color: var(--clr-secondary);
+        font-size: 28px;
+        line-height: 1;
+      }
+
+      .topic-block {
+        margin-bottom: 3rem;
+      }
+      .topic-block:last-child {
+        margin-bottom: 0;
+      }
+
+      .topic-block__title {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+      }
+
+      .topic-divider {
+        border: none;
+        border-top: 1px dashed var(--clr-border);
+        margin: 2.5rem 0;
+      }
+
+      .num {
+        direction: ltr;
+        unicode-bidi: isolate;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .formula-box {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        text-align: center;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .formula-box__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--clr-primary);
+        font-weight: 700;
+      }
+
+      .formula-box__body {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--clr-dark);
+      }
+
+      .example-block {
+        overflow: hidden;
+        margin: 2rem 0;
+        background: var(--clr-light);
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .example-block__header {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.7rem 1.2rem;
+        background: var(--clr-dark);
+      }
+
+      .example-block__tag {
+        padding: 0 0.7rem;
+        background: var(--clr-primary);
+        color: #fff;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .example-block__title {
+        color: #fff;
+        font-weight: 600;
+      }
+
+      .example-block__body {
+        padding: 1.5rem;
+      }
+
+      .example-block__label {
+        display: block;
+        margin: 1.6rem 0 0.6rem;
+        color: var(--clr-secondary);
+        font-weight: 700;
+      }
+
+      .example-block__label:first-child {
+        margin-top: 0;
+      }
+
+      .example-block__data {
+        margin: 0;
+        padding-inline-start: 1.2rem;
+        color: var(--clr-text);
+      }
+
+      .acc-table-wrap {
+        overflow-x: auto;
+      }
+
+      .acc-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+
+      .acc-table th,
+      .acc-table td {
+        padding: 0.5rem 0.8rem;
+        border: 1px solid var(--clr-border);
+      }
+
+      .acc-table thead th {
+        background: var(--clr-light-2);
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .acc-table td.num {
+        text-align: end;
+      }
+
+      .acc-table__total td {
+        background: #fcfcfc;
+        font-weight: 700;
+        border-top: 2px solid var(--clr-dark-2);
+        border-bottom: 4px double var(--clr-dark-2);
+      }
+
+      .journal__entry {
+        border-bottom: 2px solid var(--clr-dark-2);
+      }
+      .acc-table td.journal__credit {
+        padding-inline-start: 2.5rem;
+      }
+      .journal__note td {
+        color: var(--clr-text-soft);
+        font-size: 0.88rem;
+      }
+
+      .t-accounts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+
+      .t-account {
+        overflow: hidden;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+      }
+
+      .t-account__title {
+        padding: 0.5rem;
+        text-align: center;
+        color: var(--clr-primary);
+        font-weight: 700;
+        border-bottom: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__sides {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .t-account__side + .t-account__side {
+        border-inline-start: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__side-label {
+        padding: 0.3rem;
+        text-align: center;
+        color: var(--clr-text-soft);
+        font-size: 0.85rem;
+        font-weight: 700;
+        border-bottom: 1px solid var(--clr-border);
+      }
+
+      .t-account__lines {
+        min-height: 3rem;
+        margin: 0;
+        padding: 0.4rem 0.7rem;
+        list-style: none;
+      }
+
+      .t-account__lines li {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .t-account__balance {
+        padding: 0.45rem 0.7rem;
+        text-align: center;
+        font-weight: 700;
+        background: rgba(119, 150, 191, 0.08);
+        border-top: 1px solid var(--clr-border);
+      }
+
+      .site-footer {
+        background: var(--clr-light-2);
+        color: var(--clr-light);
+        padding: 1rem 0 0.5rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        :root {
+          --section-pad: 3rem;
+        }
+        .hero {
+          padding: 3.5rem 0;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="editor-toolbar">
+      <div class="container d-flex align-items-center gap-3">
+        <span class="editor-toolbar__tab-title" data-sync-title></span>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="container">
+        <h1 class="hero__title">
+          الفصل الخامس والعشرون: برامج المحاسبة في السوق المصري
+        </h1>
+        <p class="hero__lead">
+          تتعدّد الأدوات التي تمسك بها المنشآت المصرية دفاترها، من جداول
+          البيانات البسيطة إلى أنظمة تخطيط موارد المؤسسة (Enterprise Resource
+          Planning – ERP). يستعرض هذا الفصل أربع أدوات شائعة — QuickBooks وExcel
+          والميزان وOdoo — ويبيّن كيف يُنتج كلٌّ منها القيد المحاسبي، ثم يوضّح
+          معنى ERP ومعنى نظام إدارة المحتوى (Content Management System – CMS)،
+          لتعرف أيّ أداة تناسب حجم منشأتك وطبيعة عملها.
+        </p>
+      </div>
+    </header>
+
+    <section class="content-section" id="explanation">
+      <div class="container">
+        <div class="content-section__eyebrow">شرح وتطبيق</div>
+        <h2 class="content-section__title">شرح وتطبيق كل مرحلة</h2>
+        <div class="article-content" style="max-width: 900px">
+          <div class="topic-block" id="quickbooks">
+            <h3 class="topic-block__title">QuickBooks</h3>
+            <p>
+              QuickBooks برنامج محاسبة تنتجه شركة Intuit الأمريكية ويستهدف
+              المنشآت الصغيرة والمتوسطة. أشهر إصداراته QuickBooks Online، وهو
+              برنامج سحابي (Cloud)؛ أي يعمل على خوادم مزوّد الخدمة ويُفتح عبر
+              المتصفح دون تثبيت محلي. تقوم فكرته على أن يُدخل المستخدم مستندًا
+              مألوفًا كالفاتورة (Invoice) أو سداد مصروف، فيولّد البرنامج خلف
+              الواجهة القيد المزدوج (Double-Entry) المقابل، ويرحّله إلى دليل
+              الحسابات (Chart of Accounts) وإلى الأستاذ العام (General Ledger)،
+              ومنهما إلى التقارير المالية.
+            </p>
+            <p>
+              ومن زاوية السوق المصري، فإن QuickBooks لا يأتي — بحسب علمنا —
+              بإصدار موطَّن رسميًا لمصر، فيحتاج المحاسب إلى إعداد ضريبة القيمة
+              المضافة (Value Added Tax – VAT) بنسبة 14% وبنية دليل الحسابات
+              يدويًا. كما أن ربط الفواتير بمنظومة الفاتورة الإلكترونية
+              (e-Invoice) التابعة لمصلحة الضرائب المصرية (Egyptian Tax Authority
+              – ETA)، وهي المنظومة التي تُلزم المنشآت المسجّلة تدريجيًا بإصدار
+              فواتيرها إلكترونيًا وإرسالها للمصلحة، لا يتوفر فيه أصلًا وقد يتطلب
+              أداة وسيطة. يُنصح بالتحقق من حالة التوفر والتوطين على الموقع
+              الرسمي للشركة قبل الاعتماد عليه.
+            </p>
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>
+                القيد في QuickBooks لا يكتبه المستخدم بيده في الغالب، لكنه يظل
+                موجودًا في الدفاتر ويمكن الاطلاع عليه من تقرير اليومية. فهم
+                القيد الناتج شرط لاكتشاف أي خطأ في إعداد الحسابات أو رموز
+                الضريبة.
+              </p>
+            </div>
+            <div class="formula-box">
+              <span class="formula-box__label">حساب ضريبة القيمة المضافة</span>
+              <p class="formula-box__body">
+                الضريبة = القيمة قبل الضريبة × 14% &nbsp;←&nbsp;
+                <span class="num">20,000</span> × 14% =
+                <span class="num">2,800</span>
+              </p>
+            </div>
+            <div class="flow-diagram">
+              <div class="flow-step">
+                <div class="flow-step__title">1. إنشاء الفاتورة</div>
+                <div class="flow-step__description">
+                  يختار المستخدم العميل والصنف ورمز الضريبة، ويحدد تاريخ
+                  الاستحقاق.
+                </div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">2. الترحيل التلقائي</div>
+                <div class="flow-step__description">
+                  يُنشئ البرنامج قيدًا يجعل العملاء مدينًا، والمبيعات والضريبة
+                  دائنين.
+                </div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">3. تسجيل التحصيل</div>
+                <div class="flow-step__description">
+                  عند الدفع يُسجَّل السداد فيُقفل جزء من رصيد العميل ويزيد رصيد
+                  البنك.
+                </div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">4. التسوية البنكية والتقارير</div>
+                <div class="flow-step__description">
+                  تُطابق التسوية البنكية (Bank Reconciliation) رصيد البنك في
+                  الدفاتر مع كشف حساب البنك، ثم تُستخرج التقارير.
+                </div>
+              </div>
+            </div>
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span
+                ><span class="example-block__title"
+                  >فاتورة بيع آجل وتحصيل جزئي في QuickBooks</span
+                >
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>
+                    منشأة «الأمل للتجهيزات» تستخدم QuickBooks Online؛ جميع
+                    المبالغ بالجنيه المصري (ج.م).
+                  </li>
+                  <li>
+                    بتاريخ 01/02/2026: فاتورة بيع آجل رقم 1001 بقيمة
+                    <span class="num">20,000</span> قبل الضريبة، وضريبة القيمة
+                    المضافة 14%.
+                  </li>
+                  <li>
+                    بتاريخ 10/02/2026: حصّل العميل مبلغ
+                    <span class="num">15,000</span> بتحويل بنكي.
+                  </li>
+                </ul>
+                <span class="example-block__label">قيود اليومية</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين (ج.م)</th>
+                        <th>دائن (ج.م)</th>
+                      </tr>
+                    </thead>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="4"><span class="num">01/02/2026</span></td>
+                        <td>من ح/ العملاء</td>
+                        <td class="num">22,800</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ المبيعات</td>
+                        <td></td>
+                        <td class="num">20,000</td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">
+                          إلى ح/ ضريبة القيمة المضافة المستحقة
+                        </td>
+                        <td></td>
+                        <td class="num">2,800</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>
+                          إثبات فاتورة بيع آجل رقم 1001 شاملة ضريبة القيمة
+                          المضافة
+                        </td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">10/02/2026</span></td>
+                        <td>من ح/ البنك</td>
+                        <td class="num">15,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ العملاء</td>
+                        <td></td>
+                        <td class="num">15,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>إثبات تحصيل جزء من الفاتورة بتحويل بنكي</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <span class="example-block__label"
+                  >الترحيل إلى حسابات الأستاذ</span
+                >
+                <div class="t-accounts">
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ العملاء</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li>
+                            <span>فاتورة 1001 – 01/02</span
+                            ><span class="num">22,800</span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines">
+                          <li>
+                            <span>تحصيل بنكي – 10/02</span
+                            ><span class="num">15,000</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">7,800</span> مدين
+                    </div>
+                  </div>
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ البنك</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li>
+                            <span>تحصيل من العميل – 10/02</span
+                            ><span class="num">15,000</span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines"></ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">15,000</span> مدين
+                    </div>
+                  </div>
+                </div>
+                <span class="example-block__label"
+                  >كشف حساب العميل بعد التحصيل</span
+                >
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البيان</th>
+                        <th>جزئي (ج.م)</th>
+                        <th>كلي (ج.م)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>قيمة المبيعات قبل الضريبة</td>
+                        <td class="num"><span class="num">20,000</span></td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td>ضريبة القيمة المضافة 14%</td>
+                        <td class="num"><span class="num">2,800</span></td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td>إجمالي الفاتورة</td>
+                        <td class="num"></td>
+                        <td class="num"><span class="num">22,800</span></td>
+                      </tr>
+                      <tr>
+                        <td>يخصم: التحصيل البنكي</td>
+                        <td class="num"></td>
+                        <td class="num"><span class="num">(15,000)</span></td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>الرصيد المستحق على العميل</td>
+                        <td class="num"></td>
+                        <td class="num"><span class="num">7,800</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <p>
+              أُثبتت الفاتورة بإجمالي <span class="num">22,800</span> في جانب
+              المدين لأنه حق المنشأة على العميل شاملًا الضريبة. أما الطرف الدائن
+              فانقسم إلى <span class="num">20,000</span> مبيعات، و<span
+                class="num"
+                >2,800</span
+              >
+              ضريبة؛ لأن الضريبة ليست إيرادًا للمنشأة بل التزام تجاه مصلحة
+              الضرائب، فتُقيَّد في حساب مستقل. وعند التحصيل زاد البنك (مدين)
+              بمقدار <span class="num">15,000</span> ونقص رصيد العميل (دائن)
+              بالمبلغ نفسه، فبقي مستحقًا على العميل
+              <span class="num">22,800</span> −
+              <span class="num">15,000</span> = <span class="num">7,800</span>.
+            </p>
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                ثقة المستخدم الزائدة في «الأتمتة» أشهر أسباب الخطأ في هذا النوع
+                من البرامج: اختيار رمز ضريبة خاطئ أو ربط الصنف بحساب إيراد غير
+                مناسب يولّد قيودًا صحيحة شكلًا وخاطئة معنى، ولا يكتشفه البرنامج
+                لأن القيد يبقى متوازنًا.
+              </p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+
+          <div class="topic-block" id="excel">
+            <h3 class="topic-block__title">Excel</h3>
+            <p>
+              Excel (جداول البيانات – Spreadsheets) ليس برنامج محاسبة بالمعنى
+              الدقيق، بل أداة عامة للحساب والتحليل، غير أنه الأكثر انتشارًا في
+              المنشآت المصرية الصغيرة وفي أقسام المحاسبة لإعداد الكشوف والمذكرات
+              المساندة. تكمن قوته في المرونة: دوال مثل SUMIF وVLOOKUP، والجداول
+              المحورية (Pivot Tables) لتلخيص البيانات، وقوائم التحقق التي تقلّل
+              أخطاء الإدخال.
+            </p>
+            <p>
+              في المقابل، لا يعرف Excel القيد المزدوج؛ فلا يمنع إدخال قيد غير
+              متوازن، ولا يحتفظ بسجل تدقيق (Audit Trail) يبيّن من عدّل ماذا
+              ومتى، ولا يتصل بمنظومة الفاتورة الإلكترونية. لذلك يصلح للتعلم
+              وللتحليل وللمنشآت متناهية الصغر، ولا يصلح وحده أساسًا لنظام محاسبي
+              لمنشأة متنامية.
+            </p>
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>
+                ميزان المراجعة (Trial Balance) قائمة بأرصدة جميع الحسابات في
+                تاريخ معيّن، ويتساوى فيها مجموع الأرصدة المدينة مع مجموع الأرصدة
+                الدائنة متى كانت القيود متوازنة. وهو أكثر ما يُبنى في Excel من
+                دفاتر المحاسبة.
+              </p>
+            </div>
+            <div class="formula-box">
+              <span class="formula-box__label">دالة جمع حركة الحساب بشرط</span>
+              <p class="formula-box__body">
+                <span class="num">=SUMIF(Journal!B:B, A2, Journal!C:C)</span>
+              </p>
+            </div>
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span
+                ><span class="example-block__title"
+                  >بناء ميزان المراجعة من سطور اليومية في Excel</span
+                >
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>
+                    منشأة «النيل للتجارة» تمسك دفاترها في ملف Excel من ورقتين:
+                    ورقة Journal لسطور القيود (التاريخ، الحساب، مدين، دائن)،
+                    وورقة TB لميزان المراجعة؛ جميع المبالغ بالجنيه المصري (ج.م).
+                  </li>
+                  <li>
+                    حركة شهر يناير 2026 كما في قيود اليومية أدناه، وتبدأ المنشأة
+                    نشاطها بلا أرصدة سابقة.
+                  </li>
+                  <li>
+                    في ورقة TB تقع أسماء الحسابات في العمود A، ويجمع العمود B
+                    حركة المدين بالدالة أعلاه، ويجمع العمود C حركة الدائن
+                    بالدالة نفسها مع استبدال Journal!C:C بـ Journal!D:D.
+                  </li>
+                </ul>
+                <span class="example-block__label"
+                  >قيود اليومية (ورقة Journal)</span
+                >
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين (ج.م)</th>
+                        <th>دائن (ج.م)</th>
+                      </tr>
+                    </thead>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">01/01/2026</span></td>
+                        <td>من ح/ الصندوق</td>
+                        <td class="num">100,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ رأس المال</td>
+                        <td></td>
+                        <td class="num">100,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>إثبات رأس المال النقدي الذي أودعه المالك</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">05/01/2026</span></td>
+                        <td>من ح/ المشتريات</td>
+                        <td class="num">40,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ الصندوق</td>
+                        <td></td>
+                        <td class="num">40,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>شراء بضاعة نقدًا</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">10/01/2026</span></td>
+                        <td>من ح/ العملاء</td>
+                        <td class="num">60,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ المبيعات</td>
+                        <td></td>
+                        <td class="num">60,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>بيع بضاعة بالأجل</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">15/01/2026</span></td>
+                        <td>من ح/ مصروف الإيجار</td>
+                        <td class="num">5,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ الصندوق</td>
+                        <td></td>
+                        <td class="num">5,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>سداد إيجار الشهر نقدًا</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">20/01/2026</span></td>
+                        <td>من ح/ الصندوق</td>
+                        <td class="num">25,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ العملاء</td>
+                        <td></td>
+                        <td class="num">25,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>تحصيل نقدي من العملاء</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <span class="example-block__label"
+                  >ميزان المراجعة بالمجاميع والأرصدة (ورقة TB)</span
+                >
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>الحساب</th>
+                        <th>مجموع المدين</th>
+                        <th>مجموع الدائن</th>
+                        <th>رصيد مدين</th>
+                        <th>رصيد دائن</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>الصندوق</td>
+                        <td class="num"><span class="num">125,000</span></td>
+                        <td class="num"><span class="num">45,000</span></td>
+                        <td class="num"><span class="num">80,000</span></td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td>العملاء</td>
+                        <td class="num"><span class="num">60,000</span></td>
+                        <td class="num"><span class="num">25,000</span></td>
+                        <td class="num"><span class="num">35,000</span></td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td>المشتريات</td>
+                        <td class="num"><span class="num">40,000</span></td>
+                        <td class="num"></td>
+                        <td class="num"><span class="num">40,000</span></td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td>مصروف الإيجار</td>
+                        <td class="num"><span class="num">5,000</span></td>
+                        <td class="num"></td>
+                        <td class="num"><span class="num">5,000</span></td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td>رأس المال</td>
+                        <td class="num"></td>
+                        <td class="num"><span class="num">100,000</span></td>
+                        <td class="num"></td>
+                        <td class="num"><span class="num">100,000</span></td>
+                      </tr>
+                      <tr>
+                        <td>المبيعات</td>
+                        <td class="num"></td>
+                        <td class="num"><span class="num">60,000</span></td>
+                        <td class="num"></td>
+                        <td class="num"><span class="num">60,000</span></td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>الإجمالي</td>
+                        <td class="num"><span class="num">230,000</span></td>
+                        <td class="num"><span class="num">230,000</span></td>
+                        <td class="num"><span class="num">160,000</span></td>
+                        <td class="num"><span class="num">160,000</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <p>
+              تُجمع حركة كل حساب بالدالة، ثم يُحسب الرصيد بالفرق بين المجموعين:
+              <span class="num">=MAX(B2-C2,0)</span> للرصيد المدين، و<span
+                class="num"
+                >=MAX(C2-B2,0)</span
+              >
+              للرصيد الدائن. فحساب الصندوق مثلًا تحرّك مدينًا بمبلغ
+              <span class="num">125,000</span> ودائنًا بمبلغ
+              <span class="num">45,000</span>، فرصيده
+              <span class="num">80,000</span> مدين. ويكتمل الفحص بمقارنة
+              الإجماليين: مجموع حركة المدين = مجموع حركة الدائن =
+              <span class="num">230,000</span>، ومجموع الأرصدة المدينة = مجموع
+              الأرصدة الدائنة = <span class="num">160,000</span>.
+            </p>
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                تساوي طرفي ميزان المراجعة لا يثبت صحة الدفاتر؛ فقد يُغفل قيد
+                كامل، أو يُسجَّل المبلغ الصحيح في حساب خاطئ، أو يتعادل خطآن
+                متقابلان. ويزداد الخطر في Excel لأن مدى الدالة قد لا يشمل الصفوف
+                المضافة لاحقًا، ولأن الصيغة قد تُستبدل بقيمة مكتوبة يدويًا دون
+                أن ينتبه أحد.
+              </p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+
+          <div class="topic-block" id="al-mizan">
+            <h3 class="topic-block__title">الميزان</h3>
+            <p>
+              «الميزان» اسم تحمله عدة برامج محاسبية بواجهة عربية، بعضها مطوَّر
+              محليًا في مصر وبعضها في دول عربية أخرى، وليس منتجًا واحدًا لجهة
+              واحدة؛ فيلزم التحقق من الجهة المطوِّرة ومن الإصدار قبل التعاقد.
+              ويمثّل هذا الصنف من البرامج المحلية ما يبحث عنه كثير من المحاسبين
+              في السوق المصري: واجهة وتقارير عربية من اليمين إلى اليسار،
+              ومصطلحات مألوفة كالخزينة وسندات القبض والصرف وكشف حساب العميل،
+              وتكلفة تكون غالبًا أقل من الأنظمة العالمية، وسهولة في التعلّم.
+            </p>
+            <p>
+              وتعمل هذه البرامج في الغالب بالتثبيت المحلي على جهاز أو على شبكة
+              داخلية، بترخيص دائم أو اشتراك سنوي، وإن توفرت لبعضها نسخ سحابية.
+              وهذا يعني أن النسخ الاحتياطي (Backup) وحماية البيانات مسؤولية
+              المنشأة نفسها، وأن تحديثات الضريبة والفاتورة الإلكترونية تتوقف على
+              التزام المطوِّر بإصدارها.
+            </p>
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>
+                لا يُخلط بين برنامج «الميزان» وميزان المراجعة؛ الأول أداة
+                برمجية، والثاني قائمة محاسبية يمكن أن تُنتجها أيٌّ من الأدوات
+                المذكورة في هذا الفصل.
+              </p>
+            </div>
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span
+                ><span class="example-block__title"
+                  >سندات الخزينة في برنامج محاسبة محلي</span
+                >
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>
+                    منشأة «الصفا للخدمات» تسجّل عملياتها النقدية بسندات في
+                    برنامج محاسبة محلي من هذا النوع؛ جميع المبالغ بالجنيه المصري
+                    (ج.م).
+                  </li>
+                  <li>
+                    رصيد الخزينة في 01/02/2026: <span class="num">50,000</span>.
+                  </li>
+                  <li>
+                    بتاريخ 05/02/2026: سند قبض (Receipt Voucher) رقم 1 بمبلغ
+                    <span class="num">8,000</span> من عميل نقدًا.
+                  </li>
+                  <li>
+                    بتاريخ 12/02/2026: سند صرف (Payment Voucher) رقم 1 بمبلغ
+                    <span class="num">12,000</span> لمورد نقدًا.
+                  </li>
+                </ul>
+                <span class="example-block__label">قيود اليومية</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين (ج.م)</th>
+                        <th>دائن (ج.م)</th>
+                      </tr>
+                    </thead>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">05/02/2026</span></td>
+                        <td>من ح/ الخزينة</td>
+                        <td class="num">8,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ العملاء</td>
+                        <td></td>
+                        <td class="num">8,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>سند قبض رقم 1: تحصيل نقدي من عميل</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">12/02/2026</span></td>
+                        <td>من ح/ الموردون</td>
+                        <td class="num">12,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ الخزينة</td>
+                        <td></td>
+                        <td class="num">12,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>سند صرف رقم 1: سداد نقدي لمورد</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <span class="example-block__label"
+                  >الترحيل إلى حسابات الأستاذ</span
+                >
+                <div class="t-accounts">
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ الخزينة</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li>
+                            <span>رصيد افتتاحي – 01/02</span
+                            ><span class="num">50,000</span>
+                          </li>
+                          <li>
+                            <span>سند قبض 1 – 05/02</span
+                            ><span class="num">8,000</span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines">
+                          <li>
+                            <span>سند صرف 1 – 12/02</span
+                            ><span class="num">12,000</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">46,000</span> مدين
+                    </div>
+                  </div>
+                </div>
+                <span class="example-block__label">كشف حركة الخزينة</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البيان</th>
+                        <th>وارد (ج.م)</th>
+                        <th>منصرف (ج.م)</th>
+                        <th>الرصيد (ج.م)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>رصيد افتتاحي</td>
+                        <td class="num"></td>
+                        <td class="num"></td>
+                        <td class="num"><span class="num">50,000</span></td>
+                      </tr>
+                      <tr>
+                        <td>سند قبض رقم 1</td>
+                        <td class="num"><span class="num">8,000</span></td>
+                        <td class="num"></td>
+                        <td class="num"><span class="num">58,000</span></td>
+                      </tr>
+                      <tr>
+                        <td>سند صرف رقم 1</td>
+                        <td class="num"></td>
+                        <td class="num"><span class="num">12,000</span></td>
+                        <td class="num"><span class="num">46,000</span></td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>الإجمالي والرصيد الختامي</td>
+                        <td class="num"><span class="num">8,000</span></td>
+                        <td class="num"><span class="num">12,000</span></td>
+                        <td class="num"><span class="num">46,000</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <p>
+              سند القبض يزيد النقدية فتكون الخزينة مدينة، ويُنقص حق المنشأة على
+              العميل فيكون العميل دائنًا. وسند الصرف عكسه: ينقص النقدية فتكون
+              الخزينة دائنة، ويُنقص التزام المنشأة تجاه المورد فيكون المورد
+              مدينًا. فالرصيد الختامي = <span class="num">50,000</span> +
+              <span class="num">8,000</span> − <span class="num">12,000</span> =
+              <span class="num">46,000</span> مدين، ويجب أن يطابق الجرد الفعلي
+              للنقدية في الخزينة.
+            </p>
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                حذف سند مُرحَّل من البرنامج بدل عكسه يُضيّع أثر العملية ويُضعف
+                الرقابة. الممارسة السليمة أن يُصدر المحاسب قيدًا عكسيًا
+                (Reversing Entry) يلغي أثر القيد الخاطئ ثم يثبت القيد الصحيح،
+                فيبقى السجل كاملًا. ويُفضَّل ضبط صلاحيات المستخدمين بحيث يُمنع
+                الحذف بعد الترحيل.
+              </p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+
+          <div class="topic-block" id="odoo">
+            <h3 class="topic-block__title">Odoo</h3>
+            <p>
+              Odoo نظام ERP مفتوح المصدر تطوّره شركة Odoo S.A. البلجيكية،
+              ويتكوّن من تطبيقات (Apps) مترابطة: المحاسبة والمبيعات والمشتريات
+              والمخزون والموارد البشرية والموقع الإلكتروني وغيرها، وتتشارك كلها
+              قاعدة بيانات واحدة. يتوفر في إصدارين: Community المجاني،
+              وEnterprise المدفوع بإمكانات أوسع، وتختلف ميزات المحاسبة بين
+              الإصدارين فتكتمل غالبًا في Enterprise. ويمكن تشغيله سحابيًا لدى
+              Odoo أو على خادم تديره المنشأة.
+            </p>
+            <p>
+              وللسوق المصري تتوفر حزمة توطين (Localization) تتضمن دليل حسابات
+              مصريًا وإعداد ضريبة القيمة المضافة، كما تتوفر وحدة للربط مع منظومة
+              الفاتورة الإلكترونية في إصدارات Enterprise؛ ويُراجَع نطاق ذلك لكل
+              إصدار قبل التنفيذ. ويعمل Odoo عادةً بأسلوب الجرد المستمر
+              (Perpetual Inventory)، وهو أسلوب تُحدَّث فيه حسابات المخزون وتكلفة
+              البضاعة المباعة (Cost of Goods Sold) لحظة كل حركة مخزنية، لا عند
+              الجرد الدوري فقط.
+            </p>
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>
+                البرنامج ينفّذ السياسات المحاسبية ولا يضعها؛ فالالتزام بالمعايير
+                الدولية (IFRS) يعتمد على ضبط الحسابات والسياسات المحاسبية
+                للمنشأة، لا على اسم البرنامج.
+              </p>
+            </div>
+            <div class="flow-diagram">
+              <div class="flow-step">
+                <div class="flow-step__title">1. أمر البيع</div>
+                <div class="flow-step__description">
+                  يؤكد الطلب والأسعار دون أي قيد محاسبي.
+                </div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">2. التسليم</div>
+                <div class="flow-step__description">
+                  يُخرج الصنف من المخزن ويولّد قيد التكلفة تلقائيًا: تكلفة
+                  البضاعة المباعة مدين والمخزون دائن.
+                </div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">3. الفاتورة</div>
+                <div class="flow-step__description">
+                  تولّد قيد العملاء والمبيعات والضريبة.
+                </div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">4. السداد</div>
+                <div class="flow-step__description">
+                  يولّد قيد البنك أو الخزينة مقابل العملاء.
+                </div>
+              </div>
+            </div>
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span
+                ><span class="example-block__title"
+                  >دورة بيع واحدة من التسليم إلى الفاتورة في Odoo</span
+                >
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>
+                    منشأة «الدلتا للأثاث» تستخدم Odoo بالجرد المستمر؛ جميع
+                    المبالغ بالجنيه المصري (ج.م).
+                  </li>
+                  <li>
+                    رصيد المخزون قبل العملية: <span class="num">50,000</span>.
+                  </li>
+                  <li>
+                    بتاريخ 10/03/2026: سُلِّم أثاث تكلفته
+                    <span class="num">18,000</span> إلى عميل، وصدرت الفاتورة
+                    بسعر بيع <span class="num">30,000</span> قبل ضريبة القيمة
+                    المضافة 14% (<span class="num">4,200</span>).
+                  </li>
+                  <li>
+                    تبسيطًا، لا يُعرض الحسابان الوسيطان اللذان يستخدمهما Odoo
+                    أحيانًا عند التسليم.
+                  </li>
+                </ul>
+                <span class="example-block__label">قيود اليومية</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين (ج.م)</th>
+                        <th>دائن (ج.م)</th>
+                      </tr>
+                    </thead>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">10/03/2026</span></td>
+                        <td>من ح/ تكلفة البضاعة المباعة</td>
+                        <td class="num">18,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ المخزون</td>
+                        <td></td>
+                        <td class="num">18,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>إثبات تكلفة الأثاث المُسلَّم للعميل عند التسليم</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="4"><span class="num">10/03/2026</span></td>
+                        <td>من ح/ العملاء</td>
+                        <td class="num">34,200</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ المبيعات</td>
+                        <td></td>
+                        <td class="num">30,000</td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">
+                          إلى ح/ ضريبة القيمة المضافة المستحقة
+                        </td>
+                        <td></td>
+                        <td class="num">4,200</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>إثبات فاتورة البيع شاملة ضريبة القيمة المضافة</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <span class="example-block__label"
+                  >الترحيل إلى حسابات الأستاذ</span
+                >
+                <div class="t-accounts">
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ المخزون</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li>
+                            <span>رصيد افتتاحي</span
+                            ><span class="num">50,000</span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines">
+                          <li>
+                            <span>تسليم للعميل – 10/03</span
+                            ><span class="num">18,000</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">32,000</span> مدين
+                    </div>
+                  </div>
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ تكلفة البضاعة المباعة</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li>
+                            <span>تسليم للعميل – 10/03</span
+                            ><span class="num">18,000</span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines"></ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">
+                      الرصيد: <span class="num">18,000</span> مدين
+                    </div>
+                  </div>
+                </div>
+                <span class="example-block__label"
+                  >أثر العملية على مجمل الربح</span
+                >
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البيان</th>
+                        <th>جزئي (ج.م)</th>
+                        <th>كلي (ج.م)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>المبيعات (قبل الضريبة)</td>
+                        <td class="num"></td>
+                        <td class="num"><span class="num">30,000</span></td>
+                      </tr>
+                      <tr>
+                        <td>يخصم: تكلفة البضاعة المباعة</td>
+                        <td class="num"></td>
+                        <td class="num"><span class="num">(18,000)</span></td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>مجمل الربح</td>
+                        <td class="num"></td>
+                        <td class="num"><span class="num">12,000</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <p>
+              أنتجت عملية البيع الواحدة قيدين مستقلين من مصدرين مختلفين: قيد
+              المخزن عند التسليم، وقيد المبيعات عند الفوترة. القيد الأول نقل
+              <span class="num">18,000</span> من المخزون (أصل) إلى تكلفة البضاعة
+              المباعة (مصروف)، فبقي المخزون <span class="num">50,000</span> −
+              <span class="num">18,000</span> = <span class="num">32,000</span>.
+              والقيد الثاني أثبت حق المنشأة <span class="num">34,200</span> على
+              العميل، منها <span class="num">30,000</span> إيراد و<span
+                class="num"
+                >4,200</span
+              >
+              ضريبة مستحقة. وبمقابلة المبيعات بالتكلفة يظهر مجمل الربح (Gross
+              Profit) <span class="num">30,000</span> −
+              <span class="num">18,000</span> = <span class="num">12,000</span>؛
+              ولم يتدخل المحاسب في أيٍّ من القيدين.
+            </p>
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                جودة قيود Odoo التلقائية تتوقف على ضبط الحسابات في فئة المنتج
+                وإعدادات الضريبة. خطأ واحد في هذا الضبط يُرحّل آلاف العمليات إلى
+                حسابات خاطئة. ولا يُغني ثراء المزايا عن التدريب الكافي وعن مرحلة
+                تجريبية قبل بدء التشغيل الفعلي.
+              </p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+
+          <div class="topic-block" id="erp-cms">
+            <h3 class="topic-block__title">معنى ERP وCMS</h3>
+            <p>
+              نظام تخطيط موارد المؤسسة ERP هو نظام برمجي متكامل يجمع إدارات
+              المنشأة (المحاسبة، المبيعات، المشتريات، المخزون، الموارد البشرية،
+              التصنيع) في وحدات مترابطة تقرأ وتكتب في قاعدة بيانات واحدة. وقيمته
+              المحاسبية أن العملية تُدخل مرة واحدة في مكانها الطبيعي، فتنتقل
+              آثارها إلى بقية الوحدات: التسليم المخزني يولّد قيد التكلفة،
+              والفاتورة تولّد قيد الإيراد، دون إعادة إدخال. وبذلك يعالج ERP
+              مشكلة «جزر البيانات» حين يمسك المخزن ملف Excel، والمبيعات برنامجًا
+              ثانيًا، والحسابات برنامجًا ثالثًا، ثم يضطر المحاسب إلى مطابقتها
+              يدويًا.
+            </p>
+            <p>
+              وعلى هذا الأساس يمكن تصنيف أدوات الفصل: Odoo نظام ERP بالمعنى
+              الكامل. أما QuickBooks فبرنامج محاسبة بخصائص فوترة ومخزون محدودة،
+              وهو أقرب إلى وحدة محاسبة منه إلى ERP. وExcel أداة عامة ليست
+              نظامًا. وبرامج الميزان ونظائرها تتفاوت؛ فبعضها يقتصر على الحسابات،
+              وبعضها يضيف المبيعات والمخازن، لكنها لا تُعدّ ERP بالضرورة. ولا
+              تعني زيادة الوحدات أن النظام الأنسب هو الأكبر، فكلفة التنفيذ
+              والتدريب تتزايد معها.
+            </p>
+            <p>
+              أما نظام إدارة المحتوى CMS (Content Management System) فهو برنامج
+              يتيح لغير المبرمجين إنشاء محتوى الموقع الإلكتروني وتحريره ونشره،
+              من صفحات ومقالات وصور وقوائم منتجات، ومن أمثلته WordPress. وهو ليس
+              نظامًا محاسبيًا، ولا يمسك دفاتر ولا يولّد قيودًا. غير أن علاقته
+              بالمحاسبة تظهر في المتاجر الإلكترونية: يستقبل CMS طلب العميل، ثم
+              لا بد أن ينتقل الطلب إلى نظام محاسبي أو ERP ليُفوتَر ويُحصَّل
+              ويُقيَّد. ولذلك تضم بعض أنظمة ERP، ومنها Odoo، وحدة موقع إلكتروني
+              تؤدي دور CMS داخل النظام نفسه، فلا حاجة إلى ربط منفصل.
+            </p>
+            <div class="flow-diagram">
+              <div class="flow-step">
+                <div class="flow-step__title">الموقع الإلكتروني (CMS)</div>
+                <div class="flow-step__description">
+                  يعرض المنتجات ويستقبل طلب العميل.
+                </div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">نظام ERP</div>
+                <div class="flow-step__description">
+                  يسجّل أمر البيع ويحجز المخزون ويتولى التسليم والفوترة.
+                </div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">الوحدة المحاسبية</div>
+                <div class="flow-step__description">
+                  تثبت قيد الفاتورة ثم قيد التحصيل في الدفاتر.
+                </div>
+              </div>
+            </div>
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>
+                قد يشير الاختصار CMS في السياق المصرفي إلى نظام إدارة النقد
+                (Cash Management System)، وهو برنامج تقدمه البنوك للشركات لإدارة
+                مدفوعاتها. والمقصود به في هذا الفصل هو نظام إدارة المحتوى.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section content-section--tint" id="comparison">
+      <div class="container">
+        <div class="content-section__eyebrow">مقارنة</div>
+        <h2 class="content-section__title">مقارنة بين أدوات المحاسبة الأربع</h2>
+        <div class="table-responsive">
+          <table class="table table-bordered align-middle">
+            <thead>
+              <tr>
+                <th>وجه المقارنة</th>
+                <th>QuickBooks</th>
+                <th>Excel</th>
+                <th>الميزان</th>
+                <th>Odoo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>طبيعة الأداة</td>
+                <td>برنامج محاسبة جاهز للمنشآت الصغيرة والمتوسطة</td>
+                <td>جداول بيانات عامة الغرض</td>
+                <td>برنامج محاسبة عربي محلي الطابع</td>
+                <td>نظام ERP متكامل</td>
+              </tr>
+              <tr>
+                <td>طريقة التشغيل</td>
+                <td>سحابي في الغالب (QuickBooks Online)</td>
+                <td>ملفات على جهاز المستخدم أو مخزنة سحابيًا</td>
+                <td>تثبيت محلي في الغالب، وقد تتوفر نسخ سحابية</td>
+                <td>سحابي أو على خادم تديره المنشأة</td>
+              </tr>
+              <tr>
+                <td>القيد المزدوج</td>
+                <td>يُولَّد تلقائيًا من المستندات</td>
+                <td>يدوي بالكامل ولا يُفرض توازنه</td>
+                <td>يُولَّد تلقائيًا من الفواتير والسندات</td>
+                <td>يُولَّد تلقائيًا ومتكاملًا مع المبيعات والمخزون</td>
+              </tr>
+              <tr>
+                <td>التوطين المصري والفاتورة الإلكترونية</td>
+                <td>
+                  لا إصدار موطَّن رسميًا بحسب علمنا؛ الإعداد يدوي وقد يلزم وسيط
+                </td>
+                <td>لا يوجد؛ كل شيء يدوي</td>
+                <td>يختلف بحسب المطوِّر والإصدار؛ يُتحقق منه</td>
+                <td>حزمة توطين مصرية متاحة؛ يُتحقق من الإصدار</td>
+              </tr>
+              <tr>
+                <td>الأنسب لـ</td>
+                <td>منشآت صغيرة تحتاج فواتير وتقارير سريعة</td>
+                <td>التعلم والتحليل والمنشآت متناهية الصغر</td>
+                <td>منشآت محلية تحتاج واجهة عربية وسندات وخزينة</td>
+                <td>منشآت متوسطة تتعدد إداراتها وتحتاج تكاملًا</td>
+              </tr>
+              <tr>
+                <td>أبرز قيد</td>
+                <td>تكلفة الاشتراك وقلة التوطين</td>
+                <td>لا سجل تدقيق وارتفاع خطر الخطأ البشري</td>
+                <td>الاعتماد على المطوِّر والنسخ الاحتياطي</td>
+                <td>تعقيد التنفيذ والتدريب</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="summary">
+      <div class="container">
+        <div class="content-section__eyebrow">الخلاصة</div>
+        <h2 class="content-section__title">أهم ما يجب تذكّره</h2>
+        <div class="summary-card" style="max-width: 900px">
+          <ul class="summary-card__list">
+            <li>
+              ✔ QuickBooks يولّد القيد المزدوج تلقائيًا من الفاتورة والسداد،
+              لكنه غير موطَّن رسميًا لمصر بحسب علمنا؛ فتُعدّ الضريبة والفاتورة
+              الإلكترونية بعناية.
+            </li>
+            <li>
+              ✔ Excel أداة مرنة للتحليل وبناء ميزان المراجعة، لكنه لا يفرض توازن
+              القيد ولا يحتفظ بسجل تدقيق، وتساوي طرفي الميزان فيه لا يثبت صحة
+              الدفاتر.
+            </li>
+            <li>
+              ✔ «الميزان» اسم تحمله برامج عربية متعددة؛ يُتحقق من المطوِّر
+              والإصدار، ويظل النسخ الاحتياطي وصلاحيات المستخدمين مسؤولية
+              المنشأة.
+            </li>
+            <li>
+              ✔ Odoo نظام ERP يربط المخزن بالمبيعات بالمحاسبة، فيتولد قيد
+              التكلفة عند التسليم وقيد الإيراد عند الفوترة؛ وجودة قيوده تتوقف
+              على ضبط الحسابات.
+            </li>
+            <li>
+              ✔ ERP نظام متكامل بقاعدة بيانات واحدة لإدارات المنشأة، أما CMS
+              فنظام لإدارة محتوى الموقع الإلكتروني وليس نظامًا محاسبيًا.
+            </li>
+            <li>
+              ✔ الأداة تنفّذ السياسة المحاسبية ولا تحل محلها؛ فاختيار الأداة
+              يتبع حجم المنشأة وتعدّد عملياتها ومتطلبات الضريبة، لا شهرتها.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>الفصل الخامس والعشرون: برامج المحاسبة في السوق المصري</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const heroTitle = document.querySelector('.hero__title')
+      const toolbarTitle = document.querySelector('[data-sync-title]')
+      if (heroTitle && toolbarTitle) {
+        const text = heroTitle.textContent.trim()
+        if (text) {
+          toolbarTitle.textContent = text
+          document.title = text
+        }
+      }
+    </script>
+  </body>
+</html>

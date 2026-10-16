@@ -1,0 +1,1223 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الفصل السادس والعشرون: أخطاء المحاسبين الشائعة وكيف تتجنبها</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --clr-primary: #b378a6;
+        --clr-secondary: #7796bf;
+        --clr-light: #ffffff;
+        --clr-light-2: #f0f0f0;
+        --clr-border: #dedede;
+        --clr-dark: #1b1b1b;
+        --clr-dark-2: #444444;
+        --clr-text: #333333;
+        --clr-text-soft: #555555;
+
+        --font-body: 'Baloo Bhaijaan 2', sans-serif;
+
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 18px;
+
+        --shadow-soft: 0 4px 20px rgba(27, 27, 27, 0.07);
+        --shadow-hover: 0 12px 28px rgba(179, 120, 166, 0.16);
+
+        --section-pad: 4.5rem;
+        --content-width: 900px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--clr-light);
+        color: var(--clr-dark);
+        line-height: 1.9;
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: var(--clr-secondary);
+        text-decoration: none;
+        transition: 0.2s;
+      }
+
+      a:hover {
+        color: var(--clr-primary);
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        font-family: var(--font-body);
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+        color: var(--clr-dark);
+      }
+
+      h1,
+      h2 {
+        font-weight: 800;
+      }
+      h3,
+      h4,
+      h5 {
+        font-weight: 700;
+      }
+
+      p {
+        color: var(--clr-text);
+        margin-bottom: 1rem;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+
+      section {
+        scroll-margin-top: 90px;
+      }
+
+      ::selection {
+        background: var(--clr-primary);
+        color: #fff;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--clr-secondary);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      .editor-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--clr-primary);
+        padding: 0.7rem 0;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .editor-toolbar__tab-title {
+        color: #fff;
+        font-size: 1.1rem;
+        direction: ltr;
+        font-weight: 700;
+      }
+
+      .hero {
+        background: var(--clr-secondary);
+        color: #fff;
+        padding: 4.5rem 0 3.5rem;
+      }
+
+      .hero__title {
+        color: #fff;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      .hero__lead {
+        color: #fff;
+        opacity: 0.95;
+        max-width: 760px;
+        font-size: 1.15rem;
+        margin-bottom: 0;
+      }
+
+      .content-section {
+        padding: var(--section-pad) 0;
+      }
+      .content-section--alt {
+        background: #fcfcfc;
+      }
+      .content-section--tint {
+        background: var(--clr-light-2);
+      }
+
+      .content-section__eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+        font-size: 0.86rem;
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+      }
+
+      .content-section__eyebrow::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        background: var(--clr-primary);
+      }
+
+      .content-section__title {
+        font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+      }
+
+      .content-section__description {
+        max-width: 760px;
+        color: var(--clr-text-soft);
+        margin-bottom: 2.5rem;
+      }
+
+      .summary-card {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+        padding: 2rem;
+      }
+
+      .summary-card__list {
+        display: grid;
+        gap: 1rem;
+        list-style: none;
+      }
+
+      .summary-card__list li {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+      }
+
+      .callout {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        border-radius: var(--radius-md);
+        border-inline-start: 4px solid;
+      }
+
+      .callout__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 700;
+      }
+
+      .callout--note {
+        background: rgba(119, 150, 191, 0.08);
+        border-color: var(--clr-secondary);
+      }
+
+      .callout--warning {
+        background: rgba(179, 120, 166, 0.08);
+        border-color: var(--clr-primary);
+      }
+
+      .flow-diagram {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin: 2rem 0;
+      }
+
+      .flow-step {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        padding: 1rem 1.25rem;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .flow-step__title {
+        color: var(--clr-primary);
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+      }
+
+      .flow-step__description {
+        color: var(--clr-text-soft);
+        margin: 0;
+      }
+
+      .flow-arrow {
+        text-align: center;
+        color: var(--clr-secondary);
+        font-size: 28px;
+        line-height: 1;
+      }
+
+      .topic-block {
+        margin-bottom: 3rem;
+      }
+      .topic-block:last-child {
+        margin-bottom: 0;
+      }
+
+      .topic-block__title {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+      }
+
+      .topic-divider {
+        border: none;
+        border-top: 1px dashed var(--clr-border);
+        margin: 2.5rem 0;
+      }
+
+      .num {
+        direction: ltr;
+        unicode-bidi: isolate;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .formula-box {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        text-align: center;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .formula-box__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--clr-primary);
+        font-weight: 700;
+      }
+
+      .formula-box__body {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--clr-dark);
+      }
+
+      .example-block {
+        overflow: hidden;
+        margin: 2rem 0;
+        background: var(--clr-light);
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .example-block__header {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.7rem 1.2rem;
+        background: var(--clr-dark);
+      }
+
+      .example-block__tag {
+        padding: 0 0.7rem;
+        background: var(--clr-primary);
+        color: #fff;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .example-block__title {
+        color: #fff;
+        font-weight: 600;
+      }
+
+      .example-block__body {
+        padding: 1.5rem;
+      }
+
+      .example-block__label {
+        display: block;
+        margin: 1.6rem 0 0.6rem;
+        color: var(--clr-secondary);
+        font-weight: 700;
+      }
+
+      .example-block__label:first-child {
+        margin-top: 0;
+      }
+
+      .example-block__data {
+        margin: 0;
+        padding-inline-start: 1.2rem;
+        color: var(--clr-text);
+      }
+
+      .acc-table-wrap {
+        overflow-x: auto;
+      }
+
+      .acc-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+
+      .acc-table th,
+      .acc-table td {
+        padding: 0.5rem 0.8rem;
+        border: 1px solid var(--clr-border);
+      }
+
+      .acc-table thead th {
+        background: var(--clr-light-2);
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .acc-table td.num {
+        text-align: end;
+      }
+
+      .acc-table__total td {
+        background: #fcfcfc;
+        font-weight: 700;
+        border-top: 2px solid var(--clr-dark-2);
+        border-bottom: 4px double var(--clr-dark-2);
+      }
+
+      .journal__entry {
+        border-bottom: 2px solid var(--clr-dark-2);
+      }
+      .acc-table td.journal__credit {
+        padding-inline-start: 2.5rem;
+      }
+      .journal__note td {
+        color: var(--clr-text-soft);
+        font-size: 0.88rem;
+      }
+
+      .t-accounts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+
+      .t-account {
+        overflow: hidden;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+      }
+
+      .t-account__title {
+        padding: 0.5rem;
+        text-align: center;
+        color: var(--clr-primary);
+        font-weight: 700;
+        border-bottom: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__sides {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .t-account__side + .t-account__side {
+        border-inline-start: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__side-label {
+        padding: 0.3rem;
+        text-align: center;
+        color: var(--clr-text-soft);
+        font-size: 0.85rem;
+        font-weight: 700;
+        border-bottom: 1px solid var(--clr-border);
+      }
+
+      .t-account__lines {
+        min-height: 3rem;
+        margin: 0;
+        padding: 0.4rem 0.7rem;
+        list-style: none;
+      }
+
+      .t-account__lines li {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .t-account__balance {
+        padding: 0.45rem 0.7rem;
+        text-align: center;
+        font-weight: 700;
+        background: rgba(119, 150, 191, 0.08);
+        border-top: 1px solid var(--clr-border);
+      }
+
+      .site-footer {
+        background: var(--clr-light-2);
+        color: var(--clr-light);
+        padding: 1rem 0 0.5rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        :root {
+          --section-pad: 3rem;
+        }
+        .hero {
+          padding: 3.5rem 0;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="editor-toolbar">
+      <div class="container d-flex align-items-center gap-3">
+        <span class="editor-toolbar__tab-title" data-sync-title></span>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="container">
+        <h1 class="hero__title">
+          الفصل السادس والعشرون: أخطاء المحاسبين الشائعة وكيف تتجنبها
+        </h1>
+        <p class="hero__lead">
+          يتناول هذا الفصل كيفية اكتشاف أخطاء القيود والضرائب والثغرات الأمنية
+          في الحسابات وتصحيحها وفق مبادئ المحاسبة المالية المتعارف عليها (GAAP)
+          والمعايير الدولية لإعداد التقارير المالية (IFRS)، مع أمثلة عملية
+          متوازنة بالجنيه المصري وإجراءات واضحة للوقاية.
+        </p>
+      </div>
+    </header>
+
+    <section class="content-section" id="explanation">
+      <div class="container">
+        <div class="content-section__eyebrow">شرح وتطبيق</div>
+        <h2 class="content-section__title">شرح وتطبيق كل مرحلة</h2>
+
+        <div class="article-content" style="max-width: 900px">
+          <div class="topic-block" id="entry-errors">
+            <h3 class="topic-block__title">المرحلة الأولى: أخطاء القيود</h3>
+            <p>
+              أخطاء القيود المحاسبية هي أخطاء تقع عند تسجيل العملية أو اختيار
+              الحساب أو تحديد الطرف المدين والدائن أو إدخال المبلغ أو التاريخ.
+              ويُقصد بالقيد المحاسبي (Journal Entry) التسجيل الذي يوضح الحسابات
+              المتأثرة وقيمها في جانبي المدين والدائن (Debit and Credit). يجب أن
+              يتساوى مجموع الطرفين في كل قيد، لكن هذا التوازن وحده لا يثبت أن
+              التسجيل صحيح؛ فقد يُسجَّل المبلغ في حساب غير مناسب مع بقاء القيد
+              متوازنًا.
+            </p>
+            <p>
+              من الأخطاء المتكررة: تحميل المصروف على أصل، أو عكس المدين والدائن،
+              أو تكرار التسجيل، أو إغفال عملية بالكامل، أو كتابة مبلغ صحيح في
+              حساب غير صحيح. تبدأ المعالجة بمقارنة المستند الأصلي بالقيد، ثم
+              تحديد أثر الخطأ، ثم إعداد قيد تصحيح (Correcting Entry) واضح
+              ومراجعته قبل الترحيل. وإذا اكتُشف خطأ جوهري يخص فترة سابقة،
+              فيُعالج وفق معيار المحاسبة الدولي رقم 8 بشأن السياسات المحاسبية
+              والتغيرات في التقديرات والأخطاء، وقد يلزم إعادة عرض أرقام
+              المقارنة.
+              <a
+                href="https://www.ifrs.org/issued-standards/list-of-standards/ias-8-basis-of-preparation-of-financial-statements/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >مرجع معيار IAS 8</a
+              >.
+            </p>
+
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>
+                ميزان المراجعة (Trial Balance) هو قائمة بأرصدة الحسابات تُستخدم
+                للتحقق من تساوي إجمالي الأرصدة المدينة والدائنة. وقد يظل
+                متوازنًا رغم وجود خطأ في التصنيف أو إغفال عملية من جانبيها؛ لذلك
+                يلزم فحص المستندات وطبيعة الحسابات أيضًا.
+              </p>
+            </div>
+
+            <div class="formula-box">
+              <span class="formula-box__label">اختبار توازن القيد</span>
+              <p class="formula-box__body">إجمالي المدين = إجمالي الدائن</p>
+            </div>
+
+            <div class="flow-diagram">
+              <div class="flow-step">
+                <div class="flow-step__title">1. اكتشاف الفرق</div>
+                <p class="flow-step__description">
+                  مطابقة القيد مع الفاتورة أو الإيصال أو أمر الشراء وتحديد
+                  الحساب أو المبلغ غير الصحيح.
+                </p>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">2. تصحيح موثق</div>
+                <p class="flow-step__description">
+                  إثبات قيد تصحيح متوازن، وإرفاق سبب التعديل والمستند المؤيد، ثم
+                  مراجعة أثره على الأرصدة.
+                </p>
+              </div>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title"
+                  >تصحيح مصروف سُجِّل باعتباره أصلًا</span
+                >
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>
+                    في 15/03/2026، اشترت المنشأة مستلزمات مكتبية استُهلكت فورًا
+                    بمبلغ <span class="num">12,000</span> ج.م، نقدًا.
+                  </li>
+                  <li>
+                    سُجلت العملية أولًا بالخطأ: من ح/ معدات مكتبية
+                    <span class="num">12,000</span> ج.م إلى ح/ الصندوق
+                    <span class="num">12,000</span> ج.م.
+                  </li>
+                  <li>
+                    اكتُشف الخطأ قبل إقفال الفترة، وتبين أن المبلغ مصروف
+                    مستلزمات لا معدات ذات منفعة مستقبلية.
+                  </li>
+                </ul>
+
+                <span class="example-block__label">قيد التصحيح</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين (ج.م)</th>
+                        <th>دائن (ج.م)</th>
+                      </tr>
+                    </thead>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3">31/03/2026</td>
+                        <td>من ح/ مصروفات مستلزمات مكتبية</td>
+                        <td class="num">12,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ معدات مكتبية</td>
+                        <td></td>
+                        <td class="num">12,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>
+                          إعادة تصنيف المبلغ من حساب المعدات إلى المصروف بعد
+                          التحقق من المستند.
+                        </td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                      <tr class="acc-table__total">
+                        <td colspan="2">إجمالي قيد التصحيح</td>
+                        <td class="num">12,000</td>
+                        <td class="num">12,000</td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+
+                <span class="example-block__label"
+                  >أثر التصحيح على العملية</span
+                >
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>الحساب</th>
+                        <th>الأثر النهائي</th>
+                        <th>سبب الأثر</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>مصروفات مستلزمات مكتبية</td>
+                        <td>مدين <span class="num">12,000</span> ج.م</td>
+                        <td>إثبات تكلفة المستلزمات المستهلكة.</td>
+                      </tr>
+                      <tr>
+                        <td>الصندوق</td>
+                        <td>دائن <span class="num">12,000</span> ج.م</td>
+                        <td>
+                          إثبات خروج النقدية في القيد الأصلي الصحيح من حيث
+                          الدفع.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>معدات مكتبية</td>
+                        <td>صافي أثر <span class="num">0</span> ج.م</td>
+                        <td>أُزيل التصنيف الخاطئ بقيد التصحيح.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              قيد التصحيح مدينٌ بمبلغ <span class="num">12,000</span> ج.م ودائنٌ
+              بالمبلغ نفسه؛ فهو يخفض رصيد المعدات الذي نشأ عن القيد الخاطئ،
+              ويثبت المصروف المناسب. وبالنظر إلى القيد الأصلي وقيد التصحيح معًا،
+              يبقى أثر الدفع على الصندوق دائنًا بمبلغ
+              <span class="num">12,000</span> ج.م، ويصبح المصروف مدينًا بالمبلغ
+              نفسه، بينما يُلغى أثر العملية على حساب المعدات.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                لا تكتفِ بكون القيد متوازنًا. قبل اعتماده، تحقّق من طبيعة
+                العملية، والحساب الملائم، والمستند المؤيد، ومن أن التصحيح لا
+                يكرر العملية أو يترك أثرًا عكسيًا غير مقصود.
+              </p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+
+          <div class="topic-block" id="tax-errors">
+            <h3 class="topic-block__title">المرحلة الثانية: أخطاء الضرائب</h3>
+            <p>
+              تشمل الأخطاء الضريبية اختيار معاملة ضريبية غير مناسبة، أو تطبيق
+              سعر غير صحيح، أو إغفال الضريبة من الفاتورة أو القيد، أو عدم مطابقة
+              السجلات والإقرارات للمستندات. ضريبة القيمة المضافة (Value Added
+              Tax — VAT) ضريبة تُفرض على التوريدات الخاضعة لها وفق القانون؛ ويجب
+              فصل مبلغ الضريبة عن إيراد المبيعات عند إثبات العملية، متى كانت
+              المنشأة ملزمة بتحصيلها.
+            </p>
+            <p>
+              لا يكفي استخدام نسبة محفوظة لكل السلع والخدمات؛ إذ يجب التحقق من
+              تصنيف التوريد، وتاريخ العملية، وأي إعفاء أو سعر خاص، وصحة
+              الفاتورة. كما ينبغي مطابقة إجمالي فواتير المبيعات والمشتريات مع
+              حسابات الضريبة والإقرارات، ومراجعة الالتزام بمنظومة الفاتورة أو
+              الإيصال الإلكتروني بحسب الحالة. يمكن الرجوع إلى
+              <a
+                href="https://www.eta.gov.eg/ar/content/qwanyn-aldrybt-ly-alqymt-almdaft"
+                target="_blank"
+                rel="noopener noreferrer"
+                >قوانين ضريبة القيمة المضافة المنشورة لدى مصلحة الضرائب
+                المصرية</a
+              >
+              و<a
+                href="https://www.eta.gov.eg/ar/content/e-invoice-services"
+                target="_blank"
+                rel="noopener noreferrer"
+                >دليل منظومة الفاتورة الإلكترونية</a
+              >.
+            </p>
+
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>
+                يفترض المثال التالي أن السلعة خاضعة للسعر العام البالغ
+                <span class="num">14%</span>، ولا ينطبق عليها إعفاء أو سعر خاص.
+                هذه فرضية تعليمية وليست حكمًا عامًا على كل السلع والخدمات؛ يجب
+                التحقق من المعاملة القانونية للعملية الفعلية.
+              </p>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title"
+                  >تصحيح إغفال ضريبة القيمة المضافة في عملية بيع</span
+                >
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>
+                    في 20/03/2026، باعت المنشأة بضاعة خاضعة للضريبة على الحساب
+                    بقيمة قبل الضريبة <span class="num">100,000</span> ج.م.
+                  </li>
+                  <li>
+                    سعر الضريبة المفترض في المثال <span class="num">14%</span>؛
+                    لذلك تبلغ الضريبة <span class="num">14,000</span> ج.م، ويبلغ
+                    إجمالي الفاتورة <span class="num">114,000</span> ج.م.
+                  </li>
+                  <li>
+                    سُجل القيد الأصلي خطأً من ح/ العملاء
+                    <span class="num">100,000</span> ج.م إلى ح/ المبيعات
+                    <span class="num">100,000</span> ج.م، دون إثبات الضريبة.
+                  </li>
+                </ul>
+
+                <div class="formula-box">
+                  <span class="formula-box__label"
+                    >احتساب الضريبة في المثال</span
+                  >
+                  <p class="formula-box__body">
+                    <span class="num">100,000</span> ×
+                    <span class="num">14%</span> =
+                    <span class="num">14,000</span> ج.م
+                  </p>
+                </div>
+
+                <span class="example-block__label">قيد التصحيح</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين (ج.م)</th>
+                        <th>دائن (ج.م)</th>
+                      </tr>
+                    </thead>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3">20/03/2026</td>
+                        <td>من ح/ العملاء</td>
+                        <td class="num">14,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">
+                          إلى ح/ ضريبة القيمة المضافة المستحقة
+                        </td>
+                        <td></td>
+                        <td class="num">14,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>
+                          إثبات الضريبة التي أُغفلت في القيد الأصلي، مع استكمال
+                          الفاتورة والسجلات اللازمة.
+                        </td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                      <tr class="acc-table__total">
+                        <td colspan="2">إجمالي قيد التصحيح</td>
+                        <td class="num">14,000</td>
+                        <td class="num">14,000</td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+
+                <span class="example-block__label"
+                  >مراجعة أرصدة العملية بعد التصحيح</span
+                >
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>الحساب</th>
+                        <th>مدين (ج.م)</th>
+                        <th>دائن (ج.م)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>العملاء</td>
+                        <td class="num">114,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>المبيعات</td>
+                        <td></td>
+                        <td class="num">100,000</td>
+                      </tr>
+                      <tr>
+                        <td>ضريبة القيمة المضافة المستحقة</td>
+                        <td></td>
+                        <td class="num">14,000</td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>الإجمالي</td>
+                        <td class="num">114,000</td>
+                        <td class="num">114,000</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              ضُرب أساس البيع البالغ <span class="num">100,000</span> ج.م في
+              <span class="num">14%</span> فنتجت ضريبة قدرها
+              <span class="num">14,000</span> ج.م. لذلك زاد المبلغ المستحق على
+              العميل من <span class="num">100,000</span> إلى
+              <span class="num">114,000</span> ج.م، وأُثبت التزام ضريبي بالمبلغ
+              نفسه دون زيادة إيراد المبيعات. وبعد التصحيح يتساوى إجمالي المدين
+              والدائن عند <span class="num">114,000</span> ج.م في مراجعة أرصدة
+              العملية.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                لا تُعالج الضريبة المُغفلة بزيادة إيراد المبيعات، ولا تعتمد
+                النسبة العامة قبل التأكد من خضوع العملية لها. وينبغي كذلك مطابقة
+                القيد مع الفاتورة والإقرار الضريبي والمتطلبات الإلكترونية
+                المطبقة على المنشأة.
+              </p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+
+          <div class="topic-block" id="accounting-security">
+            <h3 class="topic-block__title">
+              المرحلة الثالثة: الثغرات الأمنية في الحسابات
+            </h3>
+            <p>
+              الثغرات الأمنية في الحسابات هي نقاط ضعف في صلاحيات الوصول أو
+              اعتماد المدفوعات أو حفظ المستندات والبيانات، قد تسمح بتعديل
+              السجلات أو إجراء تحويلات غير مصرح بها أو تكرار المدفوعات دون
+              اكتشاف سريع. تساعد الرقابة الداخلية (Internal Control) على حماية
+              الأموال ودقة السجلات عبر ضوابط يمكن التحقق من تنفيذها، لا بمجرد
+              الثقة في المستخدمين.
+            </p>
+            <p>
+              من أهم الضوابط: فصل المهام (Segregation of Duties)، بحيث لا ينفرد
+              شخص واحد بإنشاء المورد أو تسجيل الفاتورة وإعداد التحويل واعتماده؛
+              ومنح كل مستخدم الصلاحيات اللازمة لعمله فقط؛ وتفعيل المصادقة متعددة
+              العوامل (Multi-Factor Authentication) عند إتاحتها؛ وتوثيق
+              الموافقات؛ ومراجعة سجل العمليات؛ ومطابقة كشف البنك دوريًا؛
+              والاحتفاظ بنسخ احتياطية واختبار استعادتها. يجب أن تكون صلاحيات
+              التعديل والاعتماد قابلة للتتبع وأن تُراجع عند انتقال الموظف أو
+              مغادرته.
+            </p>
+
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>
+                المطابقة البنكية (Bank Reconciliation) هي مقارنة حركة ورصيد
+                البنك في دفاتر المنشأة بكشف البنك لتحديد العمليات غير المسجلة أو
+                المكررة أو غير المعروفة وتسويتها بمستندات مؤيدة. وهي وسيلة
+                اكتشاف مهمة، لكنها لا تغني عن منع الخلل بالصلاحيات والموافقات.
+              </p>
+            </div>
+
+            <div class="flow-diagram">
+              <div class="flow-step">
+                <div class="flow-step__title">إنشاء العملية</div>
+                <p class="flow-step__description">
+                  يُدخل الموظف طلب الدفع ويرفق الفاتورة وبيانات المورد.
+                </p>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">مراجعة واعتماد مستقلان</div>
+                <p class="flow-step__description">
+                  يتحقق شخص آخر من المستندات، ومن عدم سداد الفاتورة سابقًا، ثم
+                  يعتمد التحويل.
+                </p>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">مطابقة ومتابعة</div>
+                <p class="flow-step__description">
+                  تُطابق حركة البنك مع الدفاتر، وتُراجع الاستثناءات وسجلات
+                  الدخول والتغييرات.
+                </p>
+              </div>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title"
+                  >تسجيل تحويل مكرر اكتُشف من كشف البنك</span
+                >
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>
+                    في 05/04/2026، كشف فحص كشف البنك عن تحويل مكرر إلى مورد
+                    بقيمة <span class="num">18,000</span> ج.م لم يكن مسجلًا بعد
+                    في دفاتر المنشأة.
+                  </li>
+                  <li>
+                    أكد المورد كتابةً أن التحويل زائد، ووافق على رد المبلغ؛ لذلك
+                    يوجد مستند يؤيد المبلغ المستحق استرداده.
+                  </li>
+                  <li>
+                    أظهر الفحص أن الموظف نفسه يستطيع إنشاء التحويل وإطلاقه دون
+                    اعتماد مستقل، وأن المطابقة البنكية لم تُجرَ في موعدها.
+                  </li>
+                </ul>
+
+                <span class="example-block__label"
+                  >قيد إثبات التحويل المكرر القابل للاسترداد</span
+                >
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين (ج.م)</th>
+                        <th>دائن (ج.م)</th>
+                      </tr>
+                    </thead>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3">05/04/2026</td>
+                        <td>من ح/ مبالغ مستحقة الاسترداد من المورد</td>
+                        <td class="num">18,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ البنك</td>
+                        <td></td>
+                        <td class="num">18,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>
+                          إثبات خروج التحويل المكرر من البنك وإثبات حق الاسترداد
+                          بناءً على إقرار المورد المكتوب.
+                        </td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                      <tr class="acc-table__total">
+                        <td colspan="2">إجمالي القيد</td>
+                        <td class="num">18,000</td>
+                        <td class="num">18,000</td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+
+                <span class="example-block__label"
+                  >إجراءات المنع والمعالجة</span
+                >
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>الخلل المكتشف</th>
+                        <th>الإجراء التصحيحي والوقائي</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>المُنشئ هو المعتمد نفسه</td>
+                        <td>
+                          فصل إعداد التحويل عن اعتماده، وتحديد حدود صلاحية
+                          واضحة.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>احتمال تكرار الدفع</td>
+                        <td>
+                          التحقق من رقم الفاتورة والمورد والمبلغ وسجل المدفوعات
+                          قبل اعتماد الطلب.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>تأخر اكتشاف العملية</td>
+                        <td>
+                          تنفيذ المطابقة البنكية دوريًا، وتوثيق الفروق ومتابعتها
+                          حتى إغلاقها.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>خطر الوصول غير المصرح به</td>
+                        <td>
+                          استخدام حساب مستقل لكل مستخدم، ومراجعة الصلاحيات
+                          وسجلات الدخول والتغييرات.
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              يُثبت القيد انخفاض رصيد البنك بمبلغ
+              <span class="num">18,000</span> ج.م، ويثبت في المقابل حق المنشأة
+              في استرداد المبلغ من المورد، بدلًا من تحميله مصروفًا جديدًا ما دام
+              الاسترداد مؤيدًا بمستند. ويتساوى جانبا القيد عند
+              <span class="num">18,000</span> ج.م. وعند رد المبلغ فعليًا، يُثبت
+              التحصيل ويُقفل رصيد المبلغ المستحق الاسترداد، مع توثيق المطابقة
+              والمراجعة.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                لا تشارك بيانات الدخول، ولا تستخدم حسابًا عامًا بين موظفين
+                متعددين، ولا تكتفِ بكشف الاستثناءات دون متابعة. وإذا لم يكن
+                استرداد المبلغ مؤكدًا أو كان محل نزاع، فيجب تقييم المعالجة
+                المناسبة بناءً على الأدلة والسياسة المحاسبية المعتمدة بدل افتراض
+                التحصيل المؤكد.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section content-section--tint" id="comparison">
+      <div class="container">
+        <div class="content-section__eyebrow">مقارنة</div>
+        <h2 class="content-section__title">
+          التمييز بين الخطأ المحاسبي والضريبي والثغرة الأمنية
+        </h2>
+        <div class="table-responsive">
+          <table class="table table-bordered align-middle">
+            <thead>
+              <tr>
+                <th>وجه المقارنة</th>
+                <th>أخطاء القيود</th>
+                <th>أخطاء الضرائب</th>
+                <th>الثغرات الأمنية في الحسابات</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>مصدر الخطر</td>
+                <td>
+                  اختيار حساب غير مناسب أو خطأ في المبلغ أو الطرف أو إغفال
+                  التسجيل.
+                </td>
+                <td>
+                  سعر أو تصنيف ضريبي غير صحيح، أو إغفال الضريبة أو عدم مطابقة
+                  المستندات.
+                </td>
+                <td>
+                  صلاحيات مفرطة، أو غياب اعتماد مستقل، أو ضعف المراجعة والتتبع.
+                </td>
+              </tr>
+              <tr>
+                <td>طريقة الاكتشاف</td>
+                <td>فحص المستندات ومراجعة القيود والأرصدة وميزان المراجعة.</td>
+                <td>
+                  مطابقة الفواتير وحسابات الضرائب والإقرارات والمتطلبات ذات
+                  الصلة.
+                </td>
+                <td>
+                  مراجعة الصلاحيات وسجلات العمليات والمطابقة البنكية
+                  والاستثناءات.
+                </td>
+              </tr>
+              <tr>
+                <td>المعالجة الأساسية</td>
+                <td>
+                  قيد تصحيح موثق مع التأكد من أثره على الحسابات والفترة الصحيحة.
+                </td>
+                <td>
+                  تصحيح القيد والسجلات والمستندات والإقرار عند اللزوم وفق
+                  المتطلبات المطبقة.
+                </td>
+                <td>
+                  تأمين الوصول وفصل المهام والتحقق من العملية وتسجيل أثرها
+                  ومتابعتها.
+                </td>
+              </tr>
+              <tr>
+                <td>الوقاية</td>
+                <td>قائمة مراجعة للقيود واعتماد مستقل للعمليات المهمة.</td>
+                <td>
+                  تحديث قواعد التصنيف ومراجعة الحسابات الضريبية قبل تقديم
+                  الإقرارات.
+                </td>
+                <td>
+                  أقل صلاحية لازمة، واعتماد مزدوج، ومصادقة مناسبة، ونسخ احتياطية
+                  ومطابقة دورية.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="summary">
+      <div class="container">
+        <div class="content-section__eyebrow">الخلاصة</div>
+        <h2 class="content-section__title">أهم ما يجب تذكّره</h2>
+        <div class="summary-card" style="max-width: 900px">
+          <ul class="summary-card__list">
+            <li>
+              ✔ توازن المدين والدائن شرط لازم، لكنه لا يكفي وحده لاكتشاف أخطاء
+              التصنيف أو الإغفال.
+            </li>
+            <li>
+              ✔ راجع أساس الضريبة وتصنيف العملية والفاتورة قبل اعتماد القيد أو
+              الإقرار، ولا تعمم السعر الضريبي على كل المعاملات.
+            </li>
+            <li>
+              ✔ افصل بين إنشاء المعاملة واعتمادها، وراجع الصلاحيات وسجلات
+              التغيير بانتظام.
+            </li>
+            <li>
+              ✔ وثّق كل تصحيح بمستند وسبب واضح، ثم أعد مراجعة الأرصدة والأثر
+              النهائي بعد الترحيل.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>الفصل السادس والعشرون: أخطاء المحاسبين الشائعة وكيف تتجنبها</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const heroTitle = document.querySelector('.hero__title')
+      const toolbarTitle = document.querySelector('[data-sync-title]')
+      if (heroTitle && toolbarTitle) {
+        const text = heroTitle.textContent.trim()
+        if (text) {
+          toolbarTitle.textContent = text
+          document.title = text
+        }
+      }
+    </script>
+  </body>
+</html>

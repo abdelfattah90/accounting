@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الفصل الثاني والعشرون: الميزانية العمومية</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        
+        --clr-primary: #b378a6;
+        --clr-secondary: #7796bf;
+        --clr-light: #ffffff;
+        --clr-light-2: #f0f0f0;
+        --clr-border: #dedede;
+        --clr-dark: #1b1b1b;
+        --clr-dark-2: #444444;
+        --clr-text: #333333;
+        --clr-text-soft: #555555;
+
+        --font-body: 'Baloo Bhaijaan 2', sans-serif;
+
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 18px;
+
+        --shadow-soft: 0 4px 20px rgba(27, 27, 27, 0.07);
+        --shadow-hover: 0 12px 28px rgba(179, 120, 166, 0.16);
+
+        --section-pad: 4.5rem;
+        --content-width: 900px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--clr-light);
+        color: var(--clr-dark);
+        line-height: 1.9;
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: var(--clr-secondary);
+        text-decoration: none;
+        transition: 0.2s;
+      }
+
+      a:hover {
+        color: var(--clr-primary);
+      }
+
+      h1, h2, h3, h4, h5 {
+        font-family: var(--font-body);
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+        color: var(--clr-dark);
+      }
+
+      h1, h2 { font-weight: 800; }
+      h3, h4, h5 { font-weight: 700; }
+
+      p {
+        color: var(--clr-text);
+        margin-bottom: 1rem;
+      }
+
+      ul { margin: 0; padding: 0; }
+
+      section { scroll-margin-top: 90px; }
+
+      ::selection {
+        background: var(--clr-primary);
+        color: #fff;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--clr-secondary);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      .editor-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--clr-primary);
+        padding: 0.7rem 0;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .editor-toolbar__tab-title {
+        color: #fff;
+        font-size: 1.1rem;
+        direction: ltr;
+        font-weight: 700;
+      }
+
+      .hero {
+        background: var(--clr-secondary);
+        color: #fff;
+        padding: 4.5rem 0 3.5rem;
+      }
+
+      .hero__title {
+        color: #fff;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      .hero__lead {
+        color: #fff;
+        opacity: 0.95;
+        max-width: 760px;
+        font-size: 1.15rem;
+        margin-bottom: 0;
+      }
+
+      .content-section { padding: var(--section-pad) 0; }
+      .content-section--alt { background: #fcfcfc; }
+      .content-section--tint { background: var(--clr-light-2); }
+
+      .content-section__eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+        font-size: 0.86rem;
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+      }
+
+      .content-section__eyebrow::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        background: var(--clr-primary);
+      }
+
+      .content-section__title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+
+      .content-section__description {
+        max-width: 760px;
+        color: var(--clr-text-soft);
+        margin-bottom: 2.5rem;
+      }
+
+      .summary-card {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+        padding: 2rem;
+      }
+
+      .summary-card__list {
+        display: grid;
+        gap: 1rem;
+        list-style: none;
+      }
+
+      .summary-card__list li {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+      }
+
+      .callout {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        border-radius: var(--radius-md);
+        border-inline-start: 4px solid;
+      }
+
+      .callout__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 700;
+      }
+
+      .callout--note {
+        background: rgba(119, 150, 191, 0.08);
+        border-color: var(--clr-secondary);
+      }
+
+      .callout--warning {
+        background: rgba(179, 120, 166, 0.08);
+        border-color: var(--clr-primary);
+      }
+
+      .flow-diagram {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin: 2rem 0;
+      }
+
+      .flow-step {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        padding: 1rem 1.25rem;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .flow-step__title {
+        color: var(--clr-primary);
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+      }
+
+      .flow-step__description { color: var(--clr-text-soft); margin: 0; }
+
+      .flow-arrow {
+        text-align: center;
+        color: var(--clr-secondary);
+        font-size: 28px;
+        line-height: 1;
+      }
+
+      .topic-block { margin-bottom: 3rem; }
+      .topic-block:last-child { margin-bottom: 0; }
+
+      .topic-block__title {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+      }
+
+      .topic-divider {
+        border: none;
+        border-top: 1px dashed var(--clr-border);
+        margin: 2.5rem 0;
+      }
+
+      .num {
+        direction: ltr;
+        unicode-bidi: isolate;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .formula-box {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        text-align: center;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .formula-box__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--clr-primary);
+        font-weight: 700;
+      }
+
+      .formula-box__body {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--clr-dark);
+      }
+
+      .example-block {
+        overflow: hidden;
+        margin: 2rem 0;
+        background: var(--clr-light);
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .example-block__header {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.7rem 1.2rem;
+        background: var(--clr-dark);
+      }
+
+      .example-block__tag {
+        padding: 0 0.7rem;
+        background: var(--clr-primary);
+        color: #fff;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .example-block__title { color: #fff; font-weight: 600; }
+
+      .example-block__body { padding: 1.5rem; }
+
+      .example-block__label {
+        display: block;
+        margin: 1.6rem 0 0.6rem;
+        color: var(--clr-secondary);
+        font-weight: 700;
+      }
+
+      .example-block__label:first-child { margin-top: 0; }
+
+      .example-block__data {
+        margin: 0;
+        padding-inline-start: 1.2rem;
+        color: var(--clr-text);
+      }
+
+      .acc-table-wrap { overflow-x: auto; }
+
+      .acc-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+
+      .acc-table th,
+      .acc-table td {
+        padding: 0.5rem 0.8rem;
+        border: 1px solid var(--clr-border);
+      }
+
+      .acc-table thead th {
+        background: var(--clr-light-2);
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .acc-table td.num { text-align: end; }
+
+      .acc-table__total td {
+        background: #fcfcfc;
+        font-weight: 700;
+        border-top: 2px solid var(--clr-dark-2);
+        border-bottom: 4px double var(--clr-dark-2);
+      }
+
+      .journal__entry { border-bottom: 2px solid var(--clr-dark-2); }
+      .acc-table td.journal__credit { padding-inline-start: 2.5rem; }
+      .journal__note td { color: var(--clr-text-soft); font-size: 0.88rem; }
+
+      .t-accounts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+
+      .t-account {
+        overflow: hidden;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+      }
+
+      .t-account__title {
+        padding: 0.5rem;
+        text-align: center;
+        color: var(--clr-primary);
+        font-weight: 700;
+        border-bottom: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__sides { display: grid; grid-template-columns: 1fr 1fr; }
+
+      .t-account__side + .t-account__side {
+        border-inline-start: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__side-label {
+        padding: 0.3rem;
+        text-align: center;
+        color: var(--clr-text-soft);
+        font-size: 0.85rem;
+        font-weight: 700;
+        border-bottom: 1px solid var(--clr-border);
+      }
+
+      .t-account__lines {
+        min-height: 3rem;
+        margin: 0;
+        padding: 0.4rem 0.7rem;
+        list-style: none;
+      }
+
+      .t-account__lines li {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .t-account__balance {
+        padding: 0.45rem 0.7rem;
+        text-align: center;
+        font-weight: 700;
+        background: rgba(119, 150, 191, 0.08);
+        border-top: 1px solid var(--clr-border);
+      }
+
+      .site-footer {
+        background: var(--clr-light-2);
+        color: var(--clr-light);
+        padding: 1rem 0 0.5rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        :root { --section-pad: 3rem; }
+        .hero { padding: 3.5rem 0; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; }
+      }
+    </style>
+  </head>
+
+  <body>
+<div class="editor-toolbar">
+<div class="container d-flex align-items-center gap-3">
+<span class="editor-toolbar__tab-title" data-sync-title></span>
+</div>
+</div>
+
+<header class="hero">
+<div class="container">
+<h1 class="hero__title">الفصل الثاني والعشرون: الميزانية العمومية</h1>
+<p class="hero__lead">الميزانية العمومية صورة لما تملكه المنشأة وما عليها في يوم محدد، وهي أول ما ينظر فيه الدائنون والملاك لتقدير أمان المنشأة قبل أي قرار. يشرح هذا الفصل بنودها الثلاثة: الأصول والخصوم وحقوق الملكية، ثم كيف تُقرأ مجتمعة لمعرفة سيولة المنشأة ومصادر تمويلها.</p>
+</div>
+</header>
+
+<section class="content-section" id="explanation">
+<div class="container">
+<div class="content-section__eyebrow">شرح وتطبيق</div>
+<h2 class="content-section__title">شرح وتطبيق كل مرحلة</h2>
+<div class="article-content" style="max-width: 900px">
+
+<div class="topic-block" id="assets">
+<h3 class="topic-block__title">الأصول</h3>
+<p>الميزانية العمومية (Balance Sheet) قائمة مالية تعرض ما تملكه المنشأة وما عليها في تاريخ محدد، لا خلال فترة. وتسميها المعايير الدولية (IFRS) «قائمة المركز المالي». والأصول (Assets) هي الموارد الاقتصادية التي تسيطر عليها المنشأة نتيجة أحداث سابقة، ويُتوقع أن تحقق لها منافع مستقبلية. وتقوم الميزانية كلها على المعادلة المحاسبية (Accounting Equation) التي تربط الأصول بمن يمولها: الدائنون عبر الخصوم، والملاك عبر حقوق الملكية.</p>
+<div class="formula-box"><span class="formula-box__label">المعادلة المحاسبية</span><p class="formula-box__body">الأصول = الخصوم + حقوق الملكية</p></div>
+<p>تُبوَّب الأصول بحسب مدة الانتفاع بها إلى مجموعتين: الأصول المتداولة (Current Assets) وهي النقدية وما يُتوقع تحويله إلى نقدية أو استهلاكه خلال اثني عشر شهرًا من تاريخ الميزانية، والأصول غير المتداولة (Non-current Assets) وهي ما تقتنيه المنشأة للاستخدام طويل الأجل. وتُرتَّب بنود كل مجموعة تنازليًا حسب السيولة، أي من الأسرع تحولًا إلى نقدية إلى الأبطأ.</p>
+<div class="callout callout--note"><span class="callout__label">ملاحظة</span><p>تشترط المعايير الدولية (IFRS) عرض الأصول والخصوم متداولة وغير متداولة، ما لم يكن العرض حسب السيولة أنسب، كما في المصارف.</p></div>
+<div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">أصول شركة النيل للتجارة في 31/12/2026</span></div><div class="example-block__body"><span class="example-block__label">المعطيات</span><ul class="example-block__data"><li>النقدية بالصندوق والبنك: <span class="num">85,000</span> ج.م.</li><li>العملاء (Accounts Receivable)، أي مبالغ مستحقة للشركة عن مبيعات آجلة: <span class="num">120,000</span> ج.م.</li><li>المخزون (Inventory)، أي بضاعة معدة للبيع: <span class="num">95,000</span> ج.م.</li><li>مصروفات مدفوعة مقدمًا (Prepaid Expenses)، أي مبالغ دُفعت لخدمات ستُستفاد منها لاحقًا كإيجار العام التالي: <span class="num">20,000</span> ج.م.</li><li>أراضٍ: <span class="num">200,000</span> ج.م.</li><li>آلات ومعدات بتكلفة <span class="num">300,000</span> ج.م، ومجمع إهلاكها (Accumulated Depreciation)، أي مجموع ما استُنفد من قيمتها حتى التاريخ، <span class="num">90,000</span> ج.م.</li></ul><span class="example-block__label">الأصول في الميزانية</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البيان</th><th>جزئي (ج.م)</th><th>كلي (ج.م)</th></tr></thead><tbody><tr><td><strong>الأصول المتداولة</strong></td><td></td><td></td></tr><tr><td>النقدية بالصندوق والبنك</td><td class="num">85,000</td><td></td></tr><tr><td>العملاء</td><td class="num">120,000</td><td></td></tr><tr><td>المخزون</td><td class="num">95,000</td><td></td></tr><tr><td>مصروفات مدفوعة مقدمًا</td><td class="num">20,000</td><td></td></tr><tr><td><strong>مجموع الأصول المتداولة</strong></td><td></td><td class="num">320,000</td></tr><tr><td><strong>الأصول غير المتداولة</strong></td><td></td><td></td></tr><tr><td>أراضٍ</td><td class="num">200,000</td><td></td></tr><tr><td>آلات ومعدات (بصافي القيمة الدفترية)</td><td class="num">210,000</td><td></td></tr><tr><td><strong>مجموع الأصول غير المتداولة</strong></td><td></td><td class="num">410,000</td></tr><tr class="acc-table__total"><td>إجمالي الأصول</td><td></td><td class="num">730,000</td></tr></tbody></table></div></div></div>
+<p>جُمعت الأصول المتداولة: <span class="num">85,000 + 120,000 + 95,000 + 20,000 = 320,000</span> ج.م. أما الآلات والمعدات فلا تظهر بتكلفتها، بل بقيمتها الدفترية (Carrying Amount) وهي التكلفة مطروحًا منها مجمع الإهلاك: <span class="num">300,000 − 90,000 = 210,000</span> ج.م. فمجموع الأصول غير المتداولة <span class="num">200,000 + 210,000 = 410,000</span> ج.م، وإجمالي الأصول <span class="num">320,000 + 410,000 = 730,000</span> ج.م.</p>
+<div class="callout callout--warning"><span class="callout__label">انتبه</span><p>عرض الآلات والمعدات بتكلفتها دون خصم مجمع الإهلاك يضخّم إجمالي الأصول، لأن جزءًا من قيمتها استُنفد فعلًا. وتذكّر أن المصروف المدفوع مقدمًا أصل ما دام لم يُستفد منه بعد، وليس مصروفًا.</p></div>
+</div>
+<hr class="topic-divider" />
+
+<div class="topic-block" id="liabilities">
+<h3 class="topic-block__title">الخصوم</h3>
+<p>الخصوم (Liabilities) التزامات حالية على المنشأة نشأت عن أحداث سابقة، ويُتوقع أن يترتب على سدادها خروج موارد اقتصادية منها. وهي تعني أن جزءًا من الأصول مموَّل من الغير، وأن لهم حق المطالبة بالسداد في مواعيد محددة أيًّا كانت نتيجة أعمال المنشأة. وتُبوَّب بحسب موعد الاستحقاق: الخصوم المتداولة (Current Liabilities) المستحقة السداد خلال اثني عشر شهرًا من تاريخ الميزانية، والخصوم غير المتداولة (Non-current Liabilities) المستحقة بعد ذلك. وتُرتَّب عادةً الأقرب استحقاقًا أولًا.</p>
+<div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">خصوم شركة النيل للتجارة في 31/12/2026</span></div><div class="example-block__body"><span class="example-block__label">المعطيات</span><ul class="example-block__data"><li>الموردون (Accounts Payable)، أي مبالغ مستحقة لموردي البضاعة عن مشتريات آجلة: <span class="num">90,000</span> ج.م.</li><li>أوراق دفع (Notes Payable)، أي تعهدات مكتوبة بسداد مبالغ في تواريخ محددة، وتستحق خلال ستة أشهر: <span class="num">45,000</span> ج.م.</li><li>مصروفات مستحقة (Accrued Expenses)، أي مصروفات تخص السنة ولم تُدفع بعد كالأجور: <span class="num">25,000</span> ج.م.</li><li>قرض بنكي يستحق سداده بالكامل بعد أكثر من اثني عشر شهرًا: <span class="num">250,000</span> ج.م.</li></ul><span class="example-block__label">الخصوم في الميزانية</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البيان</th><th>جزئي (ج.م)</th><th>كلي (ج.م)</th></tr></thead><tbody><tr><td><strong>الخصوم المتداولة</strong></td><td></td><td></td></tr><tr><td>الموردون</td><td class="num">90,000</td><td></td></tr><tr><td>أوراق الدفع</td><td class="num">45,000</td><td></td></tr><tr><td>مصروفات مستحقة</td><td class="num">25,000</td><td></td></tr><tr><td><strong>مجموع الخصوم المتداولة</strong></td><td></td><td class="num">160,000</td></tr><tr><td><strong>الخصوم غير المتداولة</strong></td><td></td><td></td></tr><tr><td>قرض بنكي طويل الأجل</td><td class="num">250,000</td><td></td></tr><tr><td><strong>مجموع الخصوم غير المتداولة</strong></td><td></td><td class="num">250,000</td></tr><tr class="acc-table__total"><td>إجمالي الخصوم</td><td></td><td class="num">410,000</td></tr></tbody></table></div></div></div>
+<p>الخصوم المتداولة: <span class="num">90,000 + 45,000 + 25,000 = 160,000</span> ج.م. والقرض وحده يشكل الخصوم غير المتداولة لأن موعد سداده يتجاوز سنة. فإجمالي الخصوم <span class="num">160,000 + 250,000 = 410,000</span> ج.م.</p>
+<div class="callout callout--warning"><span class="callout__label">انتبه</span><p>القرض طويل الأجل لا يبقى كله غير متداول إلى الأبد؛ فالقسط الذي يحل سداده خلال اثني عشر شهرًا من تاريخ الميزانية يُفصل ويُدرج ضمن الخصوم المتداولة، وإلا بدت سيولة المنشأة أفضل مما هي عليه.</p></div>
+</div>
+<hr class="topic-divider" />
+
+<div class="topic-block" id="equity">
+<h3 class="topic-block__title">حقوق الملكية</h3>
+<p>حقوق الملكية (Owners' Equity) هي الحق المتبقي للملاك في أصول المنشأة بعد خصم جميع خصومها، ولذلك تُقاس دائمًا بالفرق: الأصول − الخصوم. وتتكون في مثالنا من بندين: رأس المال (Capital) وهو ما قدّمه الملاك للمنشأة، والأرباح المحتجزة (Retained Earnings) وهي أرباح المنشأة المتراكمة التي لم تُوزَّع. ويزداد رصيد الأرباح المحتجزة بصافي الربح (Net Income) أي الفرق بين الإيرادات والمصروفات في الفترة، وينقص بـتوزيعات الأرباح (Dividends) أي ما يُدفع للملاك من الأرباح؛ والتوزيعات تُخصم من الأرباح المحتجزة مباشرةً ولا تُعد مصروفًا.</p>
+<div class="formula-box"><span class="formula-box__label">حركة الأرباح المحتجزة</span><p class="formula-box__body">الأرباح المحتجزة آخر الفترة = أول الفترة + صافي الربح − التوزيعات</p></div>
+<div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">حقوق ملكية شركة النيل للتجارة في 31/12/2026</span></div><div class="example-block__body"><span class="example-block__label">المعطيات</span><ul class="example-block__data"><li>رأس المال في أول سنة 2026: <span class="num">200,000</span> ج.م.</li><li>في 01/07/2026 أودع الملاك <span class="num">50,000</span> ج.م نقدًا في حساب البنك زيادةً لرأس المال.</li><li>الأرباح المحتجزة في أول السنة: <span class="num">30,000</span> ج.م.</li><li>صافي ربح سنة 2026: <span class="num">60,000</span> ج.م.</li><li>توزيعات أرباح مدفوعة للملاك خلال السنة: <span class="num">20,000</span> ج.م.</li></ul><span class="example-block__label">قيد اليومية</span><div class="acc-table-wrap"><table class="acc-table journal"><thead><tr><th>التاريخ</th><th>البيان</th><th>مدين</th><th>دائن</th></tr></thead>
+<tbody class="journal__entry">
+<tr><td rowspan="3" class="num">01/07/2026</td><td>من ح/ البنك</td><td class="num">50,000</td><td></td></tr>
+<tr><td class="journal__credit">إلى ح/ رأس المال</td><td></td><td class="num">50,000</td></tr>
+<tr class="journal__note"><td>زيادة رأس المال بإيداع نقدي من الملاك في حساب البنك</td><td></td><td></td></tr>
+</tbody>
+<tbody><tr class="acc-table__total"><td colspan="2">الإجمالي</td><td class="num">50,000</td><td class="num">50,000</td></tr></tbody></table></div><span class="example-block__label">الترحيل إلى حسابات الأستاذ</span><div class="t-accounts"><div class="t-account"><div class="t-account__title">ح/ رأس المال</div>
+<div class="t-account__sides">
+<div class="t-account__side"><div class="t-account__side-label">مدين</div><ul class="t-account__lines"></ul></div>
+<div class="t-account__side"><div class="t-account__side-label">دائن</div><ul class="t-account__lines">
+<li><span>رصيد أول المدة</span><span class="num">200,000</span></li><li><span>زيادة رأس المال 01/07/2026</span><span class="num">50,000</span></li></ul></div></div>
+<div class="t-account__balance">الرصيد: <span class="num">250,000</span> دائن</div></div></div><span class="example-block__label">حركة الأرباح المحتجزة</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البيان</th><th>جزئي (ج.م)</th><th>كلي (ج.م)</th></tr></thead><tbody><tr><td>رصيد الأرباح المحتجزة أول المدة</td><td class="num">30,000</td><td></td></tr><tr><td>يضاف: صافي ربح سنة 2026</td><td class="num">60,000</td><td></td></tr><tr><td>يُخصم: توزيعات الأرباح</td><td class="num">(20,000)</td><td></td></tr><tr class="acc-table__total"><td>رصيد الأرباح المحتجزة في 31/12/2026</td><td></td><td class="num">70,000</td></tr></tbody></table></div><span class="example-block__label">حقوق الملكية في الميزانية</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البيان</th><th>جزئي (ج.م)</th><th>كلي (ج.م)</th></tr></thead><tbody><tr><td>رأس المال</td><td class="num">250,000</td><td></td></tr><tr><td>الأرباح المحتجزة</td><td class="num">70,000</td><td></td></tr><tr class="acc-table__total"><td>إجمالي حقوق الملكية</td><td></td><td class="num">320,000</td></tr></tbody></table></div></div></div>
+<p>القيد مدين بالبنك لأن النقدية ازدادت، ودائن برأس المال لأن حق الملاك ازداد بالمبلغ نفسه، فيصبح رصيد رأس المال <span class="num">200,000 + 50,000 = 250,000</span> ج.م. والأرباح المحتجزة <span class="num">30,000 + 60,000 − 20,000 = 70,000</span> ج.م. فإجمالي حقوق الملكية <span class="num">250,000 + 70,000 = 320,000</span> ج.م، وهو يطابق الفرق <span class="num">730,000 − 410,000 = 320,000</span> ج.م بين إجمالي الأصول وإجمالي الخصوم.</p>
+<div class="callout callout--warning"><span class="callout__label">انتبه</span><p>رصيد الأرباح المحتجزة ليس نقدًا محتجزًا في الخزينة؛ فرصيده البالغ 70,000 ج.م لا يعني وجود هذا المبلغ نقدًا، لأن الأرباح تكون في الغالب قد استُثمرت في أصول متنوعة كالمخزون والآلات.</p></div>
+</div>
+<hr class="topic-divider" />
+
+<div class="topic-block" id="reading">
+<h3 class="topic-block__title">كيف تقرأ ما سبق</h3>
+<p>بعد تبويب البنود الثلاثة تُقرأ الميزانية على ثلاث خطوات متتالية، فالمقصود منها استخلاص حكم عن سيولة المنشأة وعن مصادر تمويلها، لا مجرد جمع الأرقام.</p>
+<div class="flow-diagram">
+<div class="flow-step"><div class="flow-step__title">1) تحقق من التوازن</div><div class="flow-step__description">إجمالي الأصول يساوي إجمالي الخصوم وحقوق الملكية.</div></div>
+<div class="flow-arrow">↓</div>
+<div class="flow-step"><div class="flow-step__title">2) قيِّم السيولة</div><div class="flow-step__description">قارن الأصول المتداولة بالخصوم المتداولة: هل تكفي لسداد ما يحل خلال سنة؟</div></div>
+<div class="flow-arrow">↓</div>
+<div class="flow-step"><div class="flow-step__title">3) قيِّم هيكل التمويل</div><div class="flow-step__description">انظر كم من الأصول ممول من الدائنين وكم منه من الملاك.</div></div>
+</div>
+<div class="formula-box"><span class="formula-box__label">مؤشرا السيولة</span><p class="formula-box__body">رأس المال العامل (Working Capital) = الأصول المتداولة − الخصوم المتداولة</p><p class="formula-box__body">نسبة التداول (Current Ratio) = الأصول المتداولة ÷ الخصوم المتداولة</p></div>
+<div class="example-block"><div class="example-block__header"><span class="example-block__tag">مثال تطبيقي</span><span class="example-block__title">قراءة ميزانية شركة النيل للتجارة في 31/12/2026</span></div><div class="example-block__body"><span class="example-block__label">المعطيات</span><ul class="example-block__data"><li>بنود الأصول والخصوم وحقوق الملكية كما احتُسبت في المراحل الثلاث السابقة.</li></ul><span class="example-block__label">الميزانية العمومية في 31/12/2026 (بالجنيه المصري)</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>البيان</th><th>جزئي (ج.م)</th><th>كلي (ج.م)</th></tr></thead><tbody><tr><td><strong>الأصول</strong></td><td></td><td></td></tr><tr><td>النقدية بالصندوق والبنك</td><td class="num">85,000</td><td></td></tr><tr><td>العملاء</td><td class="num">120,000</td><td></td></tr><tr><td>المخزون</td><td class="num">95,000</td><td></td></tr><tr><td>مصروفات مدفوعة مقدمًا</td><td class="num">20,000</td><td></td></tr><tr><td><strong>مجموع الأصول المتداولة</strong></td><td></td><td class="num">320,000</td></tr><tr><td>أراضٍ</td><td class="num">200,000</td><td></td></tr><tr><td>آلات ومعدات (بصافي القيمة الدفترية)</td><td class="num">210,000</td><td></td></tr><tr><td><strong>مجموع الأصول غير المتداولة</strong></td><td></td><td class="num">410,000</td></tr><tr class="acc-table__total"><td>إجمالي الأصول</td><td></td><td class="num">730,000</td></tr><tr><td><strong>الخصوم وحقوق الملكية</strong></td><td></td><td></td></tr><tr><td>الموردون</td><td class="num">90,000</td><td></td></tr><tr><td>أوراق الدفع</td><td class="num">45,000</td><td></td></tr><tr><td>مصروفات مستحقة</td><td class="num">25,000</td><td></td></tr><tr><td><strong>مجموع الخصوم المتداولة</strong></td><td></td><td class="num">160,000</td></tr><tr><td>قرض بنكي طويل الأجل</td><td class="num">250,000</td><td></td></tr><tr><td><strong>مجموع الخصوم غير المتداولة</strong></td><td></td><td class="num">250,000</td></tr><tr><td>رأس المال</td><td class="num">250,000</td><td></td></tr><tr><td>الأرباح المحتجزة</td><td class="num">70,000</td><td></td></tr><tr><td><strong>مجموع حقوق الملكية</strong></td><td></td><td class="num">320,000</td></tr><tr class="acc-table__total"><td>إجمالي الخصوم وحقوق الملكية</td><td></td><td class="num">730,000</td></tr></tbody></table></div><span class="example-block__label">مؤشرات القراءة</span><div class="acc-table-wrap"><table class="acc-table"><thead><tr><th>المؤشر</th><th>طريقة الحساب</th><th>النتيجة</th></tr></thead><tbody><tr><td>رأس المال العامل (ج.م)</td><td><span class="num">320,000 − 160,000</span></td><td class="num">160,000</td></tr><tr><td>نسبة التداول (مرة)</td><td><span class="num">320,000 ÷ 160,000</span></td><td class="num">2.00</td></tr><tr><td>نسبة الخصوم إلى إجمالي الأصول</td><td><span class="num">410,000 ÷ 730,000</span></td><td class="num">56.16%</td></tr><tr><td>نسبة حقوق الملكية إلى إجمالي الأصول</td><td><span class="num">320,000 ÷ 730,000</span></td><td class="num">43.84%</td></tr></tbody></table></div></div></div>
+<p>الخطوة الأولى: إجمالي الأصول <span class="num">730,000</span> ج.م يساوي <span class="num">160,000 + 250,000 + 320,000 = 730,000</span> ج.م، فالميزانية متوازنة. الخطوة الثانية: رأس المال العامل موجب بمقدار <span class="num">160,000</span> ج.م، ونسبة التداول <span class="num">2.00</span> أي أن كل جنيه من الخصوم المتداولة يقابله جنيهان من الأصول المتداولة. الخطوة الثالثة: يمول الدائنون نحو <span class="num">56.16%</span> من الأصول ويمول الملاك <span class="num">43.84%</span>، ومعظم التمويل الخارجي قرض يستحق بعد أكثر من سنة، فلا ضغط قريبًا عليه. وتبقى للحكم النهائي ملاحظة: المخزون والمصروفات المقدمة أبطأ تحولًا إلى نقدية من العملاء والنقدية، كما يختلف مستوى النسبة المقبول من نشاط إلى آخر.</p>
+<div class="callout callout--warning"><span class="callout__label">انتبه</span><p>توازن الميزانية شرط شكلي فقط، فهو يثبت أن الطرفين متساويان ولا يثبت صحة القياس ولا سلامة المركز المالي؛ فقد تتوازن ميزانية منشأة تعاني ضعفًا شديدًا في السيولة.</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="content-section content-section--tint" id="comparison">
+<div class="container">
+<div class="content-section__eyebrow">مقارنة</div>
+<h2 class="content-section__title">الخصوم مقابل حقوق الملكية</h2>
+<div class="table-responsive"><table class="table table-bordered align-middle">
+<thead><tr><th>وجه المقارنة</th><th>الخصوم</th><th>حقوق الملكية</th></tr></thead>
+<tbody>
+<tr><td>طبيعة الحق</td><td>التزام على المنشأة تجاه الغير</td><td>حق متبقٍ للملاك بعد سداد الخصوم</td></tr>
+<tr><td>طريقة القياس</td><td>تُقاس مباشرةً بقيمة كل التزام</td><td>تُقاس بالفرق: الأصول − الخصوم</td></tr>
+<tr><td>موعد السداد</td><td>محدد، متداول أو غير متداول</td><td>لا موعد له، ولا يُرد رأس المال إلا في أحوال محددة</td></tr>
+<tr><td>العائد</td><td>قد تترتب عليها فوائد ملزمة بغض النظر عن الربح</td><td>توزيعات تتوقف على الأرباح وقرار التوزيع</td></tr>
+<tr><td>الأولوية عند التصفية</td><td>يُسدَّد الدائنون أولًا</td><td>يأخذ الملاك ما يتبقى بعد الدائنين</td></tr>
+</tbody></table></div>
+</div>
+</section>
+
+<section class="content-section" id="summary">
+<div class="container">
+<div class="content-section__eyebrow">الخلاصة</div>
+<h2 class="content-section__title">أهم ما يجب تذكّره</h2>
+<div class="summary-card" style="max-width: 900px">
+<ul class="summary-card__list">
+<li>✔ الميزانية العمومية تعرض المركز المالي في تاريخ محدد، وتقوم على المعادلة: الأصول = الخصوم + حقوق الملكية.</li>
+<li>✔ تُبوَّب الأصول والخصوم إلى متداولة (خلال اثني عشر شهرًا) وغير متداولة، وتُرتَّب الأصول بحسب السيولة.</li>
+<li>✔ تظهر الأصول المهلكة بقيمتها الدفترية بعد خصم مجمع الإهلاك، ويُفصل من القرض طويل الأجل القسط الذي يحل خلال سنة.</li>
+<li>✔ حقوق الملكية = رأس المال + الأرباح المحتجزة، والأرباح المحتجزة = أول المدة + صافي الربح − التوزيعات، وليست نقدًا.</li>
+<li>✔ تُقرأ الميزانية بالتحقق من توازنها، ثم بقياس السيولة (رأس المال العامل ونسبة التداول)، ثم بتحليل هيكل التمويل.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<footer class="site-footer">
+<div class="container">
+<p>الفصل الثاني والعشرون: الميزانية العمومية</p>
+</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+const heroTitle = document.querySelector('.hero__title')
+const toolbarTitle = document.querySelector('[data-sync-title]')
+if (heroTitle && toolbarTitle) {
+  const text = heroTitle.textContent.trim()
+  if (text) {
+    toolbarTitle.textContent = text
+    document.title = text
+  }
+}
+</script>
+</body>
+</html>

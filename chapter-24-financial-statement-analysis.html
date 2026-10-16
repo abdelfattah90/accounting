@@ -1,0 +1,937 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الفصل الرابع والعشرون: تحليل القوائم المالية</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        
+        --clr-primary: #b378a6;
+        --clr-secondary: #7796bf;
+        --clr-light: #ffffff;
+        --clr-light-2: #f0f0f0;
+        --clr-border: #dedede;
+        --clr-dark: #1b1b1b;
+        --clr-dark-2: #444444;
+        --clr-text: #333333;
+        --clr-text-soft: #555555;
+
+        --font-body: 'Baloo Bhaijaan 2', sans-serif;
+
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 18px;
+
+        --shadow-soft: 0 4px 20px rgba(27, 27, 27, 0.07);
+        --shadow-hover: 0 12px 28px rgba(179, 120, 166, 0.16);
+
+        --section-pad: 4.5rem;
+        --content-width: 900px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--clr-light);
+        color: var(--clr-dark);
+        line-height: 1.9;
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: var(--clr-secondary);
+        text-decoration: none;
+        transition: 0.2s;
+      }
+
+      a:hover {
+        color: var(--clr-primary);
+      }
+
+      h1, h2, h3, h4, h5 {
+        font-family: var(--font-body);
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+        color: var(--clr-dark);
+      }
+
+      h1, h2 { font-weight: 800; }
+      h3, h4, h5 { font-weight: 700; }
+
+      p {
+        color: var(--clr-text);
+        margin-bottom: 1rem;
+      }
+
+      ul { margin: 0; padding: 0; }
+
+      section { scroll-margin-top: 90px; }
+
+      ::selection {
+        background: var(--clr-primary);
+        color: #fff;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--clr-secondary);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      .editor-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--clr-primary);
+        padding: 0.7rem 0;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .editor-toolbar__tab-title {
+        color: #fff;
+        font-size: 1.1rem;
+        direction: ltr;
+        font-weight: 700;
+      }
+
+      .hero {
+        background: var(--clr-secondary);
+        color: #fff;
+        padding: 4.5rem 0 3.5rem;
+      }
+
+      .hero__title {
+        color: #fff;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      .hero__lead {
+        color: #fff;
+        opacity: 0.95;
+        max-width: 760px;
+        font-size: 1.15rem;
+        margin-bottom: 0;
+      }
+
+      .content-section { padding: var(--section-pad) 0; }
+      .content-section--alt { background: #fcfcfc; }
+      .content-section--tint { background: var(--clr-light-2); }
+
+      .content-section__eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+        font-size: 0.86rem;
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+      }
+
+      .content-section__eyebrow::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        background: var(--clr-primary);
+      }
+
+      .content-section__title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+
+      .content-section__description {
+        max-width: 760px;
+        color: var(--clr-text-soft);
+        margin-bottom: 2.5rem;
+      }
+
+      .summary-card {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+        padding: 2rem;
+      }
+
+      .summary-card__list {
+        display: grid;
+        gap: 1rem;
+        list-style: none;
+      }
+
+      .summary-card__list li {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+      }
+
+      .callout {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        border-radius: var(--radius-md);
+        border-inline-start: 4px solid;
+      }
+
+      .callout__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 700;
+      }
+
+      .callout--note {
+        background: rgba(119, 150, 191, 0.08);
+        border-color: var(--clr-secondary);
+      }
+
+      .callout--warning {
+        background: rgba(179, 120, 166, 0.08);
+        border-color: var(--clr-primary);
+      }
+
+      .flow-diagram {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin: 2rem 0;
+      }
+
+      .flow-step {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        padding: 1rem 1.25rem;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .flow-step__title {
+        color: var(--clr-primary);
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+      }
+
+      .flow-step__description { color: var(--clr-text-soft); margin: 0; }
+
+      .flow-arrow {
+        text-align: center;
+        color: var(--clr-secondary);
+        font-size: 28px;
+        line-height: 1;
+      }
+
+      .topic-block { margin-bottom: 3rem; }
+      .topic-block:last-child { margin-bottom: 0; }
+
+      .topic-block__title {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+      }
+
+      .topic-divider {
+        border: none;
+        border-top: 1px dashed var(--clr-border);
+        margin: 2.5rem 0;
+      }
+
+      .num {
+        direction: ltr;
+        unicode-bidi: isolate;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .formula-box {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        text-align: center;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .formula-box__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--clr-primary);
+        font-weight: 700;
+      }
+
+      .formula-box__body {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--clr-dark);
+      }
+
+      .example-block {
+        overflow: hidden;
+        margin: 2rem 0;
+        background: var(--clr-light);
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .example-block__header {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.7rem 1.2rem;
+        background: var(--clr-dark);
+      }
+
+      .example-block__tag {
+        padding: 0 0.7rem;
+        background: var(--clr-primary);
+        color: #fff;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .example-block__title { color: #fff; font-weight: 600; }
+
+      .example-block__body { padding: 1.5rem; }
+
+      .example-block__label {
+        display: block;
+        margin: 1.6rem 0 0.6rem;
+        color: var(--clr-secondary);
+        font-weight: 700;
+      }
+
+      .example-block__label:first-child { margin-top: 0; }
+
+      .example-block__data {
+        margin: 0;
+        padding-inline-start: 1.2rem;
+        color: var(--clr-text);
+      }
+
+      .acc-table-wrap { overflow-x: auto; }
+
+      .acc-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+
+      .acc-table th,
+      .acc-table td {
+        padding: 0.5rem 0.8rem;
+        border: 1px solid var(--clr-border);
+      }
+
+      .acc-table thead th {
+        background: var(--clr-light-2);
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .acc-table td.num { text-align: end; }
+
+      .acc-table__total td {
+        background: #fcfcfc;
+        font-weight: 700;
+        border-top: 2px solid var(--clr-dark-2);
+        border-bottom: 4px double var(--clr-dark-2);
+      }
+
+      .journal__entry { border-bottom: 2px solid var(--clr-dark-2); }
+      .acc-table td.journal__credit { padding-inline-start: 2.5rem; }
+      .journal__note td { color: var(--clr-text-soft); font-size: 0.88rem; }
+
+      .t-accounts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+
+      .t-account {
+        overflow: hidden;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+      }
+
+      .t-account__title {
+        padding: 0.5rem;
+        text-align: center;
+        color: var(--clr-primary);
+        font-weight: 700;
+        border-bottom: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__sides { display: grid; grid-template-columns: 1fr 1fr; }
+
+      .t-account__side + .t-account__side {
+        border-inline-start: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__side-label {
+        padding: 0.3rem;
+        text-align: center;
+        color: var(--clr-text-soft);
+        font-size: 0.85rem;
+        font-weight: 700;
+        border-bottom: 1px solid var(--clr-border);
+      }
+
+      .t-account__lines {
+        min-height: 3rem;
+        margin: 0;
+        padding: 0.4rem 0.7rem;
+        list-style: none;
+      }
+
+      .t-account__lines li {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .t-account__balance {
+        padding: 0.45rem 0.7rem;
+        text-align: center;
+        font-weight: 700;
+        background: rgba(119, 150, 191, 0.08);
+        border-top: 1px solid var(--clr-border);
+      }
+
+      .site-footer {
+        background: var(--clr-light-2);
+        color: var(--clr-light);
+        padding: 1rem 0 0.5rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        :root { --section-pad: 3rem; }
+        .hero { padding: 3.5rem 0; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; }
+      }
+    </style>
+  </head>
+
+  <body>
+    
+    <div class="editor-toolbar">
+      <div class="container d-flex align-items-center gap-3">
+        <span class="editor-toolbar__tab-title" data-sync-title></span>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="container">
+        <h1 class="hero__title">الفصل الرابع والعشرون: تحليل القوائم المالية</h1>
+        <p class="hero__lead">
+          القوائم المالية تعرض الأرقام، أما النسب المالية فتحوّلها إلى مؤشرات يمكن قراءتها ومقارنتها. يتناول هذا الفصل أهم النسب في ثلاثة محاور: السيولة التي تقيس قدرة المنشأة على سداد التزاماتها القصيرة، والربحية التي تقيس كفاءتها في تحقيق الأرباح، والنشاط الذي يقيس كفاءتها في استخدام أصولها.
+        </p>
+      </div>
+    </header>
+
+    <section class="content-section" id="explanation">
+      <div class="container">
+        <div class="content-section__eyebrow">شرح وتطبيق</div>
+        <h2 class="content-section__title">شرح وتطبيق كل مرحلة</h2>
+
+        <div class="article-content" style="max-width: 900px">
+
+          <div class="topic-block" id="liquidity-ratios">
+            <h3 class="topic-block__title">النسب المالية الأهم: السيولة (Liquidity)</h3>
+
+            <p>
+              النسبة المالية (Financial Ratio) علاقة رياضية بين بندين أو أكثر من بنود القوائم المالية، تحوّل الرقم المطلق إلى مؤشر يمكن مقارنته بالسنوات السابقة أو بمنشآت مماثلة. فالربح البالغ <span class="num">155,000</span> ج.م لا يقول الكثير ما لم يُنسب إلى المبيعات أو إلى رأس المال المستثمر.
+            </p>
+            <p>
+              وتبدأ قراءة أي منشأة عادةً بالسيولة، وهي قدرتها على سداد الالتزامات المتداولة (Current Liabilities) المستحقة خلال سنة من أصولها المتداولة (Current Assets) التي تتحول إلى نقدية خلال سنة. وتتدرج نسب السيولة في درجة التشدد بحسب الأصول التي تدخل في البسط، فكلما استبعدنا أصلًا بطيء التحويل إلى نقدية كان الحكم أكثر تحفظًا، ومن أمثلة الأصول بطيئة التحويل المخزون (Inventory) والمصروفات المدفوعة مقدمًا.
+            </p>
+
+            <div class="formula-box">
+              <span class="formula-box__label">نسبة التداول (Current Ratio)</span>
+              <p class="formula-box__body">الأصول المتداولة ÷ الالتزامات المتداولة</p>
+            </div>
+            <div class="formula-box">
+              <span class="formula-box__label">نسبة السيولة السريعة (Quick Ratio)</span>
+              <p class="formula-box__body">(النقدية + العملاء) ÷ الالتزامات المتداولة</p>
+            </div>
+            <div class="formula-box">
+              <span class="formula-box__label">نسبة النقدية (Cash Ratio)</span>
+              <p class="formula-box__body">النقدية ÷ الالتزامات المتداولة</p>
+            </div>
+            <div class="formula-box">
+              <span class="formula-box__label">رأس المال العامل (Working Capital)</span>
+              <p class="formula-box__body">الأصول المتداولة − الالتزامات المتداولة</p>
+            </div>
+
+            <p>
+              تستبعد نسبة السيولة السريعة المخزون والمصروفات المدفوعة مقدمًا لأن تحويلهما إلى نقدية أبطأ وأقل يقينًا، أما نسبة النقدية فهي الأشد تحفظًا لأنها تقيس ما يمكن سداده فورًا. ورأس المال العامل مبلغ بالجنيه وليس نسبة، ويبيّن الفائض من الأصول المتداولة بعد تغطية الالتزامات المتداولة.
+            </p>
+
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>لا توجد نسبة صحيحة مطلقة؛ تُقارن النسبة بنتائج المنشأة نفسها في السنوات السابقة وبمتوسط القطاع الذي تعمل فيه. وارتفاع نسبة التداول مطمئن للدائنين، لكن ارتفاعها المفرط قد يعني نقدية أو مخزونًا معطّلًا.</p>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">حساب نسب السيولة لشركة النور للتجارة</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>شركة النور للتجارة، السنة المالية المنتهية في <span class="num">31</span> ديسمبر <span class="num">2026</span> مقارنةً بسنة <span class="num">2025</span>، والمبالغ بالجنيه المصري (ج.م).</li>
+                  <li>جميع مبيعات الشركة آجلة، وتُستخدم القائمتان التاليتان في أمثلة الفصل كله.</li>
+                  <li>بند العملاء (Accounts Receivable) هو أرصدة المبيعات الآجلة المستحقة التحصيل، وبند الموردون (Accounts Payable) هو أرصدة المشتريات الآجلة المستحقة السداد.</li>
+                  <li>المقابل الإنجليزي لبنود قائمة الدخل: صافي المبيعات (Net Sales)، تكلفة المبيعات (Cost of Goods Sold)، مجمل الربح (Gross Profit)، ربح التشغيل (Operating Profit)، صافي الربح (Net Profit).</li>
+                </ul>
+
+                <span class="example-block__label">قائمة المركز المالي (Statement of Financial Position) المختصرة في <span class="num">31</span> ديسمبر (ج.م)</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البيان</th>
+                        <th><span class="num">2026</span></th>
+                        <th><span class="num">2025</span></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td colspan="3"><strong>الأصول</strong></td></tr>
+                      <tr><td>النقدية بالصندوق والبنك</td><td class="num">150,000</td><td class="num">120,000</td></tr>
+                      <tr><td>العملاء (صافي)</td><td class="num">250,000</td><td class="num">200,000</td></tr>
+                      <tr><td>المخزون</td><td class="num">400,000</td><td class="num">350,000</td></tr>
+                      <tr><td>مصروفات مدفوعة مقدمًا</td><td class="num">50,000</td><td class="num">30,000</td></tr>
+                      <tr><td><strong>إجمالي الأصول المتداولة</strong></td><td class="num"><strong>850,000</strong></td><td class="num"><strong>700,000</strong></td></tr>
+                      <tr><td>الأصول الثابتة (صافي)</td><td class="num">1,150,000</td><td class="num">1,000,000</td></tr>
+                      <tr class="acc-table__total"><td>إجمالي الأصول</td><td class="num">2,000,000</td><td class="num">1,700,000</td></tr>
+                      <tr><td colspan="3"><strong>الالتزامات وحقوق الملكية</strong></td></tr>
+                      <tr><td>الموردون</td><td class="num">300,000</td><td class="num">280,000</td></tr>
+                      <tr><td>مصروفات مستحقة</td><td class="num">50,000</td><td class="num">40,000</td></tr>
+                      <tr><td>قرض قصير الأجل</td><td class="num">75,000</td><td class="num">60,000</td></tr>
+                      <tr><td><strong>إجمالي الالتزامات المتداولة</strong></td><td class="num"><strong>425,000</strong></td><td class="num"><strong>380,000</strong></td></tr>
+                      <tr><td>قرض طويل الأجل</td><td class="num">500,000</td><td class="num">400,000</td></tr>
+                      <tr><td><strong>إجمالي الالتزامات</strong></td><td class="num"><strong>925,000</strong></td><td class="num"><strong>780,000</strong></td></tr>
+                      <tr><td>رأس المال</td><td class="num">800,000</td><td class="num">800,000</td></tr>
+                      <tr><td>الأرباح المحتجزة</td><td class="num">275,000</td><td class="num">120,000</td></tr>
+                      <tr><td><strong>إجمالي حقوق الملكية</strong></td><td class="num"><strong>1,075,000</strong></td><td class="num"><strong>920,000</strong></td></tr>
+                      <tr class="acc-table__total"><td>إجمالي الالتزامات وحقوق الملكية</td><td class="num">2,000,000</td><td class="num">1,700,000</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">قائمة الدخل (Income Statement) المختصرة عن سنة <span class="num">2026</span> (ج.م)</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البيان</th>
+                        <th>المبلغ</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>صافي المبيعات (كلها آجلة)</td><td class="num">2,400,000</td></tr>
+                      <tr><td>يطرح: تكلفة المبيعات</td><td class="num">1,440,000</td></tr>
+                      <tr><td><strong>مجمل الربح</strong></td><td class="num"><strong>960,000</strong></td></tr>
+                      <tr><td>يطرح: مصروفات التشغيل (بيع وإدارة وعمومية)</td><td class="num">700,000</td></tr>
+                      <tr><td><strong>ربح التشغيل</strong></td><td class="num"><strong>260,000</strong></td></tr>
+                      <tr><td>يطرح: مصروفات الفوائد</td><td class="num">60,000</td></tr>
+                      <tr><td><strong>الربح قبل الضريبة</strong></td><td class="num"><strong>200,000</strong></td></tr>
+                      <tr><td>يطرح: ضريبة الدخل بمعدل <span class="num">22.5%</span></td><td class="num">45,000</td></tr>
+                      <tr class="acc-table__total"><td>صافي الربح</td><td class="num">155,000</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">حساب نسب السيولة</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>النسبة</th>
+                        <th>طريقة الحساب لسنة <span class="num">2026</span></th>
+                        <th><span class="num">2026</span></th>
+                        <th><span class="num">2025</span></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>نسبة التداول</td><td class="num">850,000 ÷ 425,000</td><td class="num">2.00</td><td class="num">1.84</td></tr>
+                      <tr><td>نسبة السيولة السريعة</td><td class="num">(150,000 + 250,000) ÷ 425,000</td><td class="num">0.94</td><td class="num">0.84</td></tr>
+                      <tr><td>نسبة النقدية</td><td class="num">150,000 ÷ 425,000</td><td class="num">0.35</td><td class="num">0.32</td></tr>
+                      <tr><td>رأس المال العامل (ج.م)</td><td class="num">850,000 − 425,000</td><td class="num">425,000</td><td class="num">320,000</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              نسبة التداول <span class="num">2.00</span> تعني أن كل جنيه من الالتزامات المتداولة يقابله جنيهان من الأصول المتداولة، وقد تحسنت عن <span class="num">1.84</span> في <span class="num">2025</span>. أما السيولة السريعة <span class="num">0.94</span> فأقل من <span class="num">1</span> لأن <span class="num">450,000</span> ج.م من الأصول المتداولة (المخزون <span class="num">400,000</span> والمصروفات المدفوعة مقدمًا <span class="num">50,000</span>) لا تدخل في بسطها، أي أن الشركة تحتاج إلى بيع جزء من المخزون لتغطية كامل التزاماتها العاجلة. ومع ذلك فالتحسن من <span class="num">0.84</span> إلى <span class="num">0.94</span> إيجابي. وتغطي النقدية وحدها نحو <span class="num">35%</span> من الالتزامات المتداولة، أما رأس المال العامل فارتفع من <span class="num">320,000</span> إلى <span class="num">425,000</span> ج.م.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>الاكتفاء بنسبة التداول للحكم على السيولة خطأ شائع؛ فمنشأتان بنسبة تداول <span class="num">2.00</span> قد تختلفان جذريًا إذا كانت أصول إحداهما نقدية وعملاء وأصول الأخرى مخزونًا راكدًا. لذلك تُقرأ نسبة التداول دائمًا مع نسبة السيولة السريعة.</p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+
+          <div class="topic-block" id="profitability-ratios">
+            <h3 class="topic-block__title">الربحية (Profitability)</h3>
+
+            <p>
+              تقيس نسب الربحية قدرة المنشأة على تحويل المبيعات والأصول وحقوق الملكية إلى أرباح، وتنقسم إلى مجموعتين. الأولى نسب الهامش (Margins)، وتُنسب فيها الأرباح إلى صافي المبيعات وتعتمد على قائمة الدخل وحدها. والثانية نسب العائد (Returns)، وتُنسب فيها الأرباح إلى الأصول أو إلى حقوق الملكية، فتجمع بين قائمة الدخل وقائمة المركز المالي.
+            </p>
+
+            <div class="formula-box">
+              <span class="formula-box__label">هامش مجمل الربح (Gross Profit Margin)</span>
+              <p class="formula-box__body">مجمل الربح ÷ صافي المبيعات × <span class="num">100</span></p>
+            </div>
+            <div class="formula-box">
+              <span class="formula-box__label">هامش ربح التشغيل (Operating Profit Margin)</span>
+              <p class="formula-box__body">ربح التشغيل ÷ صافي المبيعات × <span class="num">100</span></p>
+            </div>
+            <div class="formula-box">
+              <span class="formula-box__label">هامش صافي الربح (Net Profit Margin)</span>
+              <p class="formula-box__body">صافي الربح ÷ صافي المبيعات × <span class="num">100</span></p>
+            </div>
+            <div class="formula-box">
+              <span class="formula-box__label">العائد على الأصول (Return on Assets – ROA)</span>
+              <p class="formula-box__body">صافي الربح ÷ متوسط إجمالي الأصول × <span class="num">100</span></p>
+            </div>
+            <div class="formula-box">
+              <span class="formula-box__label">العائد على حقوق الملكية (Return on Equity – ROE)</span>
+              <p class="formula-box__body">صافي الربح ÷ متوسط حقوق الملكية × <span class="num">100</span></p>
+            </div>
+
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>متوسط الرصيد = (رصيد أول السنة + رصيد آخر السنة) ÷ <span class="num">2</span>. نستخدم المتوسط لأن الربح يتحقق على مدار السنة، بينما رصيد الأصول أو حقوق الملكية يمثل لحظة واحدة قد لا تعبّر عن السنة كلها.</p>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">حساب نسب الربحية لشركة النور للتجارة عن سنة <span class="num">2026</span></span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>من قائمة الدخل: صافي المبيعات <span class="num">2,400,000</span> ج.م، ومجمل الربح <span class="num">960,000</span> ج.م، وربح التشغيل <span class="num">260,000</span> ج.م، وصافي الربح <span class="num">155,000</span> ج.م.</li>
+                  <li>من قائمة المركز المالي: إجمالي الأصول <span class="num">1,700,000</span> ج.م في أول السنة و<span class="num">2,000,000</span> ج.م في آخرها، وحقوق الملكية <span class="num">920,000</span> ج.م في أول السنة و<span class="num">1,075,000</span> ج.م في آخرها.</li>
+                </ul>
+
+                <span class="example-block__label">حساب متوسط الأرصدة (ج.م)</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البيان</th>
+                        <th>أول السنة</th>
+                        <th>آخر السنة</th>
+                        <th>المتوسط</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>إجمالي الأصول</td><td class="num">1,700,000</td><td class="num">2,000,000</td><td class="num">1,850,000</td></tr>
+                      <tr><td>حقوق الملكية</td><td class="num">920,000</td><td class="num">1,075,000</td><td class="num">997,500</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">حساب نسب الربحية</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>النسبة</th>
+                        <th>طريقة الحساب</th>
+                        <th>النتيجة</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>هامش مجمل الربح</td><td class="num">960,000 ÷ 2,400,000</td><td class="num">40.00%</td></tr>
+                      <tr><td>هامش ربح التشغيل</td><td class="num">260,000 ÷ 2,400,000</td><td class="num">10.83%</td></tr>
+                      <tr><td>هامش صافي الربح</td><td class="num">155,000 ÷ 2,400,000</td><td class="num">6.46%</td></tr>
+                      <tr><td>العائد على الأصول</td><td class="num">155,000 ÷ 1,850,000</td><td class="num">8.38%</td></tr>
+                      <tr><td>العائد على حقوق الملكية</td><td class="num">155,000 ÷ 997,500</td><td class="num">15.54%</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              تحقق الشركة <span class="num">40.00%</span> هامش مجمل الربح، لكن مصروفات التشغيل (<span class="num">700,000</span> ج.م) تستهلك نحو <span class="num">29.17%</span> من المبيعات فيهبط هامش التشغيل إلى <span class="num">10.83%</span>. ثم تخصم الفوائد والضريبة (<span class="num">105,000</span> ج.م مجتمعتين) فيستقر هامش صافي الربح عند <span class="num">6.46%</span>، أي أن كل جنيه من المبيعات يترك نحو <span class="num">6.5</span> قرشًا ربحًا صافيًا.
+            </p>
+            <p>
+              ويزيد العائد على حقوق الملكية (<span class="num">15.54%</span>) عن العائد على الأصول (<span class="num">8.38%</span>) لأن جزءًا من الأصول مموّل بقروض وليس بأموال الملاك. هذا الأثر هو الرافعة المالية (Financial Leverage)، أي استخدام التمويل بالاقتراض لزيادة العائد على الملكية، وهي ترفع معه مخاطر الشركة.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>ارتفاع هامش مجمل الربح وحده لا يعني ربحية جيدة؛ ففي المثال تبتلع مصروفات التشغيل والفوائد والضريبة أكثر من ثمانية أعشار هذا الهامش. تُقرأ هوامش الربح الثلاثة معًا لمعرفة أين يضيع الربح.</p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+
+          <div class="topic-block" id="activity-ratios">
+            <h3 class="topic-block__title">النشاط (Activity)</h3>
+
+            <p>
+              تقيس نسب النشاط كفاءة المنشأة في استخدام أصولها لتوليد المبيعات، وسرعة تحويل العملاء والمخزون إلى نقدية. وتُسمى أيضًا معدلات الدوران (Turnover Ratios) لأنها تبيّن كم مرة «دار» الرصيد خلال السنة، وكلما ارتفع المعدل كانت الدورة أسرع. ولتحويل المعدل إلى مدة بالأيام نقسم <span class="num">365</span> يومًا عليه.
+            </p>
+
+            <div class="formula-box">
+              <span class="formula-box__label">معدل دوران العملاء (Receivables Turnover)</span>
+              <p class="formula-box__body">صافي المبيعات الآجلة ÷ متوسط العملاء</p>
+            </div>
+            <div class="formula-box">
+              <span class="formula-box__label">فترة التحصيل (Average Collection Period)</span>
+              <p class="formula-box__body"><span class="num">365</span> ÷ معدل دوران العملاء</p>
+            </div>
+            <div class="formula-box">
+              <span class="formula-box__label">معدل دوران المخزون (Inventory Turnover)</span>
+              <p class="formula-box__body">تكلفة المبيعات ÷ متوسط المخزون</p>
+            </div>
+            <div class="formula-box">
+              <span class="formula-box__label">فترة بقاء المخزون (Days Inventory Outstanding)</span>
+              <p class="formula-box__body"><span class="num">365</span> ÷ معدل دوران المخزون</p>
+            </div>
+            <div class="formula-box">
+              <span class="formula-box__label">معدل دوران إجمالي الأصول (Total Asset Turnover)</span>
+              <p class="formula-box__body">صافي المبيعات ÷ متوسط إجمالي الأصول</p>
+            </div>
+
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>يُقسم دوران المخزون على تكلفة المبيعات وليس على المبيعات، لأن المخزون مسجل بالتكلفة؛ فاستخدام المبيعات يضخّم المعدل بمقدار هامش الربح.</p>
+            </div>
+
+            <p>
+              ويمكن الجمع بين فترتين في مؤشر واحد هو دورة التشغيل (Operating Cycle)، أي المدة من شراء البضاعة إلى تحصيل ثمنها نقدًا. وهي تربط نسب النشاط بنسب السيولة، لأن طول الدورة يعني بقاء أموال الشركة محبوسة في المخزون والعملاء مدة أطول.
+            </p>
+
+            <div class="flow-diagram">
+              <div class="flow-step">
+                <div class="flow-step__title">شراء المخزون وتخزينه</div>
+                <div class="flow-step__description">تمتد المدة حتى بيع البضاعة، وهي فترة بقاء المخزون.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">بيع البضاعة بالأجل</div>
+                <div class="flow-step__description">يتحول المخزون إلى عملاء بقيمة المبيعات.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">تحصيل النقدية من العملاء</div>
+                <div class="flow-step__description">تمتد المدة حتى التحصيل، وهي فترة التحصيل.</div>
+              </div>
+            </div>
+
+            <div class="formula-box">
+              <span class="formula-box__label">دورة التشغيل</span>
+              <p class="formula-box__body">فترة بقاء المخزون + فترة التحصيل</p>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">حساب نسب النشاط لشركة النور للتجارة عن سنة <span class="num">2026</span></span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>صافي المبيعات (كلها آجلة) <span class="num">2,400,000</span> ج.م، وتكلفة المبيعات <span class="num">1,440,000</span> ج.م.</li>
+                  <li>العملاء <span class="num">200,000</span> ج.م في أول السنة و<span class="num">250,000</span> ج.م في آخرها، والمخزون <span class="num">350,000</span> ج.م في أول السنة و<span class="num">400,000</span> ج.م في آخرها.</li>
+                  <li>متوسط إجمالي الأصول <span class="num">1,850,000</span> ج.م (محسوب في مثال الربحية)، وعدد أيام السنة <span class="num">365</span> يومًا.</li>
+                </ul>
+
+                <span class="example-block__label">حساب متوسط الأرصدة (ج.م)</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البيان</th>
+                        <th>أول السنة</th>
+                        <th>آخر السنة</th>
+                        <th>المتوسط</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>العملاء</td><td class="num">200,000</td><td class="num">250,000</td><td class="num">225,000</td></tr>
+                      <tr><td>المخزون</td><td class="num">350,000</td><td class="num">400,000</td><td class="num">375,000</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">حساب نسب النشاط</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>النسبة</th>
+                        <th>طريقة الحساب</th>
+                        <th>النتيجة</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>معدل دوران العملاء</td><td class="num">2,400,000 ÷ 225,000</td><td><span class="num">10.67</span> مرة</td></tr>
+                      <tr><td>فترة التحصيل</td><td class="num">365 ÷ 10.6667</td><td><span class="num">34.22</span> يومًا</td></tr>
+                      <tr><td>معدل دوران المخزون</td><td class="num">1,440,000 ÷ 375,000</td><td><span class="num">3.84</span> مرة</td></tr>
+                      <tr><td>فترة بقاء المخزون</td><td class="num">365 ÷ 3.84</td><td><span class="num">95.05</span> يومًا</td></tr>
+                      <tr><td>دورة التشغيل</td><td class="num">95.05 + 34.22</td><td><span class="num">129.27</span> يومًا</td></tr>
+                      <tr><td>معدل دوران إجمالي الأصول</td><td class="num">2,400,000 ÷ 1,850,000</td><td><span class="num">1.30</span> مرة</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              تحصّل الشركة من عملائها في نحو <span class="num">34</span> يومًا، وتبيع مخزونها في نحو <span class="num">95</span> يومًا، فتستغرق دورة التشغيل نحو <span class="num">129</span> يومًا من شراء البضاعة إلى تحصيل ثمنها. وتُقارن فترة التحصيل بمدة الائتمان الممنوحة للعملاء؛ فلو كانت المدة المسموحة <span class="num">30</span> يومًا مثلًا فالتحصيل متأخر أربعة أيام تقريبًا. أما دوران إجمالي الأصول (<span class="num">1.30</span> مرة) فيعني أن كل جنيه من الأصول ولّد نحو <span class="num">1.30</span> ج.م من المبيعات. وبطء المخزون (نحو <span class="num">95</span> يومًا) هو ما يفسّر انخفاض نسبة السيولة السريعة عن نسبة التداول في المثال السابق.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>من الأخطاء الشائعة استخدام إجمالي المبيعات (نقدية وآجلة) في دوران العملاء بدل المبيعات الآجلة، أو استخدام رصيد آخر السنة بدل المتوسط، أو اختلاف عدد أيام السنة (<span class="num">365</span> أو <span class="num">360</span>) بين السنوات أو المنشآت المقارَنة.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section content-section--tint" id="comparison">
+      <div class="container">
+        <div class="content-section__eyebrow">مقارنة</div>
+        <h2 class="content-section__title">مقارنة بين نسب السيولة والربحية والنشاط</h2>
+
+        <div class="table-responsive">
+          <table class="table table-bordered align-middle">
+            <thead>
+              <tr>
+                <th>وجه المقارنة</th>
+                <th>السيولة</th>
+                <th>الربحية</th>
+                <th>النشاط</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>السؤال الذي تجيب عنه</td>
+                <td>هل تستطيع المنشأة سداد التزاماتها القصيرة؟</td>
+                <td>هل تحقق المنشأة أرباحًا كافية من مبيعاتها واستثماراتها؟</td>
+                <td>هل تستخدم المنشأة أصولها وعملاءها ومخزونها بكفاءة؟</td>
+              </tr>
+              <tr>
+                <td>أهم النسب</td>
+                <td>التداول، السيولة السريعة، النقدية</td>
+                <td>هوامش الربح، العائد على الأصول، العائد على حقوق الملكية</td>
+                <td>دوران العملاء، دوران المخزون، دوران الأصول</td>
+              </tr>
+              <tr>
+                <td>مصدر البيانات</td>
+                <td>قائمة المركز المالي وحدها</td>
+                <td>قائمة الدخل في الهوامش، والقائمتان معًا في العوائد</td>
+                <td>القائمتان معًا</td>
+              </tr>
+              <tr>
+                <td>وحدة القياس</td>
+                <td>نسبة بالمرة، ورأس المال العامل بالجنيه</td>
+                <td>نسبة مئوية</td>
+                <td>عدد مرات الدوران وعدد الأيام</td>
+              </tr>
+              <tr>
+                <td>الجهة الأكثر اهتمامًا</td>
+                <td>الدائنون قصيرو الأجل والموردون</td>
+                <td>الملاك والمستثمرون</td>
+                <td>إدارة المنشأة</td>
+              </tr>
+              <tr>
+                <td>نتائج شركة النور لسنة <span class="num">2026</span></td>
+                <td>تداول <span class="num">2.00</span> وسيولة سريعة <span class="num">0.94</span></td>
+                <td>هامش صافي <span class="num">6.46%</span> وعائد ملكية <span class="num">15.54%</span></td>
+                <td>تحصيل <span class="num">34.22</span> يومًا وبقاء مخزون <span class="num">95.05</span> يومًا</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="summary">
+      <div class="container">
+        <div class="content-section__eyebrow">الخلاصة</div>
+        <h2 class="content-section__title">أهم ما يجب تذكّره</h2>
+
+        <div class="summary-card" style="max-width: 900px">
+          <ul class="summary-card__list">
+            <li>✔ النسبة المالية تحوّل أرقام القوائم إلى مؤشر يُقارن بالسنوات السابقة وبمتوسط القطاع، ولا قيمة لها منفردة.</li>
+            <li>✔ نسب السيولة (التداول، السريعة، النقدية) تقيس القدرة على سداد الالتزامات القصيرة، وتزداد تحفظًا كلما استبعدنا الأصول بطيئة التحويل إلى نقدية.</li>
+            <li>✔ نسب الربحية نوعان: هوامش تُنسب إلى المبيعات، وعوائد تُنسب إلى الأصول أو حقوق الملكية باستخدام المتوسط.</li>
+            <li>✔ نسب النشاط تقيس سرعة دوران العملاء والمخزون والأصول، وتتحول إلى أيام بقسمة <span class="num">365</span> على المعدل.</li>
+            <li>✔ دورة التشغيل = فترة بقاء المخزون + فترة التحصيل، وطولها يضغط على السيولة.</li>
+            <li>✔ تُقرأ نسب المحاور الثلاثة معًا؛ فنسبة واحدة جيدة قد تخفي ضعفًا في محور آخر.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>الفصل الرابع والعشرون: تحليل القوائم المالية</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      /* Sync Toolbar Title */
+      const heroTitle = document.querySelector('.hero__title')
+      const toolbarTitle = document.querySelector('[data-sync-title]')
+      if (heroTitle && toolbarTitle) {
+        const text = heroTitle.textContent.trim()
+        if (text) {
+          toolbarTitle.textContent = text
+          document.title = text
+        }
+      }
+    </script>
+  </body>
+</html>

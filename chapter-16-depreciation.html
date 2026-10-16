@@ -1,0 +1,1110 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الفصل السادس عشر: الاستهلاك</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        
+        --clr-primary: #b378a6;
+        --clr-secondary: #7796bf;
+        --clr-light: #ffffff;
+        --clr-light-2: #f0f0f0;
+        --clr-border: #dedede;
+        --clr-dark: #1b1b1b;
+        --clr-dark-2: #444444;
+        --clr-text: #333333;
+        --clr-text-soft: #555555;
+
+        --font-body: 'Baloo Bhaijaan 2', sans-serif;
+
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 18px;
+
+        --shadow-soft: 0 4px 20px rgba(27, 27, 27, 0.07);
+        --shadow-hover: 0 12px 28px rgba(179, 120, 166, 0.16);
+
+        --section-pad: 4.5rem;
+        --content-width: 900px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--clr-light);
+        color: var(--clr-dark);
+        line-height: 1.9;
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: var(--clr-secondary);
+        text-decoration: none;
+        transition: 0.2s;
+      }
+
+      a:hover {
+        color: var(--clr-primary);
+      }
+
+      h1, h2, h3, h4, h5 {
+        font-family: var(--font-body);
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+        color: var(--clr-dark);
+      }
+
+      h1, h2 { font-weight: 800; }
+      h3, h4, h5 { font-weight: 700; }
+
+      p {
+        color: var(--clr-text);
+        margin-bottom: 1rem;
+      }
+
+      ul { margin: 0; padding: 0; }
+
+      section { scroll-margin-top: 90px; }
+
+      ::selection {
+        background: var(--clr-primary);
+        color: #fff;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--clr-secondary);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      .editor-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--clr-primary);
+        padding: 0.7rem 0;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .editor-toolbar__tab-title {
+        color: #fff;
+        font-size: 1.1rem;
+        direction: ltr;
+        font-weight: 700;
+      }
+
+      .hero {
+        background: var(--clr-secondary);
+        color: #fff;
+        padding: 4.5rem 0 3.5rem;
+      }
+
+      .hero__title {
+        color: #fff;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      .hero__lead {
+        color: #fff;
+        opacity: 0.95;
+        max-width: 760px;
+        font-size: 1.15rem;
+        margin-bottom: 0;
+      }
+
+      .content-section { padding: var(--section-pad) 0; }
+      .content-section--alt { background: #fcfcfc; }
+      .content-section--tint { background: var(--clr-light-2); }
+
+      .content-section__eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+        font-size: 0.86rem;
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+      }
+
+      .content-section__eyebrow::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        background: var(--clr-primary);
+      }
+
+      .content-section__title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+
+      .content-section__description {
+        max-width: 760px;
+        color: var(--clr-text-soft);
+        margin-bottom: 2.5rem;
+      }
+
+      .summary-card {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+        padding: 2rem;
+      }
+
+      .summary-card__list {
+        display: grid;
+        gap: 1rem;
+        list-style: none;
+      }
+
+      .summary-card__list li {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+      }
+
+      .callout {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        border-radius: var(--radius-md);
+        border-inline-start: 4px solid;
+      }
+
+      .callout__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 700;
+      }
+
+      .callout--note {
+        background: rgba(119, 150, 191, 0.08);
+        border-color: var(--clr-secondary);
+      }
+
+      .callout--warning {
+        background: rgba(179, 120, 166, 0.08);
+        border-color: var(--clr-primary);
+      }
+
+      .flow-diagram {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin: 2rem 0;
+      }
+
+      .flow-step {
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        padding: 1rem 1.25rem;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .flow-step__title {
+        color: var(--clr-primary);
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+      }
+
+      .flow-step__description { color: var(--clr-text-soft); margin: 0; }
+
+      .flow-arrow {
+        text-align: center;
+        color: var(--clr-secondary);
+        font-size: 28px;
+        line-height: 1;
+      }
+
+      .topic-block { margin-bottom: 3rem; }
+      .topic-block:last-child { margin-bottom: 0; }
+
+      .topic-block__title {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--clr-primary);
+      }
+
+      .topic-divider {
+        border: none;
+        border-top: 1px dashed var(--clr-border);
+        margin: 2.5rem 0;
+      }
+
+      .num {
+        direction: ltr;
+        unicode-bidi: isolate;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .formula-box {
+        margin: 2rem 0;
+        padding: 1.2rem 1.5rem;
+        text-align: center;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .formula-box__label {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--clr-primary);
+        font-weight: 700;
+      }
+
+      .formula-box__body {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--clr-dark);
+      }
+
+      .example-block {
+        overflow: hidden;
+        margin: 2rem 0;
+        background: var(--clr-light);
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .example-block__header {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.7rem 1.2rem;
+        background: var(--clr-dark);
+      }
+
+      .example-block__tag {
+        padding: 0 0.7rem;
+        background: var(--clr-primary);
+        color: #fff;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .example-block__title { color: #fff; font-weight: 600; }
+
+      .example-block__body { padding: 1.5rem; }
+
+      .example-block__label {
+        display: block;
+        margin: 1.6rem 0 0.6rem;
+        color: var(--clr-secondary);
+        font-weight: 700;
+      }
+
+      .example-block__label:first-child { margin-top: 0; }
+
+      .example-block__data {
+        margin: 0;
+        padding-inline-start: 1.2rem;
+        color: var(--clr-text);
+      }
+
+      .acc-table-wrap { overflow-x: auto; }
+
+      .acc-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+
+      .acc-table th,
+      .acc-table td {
+        padding: 0.5rem 0.8rem;
+        border: 1px solid var(--clr-border);
+      }
+
+      .acc-table thead th {
+        background: var(--clr-light-2);
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .acc-table td.num { text-align: end; }
+
+      .acc-table__total td {
+        background: #fcfcfc;
+        font-weight: 700;
+        border-top: 2px solid var(--clr-dark-2);
+        border-bottom: 4px double var(--clr-dark-2);
+      }
+
+      .journal__entry { border-bottom: 2px solid var(--clr-dark-2); }
+      .acc-table td.journal__credit { padding-inline-start: 2.5rem; }
+      .journal__note td { color: var(--clr-text-soft); font-size: 0.88rem; }
+
+      .t-accounts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+
+      .t-account {
+        overflow: hidden;
+        background: #fcfcfc;
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-md);
+      }
+
+      .t-account__title {
+        padding: 0.5rem;
+        text-align: center;
+        color: var(--clr-primary);
+        font-weight: 700;
+        border-bottom: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__sides { display: grid; grid-template-columns: 1fr 1fr; }
+
+      .t-account__side + .t-account__side {
+        border-inline-start: 2px solid var(--clr-dark-2);
+      }
+
+      .t-account__side-label {
+        padding: 0.3rem;
+        text-align: center;
+        color: var(--clr-text-soft);
+        font-size: 0.85rem;
+        font-weight: 700;
+        border-bottom: 1px solid var(--clr-border);
+      }
+
+      .t-account__lines {
+        min-height: 3rem;
+        margin: 0;
+        padding: 0.4rem 0.7rem;
+        list-style: none;
+      }
+
+      .t-account__lines li {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .t-account__balance {
+        padding: 0.45rem 0.7rem;
+        text-align: center;
+        font-weight: 700;
+        background: rgba(119, 150, 191, 0.08);
+        border-top: 1px solid var(--clr-border);
+      }
+
+      .site-footer {
+        background: var(--clr-light-2);
+        color: var(--clr-light);
+        padding: 1rem 0 0.5rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        :root { --section-pad: 3rem; }
+        .hero { padding: 3.5rem 0; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; }
+      }
+    </style>
+  </head>
+
+  <body>
+    
+    <div class="editor-toolbar">
+      <div class="container d-flex align-items-center gap-3">
+        <span class="editor-toolbar__tab-title" data-sync-title></span>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="container">
+        <h1 class="hero__title">الفصل السادس عشر: الاستهلاك</h1>
+        <p class="hero__lead">
+          يبيّن هذا الفصل كيف تُوزَّع تكلفة الأصل الثابت على سنوات عمره الإنتاجي، من خلال أشهر طريقتين هما القسط الثابت والمتناقص، ثم كيف تُنظَّم النتائج في جدول استهلاك يُظهر القسط والمجمع وصافي القيمة الدفترية عامًا بعد عام.
+        </p>
+      </div>
+    </header>
+
+    <section class="content-section" id="explanation">
+      <div class="container">
+        <div class="content-section__eyebrow">شرح وتطبيق</div>
+        <h2 class="content-section__title">شرح وتطبيق كل مرحلة</h2>
+
+        <div class="article-content" style="max-width: 900px">
+
+          <div class="topic-block" id="depreciation-methods">
+            <h3 class="topic-block__title">طرق الاستهلاك</h3>
+
+            <p>
+              يُقصد بالاستهلاك (Depreciation) توزيع تكلفة الأصل الثابت (Property, Plant and Equipment) توزيعًا منتظمًا على السنوات التي ينتفع فيها بالأصل، فيتحمّل كل عام مالي جزءًا من التكلفة يقابل ما استُنفد من منافع الأصل خلاله. وهو بذلك تطبيق لمبدأ المقابلة (Matching Principle) الذي يربط كل مصروف بالإيراد الذي أسهم في تحقيقه، وليس تقديرًا للقيمة السوقية للأصل.
+            </p>
+
+            <p>يتوقف مبلغ الاستهلاك على ثلاثة عناصر:</p>
+            <ul style="padding-inline-start: 1.2rem; margin-bottom: 1rem">
+              <li><strong>التكلفة (Cost):</strong> كل ما أُنفق للحصول على الأصل وتجهيزه للتشغيل.</li>
+              <li><strong>القيمة التخريدية (Residual Value):</strong> المبلغ المقدَّر استرداده من الأصل في نهاية عمره الإنتاجي.</li>
+              <li><strong>العمر الإنتاجي (Useful Life):</strong> المدة المتوقع أن تنتفع المنشأة بالأصل خلالها.</li>
+            </ul>
+
+            <div class="formula-box">
+              <span class="formula-box__label">الأساس القابل للاستهلاك (Depreciable Amount)</span>
+              <p class="formula-box__body">الأساس القابل للاستهلاك = التكلفة − القيمة التخريدية</p>
+            </div>
+
+            <p>
+              وبعد تحديد هذا الأساس تأتي مسألة اختيار الطريقة التي يُوزَّع بها. يقضي معيار المحاسبة الدولي (IAS 16) بأن تعكس الطريقة المختارة النمط الذي تستهلك به المنشأة المنافع الاقتصادية للأصل، وأن تُراجَع مرة واحدة على الأقل في نهاية كل سنة مالية. ومن الطرق المعروفة: القسط الثابت (Straight-Line Method) الذي يُحمّل كل سنة بمبلغ متساوٍ، والمتناقص (Declining-Balance Method) الذي يُحمّل السنوات الأولى بمبلغ أكبر، وطريقة وحدات الإنتاج (Units of Production Method) التي تربط القسط بعدد الوحدات التي ينتجها الأصل فعليًا. وهذه الأخيرة ذُكرت للتعريف فقط ولا يتناولها هذا الفصل.
+            </p>
+
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>
+                يُثبَّت الاستهلاك بجعل مصروف الاستهلاك (Depreciation Expense) مدينًا ومجمع الاستهلاك (Accumulated Depreciation) دائنًا. ومجمع الاستهلاك حساب مقابل (Contra Account) للأصل تتراكم فيه أقساط السنوات، ويبقى حساب الأصل نفسه بتكلفته الأصلية. ويُسمّى الفرق بينهما صافي القيمة الدفترية (Carrying Amount)، أي: التكلفة − مجمع الاستهلاك.
+              </p>
+            </div>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                الاستهلاك مصروف غير نقدي؛ فقيده لا يُخرج أي مبلغ من النقدية، ولا يعني أن المنشأة تدّخر مالًا لشراء أصل بديل. كما أن الأرض لا تُستهلك عادةً لأن عمرها الإنتاجي غير محدود.
+              </p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+
+          <div class="topic-block" id="straight-line">
+            <h3 class="topic-block__title">القسط الثابت</h3>
+
+            <p>
+              في طريقة القسط الثابت يتحمّل كل عام من عمر الأصل المبلغ نفسه، لأنها تفترض أن الانتفاع بالأصل يتوزع بالتساوي على سنواته. وهي أبسط الطرق وأكثرها استخدامًا، وتناسب الأصول التي لا يتغير استخدامها كثيرًا من عام إلى آخر. ويمكن التعبير عن الطريقة بمعدل الاستهلاك (Depreciation Rate)، وهو النسبة المئوية التي تُطبَّق على الأساس القابل للاستهلاك، ويساوي <span class="num">100%</span> ÷ العمر الإنتاجي.
+            </p>
+
+            <div class="formula-box">
+              <span class="formula-box__label">قسط الاستهلاك السنوي بالقسط الثابت</span>
+              <p class="formula-box__body">القسط السنوي = (التكلفة − القيمة التخريدية) ÷ العمر الإنتاجي</p>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">شراء آلة واستهلاكها بالقسط الثابت</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>اشترت منشأة آلة في <span class="num">1/1/2026</span> بمبلغ <span class="num">200,000</span> ج.م نقدًا.</li>
+                  <li>القيمة التخريدية المقدّرة للآلة <span class="num">20,000</span> ج.م، وعمرها الإنتاجي <span class="num">5</span> سنوات.</li>
+                  <li>تُقفل حسابات المنشأة في <span class="num">31/12</span> من كل عام، وتُستهلك الآلة بطريقة القسط الثابت.</li>
+                  <li>المطلوب: إثبات الشراء وقسط عام <span class="num">2026</span>، وبيان ظهور الآلة في المركز المالي في <span class="num">31/12/2026</span>.</li>
+                </ul>
+
+                <span class="example-block__label">قيود اليومية</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين (ج.م)</th>
+                        <th>دائن (ج.م)</th>
+                      </tr>
+                    </thead>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">1/1/2026</span></td>
+                        <td>من ح/ الآلات</td>
+                        <td class="num">200,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ النقدية</td>
+                        <td></td>
+                        <td class="num">200,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>إثبات شراء آلة نقدًا بتكلفتها</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">31/12/2026</span></td>
+                        <td>من ح/ مصروف الاستهلاك</td>
+                        <td class="num">36,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ مجمع استهلاك الآلات</td>
+                        <td></td>
+                        <td class="num">36,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>إثبات قسط استهلاك الآلة عن عام 2026 بالقسط الثابت</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">الترحيل إلى حسابات الأستاذ</span>
+                <div class="t-accounts">
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ الآلات</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li><span>1/1/2026 شراء</span><span class="num">200,000</span></li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines"></ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">الرصيد: <span class="num">200,000</span> مدين</div>
+                  </div>
+
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ مصروف الاستهلاك</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines">
+                          <li><span>31/12/2026 قسط العام</span><span class="num">36,000</span></li>
+                        </ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines"></ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">الرصيد: <span class="num">36,000</span> مدين</div>
+                  </div>
+
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ مجمع استهلاك الآلات</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines"></ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines">
+                          <li><span>31/12/2026 قسط العام</span><span class="num">36,000</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">الرصيد: <span class="num">36,000</span> دائن</div>
+                  </div>
+                </div>
+
+                <span class="example-block__label">ظهور الآلة في المركز المالي في 31/12/2026 (ج.م)</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>البيان</th>
+                        <th>جزئي</th>
+                        <th>كلي</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>الآلات بالتكلفة</td>
+                        <td class="num">200,000</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr>
+                        <td>يُخصم: مجمع استهلاك الآلات</td>
+                        <td class="num">(36,000)</td>
+                        <td class="num"></td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>صافي القيمة الدفترية للآلات</td>
+                        <td></td>
+                        <td class="num">164,000</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              الأساس القابل للاستهلاك هو <span class="num">200,000 − 20,000 = 180,000</span> ج.م، ويُقسَّم على <span class="num">5</span> سنوات فيكون القسط السنوي <span class="num">36,000</span> ج.م. والنتيجة نفسها تظهر بالمعدل: <span class="num">100% ÷ 5 = 20%</span>، ثم <span class="num">20% × 180,000 = 36,000</span>. أُثبت الشراء بالتكلفة الكاملة في قيد مستقل، وقُيّد الاستهلاك في جانب مجمع الاستهلاك لا في حساب الآلات نفسه، فبقيت الآلات بتكلفتها <span class="num">200,000</span> ج.م، وانخفض صافي قيمتها الدفترية إلى <span class="num">164,000</span> ج.م، وهو تكلفة الآلة مطروحًا منها المجمع <span class="num">200,000 − 36,000</span>.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                من الأخطاء الشائعة قسمة التكلفة كاملة على العمر الإنتاجي دون طرح القيمة التخريدية، فيظهر القسط <span class="num">40,000</span> ج.م (<span class="num">200,000 ÷ 5</span>) بدلًا من <span class="num">36,000</span> ج.م، ويُستهلك الأصل دون قيمته التخريدية.
+              </p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+
+          <div class="topic-block" id="declining-balance">
+            <h3 class="topic-block__title">المتناقص</h3>
+
+            <p>
+              في طريقة المتناقص يُحسب قسط كل سنة بتطبيق معدل ثابت على صافي القيمة الدفترية للأصل في أول تلك السنة، لا على التكلفة الأصلية. وبما أن صافي القيمة يتناقص عامًا بعد عام، فإن القسط يكون كبيرًا في السنوات الأولى ثم يتناقص تدريجيًا. وتناسب الطريقة الأصول التي تكون منفعتها أكبر في بداية عمرها، كالأجهزة التقنية والسيارات. وتُستخدم عادةً بمعدل يساوي ضعف معدل القسط الثابت، وتُسمّى حينئذ المتناقص المضاعف (Double-Declining Balance)، أي أن المعدل = (<span class="num">100%</span> ÷ العمر الإنتاجي) × <span class="num">2</span>.
+            </p>
+
+            <div class="formula-box">
+              <span class="formula-box__label">قسط الاستهلاك السنوي بالمتناقص</span>
+              <p class="formula-box__body">القسط = صافي القيمة الدفترية أول السنة × معدل الاستهلاك</p>
+            </div>
+
+            <div class="callout callout--note">
+              <span class="callout__label">ملاحظة</span>
+              <p>
+                لا تُطرح القيمة التخريدية من الأساس عند حساب القسط في هذه الطريقة، لكن لا يجوز أن ينزل صافي القيمة الدفترية عنها؛ لذلك يُخفَّض قسط السنة الأخيرة بالقدر اللازم للوصول إلى القيمة التخريدية تمامًا.
+              </p>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">استهلاك الآلة نفسها بالمتناقص المضاعف</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>آلة اشتُريت في <span class="num">1/1/2026</span> بتكلفة <span class="num">200,000</span> ج.م، وقيمتها التخريدية <span class="num">20,000</span> ج.م، وعمرها الإنتاجي <span class="num">5</span> سنوات.</li>
+                  <li>تُستهلك بطريقة المتناقص المضاعف: معدل القسط الثابت <span class="num">20%</span> (<span class="num">100% ÷ 5</span>)، فيكون معدل الاستهلاك <span class="num">40%</span> (<span class="num">20% × 2</span>).</li>
+                  <li>المطلوب: احتساب قسطي عامي <span class="num">2026</span> و<span class="num">2027</span> وإثبات قيديهما.</li>
+                </ul>
+
+                <span class="example-block__label">احتساب القسط (ج.م)</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>السنة</th>
+                        <th>صافي القيمة الدفترية أول السنة</th>
+                        <th>المعدل</th>
+                        <th>القسط</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>2026</td>
+                        <td class="num">200,000</td>
+                        <td class="num">40%</td>
+                        <td class="num">80,000</td>
+                      </tr>
+                      <tr>
+                        <td>2027</td>
+                        <td class="num">120,000</td>
+                        <td class="num">40%</td>
+                        <td class="num">48,000</td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>مجموع القسطين</td>
+                        <td></td>
+                        <td></td>
+                        <td class="num">128,000</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">قيود اليومية</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table journal">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>البيان</th>
+                        <th>مدين (ج.م)</th>
+                        <th>دائن (ج.م)</th>
+                      </tr>
+                    </thead>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">31/12/2026</span></td>
+                        <td>من ح/ مصروف الاستهلاك</td>
+                        <td class="num">80,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ مجمع استهلاك الآلات</td>
+                        <td></td>
+                        <td class="num">80,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>إثبات قسط استهلاك الآلة عن عام 2026 بالمتناقص</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                    <tbody class="journal__entry">
+                      <tr>
+                        <td rowspan="3"><span class="num">31/12/2027</span></td>
+                        <td>من ح/ مصروف الاستهلاك</td>
+                        <td class="num">48,000</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="journal__credit">إلى ح/ مجمع استهلاك الآلات</td>
+                        <td></td>
+                        <td class="num">48,000</td>
+                      </tr>
+                      <tr class="journal__note">
+                        <td>إثبات قسط استهلاك الآلة عن عام 2027 بالمتناقص</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">الترحيل إلى حسابات الأستاذ</span>
+                <div class="t-accounts">
+                  <div class="t-account">
+                    <div class="t-account__title">ح/ مجمع استهلاك الآلات</div>
+                    <div class="t-account__sides">
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">مدين</div>
+                        <ul class="t-account__lines"></ul>
+                      </div>
+                      <div class="t-account__side">
+                        <div class="t-account__side-label">دائن</div>
+                        <ul class="t-account__lines">
+                          <li><span>31/12/2026 قسط العام</span><span class="num">80,000</span></li>
+                          <li><span>31/12/2027 قسط العام</span><span class="num">48,000</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="t-account__balance">الرصيد: <span class="num">128,000</span> دائن</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              في عام <span class="num">2026</span> كان صافي القيمة الدفترية أول السنة هو التكلفة كاملة <span class="num">200,000</span> ج.م، فكان القسط <span class="num">200,000 × 40% = 80,000</span> ج.م. وفي عام <span class="num">2027</span> أصبح صافي القيمة <span class="num">200,000 − 80,000 = 120,000</span> ج.م، فكان القسط <span class="num">120,000 × 40% = 48,000</span> ج.م. ويُلاحظ أن القيد في الحالتين هو نفسه قيد القسط الثابت، وإنما اختلف المبلغ فقط؛ وأن رصيد مجمع الاستهلاك بعد عامين <span class="num">128,000</span> ج.م، فيكون صافي القيمة الدفترية في <span class="num">31/12/2027</span> مساويًا <span class="num">200,000 − 128,000 = 72,000</span> ج.م.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                لو طُبّق المعدل بحذافيره في العام الخامس لكان القسط <span class="num">25,920 × 40% = 10,368</span> ج.م، ولهبط صافي القيمة إلى <span class="num">15,552</span> ج.م، أي دون القيمة التخريدية <span class="num">20,000</span> ج.م. لذلك يُقتصر القسط الأخير على <span class="num">25,920 − 20,000 = 5,920</span> ج.م.
+              </p>
+            </div>
+          </div>
+
+          <hr class="topic-divider" />
+
+          <div class="topic-block" id="schedules">
+            <h3 class="topic-block__title">الجداول</h3>
+
+            <p>
+              جدول الاستهلاك (Depreciation Schedule) كشف يُعدّ عند اقتناء الأصل، ويبيّن لكل سنة من عمره الإنتاجي قسط الاستهلاك ومجمع الاستهلاك في آخرها وصافي القيمة الدفترية. فائدته أنه يحدد مسبقًا مبلغ القيد في كل سنة، ويتيح مراجعة الحسابات بسرعة، ويكشف أي خطأ في الأقساط قبل أن ينتقل إلى القوائم المالية.
+            </p>
+
+            <div class="flow-diagram">
+              <div class="flow-step">
+                <div class="flow-step__title">1. تحديد البيانات</div>
+                <div class="flow-step__description">التكلفة والقيمة التخريدية والعمر الإنتاجي وطريقة الاستهلاك.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">2. حساب قسط كل سنة</div>
+                <div class="flow-step__description">مبلغ ثابت في القسط الثابت، أو صافي القيمة أول السنة × المعدل في المتناقص.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">3. تحديث المجمع وصافي القيمة</div>
+                <div class="flow-step__description">المجمع = مجمع السنة السابقة + القسط، وصافي القيمة = التكلفة − المجمع.</div>
+              </div>
+              <div class="flow-arrow">↓</div>
+              <div class="flow-step">
+                <div class="flow-step__title">4. التحقق من النتيجة</div>
+                <div class="flow-step__description">مجموع الأقساط = الأساس القابل للاستهلاك، وصافي القيمة في آخر سنة = القيمة التخريدية.</div>
+              </div>
+            </div>
+
+            <div class="example-block">
+              <div class="example-block__header">
+                <span class="example-block__tag">مثال تطبيقي</span>
+                <span class="example-block__title">جدولا استهلاك الآلة بالطريقتين</span>
+              </div>
+              <div class="example-block__body">
+                <span class="example-block__label">المعطيات</span>
+                <ul class="example-block__data">
+                  <li>الآلة نفسها: تكلفة <span class="num">200,000</span> ج.م، قيمة تخريدية <span class="num">20,000</span> ج.م، عمر <span class="num">5</span> سنوات، اشتُريت في <span class="num">1/1/2026</span>.</li>
+                  <li>المطلوب: إعداد جدول الاستهلاك بطريقة القسط الثابت، ثم بطريقة المتناقص المضاعف بمعدل <span class="num">40%</span>.</li>
+                </ul>
+
+                <span class="example-block__label">جدول الاستهلاك بالقسط الثابت (ج.م)</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>السنة</th>
+                        <th>قسط الاستهلاك</th>
+                        <th>مجمع الاستهلاك آخر السنة</th>
+                        <th>صافي القيمة الدفترية آخر السنة</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>2026</td>
+                        <td class="num">36,000</td>
+                        <td class="num">36,000</td>
+                        <td class="num">164,000</td>
+                      </tr>
+                      <tr>
+                        <td>2027</td>
+                        <td class="num">36,000</td>
+                        <td class="num">72,000</td>
+                        <td class="num">128,000</td>
+                      </tr>
+                      <tr>
+                        <td>2028</td>
+                        <td class="num">36,000</td>
+                        <td class="num">108,000</td>
+                        <td class="num">92,000</td>
+                      </tr>
+                      <tr>
+                        <td>2029</td>
+                        <td class="num">36,000</td>
+                        <td class="num">144,000</td>
+                        <td class="num">56,000</td>
+                      </tr>
+                      <tr>
+                        <td>2030</td>
+                        <td class="num">36,000</td>
+                        <td class="num">180,000</td>
+                        <td class="num">20,000</td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>الإجمالي</td>
+                        <td class="num">180,000</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <span class="example-block__label">جدول الاستهلاك بالمتناقص المضاعف (ج.م)</span>
+                <div class="acc-table-wrap">
+                  <table class="acc-table">
+                    <thead>
+                      <tr>
+                        <th>السنة</th>
+                        <th>صافي القيمة الدفترية أول السنة</th>
+                        <th>قسط الاستهلاك</th>
+                        <th>مجمع الاستهلاك آخر السنة</th>
+                        <th>صافي القيمة الدفترية آخر السنة</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>2026</td>
+                        <td class="num">200,000</td>
+                        <td class="num">80,000</td>
+                        <td class="num">80,000</td>
+                        <td class="num">120,000</td>
+                      </tr>
+                      <tr>
+                        <td>2027</td>
+                        <td class="num">120,000</td>
+                        <td class="num">48,000</td>
+                        <td class="num">128,000</td>
+                        <td class="num">72,000</td>
+                      </tr>
+                      <tr>
+                        <td>2028</td>
+                        <td class="num">72,000</td>
+                        <td class="num">28,800</td>
+                        <td class="num">156,800</td>
+                        <td class="num">43,200</td>
+                      </tr>
+                      <tr>
+                        <td>2029</td>
+                        <td class="num">43,200</td>
+                        <td class="num">17,280</td>
+                        <td class="num">174,080</td>
+                        <td class="num">25,920</td>
+                      </tr>
+                      <tr>
+                        <td>2030</td>
+                        <td class="num">25,920</td>
+                        <td class="num">5,920</td>
+                        <td class="num">180,000</td>
+                        <td class="num">20,000</td>
+                      </tr>
+                      <tr class="acc-table__total">
+                        <td>الإجمالي</td>
+                        <td></td>
+                        <td class="num">180,000</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              في الجدولين انتهى صافي القيمة الدفترية في <span class="num">31/12/2030</span> عند <span class="num">20,000</span> ج.م، وهي القيمة التخريدية، وبلغ مجموع الأقساط <span class="num">180,000</span> ج.م، وهو الأساس القابل للاستهلاك. وقد استُمدّ قسط عام <span class="num">2030</span> في جدول المتناقص من الفرق <span class="num">25,920 − 20,000</span> لا من تطبيق المعدل. وكل صف من الجدول هو قيد جاهز؛ فقسط عام <span class="num">2028</span> مثلًا يُقيَّد بالمتناقص من ح/ مصروف الاستهلاك إلى ح/ مجمع استهلاك الآلات بمبلغ <span class="num">28,800</span> ج.م.
+            </p>
+
+            <div class="callout callout--warning">
+              <span class="callout__label">انتبه</span>
+              <p>
+                لا تغيّر الطريقة المختارة مجموع الاستهلاك على مدى عمر الأصل، فهو <span class="num">180,000</span> ج.م في الجدولين؛ وإنما يتغير توزيعه على السنوات فقط.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section content-section--tint" id="comparison">
+      <div class="container">
+        <div class="content-section__eyebrow">مقارنة</div>
+        <h2 class="content-section__title">القسط الثابت مقابل المتناقص</h2>
+
+        <div class="table-responsive">
+          <table class="table table-bordered align-middle">
+            <thead>
+              <tr>
+                <th>وجه المقارنة</th>
+                <th>القسط الثابت</th>
+                <th>المتناقص (المضاعف)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>أساس احتساب القسط</td>
+                <td>الأساس القابل للاستهلاك (التكلفة − القيمة التخريدية)</td>
+                <td>صافي القيمة الدفترية أول السنة</td>
+              </tr>
+              <tr>
+                <td>المعدل في مثال الآلة</td>
+                <td><span class="num">20%</span></td>
+                <td><span class="num">40%</span></td>
+              </tr>
+              <tr>
+                <td>نمط القسط عبر السنوات</td>
+                <td>متساوٍ في كل سنة</td>
+                <td>كبير في البداية ثم يتناقص</td>
+              </tr>
+              <tr>
+                <td>قسط عام 2026</td>
+                <td><span class="num">36,000</span> ج.م</td>
+                <td><span class="num">80,000</span> ج.م</td>
+              </tr>
+              <tr>
+                <td>قسط عام 2030</td>
+                <td><span class="num">36,000</span> ج.م</td>
+                <td><span class="num">5,920</span> ج.م</td>
+              </tr>
+              <tr>
+                <td>صافي القيمة الدفترية في 31/12/2026</td>
+                <td><span class="num">164,000</span> ج.م</td>
+                <td><span class="num">120,000</span> ج.م</td>
+              </tr>
+              <tr>
+                <td>مجموع الاستهلاك على مدى العمر</td>
+                <td><span class="num">180,000</span> ج.م</td>
+                <td><span class="num">180,000</span> ج.م</td>
+              </tr>
+              <tr>
+                <td>الملاءمة</td>
+                <td>أصول ينتظم الانتفاع بها عبر سنواتها</td>
+                <td>أصول تكون منفعتها أكبر في أول عمرها</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="summary">
+      <div class="container">
+        <div class="content-section__eyebrow">الخلاصة</div>
+        <h2 class="content-section__title">أهم ما يجب تذكّره</h2>
+
+        <div class="summary-card" style="max-width: 900px">
+          <ul class="summary-card__list">
+            <li>✔ الاستهلاك توزيع لتكلفة الأصل على عمره الإنتاجي، وأساسه القابل للاستهلاك = التكلفة − القيمة التخريدية.</li>
+            <li>✔ القيد دائمًا: من ح/ مصروف الاستهلاك إلى ح/ مجمع الاستهلاك، ويبقى الأصل بتكلفته ويُخصم منه المجمع لإظهار صافي القيمة الدفترية.</li>
+            <li>✔ القسط الثابت = (التكلفة − القيمة التخريدية) ÷ العمر الإنتاجي، ويتساوى في كل سنة.</li>
+            <li>✔ المتناقص: القسط = صافي القيمة الدفترية أول السنة × المعدل، ولا يجوز أن ينزل الصافي دون القيمة التخريدية.</li>
+            <li>✔ جدول الاستهلاك يُراجَع بأن مجموع الأقساط = الأساس القابل للاستهلاك، وأن صافي القيمة الأخير = القيمة التخريدية.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>الجزء السادس: الأصول الثابتة والاستهلاك | الفصل السادس عشر: الاستهلاك</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      /* Sync Toolbar Title */
+      const heroTitle = document.querySelector('.hero__title')
+      const toolbarTitle = document.querySelector('[data-sync-title]')
+      if (heroTitle && toolbarTitle) {
+        const text = heroTitle.textContent.trim()
+        if (text) {
+          toolbarTitle.textContent = text
+          document.title = text
+        }
+      }
+    </script>
+  </body>
+</html>
